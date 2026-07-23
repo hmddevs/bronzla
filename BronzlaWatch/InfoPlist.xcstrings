@@ -1,23 +1,47 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "NSLocationWhenInUseUsageDescription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "We need your location to show the current UV index where you are. Your location stays on your device."
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bronzla"
+          }
+        }
+      }
+    },
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "BronzlaWatch"
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need your location to show the current UV index where you are. Your location stays on your device."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bulunduğunuz yerin güncel UV indeksini gösterebilmek için konumunuza ihtiyacımız var. Konum bilgisi cihazınızda kalır."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulunduğunuz yerin güncel UV indeksini gösterebilmek için konumunuza ihtiyacımız var. Konum bilgisi cihazınızda kalır."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

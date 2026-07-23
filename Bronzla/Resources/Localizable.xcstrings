@@ -1,28 +1,6 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "For %@, the UV index is %lld, %@. Based on your skin type, your safe time is about %lld minutes.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ için UV indeksi %lld, %@. Cilt tipinize göre güvenli süreniz yaklaşık %lld dakika."
-          }
-        }
-      }
-    },
-    "For %@, the UV index is %lld, %@. There is no burn risk right now.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ için UV indeksi %lld, %@. Şu anda yanma riski yok."
-          }
-        }
-      }
-    },
     "%1$lld, %2$@": {
       "extractionState": "manual",
       "localizations": {
@@ -67,17 +45,6 @@
         }
       }
     },
-    "You passed the burn threshold in %lld sessions. A shorter session or a higher SPF would help.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld seansta yanma eşiği aşıldı. Süreyi kısaltmak veya SPF'yi artırmak koruma sağlayabilir."
-          }
-        }
-      }
-    },
     "%lld, %@": {
       "extractionState": "manual",
       "localizations": {
@@ -85,17 +52,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld, %@"
-          }
-        }
-      }
-    },
-    "You completed 5 sessions before midday.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 seansı öğleden önce tamamladınız."
           }
         }
       }
@@ -133,17 +89,6 @@
         }
       }
     },
-    "You used sunscreen in 20 sessions.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "20 seansta güneş kremi kullandınız."
-          }
-        }
-      }
-    },
     "30 sessions, zero burns.": {
       "extractionState": "manual",
       "localizations": {
@@ -151,248 +96,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "30 seans, sıfır yanık."
-          }
-        }
-      }
-    },
-    "Turns painfully red, blisters and peels": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Acı verecek şekilde kızarır, kabarır ve soyulur"
-          }
-        }
-      }
-    },
-    "Fair": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Açık"
-          }
-        }
-      }
-    },
-    "Light olive": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Açık buğday"
-          }
-        }
-      }
-    },
-    "Light olive skin, brown hair, hazel or brown eyes. One of the two most common types in Türkiye.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Açık buğday ten, kahverengi saç, ela veya kahve göz. Türkiye'nin en yaygın iki tipinden biri."
-          }
-        }
-      }
-    },
-    "Light blue, light grey or light green": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Açık mavi, açık gri veya açık yeşil"
-          }
-        }
-      }
-    },
-    "Fair skin, blond or light brown hair, light eyes. Common along the Black Sea and in Thrace.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Açık ten, sarı veya açık kahve saç, açık renk göz. Karadeniz ve Trakya'da yaygındır."
-          }
-        }
-      }
-    },
-    "Exposed skin": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Açıkta kalan cilt"
-          }
-        }
-      }
-    },
-    "Family Ranking": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile Sıralaması"
-          }
-        }
-      }
-    },
-    "The ranking appears here as family members record sessions.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aile üyeleri seans kaydettikçe sıralama burada görünür."
-          }
-        }
-      }
-    },
-    "Extreme": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aşırı"
-          }
-        }
-      }
-    },
-    "Extreme cold can do further damage to burnt skin.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aşırı soğuk, yanmış cilde ikinci bir hasar verebilir."
-          }
-        }
-      }
-    },
-    "If there is fever, shivering, dizziness or nausea, go to a healthcare facility without delay.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ateş, titreme, baş dönmesi veya bulantı varsa vakit kaybetmeden bir sağlık kuruluşuna gidin."
-          }
-        }
-      }
-    },
-    "Settings": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ayarlar"
-          }
-        }
-      }
-    },
-    "Care advice": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bakım önerileri"
-          }
-        }
-      }
-    },
-    "See care advice": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bakım önerilerini gör"
-          }
-        }
-      }
-    },
-    "Start again": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Baştan başla"
-          }
-        }
-      }
-    },
-    "Sometimes burns, tans gradually.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bazen yanar, yavaş yavaş bronzlaşır."
-          }
-        }
-      }
-    },
-    "Me": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ben"
-          }
-        }
-      }
-    },
-    "Notifications are off. Flip and sunscreen reminders will not arrive while the app is closed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bildirim izni yok. Uygulama kapalıyken dönme ve krem hatırlatmaları gelmez."
-          }
-        }
-      }
-    },
-    "Notifications": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bildirimler"
-          }
-        }
-      }
-    },
-    "You did not burn once for a whole month.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir ay boyunca hiç yanmadınız."
-          }
-        }
-      }
-    },
-    "How much does your skin tan after a week in the sun?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir hafta güneşlendikten sonra teniniz ne kadar bronzlaşır?"
           }
         }
       }
@@ -408,112 +111,266 @@
         }
       }
     },
-    "Finish": {
+    "A gentle reminder": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bitir"
+            "value": "Nazik bir hatırlatma"
           }
         }
       }
     },
-    "Done": {
+    "A great many": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bitti"
+            "value": "Çok fazla"
           }
         }
       }
     },
-    "Drink plenty of water to replace the fluid you lost in the sun.": {
+    "A safe session": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bol su için, güneşte kaybettiğiniz sıvıyı yerine koyun."
+            "value": "Güvenli bir seans"
           }
         }
       }
     },
-    "Drink plenty of water; a burn makes the skin lose more fluid than usual.": {
+    "About": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bol su için; yanık, cildin normalden fazla sıvı kaybetmesine sebep olur."
+            "value": "Hakkında"
           }
         }
       }
     },
-    "Drink plenty of water.": {
+    "Add": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bol su için."
+            "value": "Ekle"
           }
         }
       }
     },
-    "Protect the area from the sun and from tight clothing.": {
+    "Add a note about this session": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bölgeyi güneşten ve sıkı kıyafetten koruyun."
+            "value": "Bu seansla ilgili not ekleyin"
           }
         }
       }
     },
-    "Cool the area gently with cool water.": {
+    "Add a session": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bölgeyi serin suyla nazikçe soğutun."
+            "value": "Seans ekle"
           }
         }
       }
     },
-    "Think of it undyed.": {
+    "Add profile": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Boyasız hâlini düşünün."
+            "value": "Profil ekle"
           }
         }
       }
     },
-    "Tan Score": {
+    "Almost never burns, always darkens.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bronz Puanı"
+            "value": "Neredeyse hiç yanmaz, her zaman koyulaşır."
           }
         }
       }
     },
-    "Tan Tracker": {
+    "Always burns, never tans.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bronz Takipçi"
+            "value": "Her zaman yanar, hiç bronzlaşmaz."
+          }
+        }
+      }
+    },
+    "Apply a gentle compress with yoghurt or chilled aloe vera gel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yoğurt veya soğutulmuş aloe vera jeli ile nazikçe kompres yapın."
+          }
+        }
+      }
+    },
+    "Apply a soothing, fragrance-free moisturiser.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahatlatıcı, parfümsüz bir nemlendirici sürün."
+          }
+        }
+      }
+    },
+    "Apply moisturiser after showering.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duştan sonra nemlendirici sürün."
+          }
+        }
+      }
+    },
+    "Apply pure aloe vera gel; it soothes and moisturises.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saf aloe vera jeli sürün; yatıştırıcı ve nemlendiricidir."
+          }
+        }
+      }
+    },
+    "As you log sessions, your time, streak and estimated vitamin D will appear here.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seans kaydettikçe burada süre, seri ve tahmini D vitamini görünecek."
+          }
+        }
+      }
+    },
+    "At UV 8, a typical summer midday": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV 8'de, tipik bir yaz öğlesi"
+          }
+        }
+      }
+    },
+    "Avoid the sun. Skin can burn within minutes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneşten kaçının. Cilt dakikalar içinde yanabilir."
+          }
+        }
+      }
+    },
+    "Back": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri"
+          }
+        }
+      }
+    },
+    "Baseline": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taban"
+          }
+        }
+      }
+    },
+    "Black": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siyah"
+          }
+        }
+      }
+    },
+    "Blisters, then peels": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kabarır, sonra soyulur"
+          }
+        }
+      }
+    },
+    "Blond": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sarı"
+          }
+        }
+      }
+    },
+    "Blue, grey or green": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mavi, gri veya yeşil"
+          }
+        }
+      }
+    },
+    "Both irritate the skin and give no real benefit.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İkisi de tahriş eder, gerçek bir fayda sağlamaz."
           }
         }
       }
@@ -573,17 +430,6 @@
         }
       }
     },
-    "Opens the timer in Bronzla.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bronzla'da zamanlayıcıyı açar."
-          }
-        }
-      }
-    },
     "BronzlaWidgets": {
       "extractionState": "manual",
       "localizations": {
@@ -595,24 +441,904 @@
         }
       }
     },
-    "This month": {
+    "Brown": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu ay"
+            "value": "Esmer"
           }
         }
       }
     },
-    "This is my skin type": {
+    "Burn risk is low today": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu benim cilt tipim"
+            "value": "Bugün yanma riski düşük"
+          }
+        }
+      }
+    },
+    "Burn threshold": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanma eşiği"
+          }
+        }
+      }
+    },
+    "Burning may begin after %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanma %@ sonra başlayabilir."
+          }
+        }
+      }
+    },
+    "Burns easily, tans with difficulty.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolay yanar, zor bronzlaşır."
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal"
+          }
+        }
+      }
+    },
+    "Cancel it": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal et"
+          }
+        }
+      }
+    },
+    "Cancel this session?": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seans iptal edilsin mi?"
+          }
+        }
+      }
+    },
+    "Card could not be created": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart oluşturulamadı"
+          }
+        }
+      }
+    },
+    "Care advice": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bakım önerileri"
+          }
+        }
+      }
+    },
+    "Careful care": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dikkatli bakım"
+          }
+        }
+      }
+    },
+    "Check the UV index": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV indeksini öğren"
+          }
+        }
+      }
+    },
+    "Choose a city": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şehir seç"
+          }
+        }
+      }
+    },
+    "Choose a location": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum seç"
+          }
+        }
+      }
+    },
+    "Choose a skin type": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipi seçin"
+          }
+        }
+      }
+    },
+    "Choose colour": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renk seç"
+          }
+        }
+      }
+    },
+    "Close": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapat"
+          }
+        }
+      }
+    },
+    "Colour": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renk"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devam et"
+          }
+        }
+      }
+    },
+    "Contrary to this common belief, oil traps heat in the skin and makes the burn worse.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu yaygın inanışın aksine yağ ısıyı ciltte hapseder ve yanığı ağırlaştırır."
+          }
+        }
+      }
+    },
+    "Cool the area gently with cool water.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bölgeyi serin suyla nazikçe soğutun."
+          }
+        }
+      }
+    },
+    "Cool the area with a cool, damp cloth; repeat several times a day.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serin, nemli bir bezle bölgeyi soğutun; günde birkaç kez tekrarlayın."
+          }
+        }
+      }
+    },
+    "Cool the skin with a cool shower or a compress.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serin bir duş veya kompresle cildi soğutun."
+          }
+        }
+      }
+    },
+    "Could not determine your location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konumunuz belirlenemedi."
+          }
+        }
+      }
+    },
+    "Could not fetch data": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veri alınamadı"
+          }
+        }
+      }
+    },
+    "Could not fetch data. Please try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veri alınamadı. Lütfen tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Could not fetch the forecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahmin alınamadı"
+          }
+        }
+      }
+    },
+    "Cover it with loose, cotton clothing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gevşek, pamuklu bir kıyafetle örtün."
+          }
+        }
+      }
+    },
+    "Create a separate profile for each family member on the trip; every profile has its own skin type and safe time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tatile giden her aile üyesi için ayrı bir profil oluşturun; her profilin cilt tipi ve güvenli süresi farklıdır."
+          }
+        }
+      }
+    },
+    "Dark brown": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koyu kahve"
+          }
+        }
+      }
+    },
+    "Dark brown skin, black hair and eyes. Reddening in the sun is very rare.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koyu esmer ten, siyah saç ve göz. Güneşte kızarma çok nadirdir."
+          }
+        }
+      }
+    },
+    "Dark brown, close to black": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siyaha yakın koyu kahve"
+          }
+        }
+      }
+    },
+    "Data": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veriler"
+          }
+        }
+      }
+    },
+    "Data sources": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veri kaynakları"
+          }
+        }
+      }
+    },
+    "Date": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarih"
+          }
+        }
+      }
+    },
+    "day streak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "günlük seri"
+          }
+        }
+      }
+    },
+    "Deep brown": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koyu esmer"
+          }
+        }
+      }
+    },
+    "Default SPF": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varsayılan SPF"
+          }
+        }
+      }
+    },
+    "Delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
+          }
+        }
+      }
+    },
+    "Delete all data": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm verileri sil"
+          }
+        }
+      }
+    },
+    "Delete all data?": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm veriler silinsin mi?"
+          }
+        }
+      }
+    },
+    "Delete session": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seansı sil"
+          }
+        }
+      }
+    },
+    "Delete this session?": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seans silinsin mi?"
+          }
+        }
+      }
+    },
+    "Disciplined": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disiplinli"
+          }
+        }
+      }
+    },
+    "Do not apply ice or iced water": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buz veya buzlu su uygulamayın"
+          }
+        }
+      }
+    },
+    "Do not apply olive oil": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeytinyağı sürmeyin"
+          }
+        }
+      }
+    },
+    "Do not apply vinegar or toothpaste": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sirke veya diş macunu sürmeyin"
+          }
+        }
+      }
+    },
+    "Do not go out in the sun again today, stay in the shade.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün için güneşe daha fazla çıkmayın, gölgede kalın."
+          }
+        }
+      }
+    },
+    "Do not let ice touch the skin directly": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buzu doğrudan cilde temas ettirmeyin"
+          }
+        }
+      }
+    },
+    "Do not pop blisters": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kabarcıkları patlatmayın"
+          }
+        }
+      }
+    },
+    "Do not pop blisters yourself or peel the skin": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kabarcıkları kendiniz patlatmayın veya cildi soymayın"
+          }
+        }
+      }
+    },
+    "Do not scrub hard with soap": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabunla sert bir şekilde ovuşturmayın"
+          }
+        }
+      }
+    },
+    "Do you have freckles where the sun does not reach?": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş görmeyen bölgelerinizde çil var mı?"
+          }
+        }
+      }
+    },
+    "Does not tan at all": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiç bronzlaşmaz"
+          }
+        }
+      }
+    },
+    "Done": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitti"
+          }
+        }
+      }
+    },
+    "Drink plenty of water to replace the fluid you lost in the sun.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bol su için, güneşte kaybettiğiniz sıvıyı yerine koyun."
+          }
+        }
+      }
+    },
+    "Drink plenty of water; a burn makes the skin lose more fluid than usual.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bol su için; yanık, cildin normalden fazla sıvı kaybetmesine sebep olur."
+          }
+        }
+      }
+    },
+    "Drink plenty of water.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bol su için."
+          }
+        }
+      }
+    },
+    "Duration": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Süre"
+          }
+        }
+      }
+    },
+    "Early bird": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erken kuş"
+          }
+        }
+      }
+    },
+    "Edit": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenle"
+          }
+        }
+      }
+    },
+    "Edit profile": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profili düzenle"
+          }
+        }
+      }
+    },
+    "Estimated burn threshold": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahmini yanma eşiği"
+          }
+        }
+      }
+    },
+    "Estimated vitamin D": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahmini D vitamini"
+          }
+        }
+      }
+    },
+    "Export": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dışa aktar"
+          }
+        }
+      }
+    },
+    "Export sessions (CSV)": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seansları dışa aktar (CSV)"
+          }
+        }
+      }
+    },
+    "Exposed skin": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açıkta kalan cilt"
+          }
+        }
+      }
+    },
+    "Extreme": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşırı"
+          }
+        }
+      }
+    },
+    "Extreme cold can do further damage to burnt skin.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşırı soğuk, yanmış cilde ikinci bir hasar verebilir."
+          }
+        }
+      }
+    },
+    "Fair": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık"
+          }
+        }
+      }
+    },
+    "Fair skin, blond or light brown hair, light eyes. Common along the Black Sea and in Thrace.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık ten, sarı veya açık kahve saç, açık renk göz. Karadeniz ve Trakya'da yaygındır."
+          }
+        }
+      }
+    },
+    "Family Ranking": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile Sıralaması"
+          }
+        }
+      }
+    },
+    "Fetching location and UV data…": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum ve UV verisi alınıyor…"
+          }
+        }
+      }
+    },
+    "Final stretch": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son düzlük"
+          }
+        }
+      }
+    },
+    "Finish": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitir"
+          }
+        }
+      }
+    },
+    "First session": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk seans"
+          }
+        }
+      }
+    },
+    "Flawless season": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kusursuz sezon"
+          }
+        }
+      }
+    },
+    "Flawless week": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kusursuz hafta"
+          }
+        }
+      }
+    },
+    "Flip": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dönme"
+          }
+        }
+      }
+    },
+    "Flip in ": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dönüş "
+          }
+        }
+      }
+    },
+    "For %@, the UV index is %lld, %@. Based on your skin type, your safe time is about %lld minutes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ için UV indeksi %lld, %@. Cilt tipinize göre güvenli süreniz yaklaşık %lld dakika."
+          }
+        }
+      }
+    },
+    "For %@, the UV index is %lld, %@. There is no burn risk right now.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ için UV indeksi %lld, %@. Şu anda yanma riski yok."
           }
         }
       }
@@ -628,24 +1354,497 @@
         }
       }
     },
-    "This name is shown when you switch between profiles.": {
+    "Forecast": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu isim profiller arasında geçiş yaparken görünür."
+            "value": "Tahmin"
           }
         }
       }
     },
-    "This cannot be undone.": {
+    "Hazel or light brown": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu işlem geri alınamaz."
+            "value": "Ela veya açık kahve"
+          }
+        }
+      }
+    },
+    "Health": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sağlık"
+          }
+        }
+      }
+    },
+    "High": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüksek"
+          }
+        }
+      }
+    },
+    "High UV alert": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüksek UV uyarısı"
+          }
+        }
+      }
+    },
+    "Hour": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat"
+          }
+        }
+      }
+    },
+    "Hourly UV index chart": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatlik UV indeksi grafiği"
+          }
+        }
+      }
+    },
+    "How much does your skin tan after a week in the sun?": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir hafta güneşlendikten sonra teniniz ne kadar bronzlaşır?"
+          }
+        }
+      }
+    },
+    "How sensitive is your face to the sun?": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzünüz güneşe karşı ne kadar hassas?"
+          }
+        }
+      }
+    },
+    "I have turned over": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Döndüm"
+          }
+        }
+      }
+    },
+    "I know my type": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipimi biliyorum"
+          }
+        }
+      }
+    },
+    "If the burn does not clear within 2 to 3 days, or blistering is widespread, see a doctor.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanık 2-3 gün içinde geçmez veya kabarcıklanma yaygınsa doktora görünün."
+          }
+        }
+      }
+    },
+    "If the UV index will reach 8 or above the next day, we tell you in the morning.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ertesi gün UV indeksi 8 veya üzerine çıkacaksa sabah haber veririz."
+          }
+        }
+      }
+    },
+    "If there is fever, shivering, dizziness or nausea, go to a healthcare facility without delay.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ateş, titreme, baş dönmesi veya bulantı varsa vakit kaybetmeden bir sağlık kuruluşuna gidin."
+          }
+        }
+      }
+    },
+    "Improving": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelişiyor"
+          }
+        }
+      }
+    },
+    "Insights": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstatistikler"
+          }
+        }
+      }
+    },
+    "Instagram Stories": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instagram Stories"
+          }
+        }
+      }
+    },
+    "It breaks down the skin's natural protective barrier and raises the risk of infection.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cildin doğal koruyucu bariyerini bozar, enfeksiyon riskini artırır."
+          }
+        }
+      }
+    },
+    "It does further harm to damaged skin.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasarlı cilde ek zarar verir."
+          }
+        }
+      }
+    },
+    "It is a common belief, but oil traps heat and drives the burn deeper.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaygın bir inanıştır ama yağ ısıyı hapseder ve yanığı derinleştirir."
+          }
+        }
+      }
+    },
+    "It is a well known remedy, but oil traps heat in the skin and makes things worse.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sık bilinen bir yöntemdir ama yağ ısıyı ciltte hapseder ve durumu kötüleştirir."
+          }
+        }
+      }
+    },
+    "It raises the risk of infection seriously.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enfeksiyon riskini ciddi şekilde artırır."
+          }
+        }
+      }
+    },
+    "Light blue, light grey or light green": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık mavi, açık gri veya açık yeşil"
+          }
+        }
+      }
+    },
+    "Light brown": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kumral"
+          }
+        }
+      }
+    },
+    "Light olive": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık buğday"
+          }
+        }
+      }
+    },
+    "Light olive skin, brown hair, hazel or brown eyes. One of the two most common types in Türkiye.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık buğday ten, kahverengi saç, ela veya kahve göz. Türkiye'nin en yaygın iki tipinden biri."
+          }
+        }
+      }
+    },
+    "Loading forecast…": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahmin yükleniyor…"
+          }
+        }
+      }
+    },
+    "Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum"
+          }
+        }
+      }
+    },
+    "Location permission was not granted. You can carry on by choosing a city.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum izni verilmedi. Şehir seçerek devam edebilirsiniz."
+          }
+        }
+      }
+    },
+    "longest streak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "en uzun seri"
+          }
+        }
+      }
+    },
+    "Look at the inside of your arm. That shows your true skin colour all year round.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolunuzun iç kısmına bakın. Orası yıl boyunca gerçek ten renginizi gösterir."
+          }
+        }
+      }
+    },
+    "Low": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düşük"
+          }
+        }
+      }
+    },
+    "Me": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ben"
+          }
+        }
+      }
+    },
+    "Medical disclaimer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tıbbi uyarı"
+          }
+        }
+      }
+    },
+    "Mild burn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hafif yanık"
+          }
+        }
+      }
+    },
+    "Minutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dakika"
+          }
+        }
+      }
+    },
+    "Minutes per week": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık dakika"
+          }
+        }
+      }
+    },
+    "Moderate": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta"
+          }
+        }
+      }
+    },
+    "Moderately": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta derecede"
+          }
+        }
+      }
+    },
+    "More": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer"
+          }
+        }
+      }
+    },
+    "Move into the shade and drink plenty of water.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gölgeye geçin ve bol su için."
+          }
+        }
+      }
+    },
+    "Name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsim"
+          }
+        }
+      }
+    },
+    "Naturally brown skin, near black hair and dark eyes. Common in the southeast.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doğal olarak esmer ten, siyaha yakın saç ve koyu göz. Güneydoğu'da yaygındır."
+          }
+        }
+      }
+    },
+    "Needs care": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dikkatli olmalı"
+          }
+        }
+      }
+    },
+    "Never burns": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiç yanmaz"
           }
         }
       }
@@ -661,57 +1860,189 @@
         }
       }
     },
-    "This session will not be saved.": {
+    "No data yet": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu seans kaydedilmeyecek."
+            "value": "Henüz veri yok"
           }
         }
       }
     },
-    "This session was not measured at the time, so it is estimated roughly from real UV data.": {
+    "No permission to reach the weather service.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu seans o anda ölçülmediği için gerçek UV verisine göre kabaca hesaplanır."
+            "value": "Hava durumu servisine erişim izni yok."
           }
         }
       }
     },
-    "Add a note about this session": {
+    "No photos added yet.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu seansla ilgili not ekleyin"
+            "value": "Henüz fotoğraf eklenmedi."
           }
         }
       }
     },
-    "This app does not give medical advice. Times are based on average values and vary from person to person. See a dermatologist about any concerns with your skin.": {
+    "No protection needed. You can stay outside safely.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu uygulama tıbbi tavsiye vermez. Süreler ortalama değerlere dayanır ve kişiden kişiye değişir. Cildinizle ilgili endişeleriniz için dermatoloğa başvurun."
+            "value": "Koruma gerekmez. Güvenle dışarıda kalabilirsiniz."
           }
         }
       }
     },
-    "Contrary to this common belief, oil traps heat in the skin and makes the burn worse.": {
+    "no records": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu yaygın inanışın aksine yağ ısıyı ciltte hapseder ve yanığı ağırlaştırır."
+            "value": "kayıt yok"
+          }
+        }
+      }
+    },
+    "No sessions yet": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz seans yok"
+          }
+        }
+      }
+    },
+    "No UV data yet. Open Bronzla and set your location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz UV verisi yok. Bronzla'yı açıp konumunuzu belirleyin."
+          }
+        }
+      }
+    },
+    "None at all": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiç yok"
+          }
+        }
+      }
+    },
+    "Normal": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal"
+          }
+        }
+      }
+    },
+    "Not affected at all": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiç etkilenmez"
+          }
+        }
+      }
+    },
+    "not needed": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gerekmez"
+          }
+        }
+      }
+    },
+    "Notes": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlar"
+          }
+        }
+      }
+    },
+    "Notifications": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimler"
+          }
+        }
+      }
+    },
+    "Notifications are off. Flip and sunscreen reminders will not arrive while the app is closed.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirim izni yok. Uygulama kapalıyken dönme ve krem hatırlatmaları gelmez."
+          }
+        }
+      }
+    },
+    "Now": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu an"
+          }
+        }
+      }
+    },
+    "Offline data · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çevrimdışı veri · %@"
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamam"
           }
         }
       }
@@ -738,90 +2069,475 @@
         }
       }
     },
-    "Today": {
+    "Olive toned skin, dark brown hair and eyes. The most common type along the Mediterranean and Aegean coasts.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bugün"
+            "value": "Zeytin tonlu buğday ten, koyu kahve saç ve göz. Akdeniz ve Ege'de en sık görülen tip."
           }
         }
       }
     },
-    "Do not go out in the sun again today, stay in the shade.": {
+    "Opens the timer in Bronzla.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bugün için güneşe daha fazla çıkmayın, gölgede kalın."
+            "value": "Bronzla'da zamanlayıcıyı açar."
           }
         }
       }
     },
-    "Burn risk is low today": {
+    "Other apps": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bugün yanma riski düşük"
+            "value": "Diğer uygulamalar"
           }
         }
       }
     },
-    "We need your location to show the current UV index and weather where you are. Your location stays on your device.": {
+    "Pause": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bulunduğunuz yerin güncel UV indeksini ve hava durumunu gösterebilmek için konumunuza ihtiyacımız var. Konum bilgisi cihazınızda kalır."
+            "value": "Duraklat"
           }
         }
       }
     },
-    "Tells you the latest UV index for your location.": {
+    "paused": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bulunduğunuz yerin son UV indeksini söyler."
+            "value": "duraklatıldı"
           }
         }
       }
     },
-    "Do not apply ice or iced water": {
+    "Paused": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Buz veya buzlu su uygulamayın"
+            "value": "Duraklatıldı"
           }
         }
       }
     },
-    "Do not let ice touch the skin directly": {
+    "Peak UV": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Buzu doğrudan cilde temas ettirmeyin"
+            "value": "En yüksek UV"
           }
         }
       }
     },
-    "Offline data · %@": {
+    "Peak UV %lld. Take care in the sun between 11.00 and 16.00.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Çevrimdışı veri · %@"
+            "value": "En yüksek UV %lld. 11.00-16.00 arasında güneşe dikkat edin."
+          }
+        }
+      }
+    },
+    "Photos": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraflar"
+          }
+        }
+      }
+    },
+    "Place": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yer"
+          }
+        }
+      }
+    },
+    "Place name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yer adı"
+          }
+        }
+      }
+    },
+    "Preparing…": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hazırlanıyor…"
+          }
+        }
+      }
+    },
+    "Privacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizlilik"
+          }
+        }
+      }
+    },
+    "Profiles": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profiller"
+          }
+        }
+      }
+    },
+    "Protect the area from the sun and from tight clothing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bölgeyi güneşten ve sıkı kıyafetten koruyun."
+          }
+        }
+      }
+    },
+    "Protected": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korumalı"
+          }
+        }
+      }
+    },
+    "Protection": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korunma"
+          }
+        }
+      }
+    },
+    "Protection and UV": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koruma ve UV"
+          }
+        }
+      }
+    },
+    "Protection is essential. Prefer the shade between 11.00 and 16.00.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koruma şart. 11.00-16.00 arası gölgeyi tercih edin."
+          }
+        }
+      }
+    },
+    "Question %1$lld of %2$lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soru %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Question %lld of %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soru %lld / %lld"
+          }
+        }
+      }
+    },
+    "Quite a few": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Epeyce"
+          }
+        }
+      }
+    },
+    "Rarely burns, tans easily.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nadiren yanar, kolay bronzlaşır."
+          }
+        }
+      }
+    },
+    "Reapply sunscreen": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Krem yenileme"
+          }
+        }
+      }
+    },
+    "Reapply your sunscreen": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kremi yenileyin"
+          }
+        }
+      }
+    },
+    "Red": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kızıl"
+          }
+        }
+      }
+    },
+    "Reddish white": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kırmızımsı beyaz"
+          }
+        }
+      }
+    },
+    "remaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kalan süre"
+          }
+        }
+      }
+    },
+    "Resilient": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayanıklı"
+          }
+        }
+      }
+    },
+    "Retake the test": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Testi tekrarla"
+          }
+        }
+      }
+    },
+    "Routine care": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rutin bakım"
+          }
+        }
+      }
+    },
+    "Safe sunbathing": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güvenli güneşlenme"
+          }
+        }
+      }
+    },
+    "Safe time": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güvenli süre"
+          }
+        }
+      }
+    },
+    "Save": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydet"
+          }
+        }
+      }
+    },
+    "Save session": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seansı kaydet"
+          }
+        }
+      }
+    },
+    "Save to Health": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sağlık'a kaydet"
+          }
+        }
+      }
+    },
+    "Search for a city": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şehir ara"
+          }
+        }
+      }
+    },
+    "See care advice": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bakım önerilerini gör"
+          }
+        }
+      }
+    },
+    "Sensitive": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hassas"
+          }
+        }
+      }
+    },
+    "Session complete": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seans tamamlandı"
+          }
+        }
+      }
+    },
+    "Session length": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seans süresi"
+          }
+        }
+      }
+    },
+    "Sessions": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seans sayısı"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayarlar"
           }
         }
       }
@@ -848,24 +2564,35 @@
         }
       }
     },
-    "It breaks down the skin's natural protective barrier and raises the risk of infection.": {
+    "Shade master": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cildin doğal koruyucu bariyerini bozar, enfeksiyon riskini artırır."
+            "value": "Gölge ustası"
           }
         }
       }
     },
-    "Your skin needs extra care": {
+    "Share": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cildiniz ekstra ilgi istiyor"
+            "value": "Paylaş"
+          }
+        }
+      }
+    },
+    "Showing sample data. This is not a real UV measurement.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Örnek veri gösteriliyor. Gerçek UV ölçümü değildir."
           }
         }
       }
@@ -936,2169 +2663,13 @@
         }
       }
     },
-    "Choose a skin type": {
+    "Sometimes burns, tans gradually.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cilt tipi seçin"
-          }
-        }
-      }
-    },
-    "Take the skin type test": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cilt tipi testini yap"
-          }
-        }
-      }
-    },
-    "Your skin type": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cilt tipiniz"
-          }
-        }
-      }
-    },
-    "Your skin type is the basis of your safe sun time. If it is wrong, the times are wrong too.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cilt tipiniz güvenli güneşlenme sürenizin temelidir. Yanlışsa süreler de yanlış olur."
-          }
-        }
-      }
-    },
-    "Very fair": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok açık"
-          }
-        }
-      }
-    },
-    "Very fair skin, usually red or blond hair, blue or green eyes, plenty of freckles. Uncommon in Türkiye.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok açık ten, çoğunlukla kızıl veya sarı saç, mavi veya yeşil göz, sık çil. Türkiye'de az rastlanır."
-          }
-        }
-      }
-    },
-    "Very fair, pale": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok açık, soluk"
-          }
-        }
-      }
-    },
-    "Very little": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok az"
-          }
-        }
-      }
-    },
-    "A great many": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok fazla"
-          }
-        }
-      }
-    },
-    "Very sensitive": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok hassas"
-          }
-        }
-      }
-    },
-    "Tans very deeply": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok koyu bronzlaşır"
-          }
-        }
-      }
-    },
-    "Very rarely burns, tans very easily.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok nadir yanar, çok kolay bronzlaşır."
-          }
-        }
-      }
-    },
-    "Very high": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok yüksek"
-          }
-        }
-      }
-    },
-    "Minutes": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dakika"
-          }
-        }
-      }
-    },
-    "Resilient": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dayanıklı"
-          }
-        }
-      }
-    },
-    "Continue": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Devam et"
-          }
-        }
-      }
-    },
-    "More": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diğer"
-          }
-        }
-      }
-    },
-    "Turn over. You are halfway through the session.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diğer tarafınıza dönün. Seansın yarısı tamamlandı."
-          }
-        }
-      }
-    },
-    "Other apps": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diğer uygulamalar"
-          }
-        }
-      }
-    },
-    "Careful care": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dikkatli bakım"
-          }
-        }
-      }
-    },
-    "Needs care": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dikkatli olmalı"
-          }
-        }
-      }
-    },
-    "Disciplined": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Disiplinli"
-          }
-        }
-      }
-    },
-    "Export": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dışa aktar"
-          }
-        }
-      }
-    },
-    "The exported file stays on your device. Where it goes is your decision.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dışa aktarılan dosya cihazınızda kalır. Nereye göndereceğinize siz karar verirsiniz."
-          }
-        }
-      }
-    },
-    "Naturally brown skin, near black hair and dark eyes. Common in the southeast.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Doğal olarak esmer ten, siyaha yakın saç ve koyu göz. Güneydoğu'da yaygındır."
-          }
-        }
-      }
-    },
-    "What is your natural hair colour?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Doğal saç renginiz nedir?"
-          }
-        }
-      }
-    },
-    "I have turned over": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Döndüm"
-          }
-        }
-      }
-    },
-    "Flip": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dönme"
-          }
-        }
-      }
-    },
-    "Time to turn over": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dönme zamanı"
-          }
-        }
-      }
-    },
-    "Flip in ": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dönüş "
-          }
-        }
-      }
-    },
-    "Pause": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duraklat"
-          }
-        }
-      }
-    },
-    "paused": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "duraklatıldı"
-          }
-        }
-      }
-    },
-    "Paused": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duraklatıldı"
-          }
-        }
-      }
-    },
-    "Apply moisturiser after showering.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duştan sonra nemlendirici sürün."
-          }
-        }
-      }
-    },
-    "Low": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Düşük"
-          }
-        }
-      }
-    },
-    "Edit": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Düzenle"
-          }
-        }
-      }
-    },
-    "Add": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ekle"
-          }
-        }
-      }
-    },
-    "Take extra care. Wear a hat and sunglasses, and use SPF 50.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ekstra dikkat. Şapka, gözlük ve SPF 50 kullanın."
-          }
-        }
-      }
-    },
-    "Hazel or light brown": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ela veya açık kahve"
-          }
-        }
-      }
-    },
-    "longest streak": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "en uzun seri"
-          }
-        }
-      }
-    },
-    "Peak UV": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En yüksek UV"
-          }
-        }
-      }
-    },
-    "Peak UV %lld. Take care in the sun between 11.00 and 16.00.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En yüksek UV %lld. 11.00-16.00 arasında güneşe dikkat edin."
-          }
-        }
-      }
-    },
-    "It raises the risk of infection seriously.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enfeksiyon riskini ciddi şekilde artırır."
-          }
-        }
-      }
-    },
-    "Quite a few": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Epeyce"
-          }
-        }
-      }
-    },
-    "Early bird": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erken kuş"
-          }
-        }
-      }
-    },
-    "If the UV index will reach 8 or above the next day, we tell you in the morning.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ertesi gün UV indeksi 8 veya üzerine çıkacaksa sabah haber veririz."
-          }
-        }
-      }
-    },
-    "Brown": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esmer"
-          }
-        }
-      }
-    },
-    "Photos": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğraflar"
-          }
-        }
-      }
-    },
-    "Improving": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gelişiyor"
-          }
-        }
-      }
-    },
-    "not needed": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "gerekmez"
-          }
-        }
-      }
-    },
-    "Back": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geri"
-          }
-        }
-      }
-    },
-    "Cover it with loose, cotton clothing.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gevşek, pamuklu bir kıyafetle örtün."
-          }
-        }
-      }
-    },
-    "Privacy": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gizlilik"
-          }
-        }
-      }
-    },
-    "Shade master": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gölge ustası"
-          }
-        }
-      }
-    },
-    "Move into the shade and drink plenty of water.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gölgeye geçin ve bol su için."
-          }
-        }
-      }
-    },
-    "What colour are your eyes?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Göz renginiz nedir?"
-          }
-        }
-      }
-    },
-    "Sunset": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gün batımı"
-          }
-        }
-      }
-    },
-    "What colour is your skin where the sun does not reach?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneş görmeyen bölgelerde teninizin rengi nedir?"
-          }
-        }
-      }
-    },
-    "Do you have freckles where the sun does not reach?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneş görmeyen bölgelerinizde çil var mı?"
-          }
-        }
-      }
-    },
-    "Sunbathing": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneşlenme"
-          }
-        }
-      }
-    },
-    "Start sunbathing": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneşlenmeye başla"
-          }
-        }
-      }
-    },
-    "Time in the sun": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneşte geçen süre"
-          }
-        }
-      }
-    },
-    "Avoid the sun. Skin can burn within minutes.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneşten kaçının. Cilt dakikalar içinde yanabilir."
-          }
-        }
-      }
-    },
-    "The skin barrier is fragile after sun.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneşten sonra cilt bariyeri hassastır."
-          }
-        }
-      }
-    },
-    "day streak": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "günlük seri"
-          }
-        }
-      }
-    },
-    "A safe session": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güvenli bir seans"
-          }
-        }
-      }
-    },
-    "Safe sunbathing": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güvenli güneşlenme"
-          }
-        }
-      }
-    },
-    "Safe time": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güvenli süre"
-          }
-        }
-      }
-    },
-    "Your safe time is up. Move into the shade and drink plenty of water.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güvenli süreniz doldu. Gölgeye geçin ve bol su için."
-          }
-        }
-      }
-    },
-    "Mild burn": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hafif yanık"
-          }
-        }
-      }
-    },
-    "There are signs of a mild burn": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hafif yanık belirtileri var"
-          }
-        }
-      }
-    },
-    "Turns slightly red": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hafifçe kızarır"
-          }
-        }
-      }
-    },
-    "Week": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hafta"
-          }
-        }
-      }
-    },
-    "Minutes per week": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Haftalık dakika"
-          }
-        }
-      }
-    },
-    "About": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hakkında"
-          }
-        }
-      }
-    },
-    "It does further harm to damaged skin.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hasarlı cilde ek zarar verir."
-          }
-        }
-      }
-    },
-    "Sensitive": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hassas"
-          }
-        }
-      }
-    },
-    "No permission to reach the weather service.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hava durumu servisine erişim izni yok."
-          }
-        }
-      }
-    },
-    "Could not fetch weather data. Check your connection.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hava durumu verisi alınamadı. Bağlantınızı kontrol edin."
-          }
-        }
-      }
-    },
-    "Preparing…": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hazırlanıyor…"
-          }
-        }
-      }
-    },
-    "No photos added yet.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Henüz fotoğraf eklenmedi."
-          }
-        }
-      }
-    },
-    "No sessions yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Henüz seans yok"
-          }
-        }
-      }
-    },
-    "No UV data yet. Open Bronzla and set your location.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Henüz UV verisi yok. Bronzla'yı açıp konumunuzu belirleyin."
-          }
-        }
-      }
-    },
-    "No data yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Henüz veri yok"
-          }
-        }
-      }
-    },
-    "Always burns, never tans.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Her zaman yanar, hiç bronzlaşmaz."
-          }
-        }
-      }
-    },
-    "Does not tan at all": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hiç bronzlaşmaz"
-          }
-        }
-      }
-    },
-    "Not affected at all": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hiç etkilenmez"
-          }
-        }
-      }
-    },
-    "Never burns": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hiç yanmaz"
-          }
-        }
-      }
-    },
-    "None at all": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hiç yok"
-          }
-        }
-      }
-    },
-    "Two hours are up. Reapply your sunscreen, especially if you have been in the sea.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İki saat doldu. Güneş kremini yeniden sürün, özellikle denize girdiyseniz."
-          }
-        }
-      }
-    },
-    "Both irritate the skin and give no real benefit.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İkisi de tahriş eder, gerçek bir fayda sağlamaz."
-          }
-        }
-      }
-    },
-    "Take a lukewarm or cool shower; hot water dries the skin out further.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ilık, serin bir duş alın; sıcak su cildi daha da kurutur."
-          }
-        }
-      }
-    },
-    "First session": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İlk seans"
-          }
-        }
-      }
-    },
-    "You recorded your first session.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İlk seansınızı kaydettiniz."
-          }
-        }
-      }
-    },
-    "Instagram Story": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instagram Hikaye"
-          }
-        }
-      }
-    },
-    "Cancel": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İptal"
-          }
-        }
-      }
-    },
-    "Cancel it": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İptal et"
-          }
-        }
-      }
-    },
-    "Name": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İsim"
-          }
-        }
-      }
-    },
-    "Unnamed": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İsimsiz"
-          }
-        }
-      }
-    },
-    "Insights": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İstatistikler"
-          }
-        }
-      }
-    },
-    "This is a rough estimate; age, body composition and previous sun exposure are not taken into account.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaba bir tahmindir; yaş, vücut ölçüsü ve önceki güneşlenme dikkate alınmaz."
-          }
-        }
-      }
-    },
-    "Do not pop blisters yourself or peel the skin": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kabarcıkları kendiniz patlatmayın veya cildi soymayın"
-          }
-        }
-      }
-    },
-    "Do not pop blisters": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kabarcıkları patlatmayın"
-          }
-        }
-      }
-    },
-    "Blisters, then peels": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kabarır, sonra soyulur"
-          }
-        }
-      }
-    },
-    "remaining": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kalan süre"
-          }
-        }
-      }
-    },
-    "Time remaining": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kalan süre"
-          }
-        }
-      }
-    },
-    "Close": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kapat"
-          }
-        }
-      }
-    },
-    "Card could not be created": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kart oluşturulamadı"
-          }
-        }
-      }
-    },
-    "Save": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaydet"
-          }
-        }
-      }
-    },
-    "no records": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kayıt yok"
-          }
-        }
-      }
-    },
-    "Reddish white": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kırmızımsı beyaz"
-          }
-        }
-      }
-    },
-    "Turns red, sometimes peels": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kızarır, bazen soyulur"
-          }
-        }
-      }
-    },
-    "Red": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kızıl"
-          }
-        }
-      }
-    },
-    "Burns easily, tans with difficulty.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kolay yanar, zor bronzlaşır."
-          }
-        }
-      }
-    },
-    "Tans easily": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kolayca bronzlaşır"
-          }
-        }
-      }
-    },
-    "Look at the inside of your arm. That shows your true skin colour all year round.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kolunuzun iç kısmına bakın. Orası yıl boyunca gerçek ten renginizi gösterir."
-          }
-        }
-      }
-    },
-    "Location": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konum"
-          }
-        }
-      }
-    },
-    "Location permission was not granted. You can carry on by choosing a city.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konum izni verilmedi. Şehir seçerek devam edebilirsiniz."
-          }
-        }
-      }
-    },
-    "Choose a location": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konum seç"
-          }
-        }
-      }
-    },
-    "Fetching location and UV data…": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konum ve UV verisi alınıyor…"
-          }
-        }
-      }
-    },
-    "Use my location": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konumumu kullan"
-          }
-        }
-      }
-    },
-    "Could not determine your location.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konumunuz belirlenemedi."
-          }
-        }
-      }
-    },
-    "No protection needed. You can stay outside safely.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Koruma gerekmez. Güvenle dışarıda kalabilirsiniz."
-          }
-        }
-      }
-    },
-    "Protection is essential. Prefer the shade between 11.00 and 16.00.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Koruma şart. 11.00-16.00 arası gölgeyi tercih edin."
-          }
-        }
-      }
-    },
-    "Protection and UV": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Koruma ve UV"
-          }
-        }
-      }
-    },
-    "Protected": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Korumalı"
-          }
-        }
-      }
-    },
-    "Unprotected": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Korumasız"
-          }
-        }
-      }
-    },
-    "Protection": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Korunma"
-          }
-        }
-      }
-    },
-    "What happens if you stay in the sun a long time without protection?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Korunmadan uzun süre güneşte kalırsanız ne olur?"
-          }
-        }
-      }
-    },
-    "Deep brown": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Koyu esmer"
-          }
-        }
-      }
-    },
-    "Dark brown skin, black hair and eyes. Reddening in the sun is very rare.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Koyu esmer ten, siyah saç ve göz. Güneşte kızarma çok nadirdir."
-          }
-        }
-      }
-    },
-    "Dark brown": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Koyu kahve"
-          }
-        }
-      }
-    },
-    "Reapply sunscreen": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Krem yenileme"
-          }
-        }
-      }
-    },
-    "Reapply your sunscreen": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kremi yenileyin"
-          }
-        }
-      }
-    },
-    "Light brown": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kumral"
-          }
-        }
-      }
-    },
-    "Flawless week": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kusursuz hafta"
-          }
-        }
-      }
-    },
-    "Flawless season": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kusursuz sezon"
-          }
-        }
-      }
-    },
-    "Blue, grey or green": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mavi, gri veya yeşil"
-          }
-        }
-      }
-    },
-    "Swimwear is roughly 60%, shorts and a t-shirt roughly 25%. This figure only affects the vitamin D estimate.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mayo yaklaşık %60, şort ve tişört yaklaşık %25'tir. Bu oran yalnızca D vitamini tahminini etkiler."
-          }
-        }
-      }
-    },
-    "Rarely burns, tans easily.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nadiren yanar, kolay bronzlaşır."
-          }
-        }
-      }
-    },
-    "A gentle reminder": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nazik bir hatırlatma"
-          }
-        }
-      }
-    },
-    "What to do": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ne yapmalısınız"
-          }
-        }
-      }
-    },
-    "When": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ne zaman"
-          }
-        }
-      }
-    },
-    "Where": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nerede"
-          }
-        }
-      }
-    },
-    "Almost never burns, always darkens.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neredeyse hiç yanmaz, her zaman koyulaşır."
-          }
-        }
-      }
-    },
-    "Normal": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Normal"
-          }
-        }
-      }
-    },
-    "Notes": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notlar"
-          }
-        }
-      }
-    },
-    "Stay in the shade around midday and apply SPF 30.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Öğle saatlerinde gölgede kalın, SPF 30 sürün."
-          }
-        }
-      }
-    },
-    "The recommended limit is %@. You can shorten it, but not extend it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Önerilen üst sınır %@. Kısaltabilirsiniz, uzatamazsınız."
-          }
-        }
-      }
-    },
-    "Showing sample data. This is not a real UV measurement.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Örnek veri gösteriliyor. Gerçek UV ölçümü değildir."
-          }
-        }
-      }
-    },
-    "Moderate": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orta"
-          }
-        }
-      }
-    },
-    "Moderately": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orta derecede"
-          }
-        }
-      }
-    },
-    "Share": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paylaş"
-          }
-        }
-      }
-    },
-    "Add profile": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profil ekle"
-          }
-        }
-      }
-    },
-    "Edit profile": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profili düzenle"
-          }
-        }
-      }
-    },
-    "Profiles": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profiller"
-          }
-        }
-      }
-    },
-    "Apply a soothing, fragrance-free moisturiser.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rahatlatıcı, parfümsüz bir nemlendirici sürün."
-          }
-        }
-      }
-    },
-    "Colour": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Renk"
-          }
-        }
-      }
-    },
-    "Choose colour": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Renk seç"
-          }
-        }
-      }
-    },
-    "Routine care": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rutin bakım"
-          }
-        }
-      }
-    },
-    "Hour": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saat"
-          }
-        }
-      }
-    },
-    "Hourly UV index chart": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saatlik UV indeksi grafiği"
-          }
-        }
-      }
-    },
-    "Do not scrub hard with soap": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sabunla sert bir şekilde ovuşturmayın"
-          }
-        }
-      }
-    },
-    "Apply pure aloe vera gel; it soothes and moisturises.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saf aloe vera jeli sürün; yatıştırıcı ve nemlendiricidir."
-          }
-        }
-      }
-    },
-    "Health": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sağlık"
-          }
-        }
-      }
-    },
-    "Save to Health": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sağlık'a kaydet"
-          }
-        }
-      }
-    },
-    "Blond": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sarı"
-          }
-        }
-      }
-    },
-    "Add a session": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seans ekle"
-          }
-        }
-      }
-    },
-    "Cancel this session?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seans iptal edilsin mi?"
-          }
-        }
-      }
-    },
-    "As you log sessions, your time, streak and estimated vitamin D will appear here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seans kaydettikçe burada süre, seri ve tahmini D vitamini görünecek."
-          }
-        }
-      }
-    },
-    "Sessions": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seans sayısı"
-          }
-        }
-      }
-    },
-    "Delete this session?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seans silinsin mi?"
-          }
-        }
-      }
-    },
-    "Session length": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seans süresi"
-          }
-        }
-      }
-    },
-    "Session complete": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seans tamamlandı"
-          }
-        }
-      }
-    },
-    "Start session": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seansı başlat"
-          }
-        }
-      }
-    },
-    "Save session": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seansı kaydet"
-          }
-        }
-      }
-    },
-    "Delete session": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seansı sil"
-          }
-        }
-      }
-    },
-    "You are halfway through the session. Turn over.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seansın yarısı tamamlandı. Diğer tarafınıza dönün."
-          }
-        }
-      }
-    },
-    "Export sessions (CSV)": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seansları dışa aktar (CSV)"
-          }
-        }
-      }
-    },
-    "Your sessions are written to the Health app as time spent in the sun. We do not read your data.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seanslarınız güneşte geçen süre olarak Sağlık uygulamasına yazılır. Verilerinizi okumayız."
-          }
-        }
-      }
-    },
-    "Your sessions, photos and skin type will be permanently deleted. This cannot be undone.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seanslarınız, fotoğraflarınız ve cilt tipiniz kalıcı olarak silinir. Bu işlem geri alınamaz."
-          }
-        }
-      }
-    },
-    "We need access to your photos so you can add before and after shots to your sessions. Photos stay on your device.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seanslarınıza önce ve sonra fotoğrafı ekleyebilmeniz için fotoğraflarınıza erişmemiz gerekiyor. Fotoğraflar cihazınızda kalır."
-          }
-        }
-      }
-    },
-    "Search for a city": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Şehir ara"
-          }
-        }
-      }
-    },
-    "Choose a city": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Şehir seç"
-          }
-        }
-      }
-    },
-    "Cool the skin with a cool shower or a compress.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Serin bir duş veya kompresle cildi soğutun."
-          }
-        }
-      }
-    },
-    "Cool the area with a cool, damp cloth; repeat several times a day.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Serin, nemli bir bezle bölgeyi soğutun; günde birkaç kez tekrarlayın."
-          }
-        }
-      }
-    },
-    "Delete": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sil"
-          }
-        }
-      }
-    },
-    "Do not apply vinegar or toothpaste": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sirke veya diş macunu sürmeyin"
-          }
-        }
-      }
-    },
-    "Black": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Siyah"
-          }
-        }
-      }
-    },
-    "Dark brown, close to black": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Siyaha yakın koyu kahve"
-          }
-        }
-      }
-    },
-    "Temperature": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sıcaklık"
-          }
-        }
-      }
-    },
-    "Zero burns": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sıfır yanık"
-          }
-        }
-      }
-    },
-    "It is a well known remedy, but oil traps heat in the skin and makes things worse.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sık bilinen bir yöntemdir ama yağ ısıyı ciltte hapseder ve durumu kötüleştirir."
-          }
-        }
-      }
-    },
-    "You went over the limit": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sınırı aştınız"
-          }
-        }
-      }
-    },
-    "Final stretch": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Son düzlük"
-          }
-        }
-      }
-    },
-    "Question %1$lld of %2$lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soru %1$lld / %2$lld"
-          }
-        }
-      }
-    },
-    "Question %lld of %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soru %lld / %lld"
+            "value": "Bazen yanar, yavaş yavaş bronzlaşır."
           }
         }
       }
@@ -3125,35 +2696,266 @@
         }
       }
     },
-    "With SPF %@": {
+    "Start again": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "SPF %@ ile"
+            "value": "Baştan başla"
           }
         }
       }
     },
-    "Now": {
+    "Start session": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Şu an"
+            "value": "Seansı başlat"
           }
         }
       }
     },
-    "This is not the time to sunbathe": {
+    "Start sunbathing": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Şu an güneşlenme zamanı değil"
+            "value": "Güneşlenmeye başla"
+          }
+        }
+      }
+    },
+    "Stay in the shade around midday and apply SPF 30.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öğle saatlerinde gölgede kalın, SPF 30 sürün."
+          }
+        }
+      }
+    },
+    "Sunbathing": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneşlenme"
+          }
+        }
+      }
+    },
+    "Sunset": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün batımı"
+          }
+        }
+      }
+    },
+    "Swimwear is roughly 60%, shorts and a t-shirt roughly 25%. This figure only affects the vitamin D estimate.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mayo yaklaşık %60, şort ve tişört yaklaşık %25'tir. Bu oran yalnızca D vitamini tahminini etkiler."
+          }
+        }
+      }
+    },
+    "Take a lukewarm or cool shower; hot water dries the skin out further.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ilık, serin bir duş alın; sıcak su cildi daha da kurutur."
+          }
+        }
+      }
+    },
+    "Take extra care. Wear a hat and sunglasses, and use SPF 50.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekstra dikkat. Şapka, gözlük ve SPF 50 kullanın."
+          }
+        }
+      }
+    },
+    "Take the skin type test": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipi testini yap"
+          }
+        }
+      }
+    },
+    "Tan Score": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bronz Puanı"
+          }
+        }
+      }
+    },
+    "Tan Tracker": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bronz Takipçi"
+          }
+        }
+      }
+    },
+    "Tans easily": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolayca bronzlaşır"
+          }
+        }
+      }
+    },
+    "Tans very deeply": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok koyu bronzlaşır"
+          }
+        }
+      }
+    },
+    "Tells you the latest UV index for your location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulunduğunuz yerin son UV indeksini söyler."
+          }
+        }
+      }
+    },
+    "Temperature": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıcaklık"
+          }
+        }
+      }
+    },
+    "The burn threshold shows what percentage of the dose at which your skin starts to redden you received. 100% is the point at which reddening is expected.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanma eşiği, cildinizin kızarmaya başladığı dozun yüzde kaçını aldığınızı gösterir. %100 kızarma beklenen noktadır."
+          }
+        }
+      }
+    },
+    "The exported file stays on your device. Where it goes is your decision.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dışa aktarılan dosya cihazınızda kalır. Nereye göndereceğinize siz karar verirsiniz."
+          }
+        }
+      }
+    },
+    "The ranking appears here as family members record sessions.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aile üyeleri seans kaydettikçe sıralama burada görünür."
+          }
+        }
+      }
+    },
+    "The recommended limit is %@. You can shorten it, but not extend it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önerilen üst sınır %@. Kısaltabilirsiniz, uzatamazsınız."
+          }
+        }
+      }
+    },
+    "The skin barrier is fragile after sun.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneşten sonra cilt bariyeri hassastır."
+          }
+        }
+      }
+    },
+    "The times in this app are average values based on the Fitzpatrick skin type scale and the World Health Organization's definition of the UV index. Real skin response varies with medication, skin conditions, pregnancy, altitude, reflection from water and sand, cloud cover, and how well sunscreen has been applied.\n\nTreat these times as a rough guide, not an upper limit. If your skin starts to redden, move into the shade even if the time is not up.\n\nSee a dermatologist if you have moles, notice a change in them, have a family history of skin cancer, or react unusually to the sun. This app is never a substitute for an examination.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamadaki süreler, Fitzpatrick cilt tipi ölçeğine ve Dünya Sağlık Örgütü'nün UV indeksi tanımına dayanan ortalama değerlerdir. Gerçek cilt tepkisi; ilaç kullanımı, cilt hastalıkları, hamilelik, rakım, suyun ve kumun yansıması, bulut örtüsü ve güneş kreminin ne kadar iyi sürüldüğü gibi pek çok etkene göre değişir.\n\nBu süreleri bir üst sınır değil, kaba bir rehber olarak görün. Cildiniz kızarmaya başlıyorsa süre dolmamış olsa bile gölgeye geçin.\n\nBeniniz varsa, benlerinizde değişiklik fark ederseniz, ailenizde cilt kanseri öyküsü varsa veya güneşe karşı olağan dışı tepkiler veriyorsanız bir dermatoloğa başvurun. Uygulama hiçbir koşulda muayenenin yerini tutmaz."
+          }
+        }
+      }
+    },
+    "The UV index is too low to tan. Check again after 10.00.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV indeksi bronzlaşma için çok düşük. Sabah 10.00'dan sonra tekrar bakın."
+          }
+        }
+      }
+    },
+    "There are signs of a mild burn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hafif yanık belirtileri var"
           }
         }
       }
@@ -3169,90 +2971,189 @@
         }
       }
     },
-    "Duration": {
+    "Think of it undyed.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Süre"
+            "value": "Boyasız hâlini düşünün."
           }
         }
       }
     },
-    "Your time is up": {
+    "Think of the first day you sunbathed this summer.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Süreniz doldu"
+            "value": "Yazın ilk güneşlendiğiniz günü düşünün."
           }
         }
       }
     },
-    "Baseline": {
+    "This app does not give medical advice. Times are based on average values and vary from person to person. See a dermatologist about any concerns with your skin.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Taban"
+            "value": "Bu uygulama tıbbi tavsiye vermez. Süreler ortalama değerlere dayanır ve kişiden kişiye değişir. Cildinizle ilgili endişeleriniz için dermatoloğa başvurun."
           }
         }
       }
     },
-    "Forecast": {
+    "This cannot be undone.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tahmin"
+            "value": "Bu işlem geri alınamaz."
           }
         }
       }
     },
-    "Could not fetch the forecast": {
+    "This is a rough estimate; age, body composition and previous sun exposure are not taken into account.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tahmin alınamadı"
+            "value": "Kaba bir tahmindir; yaş, vücut ölçüsü ve önceki güneşlenme dikkate alınmaz."
           }
         }
       }
     },
-    "Loading forecast…": {
+    "This is my skin type": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tahmin yükleniyor…"
+            "value": "Bu benim cilt tipim"
           }
         }
       }
     },
-    "Estimated vitamin D": {
+    "This is not the time to sunbathe": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tahmini D vitamini"
+            "value": "Şu an güneşlenme zamanı değil"
           }
         }
       }
     },
-    "Estimated burn threshold": {
+    "This month": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tahmini yanma eşiği"
+            "value": "Bu ay"
+          }
+        }
+      }
+    },
+    "This name is shown when you switch between profiles.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu isim profiller arasında geçiş yaparken görünür."
+          }
+        }
+      }
+    },
+    "This session was not measured at the time, so it is estimated roughly from real UV data.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu seans o anda ölçülmediği için gerçek UV verisine göre kabaca hesaplanır."
+          }
+        }
+      }
+    },
+    "This session will not be saved.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu seans kaydedilmeyecek."
+          }
+        }
+      }
+    },
+    "Time in the sun": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneşte geçen süre"
+          }
+        }
+      }
+    },
+    "Time remaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalan süre"
+          }
+        }
+      }
+    },
+    "Time to turn over": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dönme zamanı"
+          }
+        }
+      }
+    },
+    "Timer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zamanlayıcı"
+          }
+        }
+      }
+    },
+    "Today": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün"
+          }
+        }
+      }
+    },
+    "Total": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam"
           }
         }
       }
@@ -3268,39 +3169,6 @@
         }
       }
     },
-    "OK": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tamam"
-          }
-        }
-      }
-    },
-    "Date": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tarih"
-          }
-        }
-      }
-    },
-    "Create a separate profile for each family member on the trip; every profile has its own skin type and safe time.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tatile giden her aile üyesi için ayrı bir profil oluşturun; her profilin cilt tipi ve güvenli süresi farklıdır."
-          }
-        }
-      }
-    },
     "Try again": {
       "extractionState": "manual",
       "localizations": {
@@ -3312,13 +3180,57 @@
         }
       }
     },
-    "Retake the test": {
+    "Turn over. You are halfway through the session.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Testi tekrarla"
+            "value": "Diğer tarafınıza dönün. Seansın yarısı tamamlandı."
+          }
+        }
+      }
+    },
+    "Turns painfully red, blisters and peels": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acı verecek şekilde kızarır, kabarır ve soyulur"
+          }
+        }
+      }
+    },
+    "Turns red, sometimes peels": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kızarır, bazen soyulur"
+          }
+        }
+      }
+    },
+    "Turns slightly red": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hafifçe kızarır"
+          }
+        }
+      }
+    },
+    "Two hours are up. Reapply your sunscreen, especially if you have been in the sea.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İki saat doldu. Güneş kremini yeniden sürün, özellikle denize girdiyseniz."
           }
         }
       }
@@ -3389,57 +3301,35 @@
         }
       }
     },
-    "I know my type": {
+    "Unnamed": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tipimi biliyorum"
+            "value": "İsimsiz"
           }
         }
       }
     },
-    "Medical disclaimer": {
+    "Unprotected": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tıbbi uyarı"
+            "value": "Korumasız"
           }
         }
       }
     },
-    "Total": {
+    "Use my location": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Toplam"
-          }
-        }
-      }
-    },
-    "Delete all data?": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tüm veriler silinsin mi?"
-          }
-        }
-      }
-    },
-    "Delete all data": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tüm verileri sil"
+            "value": "Konumumu kullan"
           }
         }
       }
@@ -3488,17 +3378,6 @@
         }
       }
     },
-    "At UV 8, a typical summer midday": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV 8'de, tipik bir yaz öğlesi"
-          }
-        }
-      }
-    },
     "UV index": {
       "extractionState": "manual",
       "localizations": {
@@ -3521,24 +3400,90 @@
         }
       }
     },
-    "The UV index is too low to tan. Check again after 10.00.": {
+    "UV will be high tomorrow": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "UV indeksi bronzlaşma için çok düşük. Sabah 10.00'dan sonra tekrar bakın."
+            "value": "Yarın UV yüksek olacak"
           }
         }
       }
     },
-    "Check the UV index": {
+    "Very fair": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "UV indeksini öğren"
+            "value": "Çok açık"
+          }
+        }
+      }
+    },
+    "Very fair skin, usually red or blond hair, blue or green eyes, plenty of freckles. Uncommon in Türkiye.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok açık ten, çoğunlukla kızıl veya sarı saç, mavi veya yeşil göz, sık çil. Türkiye'de az rastlanır."
+          }
+        }
+      }
+    },
+    "Very fair, pale": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok açık, soluk"
+          }
+        }
+      }
+    },
+    "Very high": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok yüksek"
+          }
+        }
+      }
+    },
+    "Very little": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok az"
+          }
+        }
+      }
+    },
+    "Very rarely burns, tans very easily.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok nadir yanar, çok kolay bronzlaşır."
+          }
+        }
+      }
+    },
+    "Very sensitive": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok hassas"
           }
         }
       }
@@ -3554,123 +3499,79 @@
         }
       }
     },
-    "The times in this app are average values based on the Fitzpatrick skin type scale and the World Health Organization's definition of the UV index. Real skin response varies with medication, skin conditions, pregnancy, altitude, reflection from water and sand, cloud cover, and how well sunscreen has been applied.\n\nTreat these times as a rough guide, not an upper limit. If your skin starts to redden, move into the shade even if the time is not up.\n\nSee a dermatologist if you have moles, notice a change in them, have a family history of skin cancer, or react unusually to the sun. This app is never a substitute for an examination.": {
+    "We need access to your photos so you can add before and after shots to your sessions. Photos stay on your device.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulamadaki süreler, Fitzpatrick cilt tipi ölçeğine ve Dünya Sağlık Örgütü'nün UV indeksi tanımına dayanan ortalama değerlerdir. Gerçek cilt tepkisi; ilaç kullanımı, cilt hastalıkları, hamilelik, rakım, suyun ve kumun yansıması, bulut örtüsü ve güneş kreminin ne kadar iyi sürüldüğü gibi pek çok etkene göre değişir.\n\nBu süreleri bir üst sınır değil, kaba bir rehber olarak görün. Cildiniz kızarmaya başlıyorsa süre dolmamış olsa bile gölgeye geçin.\n\nBeniniz varsa, benlerinizde değişiklik fark ederseniz, ailenizde cilt kanseri öyküsü varsa veya güneşe karşı olağan dışı tepkiler veriyorsanız bir dermatoloğa başvurun. Uygulama hiçbir koşulda muayenenin yerini tutmaz."
+            "value": "Seanslarınıza önce ve sonra fotoğrafı ekleyebilmeniz için fotoğraflarınıza erişmemiz gerekiyor. Fotoğraflar cihazınızda kalır."
           }
         }
       }
     },
-    "Default SPF": {
+    "We need your location to show the current UV index and weather where you are. Your location stays on your device.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Varsayılan SPF"
+            "value": "Bulunduğunuz yerin güncel UV indeksini ve hava durumunu gösterebilmek için konumunuza ihtiyacımız var. Konum bilgisi cihazınızda kalır."
           }
         }
       }
     },
-    "Could not fetch data": {
+    "Week": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Veri alınamadı"
+            "value": "Hafta"
           }
         }
       }
     },
-    "Could not fetch data. Please try again.": {
+    "What colour are your eyes?": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Veri alınamadı. Lütfen tekrar deneyin."
+            "value": "Göz renginiz nedir?"
           }
         }
       }
     },
-    "Data sources": {
+    "What colour is your skin where the sun does not reach?": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Veri kaynakları"
+            "value": "Güneş görmeyen bölgelerde teninizin rengi nedir?"
           }
         }
       }
     },
-    "Data": {
+    "What happens if you stay in the sun a long time without protection?": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Veriler"
+            "value": "Korunmadan uzun süre güneşte kalırsanız ne olur?"
           }
         }
       }
     },
-    "Your data stays on your device.": {
+    "What is your natural hair colour?": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Verileriniz cihazınızda kalır."
-          }
-        }
-      }
-    },
-    "If the burn does not clear within 2 to 3 days, or blistering is widespread, see a doctor.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yanık 2-3 gün içinde geçmez veya kabarcıklanma yaygınsa doktora görünün."
-          }
-        }
-      }
-    },
-    "Burning may begin after %@.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yanma %@ sonra başlayabilir."
-          }
-        }
-      }
-    },
-    "Burn threshold": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yanma eşiği"
-          }
-        }
-      }
-    },
-    "The burn threshold shows what percentage of the dose at which your skin starts to redden you received. 100% is the point at which reddening is expected.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yanma eşiği, cildinizin kızarmaya başladığı dozun yüzde kaçını aldığınızı gösterir. %100 kızarma beklenen noktadır."
+            "value": "Doğal saç renginiz nedir?"
           }
         }
       }
@@ -3686,112 +3587,145 @@
         }
       }
     },
-    "UV will be high tomorrow": {
+    "What to do": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yarın UV yüksek olacak"
+            "value": "Ne yapmalısınız"
           }
         }
       }
     },
-    "It is a common belief, but oil traps heat and drives the burn deeper.": {
+    "When": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yaygın bir inanıştır ama yağ ısıyı hapseder ve yanığı derinleştirir."
+            "value": "Ne zaman"
           }
         }
       }
     },
-    "Think of the first day you sunbathed this summer.": {
+    "Where": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yazın ilk güneşlendiğiniz günü düşünün."
+            "value": "Nerede"
           }
         }
       }
     },
-    "Place": {
+    "With SPF %@": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yer"
+            "value": "SPF %@ ile"
           }
         }
       }
     },
-    "Place name": {
+    "You are halfway through the session. Turn over.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yer adı"
+            "value": "Seansın yarısı tamamlandı. Diğer tarafınıza dönün."
           }
         }
       }
     },
-    "Apply a gentle compress with yoghurt or chilled aloe vera gel.": {
+    "You completed 5 sessions before midday.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yoğurt veya soğutulmuş aloe vera jeli ile nazikçe kompres yapın."
+            "value": "5 seansı öğleden önce tamamladınız."
           }
         }
       }
     },
-    "High": {
+    "You did not burn once for a whole month.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yüksek"
+            "value": "Bir ay boyunca hiç yanmadınız."
           }
         }
       }
     },
-    "High UV alert": {
+    "You passed the burn threshold in %lld sessions. A shorter session or a higher SPF would help.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yüksek UV uyarısı"
+            "value": "%lld seansta yanma eşiği aşıldı. Süreyi kısaltmak veya SPF'yi artırmak koruma sağlayabilir."
           }
         }
       }
     },
-    "How sensitive is your face to the sun?": {
+    "You recorded your first session.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yüzünüz güneşe karşı ne kadar hassas?"
+            "value": "İlk seansınızı kaydettiniz."
           }
         }
       }
     },
-    "Timer": {
+    "You used sunscreen in 20 sessions.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zamanlayıcı"
+            "value": "20 seansta güneş kremi kullandınız."
+          }
+        }
+      }
+    },
+    "You went over the limit": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınırı aştınız"
+          }
+        }
+      }
+    },
+    "Your data stays on your device.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verileriniz cihazınızda kalır."
+          }
+        }
+      }
+    },
+    "Your safe time is up. Move into the shade and drink plenty of water.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güvenli süreniz doldu. Gölgeye geçin ve bol su için."
           }
         }
       }
@@ -3807,28 +3741,94 @@
         }
       }
     },
-    "Olive toned skin, dark brown hair and eyes. The most common type along the Mediterranean and Aegean coasts.": {
+    "Your sessions are written to the Health app as time spent in the sun. We do not read your data.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zeytin tonlu buğday ten, koyu kahve saç ve göz. Akdeniz ve Ege'de en sık görülen tip."
+            "value": "Seanslarınız güneşte geçen süre olarak Sağlık uygulamasına yazılır. Verilerinizi okumayız."
           }
         }
       }
     },
-    "Do not apply olive oil": {
+    "Your sessions, photos and skin type will be permanently deleted. This cannot be undone.": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zeytinyağı sürmeyin"
+            "value": "Seanslarınız, fotoğraflarınız ve cilt tipiniz kalıcı olarak silinir. Bu işlem geri alınamaz."
+          }
+        }
+      }
+    },
+    "Your skin needs extra care": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cildiniz ekstra ilgi istiyor"
+          }
+        }
+      }
+    },
+    "Your skin type": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipiniz"
+          }
+        }
+      }
+    },
+    "Your skin type is the basis of your safe sun time. If it is wrong, the times are wrong too.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipiniz güvenli güneşlenme sürenizin temelidir. Yanlışsa süreler de yanlış olur."
+          }
+        }
+      }
+    },
+    "Your time is up": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Süreniz doldu"
+          }
+        }
+      }
+    },
+    "Zero burns": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıfır yanık"
+          }
+        }
+      }
+    },
+    "Could not reach the weather service. It may be your connection, or the service may be briefly unavailable.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava durumu servisine ulaşılamadı. Bağlantınız ya da servis geçici olarak kullanılamıyor olabilir."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version": "1.1"
 }

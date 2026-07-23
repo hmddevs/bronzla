@@ -21,7 +21,7 @@ enum UVDataError: LocalizedError, Equatable {
     var errorDescription: String? {
         switch self {
         case .network:
-            String(localized: "Could not fetch weather data. Check your connection.")
+            String(localized: "Could not reach the weather service. It may be your connection, or the service may be briefly unavailable.")
         case .noDataForLocation:
             String(localized: "No data found for this location.")
         case .notAuthorised:

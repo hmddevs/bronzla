@@ -29,6 +29,12 @@ struct DashboardView: View {
                         failureState(message)
                     }
                 }
+                // Without this the VStack shrinks to its widest child. In the loading state
+                // that is UVGauge at maxWidth 280, so the ScrollView became 312pt wide on a
+                // 390pt screen and `.background` painted only that, leaving black bars down
+                // both sides. The loaded and failed states happened to fill, which is why it
+                // only showed while loading.
+                .frame(maxWidth: .infinity)
                 .padding(.horizontal, Spacing.l)
                 .padding(.bottom, Spacing.xxl)
             }

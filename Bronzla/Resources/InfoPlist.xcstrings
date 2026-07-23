@@ -1,74 +1,98 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "NSHealthShareUsageDescription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bronzla does not read your Health data. It only writes your completed sessions to Health; this description exists because Apple requires it."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bronzla Sağlık verilerinizi okumaz. Sağlık'a yalnızca tamamladığınız seansları yazar; bu açıklama Apple tarafından zorunlu tutulduğu için bulunur."
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bronzla"
           }
         }
       }
     },
-    "NSHealthUpdateUsageDescription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "We can save your sessions to the Health app as time spent in daylight. This is entirely optional, and we never read your data."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seanslarınızı güneşte geçen süre olarak Sağlık uygulamasına kaydedebiliriz. Bu tamamen isteğe bağlıdır ve verilerinizi okumayız."
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bronzla"
           }
         }
       }
     },
-    "NSLocationWhenInUseUsageDescription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "We need your location to show the current UV index and weather where you are. Your location stays on your device."
+    "NSHealthShareUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bronzla does not read your Health data. It only writes your completed sessions to Health; this description exists because Apple requires it."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bulunduğunuz yerin güncel UV indeksini ve hava durumunu gösterebilmek için konumunuza ihtiyacımız var. Konum bilgisi cihazınızda kalır."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bronzla Sağlık verilerinizi okumaz. Sağlık'a yalnızca tamamladığınız seansları yazar; bu açıklama Apple tarafından zorunlu tutulduğu için bulunur."
           }
         }
       }
     },
-    "NSPhotoLibraryUsageDescription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "We need access to your photos so you can add before and after pictures to your sessions. Your photos stay on your device."
+    "NSHealthUpdateUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We can save your sessions to the Health app as time spent in daylight. This is entirely optional, and we never read your data."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seanslarınıza önce ve sonra fotoğrafı ekleyebilmeniz için fotoğraflarınıza erişmemiz gerekiyor. Fotoğraflar cihazınızda kalır."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seanslarınızı güneşte geçen süre olarak Sağlık uygulamasına kaydedebiliriz. Bu tamamen isteğe bağlıdır ve verilerinizi okumayız."
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need your location to show the current UV index and weather where you are. Your location stays on your device."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulunduğunuz yerin güncel UV indeksini ve hava durumunu gösterebilmek için konumunuza ihtiyacımız var. Konum bilgisi cihazınızda kalır."
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need access to your photos so you can add before and after pictures to your sessions. Your photos stay on your device."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seanslarınıza önce ve sonra fotoğrafı ekleyebilmeniz için fotoğraflarınıza erişmemiz gerekiyor. Fotoğraflar cihazınızda kalır."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

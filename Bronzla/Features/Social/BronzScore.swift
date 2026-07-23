@@ -108,6 +108,11 @@ struct BronzScore: Equatable, Sendable {
     /// someone for time spent, only for not burning.
     var title: LocalizedStringResource {
         switch (burnCount, sessionCount) {
+        // Nobody with no sessions has earned a judgement. Without this the switch fell through
+        // to "Needs care", which told a brand new user they had done something wrong before
+        // they had done anything at all, and inverted the rule that this score only ever
+        // responds to actual behaviour.
+        case (_, 0): "No sessions yet"
         case (0, 10...): "Flawless season"
         case (0, 1...): "Zero burns"
         case (_, _) where disciplineRate >= 0.8: "Disciplined"
