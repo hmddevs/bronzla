@@ -28,6 +28,7 @@ struct TrackerView: View {
                     List {
                         Section {
                             StreakCalendarView(sessions: sessions)
+                                .accessibilityIdentifier("tracker.streakCalendar")
                                 .listRowInsets(EdgeInsets())
                                 .listRowBackground(Color.clear)
                                 .listRowSeparator(.hidden)

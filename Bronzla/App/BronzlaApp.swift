@@ -3,8 +3,24 @@ import SwiftUI
 
 @main
 struct BronzlaApp: App {
-    @State private var locationService = LocationService()
-    @State private var uvProvider: any UVDataProviding = WeatherKitUVProvider()
+    @State private var locationService: LocationService = {
+        let service = LocationService()
+        #if DEBUG
+        // Screenshot runs need a place immediately, since there is no route to a real
+        // CoreLocation fix in the simulator. Guarded to DEBUG so no shipping build can be
+        // talked into pinning location by a launch argument.
+        ScreenshotSeed.applyIfActive(to: service)
+        #endif
+        return service
+    }()
+    @State private var uvProvider: any UVDataProviding = {
+        #if DEBUG
+        // Guarded to DEBUG so no shipping build can be talked into serving fabricated UV
+        // readings by a launch argument.
+        if ScreenshotSeed.isActive { return ScreenshotUVProvider() }
+        #endif
+        return WeatherKitUVProvider()
+    }()
 
     private let container: ModelContainer = {
         do {
@@ -19,6 +35,12 @@ struct BronzlaApp: App {
                     for: UserProfile.self, TanSession.self,
                     configurations: ModelConfiguration(isStoredInMemoryOnly: true)
                 )
+            }
+            // Screenshot captures need believable, deterministic content rather than an empty
+            // first-run state. Guarded to DEBUG so no shipping build can be talked into
+            // fabricating history by a launch argument.
+            if ScreenshotSeed.isActive {
+                return try ScreenshotSeed.makeContainer()
             }
             #endif
             return try ModelContainer(for: UserProfile.self, TanSession.self)

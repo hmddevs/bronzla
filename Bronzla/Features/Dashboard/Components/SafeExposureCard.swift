@@ -28,7 +28,7 @@ struct SafeExposureCard: View {
                         .monospacedDigit()
                         .contentTransition(.numericText())
 
-                    Text("Cilt tipi \(skinType.numeral) · SPF \(spf.formatted())")
+                    Text("Skin type \(skinType.numeral) · SPF \(spf.formatted())")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }

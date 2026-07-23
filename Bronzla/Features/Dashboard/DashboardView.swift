@@ -89,10 +89,12 @@ struct DashboardView: View {
         header(for: report)
 
         UVGauge(uvIndex: report.current.uvIndex)
+            .accessibilityIdentifier("dashboard.uvGauge")
 
         conditions(for: report)
 
         SafeExposureCard(uvIndex: report.current.uvIndex, skinType: skinType, spf: spf)
+            .accessibilityIdentifier("dashboard.safeExposureCard")
 
         adviceCard(for: report)
 

@@ -56,17 +56,6 @@
         }
       }
     },
-    "7 days in a row, zero burns.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 gün üst üste, sıfır yanık."
-          }
-        }
-      }
-    },
     "10 day outlook": {
       "extractionState": "manual",
       "localizations": {
@@ -96,6 +85,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "30 seans, sıfır yanık."
+          }
+        }
+      }
+    },
+    "7 days in a row, zero burns.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 gün üst üste, sıfır yanık."
           }
         }
       }
@@ -386,17 +386,6 @@
         }
       }
     },
-    "Bronzla %@ (%@)": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bronzla %@ (%@)"
-          }
-        }
-      }
-    },
     "Bronzla %1$@ (%2$@)": {
       "extractionState": "manual",
       "localizations": {
@@ -404,6 +393,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bronzla %1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "Bronzla %@ (%@)": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bronzla %@ (%@)"
           }
         }
       }
@@ -738,6 +738,17 @@
         }
       }
     },
+    "Could not reach the weather service. It may be your connection, or the service may be briefly unavailable.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava durumu servisine ulaşılamadı. Bağlantınız ya da servis geçici olarak kullanılamıyor olabilir."
+          }
+        }
+      }
+    },
     "Cover it with loose, cotton clothing.": {
       "extractionState": "manual",
       "localizations": {
@@ -826,13 +837,24 @@
         }
       }
     },
-    "day streak": {
+    "Day %lld": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "günlük seri"
+            "value": "%lld. gün"
+          }
+        }
+      }
+    },
+    "Day 1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. gün"
           }
         }
       }
@@ -1057,17 +1079,6 @@
         }
       }
     },
-    "Drink plenty of water; a burn makes the skin lose more fluid than usual.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bol su için; yanık, cildin normalden fazla sıvı kaybetmesine sebep olur."
-          }
-        }
-      }
-    },
     "Drink plenty of water.": {
       "extractionState": "manual",
       "localizations": {
@@ -1075,6 +1086,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bol su için."
+          }
+        }
+      }
+    },
+    "Drink plenty of water; a burn makes the skin lose more fluid than usual.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bol su için; yanık, cildin normalden fazla sıvı kaybetmesine sebep olur."
           }
         }
       }
@@ -1409,6 +1431,17 @@
         }
       }
     },
+    "Highest risk hours: %@ - %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En riskli saatler: %1$@ - %2$@"
+          }
+        }
+      }
+    },
     "Hour": {
       "extractionState": "manual",
       "localizations": {
@@ -1475,17 +1508,6 @@
         }
       }
     },
-    "If the burn does not clear within 2 to 3 days, or blistering is widespread, see a doctor.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yanık 2-3 gün içinde geçmez veya kabarcıklanma yaygınsa doktora görünün."
-          }
-        }
-      }
-    },
     "If the UV index will reach 8 or above the next day, we tell you in the morning.": {
       "extractionState": "manual",
       "localizations": {
@@ -1493,6 +1515,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ertesi gün UV indeksi 8 veya üzerine çıkacaksa sabah haber veririz."
+          }
+        }
+      }
+    },
+    "If the burn does not clear within 2 to 3 days, or blistering is widespread, see a doctor.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanık 2-3 gün içinde geçmez veya kabarcıklanma yaygınsa doktora görünün."
           }
         }
       }
@@ -1673,17 +1706,6 @@
         }
       }
     },
-    "longest streak": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "en uzun seri"
-          }
-        }
-      }
-    },
     "Look at the inside of your arm. That shows your true skin colour all year round.": {
       "extractionState": "manual",
       "localizations": {
@@ -1849,6 +1871,17 @@
         }
       }
     },
+    "No UV data yet. Open Bronzla and set your location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz UV verisi yok. Bronzla'yı açıp konumunuzu belirleyin."
+          }
+        }
+      }
+    },
     "No data found for this location.": {
       "extractionState": "manual",
       "localizations": {
@@ -1867,6 +1900,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Henüz veri yok"
+          }
+        }
+      }
+    },
+    "No extreme risk hours today": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün aşırı riskli saat yok"
           }
         }
       }
@@ -1904,17 +1948,6 @@
         }
       }
     },
-    "no records": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kayıt yok"
-          }
-        }
-      }
-    },
     "No sessions yet": {
       "extractionState": "manual",
       "localizations": {
@@ -1926,13 +1959,13 @@
         }
       }
     },
-    "No UV data yet. Open Bronzla and set your location.": {
+    "None": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Henüz UV verisi yok. Bronzla'yı açıp konumunuzu belirleyin."
+            "value": "Yok"
           }
         }
       }
@@ -1966,17 +1999,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hiç etkilenmez"
-          }
-        }
-      }
-    },
-    "not needed": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "gerekmez"
           }
         }
       }
@@ -2025,17 +2047,6 @@
         }
       }
     },
-    "Offline data · %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çevrimdışı veri · %@"
-          }
-        }
-      }
-    },
     "OK": {
       "extractionState": "manual",
       "localizations": {
@@ -2043,6 +2054,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tamam"
+          }
+        }
+      }
+    },
+    "Offline data · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çevrimdışı veri · %@"
           }
         }
       }
@@ -2109,17 +2131,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Duraklat"
-          }
-        }
-      }
-    },
-    "paused": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "duraklatıldı"
           }
         }
       }
@@ -2366,17 +2377,6 @@
         }
       }
     },
-    "remaining": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kalan süre"
-          }
-        }
-      }
-    },
     "Resilient": {
       "extractionState": "manual",
       "localizations": {
@@ -2406,6 +2406,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Rutin bakım"
+          }
+        }
+      }
+    },
+    "SPF": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SPF"
+          }
+        }
+      }
+    },
+    "SPF %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SPF %@"
           }
         }
       }
@@ -2619,28 +2641,6 @@
         }
       }
     },
-    "Skin type %@ · SPF %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cilt tipi %@ · SPF %@"
-          }
-        }
-      }
-    },
-    "Skin type %@, %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cilt tipi %@, %@"
-          }
-        }
-      }
-    },
     "Skin type %1$@ · SPF %2$@": {
       "extractionState": "manual",
       "localizations": {
@@ -2663,6 +2663,28 @@
         }
       }
     },
+    "Skin type %@ · SPF %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipi %@ · SPF %@"
+          }
+        }
+      }
+    },
+    "Skin type %@, %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipi %@, %@"
+          }
+        }
+      }
+    },
     "Sometimes burns, tans gradually.": {
       "extractionState": "manual",
       "localizations": {
@@ -2670,28 +2692,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bazen yanar, yavaş yavaş bronzlaşır."
-          }
-        }
-      }
-    },
-    "SPF": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SPF"
-          }
-        }
-      }
-    },
-    "SPF %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SPF %@"
           }
         }
       }
@@ -2769,6 +2769,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mayo yaklaşık %60, şort ve tişört yaklaşık %25'tir. Bu oran yalnızca D vitamini tahminini etkiler."
+          }
+        }
+      }
+    },
+    "TYPE": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TİP"
           }
         }
       }
@@ -2872,6 +2883,17 @@
         }
       }
     },
+    "The UV index is too low to tan. Check again after 10.00.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV indeksi bronzlaşma için çok düşük. Sabah 10.00'dan sonra tekrar bakın."
+          }
+        }
+      }
+    },
     "The burn threshold shows what percentage of the dose at which your skin starts to redden you received. 100% is the point at which reddening is expected.": {
       "extractionState": "manual",
       "localizations": {
@@ -2934,17 +2956,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Uygulamadaki süreler, Fitzpatrick cilt tipi ölçeğine ve Dünya Sağlık Örgütü'nün UV indeksi tanımına dayanan ortalama değerlerdir. Gerçek cilt tepkisi; ilaç kullanımı, cilt hastalıkları, hamilelik, rakım, suyun ve kumun yansıması, bulut örtüsü ve güneş kreminin ne kadar iyi sürüldüğü gibi pek çok etkene göre değişir.\n\nBu süreleri bir üst sınır değil, kaba bir rehber olarak görün. Cildiniz kızarmaya başlıyorsa süre dolmamış olsa bile gölgeye geçin.\n\nBeniniz varsa, benlerinizde değişiklik fark ederseniz, ailenizde cilt kanseri öyküsü varsa veya güneşe karşı olağan dışı tepkiler veriyorsanız bir dermatoloğa başvurun. Uygulama hiçbir koşulda muayenenin yerini tutmaz."
-          }
-        }
-      }
-    },
-    "The UV index is too low to tan. Check again after 10.00.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV indeksi bronzlaşma için çok düşük. Sabah 10.00'dan sonra tekrar bakın."
           }
         }
       }
@@ -3235,13 +3246,24 @@
         }
       }
     },
-    "TYPE": {
+    "Type %1$@ · %2$@": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "TİP"
+            "value": "Tip %1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "Type %1$@ · SPF %2$lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tip %1$@ · SPF %2$lld"
           }
         }
       }
@@ -3275,61 +3297,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tip %@ · SPF %lld"
-          }
-        }
-      }
-    },
-    "Type %1$@ · %2$@": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tip %1$@ · %2$@"
-          }
-        }
-      }
-    },
-    "Type %1$@ · SPF %2$lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tip %1$@ · SPF %2$lld"
-          }
-        }
-      }
-    },
-    "Unnamed": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İsimsiz"
-          }
-        }
-      }
-    },
-    "Unprotected": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Korumasız"
-          }
-        }
-      }
-    },
-    "Use my location": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konumumu kullan"
           }
         }
       }
@@ -3407,6 +3374,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yarın UV yüksek olacak"
+          }
+        }
+      }
+    },
+    "Unnamed": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsimsiz"
+          }
+        }
+      }
+    },
+    "Unprotected": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korumasız"
+          }
+        }
+      }
+    },
+    "Use my location": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konumumu kullan"
           }
         }
       }
@@ -3818,13 +3818,134 @@
         }
       }
     },
-    "Could not reach the weather service. It may be your connection, or the service may be briefly unavailable.": {
+    "beaches": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hava durumu servisine ulaşılamadı. Bağlantınız ya da servis geçici olarak kullanılamıyor olabilir."
+            "value": "sahil"
+          }
+        }
+      }
+    },
+    "day streak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "günlük seri"
+          }
+        }
+      }
+    },
+    "days": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gün"
+          }
+        }
+      }
+    },
+    "duration": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "süre"
+          }
+        }
+      }
+    },
+    "longest streak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "en uzun seri"
+          }
+        }
+      }
+    },
+    "no records": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kayıt yok"
+          }
+        }
+      }
+    },
+    "not needed": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gerekmez"
+          }
+        }
+      }
+    },
+    "paused": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "duraklatıldı"
+          }
+        }
+      }
+    },
+    "peak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "zirve"
+          }
+        }
+      }
+    },
+    "protection": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "koruma"
+          }
+        }
+      }
+    },
+    "remaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kalan süre"
+          }
+        }
+      }
+    },
+    "sessions": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "seans"
           }
         }
       }

@@ -68,7 +68,7 @@ struct SkinTypeResultView: View {
         }
         .padding(.top, Spacing.l)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(Text("Cilt tipi \(skinType.numeral), \(String(localized: skinType.title))"))
+        .accessibilityLabel(Text("Skin type \(skinType.numeral), \(String(localized: skinType.title))"))
     }
 
     private var comparison: some View {
@@ -90,7 +90,7 @@ struct SkinTypeResultView: View {
                 row(
                     symbol: "shield.lefthalf.filled",
                     tint: Palette.colour(for: .low),
-                    title: "SPF \(skinType.recommendedSPF.formatted()) ile",
+                    title: "With SPF \(skinType.recommendedSPF.formatted())",
                     value: SafeExposureCard.format(protectedBurnTime)
                 )
             }

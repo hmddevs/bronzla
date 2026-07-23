@@ -189,7 +189,7 @@ struct ManualSkinTypePicker: View {
                     dismiss()
                 } label: {
                     VStack(alignment: .leading, spacing: Spacing.xs) {
-                        Text("Tip \(type.numeral) · \(String(localized: type.title))")
+                        Text("Type \(type.numeral) · \(String(localized: type.title))")
                             .font(.headline)
                             .foregroundStyle(.primary)
                         Text(type.summary)

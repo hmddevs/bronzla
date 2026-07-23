@@ -1,13 +1,20 @@
 # Bronzla — project brain
 
 ## Current phase
-Feature-complete for v1.0, as of 2026-07-23. All five tabs, social sharing, the family
-leaderboard and an Apple Watch app are built. All three targets (`Bronzla`, `BronzlaWidgets`,
-`BronzlaWatch`) build clean in Release from wiped DerivedData, zero compiler warnings. 140 unit
-tests and 5 UI tests all pass. Localisation is complete (418 strings, 0 untranslated). What
-remains is entirely outside code: `DEVELOPMENT_TEAM`, WeatherKit capability on both App IDs, a
-watch app icon, App Store Connect setup, and `git init` (still zero version control). See
-`RESUME.md` for the exact next steps.
+Shipping to TestFlight, as of 2026-07-23, build 1.0 (7). All five tabs, social sharing, the
+family leaderboard and an Apple Watch app are built. All three targets (`Bronzla`,
+`BronzlaWidgets`, `BronzlaWatch`) build clean in Release from wiped DerivedData, zero compiler
+warnings. Unit tests and 5 UI tests all pass. Version control, signing, App Store Connect and
+the watch icon are all done; see `APPSTORE.md` for what is left, which is account-level only
+(Paid Applications Agreement, price tier, screenshots, Turkish listing).
+
+**Localisation is only complete for the phone target.** An earlier claim here of "418 strings,
+0 untranslated" was wrong twice over: the real catalogue has 348 keys, and the count was
+derived by grepping xliff for `state="new"`, which does not flag a string with no target at
+all. Two real gaps were found on 2026-07-23 and fixed: six phone views still held hardcoded
+Turkish skin-type literals whose English keys sat orphaned in the catalogue, and neither
+`BronzlaWidgets` nor `BronzlaWatch` had a `Localizable.xcstrings` at all, so both shipped a
+mix of raw Turkish and raw English regardless of device language.
 
 ## Roadmap to v1.0 (complete)
 1. ~~Architecture, project file, design tokens~~ done
@@ -457,3 +464,78 @@ Diagnosing this needed the error text off the device. The tester had no cable, s
 unavailable and the OSLog line added in build 4 was unreachable. Build 5 surfaced the underlying
 error in the failure view instead, which is what produced the answer. Keep that affordance until
 the app ships; it is the only diagnostic channel when the tester cannot attach a Mac.
+
+## Screenshot mode for App Store captures (added 2026-07-23)
+
+`-screenshotMode` launch argument, DEBUG-only, added in `Bronzla/App/ScreenshotSeed.swift`,
+wired into `BronzlaApp.swift` alongside the existing `-uiTestingFreshState` precedent.
+
+**An in-memory `ModelContainer` and a fixed `UVDataProviding` are not enough on their own.**
+`DashboardView.refresh()` early-returns when `locationService.place == nil`, and in a fresh
+simulator there is no route to a real CoreLocation fix, so the dashboard sits in `.loading`
+forever regardless of what the UV provider returns. Screenshot mode also has to set
+`LocationService.manualPlace` (a `@MainActor`-isolated property) before the first render.
+
+**`UVReport.source` must be `.live`, not `.sample`.** `DashboardView` renders a "Showing sample
+data" banner for `.sample` and a staleness notice for `.cached` or `isStale`. A screenshot
+provider should wrap `SampleUVProvider` (reusing its diurnal curve) and then rebuild the
+`UVReport` with `current.uvIndex` pinned and `source: .live`, `fetchedAt: .now`, rather than
+inventing a new curve generator.
+
+**`FamilyBoardView` needs 2+ `UserProfile` records with sessions attributed to each, or the
+ranking screen is degenerate** (empty or single-row). Easy to miss because "family ranking" only
+shows up as a screen name, not a model requirement, when reading `UserProfile`/`TanSession` in
+isolation.
+
+**`ModelContext.mainContext` access requires `@MainActor` on the calling function**, even inside
+a `#if DEBUG`-only static seeding helper; the compiler does not infer it from call-site context.
+
+**Streak maths (`BronzScore.streaks(for:)`) counts distinct calendar days, not session count.**
+To hit a specific current/longest streak pair deterministically, seed two separated blocks of
+consecutive calendar days (a longer one anywhere in the past for `longestStreak`, a shorter one
+ending today for `currentStreak`), then pad session *count* separately by adding a second
+same-day session on a few of those days without adding new days.
+
+**Today's seeded session must be anchored to `Date.now`, not a fixed hour-of-day**, or it can
+land in the future relative to the actual capture time depending on when the screenshot run
+starts. Compute `startedAt = max(startOfToday, now - duration - buffer)` instead.
+
+## BronzlaWidgets and BronzlaWatch localisation and attribution (added 2026-07-23)
+
+Both extension targets are `PBXFileSystemSynchronizedRootGroup`s. Dropping a plain
+`Localizable.xcstrings` at the root of `BronzlaWidgets/` or `BronzlaWatch/` is picked up by the
+sync group with no `project.pbxproj` edit: confirmed by `xcstringstool compile` appearing in the
+build log for both, and by `tr.lproj/Localizable.strings` landing in the built `.appex`/`.app`.
+
+**`Text(_:)` and `Label(_:systemImage:)` only auto-localise when the argument is a literal
+written directly at the call site.** Passing the same literal through an intermediate
+`String`-typed function parameter (e.g. a shared `message(_ title: String, ...)` helper) silently
+switches SwiftUI to the verbatim `StringProtocol` overload and the catalogue entry is never
+looked up, no warning, no error. Fix is to type the parameter `LocalizedStringKey`, not `String`.
+Same trap applies to values built through `.map`/`??` closures assigned to a `Label`/`Text`
+first argument (`BronzlaWidgets/UVWidget.swift`'s `accessoryInline`, formerly
+`snapshot.map { "..." } ?? "..."`): resolved by calling `String(localized: "...")` explicitly at
+each branch, which accepts a literal `String.LocalizationValue` interpolation (so keys still get
+`%@`/`%lld` placeholders) and returns an already-resolved `String` handed to the verbatim
+overload deliberately.
+
+**Trademark text (Apple's WeatherKit "Weather" mark) must use `Text(verbatim:)`, not a catalogue
+key.** A trademark is not translated between locales; routing it through `Localizable.xcstrings`
+risks a future translator "fixing" it into Turkish. Both the widget and the Live Activity render
+it as `Text(verbatim: "Weather")`, `.caption2`, `.foregroundStyle(.tertiary)`, no link (widgets
+cannot open URLs from arbitrary subviews). `accessoryCircular` and `accessoryInline` deliberately
+carry no attribution (single glyph / single line, no room); comment left at both skip sites. The
+Live Activity's lock screen banner also deliberately carries no attribution, only the Dynamic
+Island expanded region does, per explicit product decision, not an oversight.
+
+**Latent bug found, not fixed (out of scope, lives under `Bronzla/` and `Shared/`):**
+`SharedUVCategory.localisedTitle` (`Shared/SharedUVSnapshot.swift`, dual-compiled into
+`BronzlaWidgets`) and `UVCategory.title` (`Bronzla/Models/UVSnapshot.swift`, dual-compiled into
+`BronzlaWatch`) both call `String(localized:)`/return `LocalizedStringResource` for band names
+("Low", "Moderate", "High", "Very high", "Extreme"). These resolve against each *process's own*
+`Bundle.main`, i.e. the widget extension's or the watch app's own bundle, not the phone app's.
+Neither `BronzlaWidgets/Localizable.xcstrings` nor `BronzlaWatch/Localizable.xcstrings` (both new,
+2026-07-23) contains those five keys, because the literals themselves live outside the widget and
+watch source trees. Until someone with write access to `Bronzla/` and `Shared/` adds those keys to
+the widget/watch catalogues (or duplicates the enum), the UV category badge on both extensions
+will silently render in English on a Turkish device, with no build error.

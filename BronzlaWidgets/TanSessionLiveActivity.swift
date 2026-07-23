@@ -34,8 +34,11 @@ struct TanSessionLiveActivity: Widget {
                 }
 
                 DynamicIslandExpandedRegion(.bottom) {
-                    statusLine(context)
-                        .font(.caption)
+                    VStack(alignment: .leading, spacing: 2) {
+                        statusLine(context)
+                            .font(.caption)
+                        weatherAttribution
+                    }
                 }
             } compactLeading: {
                 Image(systemName: context.state.isPaused ? "pause.fill" : "sun.max.fill")
@@ -72,7 +75,7 @@ struct TanSessionLiveActivity: Widget {
             VStack(alignment: .trailing, spacing: 4) {
                 Label("UV \(Int(context.attributes.uvIndexAtStart.rounded()))", systemImage: "sun.max.fill")
                     .font(.subheadline.weight(.medium))
-                Text("Tip \(context.attributes.skinTypeNumeral) · SPF \(context.attributes.spf)")
+                Text("Type \(context.attributes.skinTypeNumeral) · SPF \(context.attributes.spf)")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
                 Text(context.attributes.placeName)
@@ -120,5 +123,15 @@ struct TanSessionLiveActivity: Widget {
     static func frozen(_ elapsed: TimeInterval) -> String {
         let total = max(0, Int(elapsed.rounded()))
         return String(format: "%02d:%02d", total / 60, total % 60)
+    }
+
+    /// WeatherKit trademark text mark, shown only in the Dynamic Island's expanded region.
+    /// Compact and minimal presentations have no room for it; the lock screen banner is left
+    /// as decided, since the app already carries the full linked attribution. `.verbatim`
+    /// because a trademark is not translated between locales.
+    private var weatherAttribution: some View {
+        Text(verbatim: "Weather")
+            .font(.caption2)
+            .foregroundStyle(.tertiary)
     }
 }

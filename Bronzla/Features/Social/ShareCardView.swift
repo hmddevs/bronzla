@@ -108,7 +108,7 @@ struct ShareCardView: View {
     private func sessionBody(place: String, duration: Duration, peakUV: Double, spf: Int, burnRisk: Double) -> some View {
         VStack(alignment: .leading, spacing: 40) {
             if burnRisk < 1 {
-                pill("SIFIR YANIK", symbol: "checkmark.seal.fill")
+                pill(String(localized: "Zero burns").uppercased(), symbol: "checkmark.seal.fill")
             }
 
             Text(place)
@@ -119,7 +119,7 @@ struct ShareCardView: View {
             HStack(spacing: 56) {
                 stat(Self.duration(duration), label: "duration")
                 stat("UV \(Int(peakUV.rounded()))", label: "peak")
-                stat(spf > 1 ? "SPF \(spf)" : "yok", label: "koruma")
+                stat(spf > 1 ? "SPF \(spf)" : String(localized: "None"), label: "protection")
             }
         }
         .foregroundStyle(.white)
@@ -139,9 +139,9 @@ struct ShareCardView: View {
                 .opacity(0.85)
 
             HStack(spacing: 48) {
-                stat("\(score.sessionCount)", label: "seans")
+                stat("\(score.sessionCount)", label: "sessions")
                 stat("\(score.longestStreak)", label: "longest streak")
-                stat("\(places)", label: "sahil")
+                stat("\(places)", label: "beaches")
             }
         }
         .foregroundStyle(.white)
@@ -157,7 +157,7 @@ struct ShareCardView: View {
 
             HStack(spacing: 48) {
                 stat("\(days)", label: "days")
-                stat("\(sessions)", label: "seans")
+                stat("\(sessions)", label: "sessions")
             }
             .foregroundStyle(.white)
         }
@@ -165,7 +165,7 @@ struct ShareCardView: View {
 
     // MARK: - Pieces
 
-    private func photo(_ image: UIImage?, caption: String) -> some View {
+    private func photo(_ image: UIImage?, caption: LocalizedStringResource) -> some View {
         VStack(spacing: 16) {
             Group {
                 if let image {
@@ -185,7 +185,7 @@ struct ShareCardView: View {
         }
     }
 
-    private func stat(_ value: String, label: String) -> some View {
+    private func stat(_ value: String, label: LocalizedStringResource) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(value)
                 .font(.system(size: 60, weight: .semibold, design: .rounded))

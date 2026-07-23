@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const items = [
+  {
+    q: 'Why does the app say no UV data is available?',
+    a: 'Bronzla fetches UV and weather figures from Apple WeatherKit, which needs a network connection and either your location or a manually chosen city. Without one of those, or without a connection, there is nothing to show.',
+  },
+  {
+    q: 'Does my location leave my device?',
+    a: 'No. Location is used only to ask Apple WeatherKit for the UV index at your position; it is never linked to an identity or sent anywhere else. You can also skip location entirely and pick a city instead.',
+  },
+  {
+    q: 'Is this a subscription?',
+    a: 'No. Bronzla is a single, one-time purchase: no subscription, no in-app purchases, no ads.',
+  },
+  {
+    q: 'Are the safe-time figures medical advice?',
+    a: 'No. They are general guidance calculated from the UV index, your Fitzpatrick skin type and your SPF, based on published research. They are not a diagnosis or a treatment, and do not replace a dermatologist.',
+  },
+  {
+    q: 'Is there an Apple Watch app?',
+    a: 'Yes. It shows the current UV index and your safe time on your wrist and fetches its own data, so it works even when your phone is not nearby.',
+  },
+  {
+    q: 'Is there a widget?',
+    a: 'Yes, for the Home Screen and Lock Screen, showing the current UV index and your remaining safe time at a glance.',
+  },
+  {
+    q: 'I have a new phone. How do I get the app back without paying again?',
+    a: 'Reinstall Bronzla from the App Store while signed in to the Apple ID you originally purchased with. Because it is a one-time purchase tied to your Apple ID, Apple restores it at no extra cost; there is no restore button inside the app to press.',
+  },
+];
+---
+
+<BaseLayout
+  locale="en"
+  path="/support"
+  title="Support · Bronzla"
+  description="Get help with Bronzla: contact details and answers to common questions about UV data, location, purchase and restoring the app."
+  showWeatherAttribution={false}
+>
+  <header class="container page-header">
+    <h1>Support</h1>
+    <p>
+      Bronzla is made by HMD Corporation, and support is answered directly by a person, not a
+      ticketing queue.
+    </p>
+    <p>
+      Write to <a href="mailto:umut@guden.tr">umut@guden.tr</a> for anything: a bug, a question
+      about a reading, or help with your purchase.
+    </p>
+  </header>
+
+  <section class="container qa-list">
+    {
+      items.map((item) => (
+        <div class="qa">
+          <h2>{item.q}</h2>
+          <p>{item.a}</p>
+        </div>
+      ))
+    }
+  </section>
+
+  <p class="container closing">
+    For how your data is handled, see <a href="/privacy/">Privacy</a>. For purchase and usage
+    terms, see <a href="/terms/">Terms</a>.
+  </p>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .page-header p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+    max-width: var(--measure);
+  }
+
+  .qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 1rem clamp(3rem, 6vw, 5rem);
+  }
+
+  .qa {
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem;
+  }
+
+  .qa p {
+    color: var(--ink-muted);
+    margin-top: 0.6rem;
+  }
+
+  .closing {
+    color: var(--ink-muted);
+    max-width: var(--measure);
+    padding-block: 0 clamp(3rem, 6vw, 5rem);
+  }
+</style>
