@@ -1,11 +1,29 @@
 # Bronzla — project brain
 
 ## Current phase
-Shipping to TestFlight, as of 2026-07-23, build 1.0 (9), VALID on App Store Connect. All five
+Shipping to TestFlight, as of 2026-07-23, build 1.0 (10), VALID on App Store Connect. All five
 tabs, social sharing, the family leaderboard and an Apple Watch app are built. All three targets
-build clean in Release from wiped DerivedData, zero compiler warnings. 124 tests pass (118 unit,
-6 UI). The store listing is now filled in for both `en-US` and `tr`: name, subtitle, description,
+build clean in Release from wiped DerivedData, zero compiler warnings. 125 tests pass (118 unit,
+7 UI). The store listing is filled in for both `en-US` and `tr`: name, subtitle, description,
 keywords, promotional text, URLs, categories, age rating and review notes, all set via the API.
+
+**The Live Activity has been observed running, on build 7, via TestFlight feedback with a
+screenshot.** It has a real bug (see below), which is itself proof it renders: MEMORY.md and
+APPSTORE.md's older claims that it had never been observed are now outdated on this point,
+though it has still never been seen running on physical hardware by this session directly.
+
+**Three real defects surfaced by Umut's own TestFlight testing of build 7, fixed in build 10:**
+the session summary's OK button was a dead end (`cancel()` reused from `finish()` could never
+clear `lastCompleted` a second time — `dismissSummary()` fixes it); the Live Activity's countdown
+and UV label rendered black-on-black in Light Mode (no explicit foreground against the card's
+fixed dark tint — forced white at the container level); and `.percent` formatting showed
+Turkish-style symbol placement ("%0") on an English-language, Turkish-region device, because
+`Locale.current` splits Language (drives words) from Region (drives symbol placement) — added
+`Locale.app`, derived from `Bundle.main.preferredLocalizations`, and chained it onto every
+`.percent` site. A fourth reported item (attribution row centering) measured out to a 1px
+difference on pixel inspection — not a bug, not touched. **`ActivityKit.Activity.request` is not
+safely callable from a bare unit-test host** — it crashes the test process. Anything that
+exercises `TanTimerModel.start()` needs a UI test driving the real app, not a unit test.
 
 What is left is account-level and cannot be done from code: the Paid Applications Agreement
 (banking and tax), a price tier, the privacy nutrition labels (portal-only, confirmed by 404),
