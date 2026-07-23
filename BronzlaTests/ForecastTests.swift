@@ -14,6 +14,13 @@ struct ForecastTests {
         return calendar
     }
 
+    // Resolved through the catalogue rather than written out, for the same reason the calendar
+    // above is pinned: the assertion is about which hours are picked, not which language the
+    // machine running the test happens to be in.
+    private func peakWindow(_ start: String, _ end: String) -> String {
+        String(localized: "Highest risk hours: \(start) - \(end)")
+    }
+
     private func hour(_ hour: Int, uvIndex: Double, on day: Int = 1) -> HourlyUV {
         var components = DateComponents()
         components.year = 2026
@@ -40,7 +47,7 @@ struct ForecastTests {
 
         let summary = ForecastView.peakWindowSummary(for: hours, calendar: calendar)
 
-        #expect(summary == "En riskli saatler: 11.00 - 16.00")
+        #expect(summary == peakWindow("11.00", "16.00"))
     }
 
     @Test("Says nothing risky when no hour reaches the threshold")
@@ -65,7 +72,7 @@ struct ForecastTests {
 
         let summary = ForecastView.peakWindowSummary(for: hours, calendar: calendar)
 
-        #expect(summary == "En riskli saatler: 12.00 - 15.00")
+        #expect(summary == peakWindow("12.00", "15.00"))
     }
 
     @Test("An empty hourly feed yields the no-risk message")
