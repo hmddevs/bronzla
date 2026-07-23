@@ -121,7 +121,7 @@ final class LocationService {
                     return
                 }
             } catch {
-                self.logger.error("Location stream failed: \(error.localizedDescription, privacy: .public)")
+                self.logger.error("Location stream failed: \((error as NSError).domain, privacy: .public) code \((error as NSError).code, privacy: .public); detail: \(error.localizedDescription, privacy: .private)")
                 // A failed fix while a place is already on screen must not blank the dashboard.
                 guard self.place == nil else { return }
                 self.status = .failed(String(localized: "Could not determine your location."))
@@ -144,7 +144,7 @@ final class LocationService {
                 }
                 .joined(separator: ", ")
         } catch {
-            logger.notice("Reverse geocode failed: \(error.localizedDescription, privacy: .public)")
+            logger.notice("Reverse geocode failed: \((error as NSError).domain, privacy: .public) code \((error as NSError).code, privacy: .public); detail: \(error.localizedDescription, privacy: .private)")
             return Self.coordinateLabel(location)
         }
     }
