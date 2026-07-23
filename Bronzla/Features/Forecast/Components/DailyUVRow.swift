@@ -18,11 +18,11 @@ struct DailyUVRow: View {
 
             Spacer(minLength: Spacing.s)
 
-            Text(day.highTemperature.formatted(.measurement(width: .narrow, usage: .weather)))
+            Text(day.highTemperature.formatted(.measurement(width: .narrow, usage: .weather, numberFormatStyle: .number.precision(.fractionLength(0)))))
                 .font(.subheadline.weight(.medium))
                 .monospacedDigit()
 
-            Text(day.lowTemperature.formatted(.measurement(width: .narrow, usage: .weather)))
+            Text(day.lowTemperature.formatted(.measurement(width: .narrow, usage: .weather, numberFormatStyle: .number.precision(.fractionLength(0)))))
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .monospacedDigit()

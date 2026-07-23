@@ -170,7 +170,7 @@ struct DashboardView: View {
         HStack(spacing: Spacing.xl) {
             metric(
                 symbol: report.current.conditionSymbol,
-                value: report.current.temperature.formatted(.measurement(width: .narrow, usage: .weather)),
+                value: report.current.temperature.formatted(.measurement(width: .narrow, usage: .weather, numberFormatStyle: .number.precision(.fractionLength(0)))),
                 label: "Temperature"
             )
 

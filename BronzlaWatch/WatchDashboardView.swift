@@ -84,7 +84,7 @@ struct WatchDashboardView: View {
                     .lineLimit(1)
             }
             Spacer(minLength: 4)
-            Text(temperature.formatted(.measurement(width: .narrow, usage: .weather)))
+            Text(temperature.formatted(.measurement(width: .narrow, usage: .weather, numberFormatStyle: .number.precision(.fractionLength(0)))))
         }
         .font(.caption2)
         .foregroundStyle(.secondary)
