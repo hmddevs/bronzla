@@ -117,3 +117,28 @@ price tier, Paid Applications Agreement. Watch still never run on physical hardw
 Activity still never observed.
 **Status:** resolved — build 9 VALID on TestFlight, listing metadata complete; what remains is
 account-level and needs Umut.
+**2026-07-23 (build 7 TestFlight feedback review):** Pulled all 18 TestFlight feedback
+screenshots via the ASC API (`betaFeedbackScreenshotSubmissions`, requires `?include=build` to
+get the build relationship — GET_COLLECTION on the resource itself 403s, must go through
+`apps/{id}/betaFeedbackScreenshotSubmissions`). Only build 7 had feedback; builds 1, 2 and 6
+were already addressed in earlier sessions per todo.md. Three genuine defects on build 7, traced
+to root cause by reading the actual code rather than guessing from the screenshot alone:
+- Session summary's OK button called `cancel()`, which `finish()` already calls internally
+  right after setting `lastCompleted` — so OK could never clear it a second time. Added
+  `dismissSummary()`.
+- Live Activity lock-screen countdown and UV label had no explicit foreground colour, so they
+  resolved `.primary` (black) against the device's actual system appearance rather than the
+  card's own fixed dark tint — invisible in Light Mode. Forced white at the container level.
+- `.percent` formatting follows `Locale.current`, which is Region-driven for symbol placement
+  independently of the Language setting that drives words — "%0" instead of "0%" on an
+  English-language, Turkish-region device. Added `Locale.app` (from
+  `Bundle.main.preferredLocalizations`) and chained `.locale(.app)` onto all five `.percent`
+  sites in the app.
+A fourth reported item ("Data sources" not centred against the Weather wordmark) turned out, on
+pixel measurement of the actual screenshot, to be a 1px difference — not a real bug. Caught this
+before applying a blind "fix" that would have been pure noise. Also: writing a plain unit test
+that calls `TanTimerModel.start()` crashes the test host — `ActivityKit.Activity.request` isn't
+safely callable outside a real app process — so the regression test for the OK button had to be
+a UI test driving a real 60-second session to completion, not a unit test.
+Shipped as build 10, VALID. Full suite: 125 passed, 0 failed.
+**Status:** resolved.

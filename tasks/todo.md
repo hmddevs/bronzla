@@ -48,8 +48,10 @@
 **Verification that still needs real hardware**
 
 - [ ] Watch app has only ever run on a simulator, never a physical Watch.
-- [ ] Live Activity has still never been observed running.
-- [ ] Live WeatherKit data has never been parsed by either app.
+- [x] Live Activity observed running, on build 7, via Umut's own TestFlight testing (feedback
+      screenshot). Had a real Light Mode contrast bug, fixed in build 10 — see MEMORY.md.
+- [ ] Live WeatherKit data has never been parsed by the watch app specifically; the phone has,
+      via the Live Activity feedback above and build 7's forecast/dashboard readings.
 
 **Deliberate, revisit only if it becomes a problem**
 
