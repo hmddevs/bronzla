@@ -69,6 +69,7 @@ struct ForecastView: View {
                 .foregroundStyle(.secondary)
 
             HourlyUVChart(hours: hours, now: .now)
+                .accessibilityIdentifier("forecast.chart")
         }
         .cardSurface()
 
@@ -118,14 +119,16 @@ struct ForecastView: View {
         }
 
         guard let first = bestRun.first, let last = bestRun.last else {
-            return "No extreme risk hours today"
+            return String(localized: "No extreme risk hours today")
         }
 
         // Each sample covers the hour that *follows* its timestamp, so a run whose last sample
         // is 15.00 stays risky until 16.00. Naming the last sample as the end would understate
         // the window by an hour, which on a safety surface is the wrong direction to be wrong.
         let end = last.date.addingTimeInterval(3600)
-        return "En riskli saatler: \(formattedHour(first.date, calendar: calendar)) - \(formattedHour(end, calendar: calendar))"
+        return String(
+            localized: "Highest risk hours: \(formattedHour(first.date, calendar: calendar)) - \(formattedHour(end, calendar: calendar))"
+        )
     }
 
     private static func formattedHour(_ date: Date, calendar: Calendar) -> String {

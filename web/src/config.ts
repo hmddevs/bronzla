@@ -22,6 +22,7 @@ export const ROUTE_PAIRS: Array<{ en: string; tr: string }> = [
   { en: '/features', tr: '/tr/ozellikler' },
   { en: '/privacy', tr: '/tr/gizlilik' },
   { en: '/terms', tr: '/tr/kosullar' },
+  { en: '/support', tr: '/tr/destek' },
 ];
 
 /**

@@ -24,9 +24,14 @@ headless session. An `Apple Distribution` certificate and three `IOS_APP_STORE` 
 created via the API and are referenced by `PROVISIONING_PROFILE_SPECIFIER` per target. Note the
 watch target's specifier must NOT be scoped `[sdk=iphoneos*]`, since it builds for watchOS.
 
-Still outstanding for a public release: an App Group must be attached in the portal if it is
-ever recreated (no API), and the Turkish App Store localisation has not been added to the
-listing yet.
+Still outstanding for a public release, and none of it can be done from code:
+
+5. **Paid Applications Agreement.** Bronzla is paid-upfront, so the agreement must be active
+   and the banking and tax forms completed in Agreements, Tax, and Banking. Until that is done
+   the app cannot be sold at any price, and App Store Connect will not accept a non-free tier.
+6. **Price tier.** No price has been set on the record yet.
+7. **Turkish listing localisation.** The copy below is written and ready; only `en-US` exists.
+8. **App Group** must be re-attached in the portal if the App ID is ever recreated (no API).
 
 Archive command once signing is configured:
 
@@ -46,9 +51,11 @@ xcodebuild -project Bronzla.xcodeproj -scheme Bronzla -configuration Release \
 | UI tests | 5 flows, all passing, see `BronzlaUITests` |
 | Watch app | builds, installs, launches and renders on the Apple Watch Series 11 (46mm)
   simulator without crashing. Never run on a physical device. |
-| Privacy manifest (`PrivacyInfo.xcprivacy`) | present, declares 3 required-reason APIs |
+| Privacy manifest (`PrivacyInfo.xcprivacy`) | present for the app (3 required-reason APIs) and
+  for the watch (UserDefaults only). The widget needs none: it touches no required-reason API. |
 | App icon, 1024pt, light + dark + tinted | present for the phone app, regenerable via
-  `Tools/GenerateAppIcon.swift`. **Missing for the watch app.** |
+  `Tools/GenerateAppIcon.swift`. Present for the watch app too, via
+  `BronzlaWatch/Assets.xcassets` plus the `CFBundleIconName` partial plist. |
 | Localisation | **English is now the source language**, Turkish a full translation. 348 strings, 0 missing a Turkish value. (An earlier note claiming "418 strings, 0 untranslated" was wrong: it counted xliff `state="new"`, which does not flag strings with no target at all. 101 strings were in fact untranslated and shipped Turkish to English users in build 1.) |
 | Export compliance (`ITSAppUsesNonExemptEncryption`) | declared `NO`, so uploads will not prompt |
 | Live Activities (`NSSupportsLiveActivities`) | declared |
@@ -57,7 +64,7 @@ xcodebuild -project Bronzla.xcodeproj -scheme Bronzla -configuration Release \
   (`Config/Bronzla-Info.plist`); array keys do not survive `INFOPLIST_KEY_` on this project |
 | Launch screen | declared as an empty `UILaunchScreen` dict in `Config/Bronzla-Info.plist`. `INFOPLIST_KEY_UILaunchScreen_Generation` emitted it nested inside itself, which iOS ignores, letterboxing the app into 320pt compatibility mode. |
 | Deployment target | iOS 18.0, watchOS 11.0 |
-| Version / build | 1.0 (2) |
+| Version / build | 1.0 (7), consistent across all five targets |
 
 ---
 
@@ -98,6 +105,19 @@ Expected rating: 12+.
 
 - Primary: **Health & Fitness**
 - Secondary: **Weather**
+
+---
+
+## URLs
+
+App Store Connect makes the first two mandatory and will not let the version be submitted
+without them. All are live on Cloudflare.
+
+| Field | Value |
+|---|---|
+| Privacy Policy URL | `https://bronzla.app/privacy` (Turkish: `https://bronzla.app/tr/gizlilik`) |
+| Support URL | `https://bronzla.app/support` (Turkish: `https://bronzla.app/tr/destek`) |
+| Marketing URL (optional) | `https://bronzla.app` |
 
 ---
 
@@ -266,7 +286,7 @@ account is needed; there is no sign-in.
 
 MEDICAL DISCLAIMER
 The app provides general sun-safety guidance, not medical advice. A disclaimer appears on every
-screen that shows an exposure time, and the full text is in Settings > Tıbbi uyarı. The app
+screen that shows an exposure time, and the full text is in Settings > Medical disclaimer. The app
 does not diagnose, treat or claim any medical outcome.
 
 CALCULATION BASIS
@@ -287,10 +307,16 @@ The app also works without location: users can pick a city manually.
 
 ## Screenshots
 
-Required: 6.9" (1320 x 2868) and 6.5" (1242 x 2688). iPad is not required; the app is
-iPhone-only (`TARGETED_DEVICE_FAMILY = 1`).
+Required: 6.9" (1320 x 2868). iPad is not required; the app is iPhone-only
+(`TARGETED_DEVICE_FAMILY = 1`). Because the bundle ships a watchOS app, App Store Connect also
+requires a separate Apple Watch set, and a set is needed per listing locale, so both `en-US`
+and `tr` once the Turkish localisation is added.
 
-Suggested order, all in Turkish:
+Captured from the simulator with the DEBUG-only `-screenshotMode` launch argument, which seeds
+deterministic sessions and a fixed UV 8 reading in Bodrum. It deliberately does not report the
+reading as `.sample`, because that would render the "showing sample data" banner into the shot.
+
+Suggested order:
 1. Dashboard with a high UV reading
 2. Safe-time card and advice
 3. Timer running

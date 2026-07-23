@@ -95,10 +95,16 @@ struct UVWidgetView: View {
 
                 Spacer(minLength: 0)
 
-                Text(snapshot.placeName)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
+                // Reflowed into a two-line footer rather than appended as a third: systemSmall
+                // has no spare height, so the attribution shares the placeName's row group
+                // instead of adding a fresh block below it.
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(snapshot.placeName)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                    weatherAttribution
+                }
             } else {
                 unavailable
             }
@@ -121,11 +127,11 @@ struct UVWidgetView: View {
                     if let seconds = snapshot.recommendedSeconds {
                         Text(duration(seconds))
                             .font(.title2.weight(.medium))
-                        Text("Cilt tipi \(snapshot.skinTypeNumeral)")
+                        Text("Skin type \(snapshot.skinTypeNumeral)")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     } else {
-                        Text("Yanma riski yok")
+                        Text("No burn risk")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -143,6 +149,8 @@ struct UVWidgetView: View {
 
     // MARK: - Lock screen
 
+    // accessoryCircular is a single glyph and a gauge ring; there is physically no room for
+    // attribution text here, so it is deliberately skipped rather than crammed in.
     private var circular: some View {
         Gauge(value: min(snapshot?.uvIndex ?? 0, 12), in: 0...12) {
             Image(systemName: "sun.max.fill")
@@ -160,12 +168,20 @@ struct UVWidgetView: View {
                 Text(snapshot.category.localisedTitle)
                     .font(.caption)
                 if let seconds = snapshot.recommendedSeconds {
-                    Text("Safe: \(duration(seconds))")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
+                    // Attribution rides on the existing "Safe:" line rather than adding a
+                    // fourth: accessoryRectangular already runs three lines at its densest,
+                    // and a lock screen widget has no room to grow past that.
+                    HStack(spacing: 4) {
+                        Text("Safe: \(duration(seconds))")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                        weatherAttribution
+                    }
+                } else {
+                    weatherAttribution
                 }
             } else {
-                Text("Veri yok")
+                Text("No data")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -173,11 +189,15 @@ struct UVWidgetView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
+    // accessoryInline is a single line of system-rendered text next to the glyph on the Lock
+    // Screen; there is no room for a second phrase, so attribution is deliberately skipped here.
+    @ViewBuilder
     private var inline: some View {
-        Label(
-            snapshot.map { "UV \(index($0)) · \($0.category.localisedTitle)" } ?? "UV verisi yok",
-            systemImage: "sun.max.fill"
-        )
+        if let snapshot {
+            Label(String(localized: "UV \(index(snapshot)) · \(snapshot.category.localisedTitle)"), systemImage: "sun.max.fill")
+        } else {
+            Label(String(localized: "No UV data"), systemImage: "sun.max.fill")
+        }
     }
 
     // MARK: - Shared
@@ -191,6 +211,16 @@ struct UVWidgetView: View {
                 .font(.caption2)
                 .foregroundStyle(.secondary)
         }
+    }
+
+    /// WeatherKit trademark text mark. Widgets cannot open a URL from an arbitrary subview, so
+    /// the linked, full attribution stays in the app; this compact mark is what Apple's
+    /// constrained-surface guidance allows in its place. `.verbatim` because a trademark is not
+    /// translated between locales.
+    private var weatherAttribution: some View {
+        Text(verbatim: "Weather")
+            .font(.caption2)
+            .foregroundStyle(.tertiary)
     }
 
     private func index(_ snapshot: SharedUVSnapshot) -> String {

@@ -73,24 +73,6 @@ struct RootView: View {
     }
 }
 
-/// Temporary stand-in for tabs not yet built. Kept deliberately plain so it never gets
-/// mistaken for a finished screen.
-struct PlaceholderView: View {
-    let title: LocalizedStringResource
-    let detail: LocalizedStringResource
-
-    var body: some View {
-        NavigationStack {
-            ContentUnavailableView {
-                Label(title, systemImage: "hammer.fill")
-            } description: {
-                Text(detail)
-            }
-            .navigationTitle(Text(title))
-        }
-    }
-}
-
 #Preview {
     RootView()
         .environment(LocationService())

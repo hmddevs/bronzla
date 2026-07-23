@@ -23,7 +23,7 @@ struct WatchDashboardView: View {
                         WatchWeatherAttributionView()
                         disclaimer
                     case .denied:
-                        message("Konum izni yok", detail: "iPhone'da Bronzla'ya konum izni verin.")
+                        message("No location permission", detail: "Grant Bronzla location access on your iPhone.")
                     case .failed:
                         message("Could not fetch data", detail: "Check your connection and try again.")
                     }
@@ -67,7 +67,7 @@ struct WatchDashboardView: View {
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             } else {
-                Text("Yanma riski yok")
+                Text("No burn risk")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -97,7 +97,9 @@ struct WatchDashboardView: View {
             .padding(.top, 4)
     }
 
-    private func message(_ title: String, detail: String) -> some View {
+    // `LocalizedStringKey`, not `String`: a plain `String` parameter routes `Text` through the
+    // verbatim, non-localising initialiser, which would silently defeat the catalogue below.
+    private func message(_ title: LocalizedStringKey, detail: LocalizedStringKey) -> some View {
         VStack(spacing: 6) {
             Text(title)
                 .font(.headline)

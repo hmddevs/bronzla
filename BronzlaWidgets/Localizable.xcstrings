@@ -1,0 +1,215 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Final stretch": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son düzlük"
+          }
+        }
+      }
+    },
+    "Flip in ": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dönmeye kalan: "
+          }
+        }
+      }
+    },
+    "No UV data": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV verisi yok"
+          }
+        }
+      }
+    },
+    "No burn risk": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanma riski yok"
+          }
+        }
+      }
+    },
+    "No data": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veri yok"
+          }
+        }
+      }
+    },
+    "Open the app": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı açın"
+          }
+        }
+      }
+    },
+    "Paused": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duraklatıldı"
+          }
+        }
+      }
+    },
+    "Safe time": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güvenli süre"
+          }
+        }
+      }
+    },
+    "Safe: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güvenli: %@"
+          }
+        }
+      }
+    },
+    "Skin type %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipi %@"
+          }
+        }
+      }
+    },
+    "Sunbathing": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneşleniyor"
+          }
+        }
+      }
+    },
+    "The UV index where you are, and your safe time in the sun.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulunduğunuz yerdeki UV indeksini ve güneşte geçirebileceğiniz güvenli süreyi gösterir."
+          }
+        }
+      }
+    },
+    "Time to turn over": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dönme zamanı"
+          }
+        }
+      }
+    },
+    "Type %@ · SPF %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tip %@ · SPF %lld"
+          }
+        }
+      }
+    },
+    "UV": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV"
+          }
+        }
+      }
+    },
+    "UV %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV %@"
+          }
+        }
+      }
+    },
+    "UV %@ · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV %@ · %@"
+          }
+        }
+      }
+    },
+    "UV %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV %lld"
+          }
+        }
+      }
+    },
+    "UV Index": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV İndeksi"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.1"
+}

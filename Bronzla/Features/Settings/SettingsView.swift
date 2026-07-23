@@ -70,6 +70,7 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                 }
             }
+            .accessibilityIdentifier("settings.profiles")
         } header: {
             Text("Profiles")
         } footer: {
@@ -82,7 +83,7 @@ struct SettingsView: View {
         Section {
             if let profile {
                 LabeledContent {
-                    Text("Tip \(profile.skinType.numeral)")
+                    Text("Type \(profile.skinType.numeral)")
                         .foregroundStyle(.secondary)
                 } label: {
                     Text(profile.skinType.title)

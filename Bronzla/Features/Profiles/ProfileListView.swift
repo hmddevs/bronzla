@@ -27,6 +27,7 @@ struct ProfileListView: View {
                     } label: {
                         Label("Family Ranking", systemImage: "trophy.fill")
                     }
+                    .accessibilityIdentifier("profiles.familyRanking")
                 }
             }
         }
@@ -66,7 +67,7 @@ struct ProfileListView: View {
                     Text(profile.name.isEmpty ? String(localized: "Unnamed") : profile.name)
                         .font(.body)
                         .foregroundStyle(.primary)
-                    Text("Tip \(profile.skinType.numeral) · SPF \(profile.defaultSPF)")
+                    Text("Type \(profile.skinType.numeral) · SPF \(profile.defaultSPF)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

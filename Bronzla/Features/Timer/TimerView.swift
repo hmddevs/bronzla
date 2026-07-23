@@ -60,6 +60,7 @@ struct TimerView: View {
                 .padding(Spacing.l)
                 .padding(.bottom, Spacing.xxl)
             }
+            .accessibilityIdentifier("timer.setup")
             .safeAreaInset(edge: .bottom) {
                 Button {
                     model.start(plan: effectivePlan(from: plan), placeName: report.placeName)
@@ -92,7 +93,7 @@ struct TimerView: View {
         VStack(spacing: Spacing.xs) {
             Text(report.placeName)
                 .font(.headline)
-            Text("UV \(Int(report.current.uvIndex.rounded())) · Cilt tipi \(skinType.numeral) · SPF \(spf.formatted())")
+            Text("UV \(Int(report.current.uvIndex.rounded())) · Skin type \(skinType.numeral) · SPF \(spf.formatted())")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }

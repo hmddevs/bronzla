@@ -31,6 +31,7 @@ struct FamilyBoardView: View {
                 }
             }
         }
+        .accessibilityIdentifier("social.familyBoard")
         .navigationTitle("Family Ranking")
     }
 
