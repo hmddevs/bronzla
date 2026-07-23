@@ -45,6 +45,17 @@
         }
       }
     },
+    "Extreme": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşırı"
+          }
+        }
+      }
+    },
     "Grant Bronzla location access on your iPhone.": {
       "extractionState": "manual",
       "localizations": {
@@ -52,6 +63,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "iPhone'da Bronzla'ya konum izni verin."
+          }
+        }
+      }
+    },
+    "High": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüksek"
+          }
+        }
+      }
+    },
+    "Low": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düşük"
+          }
+        }
+      }
+    },
+    "Moderate": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta"
           }
         }
       }
@@ -107,6 +151,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "UV"
+          }
+        }
+      }
+    },
+    "Very high": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok yüksek"
           }
         }
       }
