@@ -1,8 +1,9 @@
 # Bronzla
 
-> Updated 2026-07-23. Build 2 uploaded to TestFlight with all four reported defects fixed.
-> Snapshot from before the i18n refactor: `~/bronzla-pre-i18n-refactor-20260723-0338.tar.gz`.
-> There is still **no git repo**. See `MEMORY.md` for the signing, Info.plist and i18n lessons.
+> Updated 2026-07-23. Build 1.0 (9) uploaded and VALID on TestFlight. Repo is
+> `github.com/umutguden/bronzla`, `main` at the merge of PR #13. Store listing metadata is
+> complete for `en-US` and `tr`. See `MEMORY.md` for the signing, Info.plist and i18n lessons,
+> and `APPSTORE.md` for the submission pack.
 
 ## Done this session
 
@@ -32,20 +33,45 @@
 
 ## Next
 
-- [ ] Confirm build 2 installs and the four fixes hold on the device, especially the black bars
-- [x] **Version control.** `github.com/umutguden/bronzla`, private, default branch `main`,
-      single initial commit `4d3a47b` (151 files, ~21k lines). API key ids were redacted from
-      `MEMORY.md` before the first commit; `.gitignore` extended to cover `.p8`, `.pem`, `.key`,
-      `.certSigningRequest` and archives. Note `~/.claude/hooks/pre-push-protection.sh` blocks
-      pushing while the local branch is `main`, so all future work must go through a PR.
-- [ ] Add the Turkish App Store listing localisation (primary stays `en-US` per Umut)
-- [ ] Rewrite `APPSTORE.md`'s Turkish/English description copy: it still does not mention
-      social sharing, the family leaderboard or the watch app
-- [ ] Watch app has still only ever run on a simulator, never a physical Watch
-- [ ] Live Activity has still never been observed running
-- [ ] Place-picker region names are still Turkish (`Ege`, `Akdeniz`, `İç Anadolu`). Deliberate
-      for now: they are geographic proper nouns and section headers. Revisit if English users
-      find them opaque.
+**Only Umut can do these. Nothing ships until the first two are done.**
+
+- [ ] **Paid Applications Agreement**, with banking and tax completed. Bronzla is paid-upfront,
+      so until this is active the app cannot be sold and no non-free tier can be set.
+- [ ] **Price tier.** None set on the record.
+- [ ] **Privacy nutrition labels.** Portal-only, confirmed: `appDataUsages`,
+      `dataUsagePublishState` and `appDataUsageCategories` all return 404 PATH_ERROR. The
+      answers to paste are in `APPSTORE.md` under "Privacy nutrition label answers".
+- [ ] **Upload the screenshots.** Captured and ready in `build/screenshots/{en,tr}` (twelve at
+      1320x2868) and `build/screenshots/watch-{en,tr}` (416x496). Needs the reservation-and-
+      commit API flow or a paste into the portal.
+
+**Verification that still needs real hardware**
+
+- [ ] Watch app has only ever run on a simulator, never a physical Watch.
+- [ ] Live Activity has still never been observed running.
+- [ ] Live WeatherKit data has never been parsed by either app.
+
+**Deliberate, revisit only if it becomes a problem**
+
+- [ ] Place-picker region names stay Turkish (`Ege`, `Akdeniz`, `İç Anadolu`): they are
+      geographic proper nouns and section headers. Revisit if English users find them opaque.
+- [ ] On both phone screenshots the trailing disclaimer and WeatherKit attribution sit under
+      the floating tab bar at rest. They are reachable by scrolling and the attribution
+      requirement is met, but the captured shots show them clipped. Worth a look before the
+      screenshots go on the listing.
+
+## Done
+
+- [x] **Version control.** `github.com/umutguden/bronzla`, private, default branch `main`.
+      `~/.claude/hooks/pre-push-protection.sh` blocks pushing while the local branch is `main`,
+      so all work goes through a PR. It is PreToolUse, so renaming and pushing in one compound
+      command still trips it.
+- [x] Turkish App Store listing localisation added (primary stays `en-US`).
+- [x] Categories, age rating, review notes, support/marketing/privacy URLs set via the API.
+- [x] `APPSTORE.md` description copy already covers social sharing, the family leaderboard and
+      the watch app; both locales verified against the field limits before upload.
+- [x] Apple Watch screenshot set captured for the first time, which exposed and fixed a real
+      Turkish localisation bug in the watch UV category.
 
 ## Deliberately excluded, do not add
 

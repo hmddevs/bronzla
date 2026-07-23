@@ -1,20 +1,23 @@
 # Bronzla — project brain
 
 ## Current phase
-Shipping to TestFlight, as of 2026-07-23, build 1.0 (7). All five tabs, social sharing, the
-family leaderboard and an Apple Watch app are built. All three targets (`Bronzla`,
-`BronzlaWidgets`, `BronzlaWatch`) build clean in Release from wiped DerivedData, zero compiler
-warnings. Unit tests and 5 UI tests all pass. Version control, signing, App Store Connect and
-the watch icon are all done; see `APPSTORE.md` for what is left, which is account-level only
-(Paid Applications Agreement, price tier, screenshots, Turkish listing).
+Shipping to TestFlight, as of 2026-07-23, build 1.0 (9), VALID on App Store Connect. All five
+tabs, social sharing, the family leaderboard and an Apple Watch app are built. All three targets
+build clean in Release from wiped DerivedData, zero compiler warnings. 124 tests pass (118 unit,
+6 UI). The store listing is now filled in for both `en-US` and `tr`: name, subtitle, description,
+keywords, promotional text, URLs, categories, age rating and review notes, all set via the API.
 
-**Localisation is only complete for the phone target.** An earlier claim here of "418 strings,
-0 untranslated" was wrong twice over: the real catalogue has 348 keys, and the count was
-derived by grepping xliff for `state="new"`, which does not flag a string with no target at
-all. Two real gaps were found on 2026-07-23 and fixed: six phone views still held hardcoded
-Turkish skin-type literals whose English keys sat orphaned in the catalogue, and neither
-`BronzlaWidgets` nor `BronzlaWatch` had a `Localizable.xcstrings` at all, so both shipped a
-mix of raw Turkish and raw English regardless of device language.
+What is left is account-level and cannot be done from code: the Paid Applications Agreement
+(banking and tax), a price tier, the privacy nutrition labels (portal-only, confirmed by 404),
+and uploading the screenshot PNGs. See `APPSTORE.md`.
+
+**Localisation: verify by rendering, never by counting.** Every count claimed here has been
+wrong in a different way. "418 strings, 0 untranslated" was wrong because it grepped xliff for
+`state="new"`, which does not flag a string with no target at all. "348 keys, complete" was
+wrong because it counted the phone catalogue while the extensions had none. "Complete for all
+three targets" was wrong because the watch catalogue held only the strings written inside
+`BronzlaWatch/`. Each claim was checkable and each was checked the wrong way. The method that
+has actually worked every time is to launch the thing in each locale and read the screen.
 
 ## Roadmap to v1.0 (complete)
 1. ~~Architecture, project file, design tokens~~ done
@@ -55,9 +58,23 @@ twenty hours. The honest number is the safe one.
 **No ViewModel unless a screen coordinates async work.** `DashboardModel` exists because it
 owns refresh orchestration and failure state. A screen that renders a struct gets none.
 
-**Turkish is the source language, not a translation.** Strings are authored in Turkish inline.
-This is why `SkinType.detail` references Karadeniz, Ege and Güneydoğu rather than generic
-northern European phenotype descriptions: types III and IV dominate the market.
+**English is the source language; Turkish is the translation.** Reversed on 2026-07-23 from the
+original Turkish-source arrangement, because the App Store record's primary locale is `en-US`
+and a catalogue whose source is Turkish makes English the fallback that silently ships raw
+Turkish. The market framing is unchanged and deliberate: `SkinType.detail` still references
+Karadeniz, Ege and Güneydoğu rather than generic northern European phenotype descriptions,
+because types III and IV dominate this market. Source language is a mechanical choice about
+which side is the fallback; it is not a decision about who the app is written for.
+
+**A string's catalogue is decided by the bundle it is displayed from, not the file it is written
+in.** `UVCategory.title` lives in `Bronzla/Models/UVSnapshot.swift` and is compiled into the
+watch target as a second `PBXFileReference` (see the Apple Watch section). Its strings were
+extracted only into the phone catalogue, so on the watch `Bundle.main` found no key and
+`LocalizedStringResource` fell back to the English literal: a Turkish watch showed "Very high"
+under a Turkish heading. This compiles clean, passes every test, and is invisible to any
+catalogue-completeness count, because each catalogue is internally complete. **Any shared file
+added to a second target needs its strings extracted into that target's catalogue too.** The
+three catalogues are `Bronzla/Resources` (359), `BronzlaWidgets` (19), `BronzlaWatch` (16).
 
 **CoreLocation via `CLLocationUpdate.liveUpdates`, not the delegate.** `CLLocationManagerDelegate`
 is not actor-annotated, so bridging it onto the main actor smuggles a main-actor-isolated object
