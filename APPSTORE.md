@@ -24,14 +24,34 @@ headless session. An `Apple Distribution` certificate and three `IOS_APP_STORE` 
 created via the API and are referenced by `PROVISIONING_PROFILE_SPECIFIER` per target. Note the
 watch target's specifier must NOT be scoped `[sdk=iphoneos*]`, since it builds for watchOS.
 
+Done on 2026-07-23 via the API, once the issuer ID was recovered (it is displayed in App Store
+Connect under Users and Access > Integrations > App Store Connect API; it was never
+unrecoverable, only unrecorded). It now lives in `~/.appstoreconnect/bronzla.env`, outside the
+repo, alongside the `.p8` and a `asc-jwt.sh` that mints a token with openssl alone:
+
+5. ~~**Turkish listing localisation.**~~ Both `en-US` and `tr` now carry name, subtitle,
+   description, keywords, promotional text, and support, marketing and privacy URLs.
+6. ~~**Categories.**~~ Primary Health & Fitness, secondary Weather.
+7. ~~**Age rating.**~~ Declared. The API rejects a partial declaration: it requires the newer
+   capability fields (`advertising`, `ageAssurance`, `gunsOrOtherWeapons`, `healthOrWellnessTopics`,
+   `lootBox`, `messagingAndChat`, `parentalControls`, `userGeneratedContent`) even though
+   secondary sources still describe them as portal-only. `healthOrWellnessTopics` is declared
+   **true**, which APPSTORE.md's older answer set predates: for an app whose whole subject is
+   sun-safety guidance, false would understate it.
+8. ~~**App Review notes.**~~ Set from the text below.
+
 Still outstanding for a public release, and none of it can be done from code:
 
-5. **Paid Applications Agreement.** Bronzla is paid-upfront, so the agreement must be active
+9. **Paid Applications Agreement.** Bronzla is paid-upfront, so the agreement must be active
    and the banking and tax forms completed in Agreements, Tax, and Banking. Until that is done
    the app cannot be sold at any price, and App Store Connect will not accept a non-free tier.
-6. **Price tier.** No price has been set on the record yet.
-7. **Turkish listing localisation.** The copy below is written and ready; only `en-US` exists.
-8. **App Group** must be re-attached in the portal if the App ID is ever recreated (no API).
+10. **Price tier.** No price has been set on the record yet.
+11. **Privacy nutrition labels.** Portal-only, confirmed empirically: `appDataUsages`,
+    `dataUsagePublishState` and `appDataUsageCategories` all return 404 PATH_ERROR. The answers
+    to paste are in "Privacy nutrition label answers" below.
+12. **Screenshot upload.** The PNGs are captured (see Screenshots) but uploading them needs the
+    reservation-and-commit flow, or a paste into the portal.
+13. **App Group** must be re-attached in the portal if the App ID is ever recreated (no API).
 
 Archive command once signing is configured:
 
@@ -56,7 +76,7 @@ xcodebuild -project Bronzla.xcodeproj -scheme Bronzla -configuration Release \
 | App icon, 1024pt, light + dark + tinted | present for the phone app, regenerable via
   `Tools/GenerateAppIcon.swift`. Present for the watch app too, via
   `BronzlaWatch/Assets.xcassets` plus the `CFBundleIconName` partial plist. |
-| Localisation | **English is now the source language**, Turkish a full translation. 348 strings, 0 missing a Turkish value. (An earlier note claiming "418 strings, 0 untranslated" was wrong: it counted xliff `state="new"`, which does not flag strings with no target at all. 101 strings were in fact untranslated and shipped Turkish to English users in build 1.) |
+| Localisation | **English is the source language**, Turkish a full translation. Three catalogues, one per bundle that displays text: `Bronzla/Resources` (359), `BronzlaWidgets` (19), `BronzlaWatch` (16). Verified by rendering each locale and reading the screen, not by counting entries: every prior count has been wrong in a different way. |
 | Export compliance (`ITSAppUsesNonExemptEncryption`) | declared `NO`, so uploads will not prompt |
 | Live Activities (`NSSupportsLiveActivities`) | declared |
 | Usage descriptions (location, photos, Health) | English in `INFOPLIST_KEY_*`, Turkish via `Bronzla/Resources/InfoPlist.xcstrings`. A catalogue with only `tr` makes English fall back to the raw key name in the system prompt. |
@@ -316,13 +336,44 @@ Captured from the simulator with the DEBUG-only `-screenshotMode` launch argumen
 deterministic sessions and a fixed UV 8 reading in Bodrum. It deliberately does not report the
 reading as `.sample`, because that would render the "showing sample data" banner into the shot.
 
-Suggested order:
-1. Dashboard with a high UV reading
-2. Safe-time card and advice
-3. Timer running
-4. UV forecast chart
-5. Tan tracker calendar and streak
-6. Skin type quiz result
+Captured 2026-07-23 after the localisation fixes, twelve PNGs at 1320 x 2868:
+
+| Path | Shot |
+|---|---|
+| `build/screenshots/{en,tr}/01-dashboard.png` | Dashboard at the pinned UV 8 reading |
+| `build/screenshots/{en,tr}/02-exposure.png` | Safe-time card and advice |
+| `build/screenshots/{en,tr}/03-timer.png` | Timer setup |
+| `build/screenshots/{en,tr}/04-forecast.png` | UV forecast chart and 10 day outlook |
+| `build/screenshots/{en,tr}/05-tracker.png` | Tan tracker calendar and streak |
+| `build/screenshots/{en,tr}/06-score.png` | Family ranking |
+
+Run with:
+
+```
+xcodebuild test -project Bronzla.xcodeproj -scheme Bronzla \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro Max' \
+  -only-testing:BronzlaUITests/ScreenshotTests
+```
+
+**Apple Watch**, captured for the first time on 2026-07-23, at 416 x 496 (Series 11 46mm), in
+`build/screenshots/watch-{en,tr}/01-dashboard.png`. The watch had never been captured because
+`WatchUVModel.refresh()` reaches WeatherKit directly with no cache or sample provider behind
+it, so on a simulator it can only render `.denied` or `.failed`. `WatchScreenshotSeed` (DEBUG
+only, same shape as the phone's `ScreenshotSeed`) pins the same Bodrum UV 8 reading. There is
+no watch UI test; the capture is manual:
+
+```
+xcodebuild build -project Bronzla.xcodeproj -scheme BronzlaWatch -configuration Debug \
+  -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm)' \
+  -derivedDataPath build/dd-watch CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+  CODE_SIGN_IDENTITY="" PROVISIONING_PROFILE_SPECIFIER=""
+xcrun simctl install <watch-udid> build/dd-watch/Build/Products/Debug-watchsimulator/BronzlaWatch.app
+xcrun simctl launch <watch-udid> com.hmdcorp.bronzla.watch -screenshotMode -AppleLanguages "(tr)" -AppleLocale tr_TR
+xcrun simctl io <watch-udid> screenshot shot.png
+```
+
+Signing must be disabled for the simulator build: the target carries a manual App Store
+provisioning profile, and `CodeSign` fails against a simulator destination without it.
 
 Capture with the simulator once WeatherKit signing is in place, so the readings are real:
 
