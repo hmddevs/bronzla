@@ -420,3 +420,17 @@ import and Umut approved it explicitly; it is not a pattern to reuse.
 Nested `.gitignore` files are honoured, so `web/dist/` and `web/node_modules/` stayed untracked
 without any root-level entry. Shared schemes under `Bronzla.xcodeproj/xcshareddata/` are tracked
 deliberately (see the signing section: archiving needs them to exist on disk).
+
+## Checking TestFlight build status (added 2026-07-23)
+
+**`GET /v1/builds?filter[app]=<id>` does not list builds that are still processing.** A build
+uploaded minutes earlier is simply absent from that response, which reads identically to "Apple
+rejected it". This nearly produced a false report that builds 3 and 4 had failed.
+
+Use `GET /v1/preReleaseVersions?filter[app]=<id>&include=builds` instead: it returns every build
+with its real `processingState` (`PROCESSING`, `VALID`, `INVALID`, `FAILED`). Poll that when
+waiting for a build to become installable.
+
+Also note `xcodebuild -exportArchive` printing **"Upload succeeded" only means Apple accepted the
+package for delivery**, not that it passed processing. A build can upload cleanly and still never
+appear. Always confirm `VALID` before telling anyone a build is ready.
