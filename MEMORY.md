@@ -400,3 +400,23 @@ the lookup and rendered English under a Turkish run.
 **An InfoPlist catalogue needs the source-language value too.** A `InfoPlist.xcstrings`
 containing only `tr` made the English permission prompt display the raw key name
 (`NSLocationWhenInUseUsageDescription`) to the user. Include `en` explicitly.
+
+## Version control (added 2026-07-23)
+
+`github.com/umutguden/bronzla`, **private**, default branch `main`. Initial commit `4d3a47b`
+imports the whole project (151 files, ~21k lines) including the Astro site under `web/` for
+bronzla.app. Before that commit there was no version control at all; the only prior safety net
+was `~/bronzla-pre-i18n-refactor-20260723-0338.tar.gz`.
+
+**`~/.claude/hooks/pre-push-protection.sh` blocks any push while the local branch is `main` or
+`master`, and blocks force-push anywhere.** It is a PreToolUse hook, so it evaluates the branch
+*before* the command runs: renaming the branch and pushing in one compound command still trips
+it. Split them into separate calls. All future work goes on a branch and lands via PR.
+
+`main` was created server-side with `gh api repos/.../git/refs` rather than pushed, because a
+brand-new repository has no base branch to open a PR against. That was a one-off for the initial
+import and Umut approved it explicitly; it is not a pattern to reuse.
+
+Nested `.gitignore` files are honoured, so `web/dist/` and `web/node_modules/` stayed untracked
+without any root-level entry. Shared schemes under `Bronzla.xcodeproj/xcshareddata/` are tracked
+deliberately (see the signing section: archiving needs them to exist on disk).
