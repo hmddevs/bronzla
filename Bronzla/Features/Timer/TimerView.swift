@@ -31,7 +31,7 @@ struct TimerView: View {
                 if let state = model.state {
                     running(state)
                 } else if let completed = model.lastCompleted {
-                    SessionSummaryView(session: completed) { model.cancel() }
+                    SessionSummaryView(session: completed) { model.dismissSummary() }
                 } else {
                     setup
                 }
@@ -323,7 +323,7 @@ struct SessionSummaryView: View {
                     Divider()
                     summaryRow("Peak UV", Int(session.peakUVIndex.rounded()).formatted())
                     Divider()
-                    summaryRow("Burn threshold", risk.formatted(.percent.precision(.fractionLength(0))))
+                    summaryRow("Burn threshold", risk.formatted(.percent.precision(.fractionLength(0)).locale(.app)))
                 }
                 .cardSurface()
 

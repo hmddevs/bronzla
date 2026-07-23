@@ -57,6 +57,12 @@ struct TanSessionLiveActivity: Widget {
     // MARK: - Lock screen
 
     private func lockScreen(_ context: ActivityViewContext<TanSessionAttributes>) -> some View {
+        // The card carries its own fixed dark tint (below) regardless of the device's system
+        // appearance, but `.primary`/`.secondary` still resolve against system appearance, not
+        // the tint. Without a forced white base, the countdown and UV label rendered black on
+        // Light Mode devices: unreadable against this background. Setting white here becomes
+        // the hierarchy's primary, so descendants using `.secondary` still dim correctly against
+        // white rather than against whatever the system appearance would have chosen.
         HStack(alignment: .center, spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Sunbathing")
@@ -84,6 +90,7 @@ struct TanSessionLiveActivity: Widget {
                     .lineLimit(1)
             }
         }
+        .foregroundStyle(.white)
         .padding()
     }
 

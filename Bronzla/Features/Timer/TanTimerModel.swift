@@ -134,6 +134,13 @@ final class TanTimerModel {
         Task { await scheduler.cancelAll() }
     }
 
+    /// Closes the post-session summary. Deliberately not `cancel()`: `finish()` already calls
+    /// `cancel()` right after setting `lastCompleted`, so folding this into `cancel()` would
+    /// wipe the summary before it could ever be shown.
+    func dismissSummary() {
+        lastCompleted = nil
+    }
+
     /// Re-syncs notifications after the app returns from the background, where the pending
     /// set may have been consumed while suspended.
     func applicationDidBecomeActive() {

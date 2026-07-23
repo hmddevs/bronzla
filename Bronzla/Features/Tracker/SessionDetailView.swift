@@ -83,7 +83,7 @@ struct SessionDetailView: View {
                 Text("Burn threshold")
                     .font(.subheadline.weight(.semibold))
                 Spacer()
-                Text(risk.formatted(.percent.precision(.fractionLength(0))))
+                Text(risk.formatted(.percent.precision(.fractionLength(0)).locale(.app)))
                     .font(.title3.weight(.medium))
                     .monospacedDigit()
             }
