@@ -42,7 +42,18 @@ struct WeatherKitUVProvider: UVDataProviding {
             // deliberately does not, so without this the only signal from a device was a
             // generic "check your connection" that misdiagnoses a WeatherKit authorisation or
             // service failure as a networking one.
-            logger.error("WeatherKit fetch failed: \(String(describing: error), privacy: .public)")
+            // Domain, code and type are public because they are what actually identifies the
+            // failure and carry nothing about the user. The free-text description stays private:
+            // a WeatherKit or CoreLocation error can embed the request URL, which contains the
+            // coordinates, and this app's whole privacy claim is that location never leaves the
+            // device. `.private` is redacted in sysdiagnose and general log collection while
+            // still readable on an attached device during development.
+            let ns = error as NSError
+            logger.error("""
+                WeatherKit fetch failed: \(String(describing: type(of: error)), privacy: .public) \
+                \(ns.domain, privacy: .public) code \(ns.code, privacy: .public); \
+                detail: \(error.localizedDescription, privacy: .private)
+                """)
 
             // Serving a stale reading beats serving nothing: someone on a beach with no signal
             // still needs to know roughly how strong the sun is. Freshness is surfaced in the UI.

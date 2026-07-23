@@ -110,7 +110,7 @@ final class WatchUVModel {
                 temperature: weather.currentWeather.temperature
             )
         } catch {
-            logger.error("Watch refresh failed: \(error.localizedDescription, privacy: .public)")
+            logger.error("Watch refresh failed: \((error as NSError).domain, privacy: .public) code \((error as NSError).code, privacy: .public); detail: \(error.localizedDescription, privacy: .private)")
             phase = .failed
         }
     }

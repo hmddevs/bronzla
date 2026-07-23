@@ -56,7 +56,7 @@ actor UVReportCache {
         } catch {
             // A cache miss is survivable, so this is logged rather than thrown, but it is
             // logged loudly: silent cache failure would look like a network problem forever.
-            logger.error("UV report cache write failed: \(error.localizedDescription, privacy: .public)")
+            logger.error("UV report cache write failed: \((error as NSError).domain, privacy: .public) code \((error as NSError).code, privacy: .public); detail: \(error.localizedDescription, privacy: .private)")
         }
     }
 
