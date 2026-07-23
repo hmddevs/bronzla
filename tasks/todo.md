@@ -33,9 +33,11 @@
 ## Next
 
 - [ ] Confirm build 2 installs and the four fixes hold on the device, especially the black bars
-- [ ] **Suggest `git init` to Umut.** Now well past 7500 lines, three targets, an App Store
-      record and a signing setup, with zero version control. Single largest remaining risk.
-      Do not init or commit without his explicit word.
+- [x] **Version control.** `github.com/umutguden/bronzla`, private, default branch `main`,
+      single initial commit `4d3a47b` (151 files, ~21k lines). API key ids were redacted from
+      `MEMORY.md` before the first commit; `.gitignore` extended to cover `.p8`, `.pem`, `.key`,
+      `.certSigningRequest` and archives. Note `~/.claude/hooks/pre-push-protection.sh` blocks
+      pushing while the local branch is `main`, so all future work must go through a PR.
 - [ ] Add the Turkish App Store listing localisation (primary stays `en-US` per Umut)
 - [ ] Rewrite `APPSTORE.md`'s Turkish/English description copy: it still does not mention
       social sharing, the family leaderboard or the watch app
