@@ -25,8 +25,8 @@ struct DashboardView: View {
                         loadingState
                     case .loaded(let report):
                         content(for: report)
-                    case .failed(let message):
-                        failureState(message)
+                    case .failed(let message, let detail):
+                        failureState(message, detail: detail)
                     }
                 }
                 // Without this the VStack shrinks to its widest child. In the loading state
@@ -111,11 +111,23 @@ struct DashboardView: View {
     }
 
     @ViewBuilder
-    private func failureState(_ message: String) -> some View {
+    private func failureState(_ message: String, detail: String? = nil) -> some View {
         ContentUnavailableView {
             Label("Could not fetch data", systemImage: "cloud.slash")
         } description: {
             Text(message)
+            // The underlying error, shown because a beta tester without a cable cannot reach
+            // Console.app to read the log. It stays on the device: it is displayed and copied
+            // locally, never logged publicly, because framework errors can embed the request
+            // URL and that carries the coordinates.
+            if let detail, !detail.isEmpty {
+                Text(detail)
+                    .font(.caption2)
+                    .monospaced()
+                    .foregroundStyle(.tertiary)
+                    .textSelection(.enabled)
+                    .padding(.top, Spacing.s)
+            }
         } actions: {
             Button("Try again") {
                 Task { await refresh(isManual: true) }

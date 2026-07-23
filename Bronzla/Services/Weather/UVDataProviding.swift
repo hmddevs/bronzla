@@ -18,6 +18,15 @@ enum UVDataError: LocalizedError, Equatable {
     case noDataForLocation
     case notAuthorised
 
+    /// The underlying failure, for showing to the user on their own device when they cannot
+    /// reach a Mac to read the log. Deliberately not routed through `errorDescription`, which
+    /// stays plain language, and never written to the unified log: framework errors can embed
+    /// the request URL, and that carries the coordinates.
+    var diagnosticDetail: String? {
+        if case .network(let detail) = self { return detail }
+        return nil
+    }
+
     var errorDescription: String? {
         switch self {
         case .network:

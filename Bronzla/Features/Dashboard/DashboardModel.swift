@@ -15,7 +15,7 @@ final class DashboardModel {
         case idle
         case loading
         case loaded(UVReport)
-        case failed(String)
+        case failed(String, detail: String? = nil)
     }
 
     private(set) var phase: Phase = .idle
@@ -51,9 +51,11 @@ final class DashboardModel {
                 // A failed refresh must never wipe a reading already on screen. Someone on a
                 // beach with patchy signal is better served by a stale number than a blank one.
                 if self.report == nil {
-                    let message = (error as? UVDataError)?.errorDescription
+                    let uvError = error as? UVDataError
+                    let message = uvError?.errorDescription
                         ?? String(localized: "Could not fetch data. Please try again.")
-                    self.phase = .failed(message)
+                    self.phase = .failed(message, detail: uvError?.diagnosticDetail
+                        ?? (error as NSError).debugDescription)
                 }
             }
         }
