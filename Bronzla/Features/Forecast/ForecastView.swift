@@ -18,7 +18,7 @@ struct ForecastView: View {
                         loadingState
                     case .loaded(let report):
                         content(for: report)
-                    case .failed(let message):
+                    case .failed(let message, _):
                         failureState(message)
                     }
                 }
