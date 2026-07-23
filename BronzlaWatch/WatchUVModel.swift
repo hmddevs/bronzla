@@ -65,6 +65,13 @@ final class WatchUVModel {
     var category: UVCategory? { uvIndex.map(UVCategory.init(uvIndex:)) }
 
     func refresh() async {
+        #if DEBUG
+        if WatchScreenshotSeed.isActive {
+            phase = WatchScreenshotSeed.phase
+            return
+        }
+        #endif
+
         switch manager.authorizationStatus {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
