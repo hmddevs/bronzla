@@ -159,6 +159,24 @@ BRONZ TAKİPÇİ
 Seanslarınızı kaydedin, fotoğraf ekleyin, seri takibi yapın. Toplam güneş süreniz ve tahmini
 D vitamini üretiminiz özetlenir.
 
+BRONZ PUANI
+Puanınız güneşte geçirdiğiniz süreyi değil, disiplininizi ölçer. Yanmadan tamamladığınız
+seanslar, kullandığınız koruma ve düzenliliğiniz puan kazandırır. Tek bir yanık, en iyi seansın
+kazandırdığından fazlasını götürür. Rozetler de aynı mantıkla verilir: hiçbiri güneşte daha uzun
+kalmayı ödüllendirmez.
+
+PAYLAŞ
+Sezon özetinizi veya tek bir seansı hazır bir kartla paylaşın. Kartta yazan şey güneşte geçen
+saatler değil, sıfır yanıktır.
+
+AİLE SIRALAMASI
+Aynı cihazdaki profilleri disipline göre sıralayın. Sunucu yok, hesap yok, veriler cihazdan
+çıkmaz.
+
+APPLE WATCH
+Güncel UV indeksi ve güvenli süreniz bileğinizde. Saat veriyi kendisi çeker; telefonunuz
+yanınızda olmasa da çalışır.
+
 TÜRKİYE'YE GÖRE
 Antalya, Bodrum, Çeşme, Fethiye, Kaş, Alanya ve daha fazlası hazır konum olarak eklendi.
 İstanbul'dayken gelecek haftanın Bodrum tahminine bakabilirsiniz.
@@ -201,6 +219,23 @@ Hourly and 10 day UV forecasts, with the riskiest hours of the day called out pl
 TAN TRACKER
 Log sessions, add photos, track streaks. See your total time in the sun and an estimate of the
 vitamin D produced.
+
+TAN SCORE
+Your score measures discipline, not hours. Sessions you finish without burning, the protection
+you used and your consistency all earn points. A single burn costs more than your best session
+earns. The badges work the same way: none of them rewards staying out longer.
+
+SHARING
+Share a season summary or a single session as a ready made card. What it shows is zero burns,
+not hours in the sun.
+
+FAMILY RANKING
+Rank the profiles on your device by discipline. No server, no account, and nothing leaves your
+device.
+
+APPLE WATCH
+The current UV index and your safe time, on your wrist. The watch fetches its own data, so it
+works when your phone is not with you.
 
 PRIVACY
 No account. Your data stays on your device. No third party analytics. Delete everything with a
@@ -284,6 +319,5 @@ xcrun simctl io booted screenshot shot.png
   drive the system permission alerts or the PhotosUI picker.
 - **The Apple Watch app has been launched and observed on a simulator only.** It installs, boots
   and renders without crashing, but has never run on a physical Watch, and has no app icon yet.
-- **Description copy above does not yet mention social sharing, the family leaderboard or the
-  watch app.** All three shipped this session; the Turkish and English descriptions need a
-  rewrite pass before submission, not just a bullet appended.
+- **The Turkish App Store listing localisation has not been added to App Store Connect yet.**
+  The copy below is written and ready; only `en-US` exists on the record so far.
