@@ -114,7 +114,7 @@ private struct SessionRow: View {
                 Text(SafeExposureCard.format(session.duration))
                     .font(.subheadline)
                     .monospacedDigit()
-                Text(session.burnRisk.formatted(.percent.precision(.fractionLength(0))))
+                Text(session.burnRisk.formatted(.percent.precision(.fractionLength(0)).locale(.app)))
                     .font(.footnote)
                     .foregroundStyle(session.burnRisk >= 1 ? Palette.colour(for: .veryHigh) : .secondary)
                     .monospacedDigit()

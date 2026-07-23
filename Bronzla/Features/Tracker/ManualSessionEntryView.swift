@@ -59,7 +59,7 @@ struct ManualSessionEntryView: View {
 
                 Section {
                     LabeledContent("Estimated burn threshold") {
-                        Text(estimatedBurnRisk.formatted(.percent.precision(.fractionLength(0))))
+                        Text(estimatedBurnRisk.formatted(.percent.precision(.fractionLength(0)).locale(.app)))
                             .foregroundStyle(.secondary)
                     }
                 } footer: {

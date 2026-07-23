@@ -127,7 +127,7 @@ struct ProfileEditorView: View {
 
             VStack(alignment: .leading, spacing: Spacing.xs) {
                 LabeledContent("Exposed skin") {
-                    Text(profile.exposedBodyFraction, format: .percent.precision(.fractionLength(0)))
+                    Text(profile.exposedBodyFraction, format: .percent.precision(.fractionLength(0)).locale(.app))
                         .foregroundStyle(.secondary)
                         .monospacedDigit()
                 }
