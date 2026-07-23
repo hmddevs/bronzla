@@ -105,6 +105,35 @@ final class BronzlaFlowUITests: XCTestCase {
         XCTAssertTrue(start.waitForExistence(timeout: 10), "Cancelling should return to setup")
     }
 
+    /// Regression test for a real dead end: the summary's OK button used to call the same
+    /// `cancel()` that `finish()` already calls internally, so `lastCompleted` never cleared
+    /// and the screen could not leave the summary. Runs the shortest real session the slider
+    /// allows (60s) and waits for it to finish for real, because the bug was specifically in
+    /// what happens after a session completes, not after it is cancelled.
+    func testSessionSummaryOKReturnsToSetup() {
+        launchPastOnboarding()
+        app.tabBars.buttons["Zamanlayıcı"].tap()
+
+        let start = app.buttons["Seansı başlat"]
+        guard start.waitForExistence(timeout: 15) else {
+            XCTAssertTrue(app.staticTexts["Şu an güneşlenme zamanı değil"].exists)
+            return
+        }
+
+        app.sliders.firstMatch.adjust(toNormalizedSliderPosition: 0)
+        start.tap()
+
+        let saveSession = app.buttons["Seansı kaydet"]
+        XCTAssertTrue(saveSession.waitForExistence(timeout: 75), "The 60s session should reach its finished state")
+        saveSession.tap()
+
+        let ok = app.buttons["Tamam"]
+        XCTAssertTrue(ok.waitForExistence(timeout: 10), "Finishing should show the session summary")
+        ok.tap()
+
+        XCTAssertTrue(start.waitForExistence(timeout: 10), "OK should return to setup, not leave the summary stuck on screen")
+    }
+
     // MARK: - Settings
 
     func testDisclaimerAndPrivacyTextAreReachable() {
