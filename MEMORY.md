@@ -434,3 +434,26 @@ waiting for a build to become installable.
 Also note `xcodebuild -exportArchive` printing **"Upload succeeded" only means Apple accepted the
 package for delivery**, not that it passed processing. A build can upload cleanly and still never
 appear. Always confirm `VALID` before telling anyone a build is ready.
+
+## WeatherKit needs enabling in TWO places (root-caused 2026-07-23)
+
+`WeatherDaemon.WDSJWTAuthenticatorServiceListener.Errors error 2` on device, with the entitlement
+correctly present in the signed binary and the profile, means WeatherKit is enabled as a
+**Capability** on the App ID but not as an **App Service**. They are two separate lists on the
+same identifier page in the developer portal, and both must be ticked. Only the capability is
+reachable through the App Store Connect API (`bundleIdCapabilities`); App Services is portal-only,
+like the app record and App Groups.
+
+This cost builds 1 through 5. The entitlement being present in `codesign -d --entitlements` is
+**not** sufficient evidence that WeatherKit will work, which is what made it hard to spot: every
+check I could run from the API said it was configured. The JWT handshake is the only thing that
+proves it.
+
+After ticking App Services, regenerate the provisioning profiles (the API can do this) and
+rebuild. Apple's backend can still lag by hours, and there is a known sync bug that needs a
+Developer Support ticket per Team ID if it persists.
+
+Diagnosing this needed the error text off the device. The tester had no cable, so Console.app was
+unavailable and the OSLog line added in build 4 was unreachable. Build 5 surfaced the underlying
+error in the failure view instead, which is what produced the answer. Keep that affordance until
+the app ships; it is the only diagnostic channel when the tester cannot attach a Mac.
