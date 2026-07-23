@@ -39,6 +39,16 @@ struct SocialTests {
         #expect(BronzScore.make(from: []) == .zero)
     }
 
+    /// Regression: the title switch used to fall through to "Needs care" when there were no
+    /// sessions, so a brand new user was told they had done something wrong before they had
+    /// done anything at all. The score only ever judges behaviour that actually happened.
+    @Test("A user with no sessions is not judged")
+    func noSessionsIsNotJudged() {
+        let title = BronzScore.zero.title
+        #expect(title == LocalizedStringResource("No sessions yet"))
+        #expect(title != LocalizedStringResource("Needs care"))
+    }
+
     @Test("A burn penalty can exceed a single session's rewards")
     func burnPenaltyExceedsRewards() {
         let now = Date.now

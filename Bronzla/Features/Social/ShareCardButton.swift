@@ -23,7 +23,7 @@ struct ShareCardButton: View {
                         Button {
                             shareToInstagram(renderedURL)
                         } label: {
-                            Label("Instagram Story", systemImage: "camera.fill")
+                            Label("Instagram Stories", systemImage: "camera.fill")
                         }
                         ShareLink(item: renderedURL) {
                             Label("Other apps", systemImage: "square.and.arrow.up")

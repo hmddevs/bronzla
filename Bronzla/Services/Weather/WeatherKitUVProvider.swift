@@ -1,5 +1,6 @@
 import CoreLocation
 import Foundation
+import OSLog
 import WeatherKit
 
 /// Live UV data from Apple WeatherKit, with an on-disk fallback when the network is down.
@@ -10,6 +11,7 @@ import WeatherKit
 struct WeatherKitUVProvider: UVDataProviding {
     private let service = WeatherService.shared
     private let cache: UVReportCache
+    private let logger = Logger(subsystem: "com.hmdcorp.bronzla", category: "WeatherKit")
 
     init(cache: UVReportCache = .shared) {
         self.cache = cache
@@ -36,6 +38,12 @@ struct WeatherKitUVProvider: UVDataProviding {
             await cache.store(report, for: coordinate)
             return report
         } catch {
+            // Log the real error. `UVDataError.network` carries it but the user-facing string
+            // deliberately does not, so without this the only signal from a device was a
+            // generic "check your connection" that misdiagnoses a WeatherKit authorisation or
+            // service failure as a networking one.
+            logger.error("WeatherKit fetch failed: \(String(describing: error), privacy: .public)")
+
             // Serving a stale reading beats serving nothing: someone on a beach with no signal
             // still needs to know roughly how strong the sun is. Freshness is surfaced in the UI.
             if let cached = await cache.report(for: coordinate) {
