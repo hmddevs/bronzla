@@ -93,3 +93,27 @@ WeatherKit, Live Activity, watch WeatherKit), `git init` (still unactioned, stil
 risk — no version control across ~7500+ lines and three build targets).
 **Status:** resolved — software is feature-complete and verified; remaining work is entirely
 outside code. See `RESUME.md`.
+**2026-07-23 (ship readiness, second session):** Confirmed the suite green after fixing two
+stale `ForecastTests` assertions still expecting Turkish after the source-language switch; they
+now resolve through the same `String(localized:)` lookup the view uses, for the same reason the
+suite already pins its calendar. Note the first test run appeared to fail with "Test crashed
+with signal kill" on both UI tests: that was two concurrent `xcodebuild test` processes fighting
+over one simulator, not a defect. One run at a time. Merged PRs #10-#13. Recovered the App Store
+Connect issuer ID (it is displayed in the portal under Users and Access > Integrations, never
+actually unrecoverable) and stored it with the `.p8` in `~/.appstoreconnect/`, outside the repo,
+with an `asc-jwt.sh` that mints ES256 tokens using openssl alone. Filled the listing for both
+`en-US` and `tr`: descriptions, keywords, promotional text, URLs, categories, age rating, review
+notes. The Turkish subtitle was 31 characters against a 30 limit and would have been rejected;
+"ve" became a comma. Captured the twelve phone screenshots at 1320x2868 and confirmed by reading
+the rendered English forecast that it is now genuinely English. Built the first Apple Watch
+screenshot set ever, which needed a DEBUG-only `WatchScreenshotSeed` because the watch reaches
+WeatherKit directly and can only render an error state on a simulator. **Doing that immediately
+exposed a real bug:** a Turkish watch showed "Very high", because `UVCategory.title` comes from
+a shared file whose strings only ever reached the phone catalogue. Fixed, verified by rendering,
+and verified again inside the Release archive's `tr.lproj/Localizable.strings`. Build 8 carried
+the bug, so build 9 replaced it; both uploaded, both VALID.
+**Not done:** privacy nutrition labels (portal-only, `appDataUsages` 404s), screenshot upload,
+price tier, Paid Applications Agreement. Watch still never run on physical hardware, Live
+Activity still never observed.
+**Status:** resolved — build 9 VALID on TestFlight, listing metadata complete; what remains is
+account-level and needs Umut.
