@@ -1,0 +1,83 @@
+---
+/**
+ * The WHO UV index scale, lifted from the app's own Palette.swift. The only
+ * colourful element the design permits, because it is an instrument, not decoration.
+ * Never relies on hue alone: every band carries its numeral range and name in text,
+ * set bold and large enough to qualify as WCAG "large text" (>= 18.66px, weight 700),
+ * which is what keeps the darkest text-on-band pairing (surface on the violet
+ * "extreme" band, 3.60:1) within the AA large-text floor of 3:1.
+ */
+interface Props {
+  locale: 'en' | 'tr';
+}
+
+const { locale } = Astro.props;
+
+const bands =
+  locale === 'tr'
+    ? [
+        { name: 'Düşük', range: '0–2', token: '--uv-low' },
+        { name: 'Orta', range: '3–5', token: '--uv-moderate' },
+        { name: 'Yüksek', range: '6–7', token: '--uv-high' },
+        { name: 'Çok yüksek', range: '8–10', token: '--uv-very-high' },
+        { name: 'Aşırı', range: '11+', token: '--uv-extreme' },
+      ]
+    : [
+        { name: 'Low', range: '0–2', token: '--uv-low' },
+        { name: 'Moderate', range: '3–5', token: '--uv-moderate' },
+        { name: 'High', range: '6–7', token: '--uv-high' },
+        { name: 'Very high', range: '8–10', token: '--uv-very-high' },
+        { name: 'Extreme', range: '11+', token: '--uv-extreme' },
+      ];
+---
+
+<ul class="uv-scale">
+  {
+    bands.map((band) => (
+      <li class="band" style={`background: var(${band.token})`}>
+        <span class="range">{band.range}</span>
+        <span class="name">{band.name}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .uv-scale {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+  }
+
+  .band {
+    color: var(--surface);
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  /*
+   * Both lines are set at or above 19.2px and weight 700, which clears the WCAG
+   * "large text" threshold (>= 14pt / 18.66px bold) needed for the darkest pairing on
+   * this strip: dark text on the violet "extreme" band measures 3.60:1, which fails
+   * the 4.5:1 body-text floor but clears the 3:1 large-text floor with margin.
+   */
+  .range {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.85;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+</style>

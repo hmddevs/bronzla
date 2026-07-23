@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.developer.weatherkit</key>
+	<true/>
+	<!-- Shared container so the widget extension can read the last UV reading. A widget cannot
+	     see the app's own container, and having it fetch its own weather would double the
+	     WeatherKit call budget and the battery cost for the same number. -->
+	<!-- Write-only Health access. Read access is never requested because the app has no use
+	     for it, and an unused permission is a trust cost with no benefit.
+	     `com.apple.developer.healthkit.access` is deliberately absent rather than an empty
+	     array: present-but-empty still signals the Health Records capability to App Store
+	     validation, which then demands an NSHealthShareUsageDescription read string this app
+	     has no honest reason to ship. -->
+	<key>com.apple.developer.healthkit</key>
+	<true/>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.com.hmdcorp.bronzla</string>
+	</array>
+</dict>
+</plist>

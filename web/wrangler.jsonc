@@ -1,0 +1,27 @@
+{
+  // Static-assets Worker. There is no `main` entry point on purpose: the site is fully
+  // static, so Cloudflare serves `dist/` directly from the edge with no Worker invocation
+  // and no per-request cost.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bronzla",
+  "compatibility_date": "2026-07-23",
+
+  "assets": {
+    "directory": "./dist",
+    // Astro emits real 404.html-style pages per route; serve the built 404 rather than
+    // redirecting, so a bad URL keeps its status code.
+    "not_found_handling": "404-page",
+    // Astro builds directory-style routes (/privacy/index.html). Strip the trailing slash
+    // in the address bar but keep both spellings resolving.
+    "html_handling": "auto-trailing-slash"
+  },
+
+  "routes": [
+    { "pattern": "bronzla.app", "custom_domain": true },
+    { "pattern": "www.bronzla.app", "custom_domain": true }
+  ],
+
+  "observability": {
+    "enabled": true
+  }
+}

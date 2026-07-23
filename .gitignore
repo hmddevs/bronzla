@@ -1,0 +1,36 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# macOS
+.DS_Store
+
+# Secrets: never commit signing material or environment files
+*.p12
+*.mobileprovision
+*.cer
+.env
+.env.*
+*.p8
+*.pem
+*.key
+*.certSigningRequest
+
+# Archives and build output
+*.xcarchive
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Editor noise
+*.swp
+.idea/
+.vscode/

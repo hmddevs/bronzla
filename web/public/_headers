@@ -1,0 +1,22 @@
+# Cloudflare edge headers. Applied by Workers Static Assets at request time.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  # The site loads nothing from a third-party origin: fonts are self-hosted and there is no
+  # analytics. Locking that down in policy keeps it true.
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src __SCRIPT_HASHES__; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'
+
+# Astro fingerprints everything under /_astro/, so it can be cached permanently.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML revalidates, so a redeploy is visible immediately.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

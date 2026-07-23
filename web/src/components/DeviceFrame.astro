@@ -1,0 +1,106 @@
+---
+/**
+ * Holds a screenshot at the App Store 1320x2868 aspect. Until Umut supplies the real
+ * files (see public/screenshots/README.md), this renders a deliberately designed slot,
+ * never a plain coloured rectangle: a numbered mark, the screen name, and a hint of the
+ * UI it stands in for, so the page still reads as considered before the images land.
+ */
+interface Props {
+  /** Filename expected in /public/screenshots/, e.g. "01-dashboard.png". */
+  src?: string;
+  /** Human label for the screen this frame holds, shown in the placeholder state. */
+  label: string;
+  /** One or two word hint of what the screen shows, e.g. "UV 8 · Very high". */
+  hint?: string;
+  index?: number;
+}
+
+const { src, label, hint, index } = Astro.props;
+---
+
+<div class="device-frame">
+  {
+    src ? (
+      <img src={`/screenshots/${src}`} alt={label} width="1320" height="2868" loading="lazy" />
+    ) : (
+      <div class="placeholder" role="img" aria-label={label}>
+        <span class="label">{label}</span>
+        {(hint || index !== undefined) && (
+          <span class="meta">
+            {hint && <span class="hint">{hint}</span>}
+            {hint && index !== undefined && <span aria-hidden="true">·</span>}
+            {index !== undefined && (
+              <span class="index">{String(index).padStart(2, '0')}</span>
+            )}
+          </span>
+        )}
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <circle cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <path d="M32 8v8M32 48v8M8 32h8M48 32h8" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .device-frame {
+    background: var(--surface-raised);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-frame);
+    overflow: hidden;
+    aspect-ratio: 1320 / 2868;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .device-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    color: var(--ink-muted);
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--accent) 8%, transparent),
+      transparent 55%
+    );
+  }
+
+  .label {
+    font-weight: 700;
+    font-size: var(--text-h3);
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--text-small);
+    color: var(--ink-faint);
+  }
+
+  .index {
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mark {
+    width: 32px;
+    height: 32px;
+    color: var(--accent);
+    margin-top: 0.5rem;
+  }
+</style>

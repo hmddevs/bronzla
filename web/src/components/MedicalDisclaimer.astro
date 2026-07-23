@@ -1,0 +1,27 @@
+---
+/**
+ * Required on every page that gives exposure guidance, per the app's own
+ * non-negotiables and App Review. Set in --ink-faint, which is only legal against the
+ * plain --surface background (5.52:1); do not drop this component onto a raised panel.
+ */
+interface Props {
+  locale: 'en' | 'tr';
+}
+
+const { locale } = Astro.props;
+
+const text =
+  locale === 'tr'
+    ? "Bronzla tıbbi tavsiye vermez. Süreler ortalama değerlere dayanır ve kişiden kişiye değişir. Cildinizle ilgili endişeleriniz için dermatoloğa başvurun."
+    : 'Bronzla does not give medical advice. Times are based on average values and vary from person to person. See a dermatologist about any concerns with your skin.';
+---
+
+<p class="disclaimer">{text}</p>
+
+<style>
+  .disclaimer {
+    color: var(--ink-faint);
+    font-size: var(--text-small);
+    max-width: var(--measure);
+  }
+</style>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- The watch fetches WeatherKit independently of the phone (see WatchUVModel), so it
+	     needs its own capability grant rather than relying on the iOS app's. -->
+	<key>com.apple.developer.weatherkit</key>
+	<true/>
+</dict>
+</plist>

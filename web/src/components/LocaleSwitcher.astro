@@ -1,0 +1,34 @@
+---
+import { localeCounterpart, type Locale } from '../config';
+
+interface Props {
+  locale: Locale;
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const otherPath = localeCounterpart(path, locale);
+const otherLabel = locale === 'en' ? 'Türkçe' : 'English';
+---
+
+<a class="switcher" href={otherPath} hreflang={locale === 'en' ? 'tr' : 'en'}>
+  {otherLabel}
+</a>
+
+<style>
+  .switcher {
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-size: var(--text-small);
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-control);
+  }
+
+  .switcher:hover,
+  .switcher:focus-visible {
+    color: var(--ink);
+    border-color: var(--ink-muted);
+  }
+</style>

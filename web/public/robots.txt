@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bronzla.app/sitemap-index.xml

@@ -1,0 +1,861 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB00000000000000000000A1 /* BronzlaWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000EB /* BronzlaWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AB00000000000000000000A3 /* TanSessionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A2 /* TanSessionAttributes.swift */; };
+		AB00000000000000000000A4 /* TanSessionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A2 /* TanSessionAttributes.swift */; };
+		AB00000000000000000000C2 /* SharedUVSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SharedUVSnapshot.swift */; };
+		AB00000000000000000000C3 /* SharedUVSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SharedUVSnapshot.swift */; };
+		AC00000000000000000000C1 /* Bronzla/Models/SkinType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00000000000000000000B2 /* Bronzla/Models/SkinType.swift */; };
+		AC00000000000000000000C2 /* Bronzla/Models/UVSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00000000000000000000B3 /* Bronzla/Models/UVSnapshot.swift */; };
+		AC00000000000000000000C3 /* Bronzla/Services/Exposure/ExposureCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00000000000000000000B4 /* Bronzla/Services/Exposure/ExposureCalculator.swift */; };
+		AC00000000000000000000EA /* BronzlaWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC00000000000000000000D1 /* BronzlaWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA00000000000000000000DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA00000000000000000000A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA00000000000000000000A2;
+			remoteInfo = Bronzla;
+		};
+		AA00000000000000000000FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA00000000000000000000A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA00000000000000000000EA;
+			remoteInfo = BronzlaWidgets;
+		};
+		AB00000000000000000000BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA00000000000000000000A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA00000000000000000000A2;
+			remoteInfo = Bronzla;
+		};
+		AC00000000000000000000DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA00000000000000000000A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC00000000000000000000A2;
+			remoteInfo = BronzlaWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA00000000000000000000FD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AB00000000000000000000A1 /* BronzlaWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC00000000000000000000EB /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AC00000000000000000000EA /* BronzlaWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AA00000000000000000000D1 /* Bronzla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bronzla.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA00000000000000000000D2 /* BronzlaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BronzlaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA00000000000000000000D3 /* Bronzla.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bronzla.entitlements; sourceTree = "<group>"; };
+		AA00000000000000000000EB /* BronzlaWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BronzlaWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB00000000000000000000A2 /* TanSessionAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanSessionAttributes.swift; sourceTree = "<group>"; };
+		AB00000000000000000000B2 /* BronzlaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BronzlaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB00000000000000000000C1 /* SharedUVSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUVSnapshot.swift; sourceTree = "<group>"; };
+		AC00000000000000000000B2 /* Bronzla/Models/SkinType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bronzla/Models/SkinType.swift; sourceTree = "<group>"; };
+		AC00000000000000000000B3 /* Bronzla/Models/UVSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bronzla/Models/UVSnapshot.swift; sourceTree = "<group>"; };
+		AC00000000000000000000B4 /* Bronzla/Services/Exposure/ExposureCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bronzla/Services/Exposure/ExposureCalculator.swift; sourceTree = "<group>"; };
+		AC00000000000000000000CE /* BronzlaWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BronzlaWatch.entitlements; sourceTree = "<group>"; };
+		AC00000000000000000000D1 /* BronzlaWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BronzlaWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AA00000000000000000000C1 /* Bronzla */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Bronzla;
+			sourceTree = "<group>";
+		};
+		AA00000000000000000000C2 /* BronzlaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BronzlaTests;
+			sourceTree = "<group>";
+		};
+		AA00000000000000000000EC /* BronzlaWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BronzlaWidgets;
+			sourceTree = "<group>";
+		};
+		AB00000000000000000000B3 /* BronzlaUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BronzlaUITests;
+			sourceTree = "<group>";
+		};
+		AC00000000000000000000A1 /* BronzlaWatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BronzlaWatch;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA00000000000000000000E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA00000000000000000000E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA00000000000000000000EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB00000000000000000000B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC00000000000000000000E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA00000000000000000000B1 = {
+			isa = PBXGroup;
+			children = (
+				AA00000000000000000000C1 /* Bronzla */,
+				AA00000000000000000000C2 /* BronzlaTests */,
+				AA00000000000000000000EC /* BronzlaWidgets */,
+				AC00000000000000000000A1 /* BronzlaWatch */,
+				AB00000000000000000000A5 /* Shared */,
+				AC00000000000000000000B1 /* Watch Shared */,
+				AB00000000000000000000B3 /* BronzlaUITests */,
+				AA00000000000000000000B3 /* Config */,
+				AA00000000000000000000B2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA00000000000000000000B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA00000000000000000000D1 /* Bronzla.app */,
+				AA00000000000000000000D2 /* BronzlaTests.xctest */,
+				AB00000000000000000000B2 /* BronzlaUITests.xctest */,
+				AA00000000000000000000EB /* BronzlaWidgets.appex */,
+				AC00000000000000000000D1 /* BronzlaWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA00000000000000000000B3 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				AA00000000000000000000D3 /* Bronzla.entitlements */,
+				AC00000000000000000000CE /* BronzlaWatch.entitlements */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		AB00000000000000000000A5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AB00000000000000000000A2 /* TanSessionAttributes.swift */,
+				AB00000000000000000000C1 /* SharedUVSnapshot.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AC00000000000000000000B1 /* Watch Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AC00000000000000000000B2 /* Bronzla/Models/SkinType.swift */,
+				AC00000000000000000000B3 /* Bronzla/Models/UVSnapshot.swift */,
+				AC00000000000000000000B4 /* Bronzla/Services/Exposure/ExposureCalculator.swift */,
+			);
+			name = "Watch Shared";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA00000000000000000000A2 /* Bronzla */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA00000000000000000000F2 /* Build configuration list for PBXNativeTarget "Bronzla" */;
+			buildPhases = (
+				AA00000000000000000000E1 /* Sources */,
+				AA00000000000000000000E2 /* Frameworks */,
+				AA00000000000000000000E3 /* Resources */,
+				AA00000000000000000000FD /* Embed Foundation Extensions */,
+				AC00000000000000000000EB /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA00000000000000000000FE /* PBXTargetDependency */,
+				AC00000000000000000000DB /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AA00000000000000000000C1 /* Bronzla */,
+			);
+			name = Bronzla;
+			productName = Bronzla;
+			productReference = AA00000000000000000000D1 /* Bronzla.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA00000000000000000000A3 /* BronzlaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA00000000000000000000F3 /* Build configuration list for PBXNativeTarget "BronzlaTests" */;
+			buildPhases = (
+				AA00000000000000000000E4 /* Sources */,
+				AA00000000000000000000E5 /* Frameworks */,
+				AA00000000000000000000E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA00000000000000000000DA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AA00000000000000000000C2 /* BronzlaTests */,
+			);
+			name = BronzlaTests;
+			productName = BronzlaTests;
+			productReference = AA00000000000000000000D2 /* BronzlaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA00000000000000000000EA /* BronzlaWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA00000000000000000000FA /* Build configuration list for PBXNativeTarget "BronzlaWidgets" */;
+			buildPhases = (
+				AA00000000000000000000ED /* Sources */,
+				AA00000000000000000000EE /* Frameworks */,
+				AA00000000000000000000EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AA00000000000000000000EC /* BronzlaWidgets */,
+			);
+			name = BronzlaWidgets;
+			productName = BronzlaWidgets;
+			productReference = AA00000000000000000000EB /* BronzlaWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		AB00000000000000000000B1 /* BronzlaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB00000000000000000000B7 /* Build configuration list for PBXNativeTarget "BronzlaUITests" */;
+			buildPhases = (
+				AB00000000000000000000B4 /* Sources */,
+				AB00000000000000000000B5 /* Frameworks */,
+				AB00000000000000000000B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB00000000000000000000BA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AB00000000000000000000B3 /* BronzlaUITests */,
+			);
+			name = BronzlaUITests;
+			productName = BronzlaUITests;
+			productReference = AB00000000000000000000B2 /* BronzlaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		AC00000000000000000000A2 /* BronzlaWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC00000000000000000000F3 /* Build configuration list for PBXNativeTarget "BronzlaWatch" */;
+			buildPhases = (
+				AC00000000000000000000E1 /* Sources */,
+				AC00000000000000000000E2 /* Frameworks */,
+				AC00000000000000000000E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AC00000000000000000000A1 /* BronzlaWatch */,
+			);
+			name = BronzlaWatch;
+			productName = BronzlaWatch;
+			productReference = AC00000000000000000000D1 /* BronzlaWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA00000000000000000000A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					AA00000000000000000000A2 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					AA00000000000000000000A3 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = AA00000000000000000000A2;
+					};
+					AA00000000000000000000EA = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					AB00000000000000000000B1 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = AA00000000000000000000A2;
+					};
+					AC00000000000000000000A2 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = AA00000000000000000000F1 /* Build configuration list for PBXProject "Bronzla" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				tr,
+				en,
+				Base,
+			);
+			mainGroup = AA00000000000000000000B1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AA00000000000000000000B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA00000000000000000000A2 /* Bronzla */,
+				AA00000000000000000000EA /* BronzlaWidgets */,
+				AC00000000000000000000A2 /* BronzlaWatch */,
+				AA00000000000000000000A3 /* BronzlaTests */,
+				AB00000000000000000000B1 /* BronzlaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA00000000000000000000E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA00000000000000000000E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA00000000000000000000EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB00000000000000000000B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC00000000000000000000E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA00000000000000000000E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB00000000000000000000A3 /* TanSessionAttributes.swift in Sources */,
+				AB00000000000000000000C2 /* SharedUVSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA00000000000000000000E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA00000000000000000000ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB00000000000000000000A4 /* TanSessionAttributes.swift in Sources */,
+				AB00000000000000000000C3 /* SharedUVSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB00000000000000000000B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC00000000000000000000E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC00000000000000000000C1 /* Bronzla/Models/SkinType.swift in Sources */,
+				AC00000000000000000000C2 /* Bronzla/Models/UVSnapshot.swift in Sources */,
+				AC00000000000000000000C3 /* Bronzla/Services/Exposure/ExposureCalculator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA00000000000000000000DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA00000000000000000000A2 /* Bronzla */;
+			targetProxy = AA00000000000000000000DB /* PBXContainerItemProxy */;
+		};
+		AA00000000000000000000FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA00000000000000000000EA /* BronzlaWidgets */;
+			targetProxy = AA00000000000000000000FF /* PBXContainerItemProxy */;
+		};
+		AB00000000000000000000BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA00000000000000000000A2 /* Bronzla */;
+			targetProxy = AB00000000000000000000BB /* PBXContainerItemProxy */;
+		};
+		AC00000000000000000000DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC00000000000000000000A2 /* BronzlaWatch */;
+			targetProxy = AC00000000000000000000DA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA00000000000000000000CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AA00000000000000000000CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA00000000000000000000CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/Bronzla.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Bronzla-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bronzla;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Bronzla does not read your Health data. It only writes your completed sessions to Health; this description exists because Apple requires it.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We can save your sessions to the Health app as time spent in daylight. This is entirely optional, and we never read your data.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show the current UV index and weather where you are. Your location stays on your device.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos so you can add before and after pictures to your sessions. Your photos stay on your device.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AA00000000000000000000CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/Bronzla.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Bronzla App Store";
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/Bronzla-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bronzla;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Bronzla does not read your Health data. It only writes your completed sessions to Health; this description exists because Apple requires it.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We can save your sessions to the Health app as time spent in daylight. This is entirely optional, and we never read your data.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show the current UV index and weather where you are. Your location stays on your device.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos so you can add before and after pictures to your sessions. Your photos stay on your device.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AA00000000000000000000CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bronzla.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bronzla";
+			};
+			name = Debug;
+		};
+		AA00000000000000000000CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bronzla.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bronzla";
+			};
+			name = Release;
+		};
+		AA00000000000000000000FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/BronzlaWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/BronzlaWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bronzla;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AA00000000000000000000FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/BronzlaWidgets.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Bronzla Widgets App Store";
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/BronzlaWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bronzla;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AB00000000000000000000B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Bronzla;
+			};
+			name = Debug;
+		};
+		AB00000000000000000000B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Bronzla;
+			};
+			name = Release;
+		};
+		AC00000000000000000000F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/BronzlaWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/BronzlaWatch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bronzla;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show the current UV index where you are. Your location stays on your device.";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hmdcorp.bronzla;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		AC00000000000000000000F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/BronzlaWatch.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				PROVISIONING_PROFILE_SPECIFIER = "Bronzla Watch App Store";
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = LC326A2F4F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/BronzlaWatch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bronzla;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show the current UV index where you are. Your location stays on your device.";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hmdcorp.bronzla;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hmdcorp.bronzla.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA00000000000000000000F1 /* Build configuration list for PBXProject "Bronzla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA00000000000000000000CA /* Debug */,
+				AA00000000000000000000CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA00000000000000000000F2 /* Build configuration list for PBXNativeTarget "Bronzla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA00000000000000000000CC /* Debug */,
+				AA00000000000000000000CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA00000000000000000000F3 /* Build configuration list for PBXNativeTarget "BronzlaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA00000000000000000000CE /* Debug */,
+				AA00000000000000000000CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA00000000000000000000FA /* Build configuration list for PBXNativeTarget "BronzlaWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA00000000000000000000FB /* Debug */,
+				AA00000000000000000000FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB00000000000000000000B7 /* Build configuration list for PBXNativeTarget "BronzlaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB00000000000000000000B8 /* Debug */,
+				AB00000000000000000000B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC00000000000000000000F3 /* Build configuration list for PBXNativeTarget "BronzlaWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC00000000000000000000F1 /* Debug */,
+				AC00000000000000000000F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA00000000000000000000A1 /* Project object */;
+}

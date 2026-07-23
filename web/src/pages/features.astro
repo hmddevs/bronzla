@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DeviceFrame from '../components/DeviceFrame.astro';
+import UVScale from '../components/UVScale.astro';
+import WeatherKitAttribution from '../components/WeatherKitAttribution.astro';
+
+const screens = [
+  {
+    label: 'Dashboard, high UV reading',
+    hint: 'UV 8 · Very high',
+    heading: 'Everything at a glance',
+    body: 'The dashboard opens on the current UV index and your safe time together, so the one number that matters is never a tap away.',
+  },
+  {
+    label: 'Safe-time card and advice',
+    hint: 'Safe time · 38 min',
+    heading: 'Safe time',
+    body: 'Your safe time is calculated from the current UV index, your skin type and your SPF. The figures follow the World Health Organization’s definition of the UV index and minimal erythemal dose values from the clinical literature, and account for sunscreen performing well below its label value in real use.',
+  },
+  {
+    label: 'Timer running',
+    hint: 'Flip in 12 min',
+    heading: 'Timer',
+    body: 'Flip and sunscreen reminders that work with the phone in your bag and the screen off. The remaining time stays live on your lock screen.',
+  },
+  {
+    label: 'UV forecast chart',
+    hint: '10 day forecast',
+    heading: 'UV forecast',
+    body: 'Hourly and 10 day UV forecasts, with the riskiest hours of the day called out plainly.',
+  },
+  {
+    label: 'Tan tracker calendar and streak',
+    hint: '14 day streak',
+    heading: 'Tan tracker',
+    body: 'Log sessions, add photos, track streaks. See your total time in the sun and an estimate of the vitamin D produced.',
+  },
+  {
+    label: 'Skin type quiz result',
+    hint: 'Type III · Olive',
+    heading: 'Built around your skin',
+    body: 'A seven question Fitzpatrick assessment works out your skin type. The questions are written for this market: the olive and wheat tones common along the Mediterranean and Aegean are described on their own terms rather than against northern European reference points.',
+  },
+];
+---
+
+<BaseLayout
+  locale="en"
+  path="/features"
+  title="Features · Bronzla"
+  description="The six screens behind Bronzla: safe time, timer, UV forecast, tan tracker and the skin type quiz."
+>
+  <header class="container page-header">
+    <h1>Six screens, one job</h1>
+    <p>Every screen exists to answer the same question: how long can you stay out today.</p>
+  </header>
+
+  <div class="container screens">
+    {
+      screens.map((screen, i) => (
+        <section class:list={['screen', i % 2 === 1 && 'reverse']}>
+          <DeviceFrame label={screen.label} hint={screen.hint} index={i + 1} />
+          <div class="screen-copy">
+            <h2>{screen.heading}</h2>
+            <p>{screen.body}</p>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="container uv-section">
+    <h2>The UV index, in one strip</h2>
+    <UVScale locale="en" />
+    <WeatherKitAttribution locale="en" />
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .page-header p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .screens {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+  }
+
+  .screen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+    border-top: 1px solid var(--hairline);
+    padding-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .screen.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .screen :global(.device-frame) {
+    flex: 0 0 260px;
+  }
+
+  .screen-copy {
+    flex: 1 1 380px;
+    max-width: 560px;
+  }
+
+  .screen-copy p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .uv-section {
+    padding-block: clamp(2.5rem, 5vw, 5rem);
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const items = [
+  {
+    q: 'Do you collect an account?',
+    a: 'No. There is no sign-in, no email address, and no account of any kind.',
+  },
+  {
+    q: 'Where does my data live?',
+    a: 'On your device only. Sessions, skin type, tan tracker photos and settings stay in local storage; nothing syncs to a server, because there is no server.',
+  },
+  {
+    q: 'What happens to my location?',
+    a: 'Precise location is used only to fetch the UV index and weather for your position from Apple WeatherKit. It is never linked to an identity and never used for tracking. You can also skip location entirely and pick a city manually.',
+  },
+  {
+    q: 'What about health data?',
+    a: 'Sun exposure sessions are treated as health-adjacent data: collected, not linked to your identity, not used for tracking, and used only so the app can function.',
+  },
+  {
+    q: 'What about photos?',
+    a: 'Photos you add to the tan tracker are collected, not linked to your identity, not used for tracking, and used only so the app can function.',
+  },
+  {
+    q: 'Do you use third-party analytics or advertising?',
+    a: 'No. There are no analytics SDKs and no advertising of any kind in Bronzla.',
+  },
+  {
+    q: 'What about Instagram sharing?',
+    a: 'Bronzla checks whether Instagram is installed and, only when you tap to share, writes a rendered image to the pasteboard for Instagram to read. Nothing is sent over the network, and nothing leaves your device unless you complete the share yourself.',
+  },
+  {
+    q: 'What about the family leaderboard?',
+    a: 'It ranks profiles already stored on the same device. No new data is collected and nothing leaves the device; there is no backend.',
+  },
+  {
+    q: 'Can I delete everything?',
+    a: 'Yes, with a single tap in Settings. Deletion is immediate and local, because everything was local to begin with.',
+  },
+];
+---
+
+<BaseLayout
+  locale="en"
+  path="/privacy"
+  title="Privacy · Bronzla"
+  description="No account, no analytics, nothing leaves the device except a location query to Apple Weather. Delete everything with a single tap."
+  showWeatherAttribution={false}
+>
+  <header class="container page-header">
+    <h1>Privacy</h1>
+    <p>
+      No account, no analytics, nothing leaves the device beyond a location query sent to
+      Apple Weather so the app can fetch a UV reading. Said flatly, without congratulating
+      ourselves.
+    </p>
+  </header>
+
+  <section class="container qa-list">
+    {
+      items.map((item) => (
+        <div class="qa">
+          <h2>{item.q}</h2>
+          <p>{item.a}</p>
+        </div>
+      ))
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .page-header p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+    max-width: var(--measure);
+  }
+
+  .qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 1rem clamp(3rem, 6vw, 5rem);
+  }
+
+  .qa {
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem;
+  }
+
+  .qa p {
+    color: var(--ink-muted);
+    margin-top: 0.6rem;
+  }
+</style>

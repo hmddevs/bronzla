@@ -1,0 +1,33 @@
+---
+/**
+ * Apple requires this mark plus a link to the legal attribution page on every screen
+ * that shows or describes forecast data. Omitting it is an App Review rejection, and
+ * that requirement carries over to any page that discusses UV forecasts.
+ */
+interface Props {
+  locale: 'en' | 'tr';
+}
+
+const { locale } = Astro.props;
+
+const text = locale === 'tr' ? 'Hava durumu verisi' : 'Weather data';
+---
+
+<p class="attribution">{text} <a href="https://weatherkit.apple.com/legal-attribution.html" rel="noopener">Apple Weather</a></p>
+
+<style>
+  .attribution {
+    color: var(--ink-faint);
+    font-size: var(--text-small);
+  }
+
+  .attribution a {
+    color: var(--ink-faint);
+    text-decoration: underline;
+  }
+
+  .attribution a:hover,
+  .attribution a:focus-visible {
+    color: var(--ink-muted);
+  }
+</style>

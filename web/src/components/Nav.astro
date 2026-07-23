@@ -1,0 +1,116 @@
+---
+import { SITE, withSlash, type Locale } from '../config';
+import LocaleSwitcher from './LocaleSwitcher.astro';
+
+interface Props {
+  locale: Locale;
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+
+const links =
+  locale === 'tr'
+    ? [
+        { href: '/tr', label: 'Ana sayfa' },
+        { href: '/tr/ozellikler', label: 'Özellikler' },
+        { href: '/tr/gizlilik', label: 'Gizlilik' },
+      ]
+    : [
+        { href: '/', label: 'Home' },
+        { href: '/features', label: 'Features' },
+        { href: '/privacy', label: 'Privacy' },
+      ];
+
+const homeHref = locale === 'tr' ? '/tr' : '/';
+---
+
+<header class="site-nav">
+  <div class="container inner">
+    <a class="wordmark" href={withSlash(homeHref)}>{SITE.name}</a>
+    <nav aria-label={locale === 'tr' ? 'Ana gezinme' : 'Main navigation'}>
+      <ul>
+        {
+          links.map((link) => (
+            <li>
+              <a href={withSlash(link.href)} aria-current={path === link.href ? 'page' : undefined}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <LocaleSwitcher locale={locale} path={path} />
+  </div>
+</header>
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: var(--surface);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    padding-block: 1rem;
+  }
+
+  .wordmark {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.75rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--text-small);
+  }
+
+  nav a:hover,
+  nav a:focus-visible,
+  nav a[aria-current='page'] {
+    color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    nav ul {
+      gap: 1rem;
+    }
+  }
+
+  /*
+   * Below ~480px the wordmark, three links and the locale pill no longer fit on one
+   * row without overflowing the viewport. Give navigation its own full-width row
+   * rather than shrinking touch targets or truncating the locale label.
+   */
+  @media (max-width: 480px) {
+    nav {
+      order: 3;
+      flex-basis: 100%;
+    }
+
+    nav ul {
+      gap: 1.25rem;
+    }
+  }
+</style>

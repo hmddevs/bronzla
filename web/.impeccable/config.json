@@ -1,0 +1,8 @@
+{
+  "detector": {
+    "ignoreRules": ["cramped-padding"]
+  },
+  "_notes": {
+    "cramped-padding": "Every section on this site pairs `border-top: 1px solid var(--hairline)` with `padding-block: clamp(...)`, per DESIGN.md's fluid section rhythm rule. impeccable's static HTML/CSS mode cannot resolve clamp() and reads it as zero padding, producing a false positive on every bordered section. Verified in a real browser (Playwright/WebKit, getComputedStyle) on the landing and features pages in both locales: actual computed padding-top ranges from 24px to 102px against every flagged border, well above the rule's own 8-16px floor. A Puppeteer-based URL scan, which resolves computed styles correctly and would not need this override, could not be run in this sandbox: the Chrome for Testing download failed silently on every retry and no system Chrome is installed. Revisit this ignore if Puppeteer becomes available."
+  }
+}

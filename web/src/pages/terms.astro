@@ -1,0 +1,117 @@
+---
+// DRAFTED, PENDING LEGAL REVIEW. Sourced from APPSTORE.md and the product's own
+// non-negotiables; not yet reviewed by counsel. Flag to Umut before this page ships.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<!--
+  DRAFTED, PENDING LEGAL REVIEW. Sourced from APPSTORE.md and the product's own
+  non-negotiables; not yet reviewed by counsel. Flag to Umut before this page ships.
+-->
+<BaseLayout
+  locale="en"
+  path="/terms"
+  title="Terms · Bronzla"
+  description="Bronzla is a paid-upfront app: one purchase, no subscription, no in-app purchases. The full medical disclaimer and terms of use."
+  showWeatherAttribution={false}
+>
+  <header class="container page-header">
+    <h1>Terms</h1>
+    <p>These terms cover your use of Bronzla, the sun exposure app published by HMD Developments.</p>
+  </header>
+
+  <section class="container terms-body">
+    <div class="term">
+      <h2>Purchase</h2>
+      <p>
+        Bronzla is sold as a single, one-time purchase through the App Store. There is no
+        subscription, no recurring charge, and no in-app purchase of any kind. You pay once and
+        the app is yours.
+      </p>
+    </div>
+
+    <div class="term">
+      <h2>Refunds</h2>
+      <p>
+        Refunds are handled entirely by Apple under the App Store's own refund policy. We do not
+        process payments or refunds directly, and cannot issue one outside that process.
+      </p>
+    </div>
+
+    <div class="term">
+      <h2>What the app does</h2>
+      <p>
+        Bronzla calculates a safe sun exposure time from the current UV index, your Fitzpatrick
+        skin type and your SPF, and offers a timer, UV forecasts and a session log built on top
+        of that calculation.
+      </p>
+    </div>
+
+    <div class="term">
+      <h2>Medical disclaimer</h2>
+      <p>
+        Bronzla provides general sun-safety guidance, not medical advice. It does not diagnose,
+        treat or claim any medical outcome. Exposure times derive from the World Health
+        Organization and World Meteorological Organization's definition of the UV index (1 unit
+        = 25 mW/m² of erythemally weighted irradiance) and published minimal erythemal dose
+        values for Fitzpatrick phototypes I through VI. Sunscreen protection is deliberately
+        discounted by roughly half its label SPF to reflect real-world application. Times are
+        based on average values and vary from person to person. See a dermatologist about any
+        concerns with your skin.
+      </p>
+    </div>
+
+    <div class="term">
+      <h2>Weather and location data</h2>
+      <p>
+        UV and weather figures come from Apple WeatherKit. Location is used only to fetch weather
+        for your position and is never linked to an identity; you can also select a city manually
+        instead.
+      </p>
+    </div>
+
+    <div class="term">
+      <h2>Liability</h2>
+      <p>
+        Bronzla is provided as is, without warranty of any kind. To the extent permitted by law,
+        HMD Developments is not liable for sunburn, skin damage or any other outcome arising from
+        reliance on the app's guidance. Use it alongside, not instead of, your own judgement and
+        professional medical advice.
+      </p>
+    </div>
+
+    <div class="term">
+      <h2>Contact</h2>
+      <p>Questions about these terms can be sent to the support address listed on the App Store page.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .page-header p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+    max-width: var(--measure);
+  }
+
+  .terms-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 1rem clamp(3rem, 6vw, 5rem);
+  }
+
+  .term {
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem;
+  }
+
+  .term p {
+    color: var(--ink-muted);
+    margin-top: 0.6rem;
+  }
+</style>

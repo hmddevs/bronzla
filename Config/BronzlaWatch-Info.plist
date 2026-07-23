@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- App Store validation rejects the watch app without a top-level CFBundleIconName, but
+	     GENERATE_INFOPLIST_FILE only emits the nested CFBundleIcons form for watchOS, and
+	     INFOPLIST_KEY_CFBundleIconName is silently ignored because that key is not in Xcode's
+	     supported INFOPLIST_KEY_ allowlist. Third instance of this project's recurring rule:
+	     anything INFOPLIST_KEY_ will not carry needs a real partial plist via INFOPLIST_FILE.
+	     See also Config/Bronzla-Info.plist and the widget's NSExtension dictionary. -->
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+</dict>
+</plist>

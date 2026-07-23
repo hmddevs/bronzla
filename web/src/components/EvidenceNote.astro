@@ -1,0 +1,54 @@
+---
+/**
+ * Small-type citation block: the WHO UV index definition, the minimal erythemal dose
+ * reference, and the fifty per cent sunscreen discount. Rules above and below, no
+ * tinted callout box, no side stripe, per DESIGN.md's component spec.
+ */
+interface Props {
+  locale: 'en' | 'tr';
+}
+
+const { locale } = Astro.props;
+
+const items =
+  locale === 'tr'
+    ? [
+        'UV indeksi, Dünya Sağlık Örgütü ve Dünya Meteoroloji Örgütü’nün tanımına göre hesaplanır: 1 birim = eritem ağırlıklı 25 mW/m² ışınım.',
+        'Güvenli süreler, Fitzpatrick I-VI cilt fototipleri için literatürde yayınlanmış minimum eritem dozu (MED) değerlerine dayanır.',
+        'Güneş kreminin gerçek hayattaki koruması, etikette yazan SPF değerinin yaklaşık yarısı kabul edilerek hesaplanır; bu, gerçek uygulama miktarlarını yansıtır.',
+      ]
+    : [
+        'The UV index follows the World Health Organization and World Meteorological Organization definition: 1 unit = 25 mW/m² of erythemally weighted irradiance.',
+        'Safe times are based on minimal erythemal dose (MED) values published in the clinical literature for Fitzpatrick phototypes I through VI.',
+        'Sunscreen protection is discounted to roughly half its label SPF, reflecting how thinly it is actually applied in real-world use.',
+      ];
+---
+
+<div class="evidence-note">
+  <ul>
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+</div>
+
+<style>
+  .evidence-note {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding-block: 1.5rem;
+  }
+
+  .evidence-note ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: var(--measure);
+  }
+
+  .evidence-note li {
+    color: var(--ink-muted);
+    font-size: var(--text-body);
+  }
+</style>

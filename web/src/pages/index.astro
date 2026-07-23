@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import UVScale from '../components/UVScale.astro';
+import EvidenceNote from '../components/EvidenceNote.astro';
+import StoreButton from '../components/StoreButton.astro';
+---
+
+<BaseLayout
+  locale="en"
+  path="/"
+  title="Bronzla · Safe sun and UV tracking"
+  description="Bronzla tells you how long you can stay in the sun, based on your skin type and the UV index right now. No ads, no subscription, no in-app purchases."
+>
+  <Hero locale="en" />
+
+  <section class="container feature feature-text">
+    <h2>Built around your skin</h2>
+    <p>
+      A seven question Fitzpatrick assessment works out your skin type. The questions are
+      written for this market: the olive and wheat tones common along the Mediterranean and
+      Aegean are described on their own terms rather than against northern European reference
+      points.
+    </p>
+  </section>
+
+  <section class="container feature feature-list">
+    <h2>Timer</h2>
+    <p class="feature-intro">
+      Flip and sunscreen reminders that work with the phone in your bag and the screen off. The
+      remaining time stays live on your lock screen.
+    </p>
+    <ul>
+      <li>
+        <h3>Flip reminder</h3>
+        <p>A nudge to turn, so both sides get an even dose through the session.</p>
+      </li>
+      <li>
+        <h3>Sunscreen reminder</h3>
+        <p>A prompt to reapply, timed to when protection actually starts to fade.</p>
+      </li>
+      <li>
+        <h3>Live on the lock screen</h3>
+        <p>The countdown keeps running and stays visible without unlocking the phone.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container uv-section">
+    <h2>UV forecast</h2>
+    <p class="section-lede">
+      Hourly and ten day UV forecasts, with the riskiest hours of the day called out plainly, so
+      you can see a burn coming before you leave the house. Every reading maps to the same five
+      WHO bands the app uses everywhere else, coloured to rise in luminance with severity so the
+      scale still reads correctly for colour vision deficiency.
+    </p>
+    <UVScale locale="en" />
+  </section>
+
+  <section class="container evidence-section">
+    <h2>Where the numbers come from</h2>
+    <EvidenceNote locale="en" />
+  </section>
+
+  <section class="container privacy-section">
+    <h2>Privacy is a stance, not a feature</h2>
+    <p>
+      No account. Your data stays on your device. No third party analytics. Delete everything
+      with a single tap.
+    </p>
+    <a class="text-link" href="/privacy/">Read the full privacy page</a>
+  </section>
+
+  <section class="container closing-cta">
+    <h2>No ads, no subscription, no in-app purchases. You buy it once.</h2>
+    <StoreButton locale="en" size="large" />
+  </section>
+</BaseLayout>
+
+<style>
+  .feature {
+    padding-block: clamp(3rem, 6vw, 6rem);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .feature-text {
+    max-width: 620px;
+  }
+
+  .feature-text p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .feature-list {
+    max-width: 960px;
+  }
+
+  .feature-intro {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  /*
+   * A deliberate row, not a stacked column: three sub-items sit side by side above a
+   * hairline divider on wide viewports, separated by hairline rules rather than boxed
+   * into cards (DESIGN.md bans the identical icon-card grid; this is plain type).
+   * Below 640px there isn't room for three columns, so the divider rotates to sit
+   * above each item instead of beside it.
+   */
+  .feature-list ul {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--hairline);
+  }
+
+  .feature-list li {
+    padding: 1.5rem 1.75rem 0;
+    border-left: 1px solid var(--hairline);
+  }
+
+  .feature-list li:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .feature-list p {
+    color: var(--ink-muted);
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: 639px) {
+    .feature-list ul {
+      grid-template-columns: 1fr;
+      border-top: none;
+    }
+
+    .feature-list li {
+      padding: 1.5rem 0 0;
+      border-left: none;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .feature-list li:first-child {
+      padding-left: 0;
+      border-top: none;
+    }
+  }
+
+  .uv-section,
+  .evidence-section,
+  .privacy-section {
+    padding-block: clamp(2.5rem, 5vw, 5rem);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .section-lede {
+    color: var(--ink-muted);
+    margin-top: 0.75rem;
+    margin-bottom: 1.75rem;
+    max-width: var(--measure);
+  }
+
+  .privacy-section p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .text-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: var(--text-small);
+  }
+
+  .closing-cta {
+    padding-block: clamp(3rem, 8vw, 7rem);
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+  }
+
+  .closing-cta h2 {
+    max-width: 18ch;
+  }
+</style>

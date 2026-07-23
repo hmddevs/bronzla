@@ -1,0 +1,70 @@
+---
+import { SITE, ROUTE_PAIRS, type Locale, withSlash } from '../config';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  path: string;
+  title: string;
+  description: string;
+  /** Set on pages that show or describe forecast data. */
+  showWeatherAttribution?: boolean;
+}
+
+const { locale, path, title, description, showWeatherAttribution = true } = Astro.props;
+
+const canonicalUrl = new URL(withSlash(path), SITE.url).toString();
+const pair = ROUTE_PAIRS.find((p) => p.en === path || p.tr === path);
+const ogImage = new URL('/og-image.png', SITE.url).toString();
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    {pair && (
+      <>
+        <link rel="alternate" hreflang="en" href={new URL(withSlash(pair.en), SITE.url).toString()} />
+        <link rel="alternate" hreflang="tr" href={new URL(withSlash(pair.tr), SITE.url).toString()} />
+        <link rel="alternate" hreflang="x-default" href={new URL(withSlash(pair.en), SITE.url).toString()} />
+      </>
+    )}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={locale === 'tr' ? 'tr_TR' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      href="/fonts/BricolageGrotesque-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{locale === 'tr' ? 'İçeriğe geç' : 'Skip to content'}</a>
+    <Nav locale={locale} path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={locale} showWeatherAttribution={showWeatherAttribution} />
+  </body>
+</html>

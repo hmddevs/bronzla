@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import UVScale from '../../components/UVScale.astro';
+import EvidenceNote from '../../components/EvidenceNote.astro';
+import StoreButton from '../../components/StoreButton.astro';
+---
+
+<BaseLayout
+  locale="tr"
+  path="/tr"
+  title="Bronzla · Güvenli güneşlenme ve UV takibi"
+  description="Bronzla, güneşte ne kadar kalabileceğinizi cilt tipinize ve o anki UV indeksine göre söyler. Reklam yok, abonelik yok, uygulama içi satın alma yok."
+>
+  <Hero locale="tr" />
+
+  <section class="container feature feature-text">
+    <h2>Cilt tipinize özel</h2>
+    <p>
+      Yedi soruluk Fitzpatrick testi cilt tipinizi belirler. Sorular Türkiye'ye göre
+      hazırlandı: Akdeniz ve Ege'de en sık görülen buğday ve zeytin tonları, kuzey Avrupa
+      kalıplarına göre değil, kendi referanslarıyla anlatılıyor.
+    </p>
+  </section>
+
+  <section class="container feature feature-list">
+    <h2>Zamanlayıcı</h2>
+    <p class="feature-intro">
+      Dönme zamanı ve krem yenileme hatırlatmaları. Telefonunuz çantada, ekran kapalıyken de
+      çalışır. Kilit ekranında canlı olarak kalan süreyi görürsünüz.
+    </p>
+    <ul>
+      <li>
+        <h3>Dönme hatırlatması</h3>
+        <p>Bir uyarı sizi döndürür, böylece her iki taraf da eşit güneş alır.</p>
+      </li>
+      <li>
+        <h3>Krem hatırlatması</h3>
+        <p>Korumanın azalmaya başladığı ana göre zamanlanmış bir yenileme uyarısı.</p>
+      </li>
+      <li>
+        <h3>Kilit ekranında canlı</h3>
+        <p>Geri sayım çalışmaya devam eder ve telefonu açmadan görünür kalır.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container uv-section">
+    <h2>UV tahmini</h2>
+    <p class="section-lede">
+      Saatlik ve on günlük UV tahmini, günün en riskli saatleri açıkça belirtilerek, evden
+      çıkmadan önce bir güneş yanığını görebilirsiniz. Her okuma, uygulamanın her yerde
+      kullandığı aynı beş DSÖ bandına eşlenir; şiddetle birlikte parlaklığı artacak şekilde
+      renklendirildi, böylece renk körlüğünde de doğru okunur.
+    </p>
+    <UVScale locale="tr" />
+  </section>
+
+  <section class="container evidence-section">
+    <h2>Rakamlar nereden geliyor</h2>
+    <EvidenceNote locale="tr" />
+  </section>
+
+  <section class="container privacy-section">
+    <h2>Gizlilik bir özellik değil, bir duruş</h2>
+    <p>
+      Hesap açmanız istenmez. Veriler cihazınızda kalır. Üçüncü taraf analiz aracı
+      kullanılmaz. Tüm verilerinizi tek dokunuşla silebilirsiniz.
+    </p>
+    <a class="text-link" href="/tr/gizlilik/">Gizlilik sayfasının tamamını okuyun</a>
+  </section>
+
+  <section class="container closing-cta">
+    <h2>Reklam yok, abonelik yok, uygulama içi satın alma yok. Bir kez alırsınız.</h2>
+    <StoreButton locale="tr" size="large" />
+  </section>
+</BaseLayout>
+
+<style>
+  .feature {
+    padding-block: clamp(3rem, 6vw, 6rem);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .feature-text {
+    max-width: 620px;
+  }
+
+  .feature-text p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .feature-list {
+    max-width: 960px;
+  }
+
+  .feature-intro {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  /*
+   * A deliberate row, not a stacked column: three sub-items sit side by side above a
+   * hairline divider on wide viewports, separated by hairline rules rather than boxed
+   * into cards (DESIGN.md bans the identical icon-card grid; this is plain type).
+   * Below 640px there isn't room for three columns, so the divider rotates to sit
+   * above each item instead of beside it.
+   */
+  .feature-list ul {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--hairline);
+  }
+
+  .feature-list li {
+    padding: 1.5rem 1.75rem 0;
+    border-left: 1px solid var(--hairline);
+  }
+
+  .feature-list li:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .feature-list p {
+    color: var(--ink-muted);
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: 639px) {
+    .feature-list ul {
+      grid-template-columns: 1fr;
+      border-top: none;
+    }
+
+    .feature-list li {
+      padding: 1.5rem 0 0;
+      border-left: none;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .feature-list li:first-child {
+      padding-left: 0;
+      border-top: none;
+    }
+  }
+
+  .uv-section,
+  .evidence-section,
+  .privacy-section {
+    padding-block: clamp(2.5rem, 5vw, 5rem);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .section-lede {
+    color: var(--ink-muted);
+    margin-top: 0.75rem;
+    margin-bottom: 1.75rem;
+    max-width: var(--measure);
+  }
+
+  .privacy-section p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .text-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: var(--text-small);
+  }
+
+  .closing-cta {
+    padding-block: clamp(3rem, 8vw, 7rem);
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+  }
+
+  .closing-cta h2 {
+    max-width: 22ch;
+  }
+</style>

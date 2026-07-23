@@ -1,0 +1,23 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "NSLocationWhenInUseUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We need your location to show the current UV index where you are. Your location stays on your device."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulunduğunuz yerin güncel UV indeksini gösterebilmek için konumunuza ihtiyacımız var. Konum bilgisi cihazınızda kalır."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

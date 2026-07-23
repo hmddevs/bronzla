@@ -1,0 +1,156 @@
+---
+import StoreButton from './StoreButton.astro';
+import DeviceFrame from './DeviceFrame.astro';
+
+interface Props {
+  locale: 'en' | 'tr';
+}
+
+const { locale } = Astro.props;
+
+const copy =
+  locale === 'tr'
+    ? {
+        unit: 'dakika',
+        context: 'UV 8 · Cilt tipi III · SPF 30',
+        lede: 'Bugün güvenle güneşte kalabileceğiniz süre. Güncel UV indeksi, cilt tipiniz ve SPF değerinizle anında hesaplanır.',
+        frameLabel: 'Panel, yüksek UV okuması',
+        frameHint: 'UV 8 · Çok yüksek',
+      }
+    : {
+        unit: 'minutes',
+        context: 'UV 8 · Skin type III · SPF 30',
+        lede: 'Your safe time in the sun today. Calculated instantly from the current UV index, your skin type and your SPF.',
+        frameLabel: 'Dashboard, high UV reading',
+        frameHint: 'UV 8 · Very high',
+      };
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="context">{copy.context}</p>
+      <h1>
+        <span class="counter" data-target="38">38</span>
+        <span class="unit">{copy.unit}</span>
+      </h1>
+      <p class="lede">{copy.lede}</p>
+      <StoreButton locale={locale} size="large" />
+    </div>
+    <div class="hero-frame">
+      <DeviceFrame label={copy.frameLabel} hint={copy.frameHint} index={1} />
+    </div>
+  </div>
+</section>
+
+{/* Bundled rather than inline: the production CSP sets `script-src 'self'`, which would
+    block an inline script and silently disable this entrance. Astro emits it under
+    /_astro/ with a hashed filename, so the policy stays strict with no hash to maintain. */}
+<script>
+  import '../scripts/hero-entrance';
+</script>
+
+<style>
+  /*
+   * Top padding is deliberately tight: the fold should open close to the figure,
+   * not build up to it. Bottom padding stays generous, per DESIGN.md's rule that the
+   * hero gets the most separation from the section that follows.
+   */
+  .hero {
+    padding-block: clamp(0.75rem, 2vw, 1.75rem) clamp(2.5rem, 6vw, 5rem);
+  }
+
+  /*
+   * flex-start, not center: the device frame is tall enough (App Store aspect ratio)
+   * that centring the copy column against it pushes the figure down the page and
+   * recreates the dead-space problem padding-block alone cannot fix.
+   */
+  .hero-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .hero-copy {
+    flex: 1 1 440px;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .context {
+    color: var(--ink-muted);
+    font-size: var(--text-small);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  h1 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    color: var(--accent);
+  }
+
+  .counter {
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-display);
+  }
+
+  .unit {
+    font-size: var(--text-h3);
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .lede {
+    color: var(--ink-muted);
+    font-size: var(--text-body);
+    max-width: 46ch;
+  }
+
+  .hero-frame {
+    flex: 0 1 380px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-frame :global(.device-frame) {
+    max-width: 380px;
+  }
+
+  /*
+   * Content is visible by default; this rule only ever applies once JavaScript has
+   * proven it can run, and only for the duration of the single orchestrated entrance.
+   * A no-JS render, a crawler, or a reduced-motion visitor never sees a hidden frame.
+   */
+  :global(html.hero-animate:not(.hero-ready)) .hero-frame {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  :global(html.hero-ready) .hero-frame {
+    animation: settle var(--duration-reveal) var(--ease-out-quint) forwards;
+  }
+
+  @keyframes settle {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      flex-wrap: wrap;
+    }
+  }
+</style>

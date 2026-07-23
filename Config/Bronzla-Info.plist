@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- GENERATE_INFOPLIST_FILE supplies the CFBundle keys and merges them over this file.
+	     LSApplicationQueriesSchemes is an array, and INFOPLIST_KEY_ does not emit array or
+	     dictionary values into the generated plist; only scalars survive that mechanism. This
+	     already broke widget installation once (see Config/BronzlaWidgets-Info.plist). -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram-stories</string>
+	</array>
+	<!-- Declared here rather than via INFOPLIST_KEY_UILaunchScreen_Generation, which emitted a
+	     malformed UILaunchScreen nested inside itself ({UILaunchScreen: {}} instead of {}).
+	     iOS silently ignores the malformed form and falls the app back to 320pt iPhone SE
+	     compatibility mode, which is what produced the black bars down both sides of the screen
+	     on a 390pt iPhone 12. An empty dict is the correct modern declaration: it means "no
+	     custom launch screen, use the full native resolution". Fourth instance of this
+	     project's rule that array and dictionary Info.plist values need a real partial plist. -->
+	<key>UILaunchScreen</key>
+	<dict/>
+</dict>
+</plist>

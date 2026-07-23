@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DeviceFrame from '../../components/DeviceFrame.astro';
+import UVScale from '../../components/UVScale.astro';
+import WeatherKitAttribution from '../../components/WeatherKitAttribution.astro';
+
+const screens = [
+  {
+    label: 'Panel, yüksek UV okuması',
+    hint: 'UV 8 · Çok yüksek',
+    heading: 'Her şey tek bakışta',
+    body: 'Panel, güncel UV indeksini ve güvenli sürenizi birlikte açar; en önemli rakam hiçbir zaman bir dokunuştan uzak değildir.',
+  },
+  {
+    label: 'Güvenli süre kartı ve tavsiye',
+    hint: 'Güvenli süre · 38 dk',
+    heading: 'Güvenli süre',
+    body: 'Güncel UV indeksi, cilt tipiniz ve SPF değerinizle güvenli güneşlenme süreniz hesaplanır. Süreler Dünya Sağlık Örgütü’nün UV indeksi tanımına ve klinik literatürdeki minimum eritem dozu değerlerine dayanır. Güneş kreminin gerçek hayatta etiketteki kadar korumadığı da hesaba katılır.',
+  },
+  {
+    label: 'Zamanlayıcı çalışıyor',
+    hint: '12 dk sonra dönün',
+    heading: 'Zamanlayıcı',
+    body: 'Dönme zamanı ve krem yenileme hatırlatmaları. Telefonunuz çantada, ekran kapalıyken de çalışır. Kilit ekranında canlı olarak kalan süreyi görürsünüz.',
+  },
+  {
+    label: 'UV tahmin grafiği',
+    hint: '10 günlük tahmin',
+    heading: 'UV tahmini',
+    body: 'Saatlik ve 10 günlük UV tahmini. Günün en riskli saatleri açıkça belirtilir.',
+  },
+  {
+    label: 'Bronz takipçi takvimi ve serisi',
+    hint: '14 günlük seri',
+    heading: 'Bronz takipçi',
+    body: 'Seanslarınızı kaydedin, fotoğraf ekleyin, seri takibi yapın. Toplam güneş süreniz ve tahmini D vitamini üretiminiz özetlenir.',
+  },
+  {
+    label: 'Cilt tipi testi sonucu',
+    hint: 'Tip III · Zeytin',
+    heading: 'Cilt tipinize özel',
+    body: 'Yedi soruluk Fitzpatrick testi cilt tipinizi belirler. Sorular Türkiye’ye göre hazırlandı: Akdeniz ve Ege’de en sık görülen buğday ve zeytin tonları, kuzey Avrupa kalıplarına göre değil, kendi referanslarıyla anlatılıyor.',
+  },
+];
+---
+
+<BaseLayout
+  locale="tr"
+  path="/tr/ozellikler"
+  title="Özellikler · Bronzla"
+  description="Bronzla'nın altı ekranı: güvenli süre, zamanlayıcı, UV tahmini, bronz takipçi ve cilt tipi testi."
+>
+  <header class="container page-header">
+    <h1>Altı ekran, tek görev</h1>
+    <p>Her ekran aynı soruyu yanıtlamak için var: bugün ne kadar güneşte kalabilirsiniz.</p>
+  </header>
+
+  <div class="container screens">
+    {
+      screens.map((screen, i) => (
+        <section class:list={['screen', i % 2 === 1 && 'reverse']}>
+          <DeviceFrame label={screen.label} hint={screen.hint} index={i + 1} />
+          <div class="screen-copy">
+            <h2>{screen.heading}</h2>
+            <p>{screen.body}</p>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="container uv-section">
+    <h2>UV indeksi, tek şeritte</h2>
+    <UVScale locale="tr" />
+    <WeatherKitAttribution locale="tr" />
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .page-header p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .screens {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+  }
+
+  .screen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+    border-top: 1px solid var(--hairline);
+    padding-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .screen.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .screen :global(.device-frame) {
+    flex: 0 0 260px;
+  }
+
+  .screen-copy {
+    flex: 1 1 380px;
+    max-width: 560px;
+  }
+
+  .screen-copy p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+  }
+
+  .uv-section {
+    padding-block: clamp(2.5rem, 5vw, 5rem);
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+</style>

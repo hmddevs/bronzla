@@ -1,0 +1,108 @@
+---
+import { SITE, withSlash, type Locale } from '../config';
+import MedicalDisclaimer from './MedicalDisclaimer.astro';
+import WeatherKitAttribution from './WeatherKitAttribution.astro';
+
+interface Props {
+  locale: Locale;
+  /** Set on pages that show or describe forecast data; omit elsewhere. */
+  showWeatherAttribution?: boolean;
+}
+
+const { locale, showWeatherAttribution = true } = Astro.props;
+
+const links =
+  locale === 'tr'
+    ? [
+        { href: '/tr/kosullar', label: 'Koşullar' },
+        { href: '/tr/gizlilik', label: 'Gizlilik' },
+      ]
+    : [
+        { href: '/terms', label: 'Terms' },
+        { href: '/privacy', label: 'Privacy' },
+      ];
+
+const year = new Date().getFullYear();
+const rights = locale === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reserved.';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="top">
+      <span class="wordmark">{SITE.name}</span>
+      <ul class="links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={withSlash(link.href)}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="legal">
+      <MedicalDisclaimer locale={locale} />
+      {showWeatherAttribution && <WeatherKitAttribution locale={locale} />}
+    </div>
+
+    <p class="copyright">&copy; {year} HMD Developments. {rights}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--hairline);
+    padding-block: clamp(2.5rem, 4vw, 4rem);
+    margin-top: clamp(3rem, 6vw, 6rem);
+  }
+
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .wordmark {
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  .links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .links a {
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-size: var(--text-small);
+    font-weight: 600;
+  }
+
+  .links a:hover,
+  .links a:focus-visible {
+    color: var(--ink);
+  }
+
+  .legal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-block: 1.5rem;
+  }
+
+  .copyright {
+    color: var(--ink-faint);
+    font-size: var(--text-small);
+    margin: 0;
+  }
+</style>
