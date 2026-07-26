@@ -9,6 +9,7 @@ import SwiftUI
 struct SkinTypeQuizView: View {
     /// Called with the classified type once the user accepts the result.
     var onComplete: (SkinType) -> Void
+    var dismissOnCompletion = true
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -28,7 +29,9 @@ struct SkinTypeQuizView: View {
                 if let result {
                     SkinTypeResultView(skinType: result) {
                         onComplete(result)
-                        dismiss()
+                        if dismissOnCompletion {
+                            dismiss()
+                        }
                     } onRetake: {
                         withAnimation { reset() }
                     }
@@ -42,7 +45,9 @@ struct SkinTypeQuizView: View {
             .sheet(isPresented: $isShowingManualPicker) {
                 ManualSkinTypePicker { selected in
                     onComplete(selected)
-                    dismiss()
+                    if dismissOnCompletion {
+                        dismiss()
+                    }
                 }
             }
         }

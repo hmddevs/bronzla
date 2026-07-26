@@ -33,17 +33,22 @@
 
 ## Next
 
-**Only Umut can do these. Nothing ships until the first two are done.**
+**Only Umut can do these. Nothing ships until the portal items are done.**
 
-- [ ] **Paid Applications Agreement**, with banking and tax completed. Bronzla is paid-upfront,
-      so until this is active the app cannot be sold and no non-free tier can be set.
-- [ ] **Price tier.** None set on the record.
+- [ ] **Free pricing confirmation in App Store Connect.** The app is intended to ship free, so
+      the record must remain on the free price point and the store copy must not imply purchase.
 - [ ] **Privacy nutrition labels.** Portal-only, confirmed: `appDataUsages`,
       `dataUsagePublishState` and `appDataUsageCategories` all return 404 PATH_ERROR. The
       answers to paste are in `APPSTORE.md` under "Privacy nutrition label answers".
+      Final mark set:
+      - Location → Precise Location
+      - Health & Fitness → Health
+      - Photos or Videos → Photos or Videos
+      - Conservative add-on: User Content → Other User Content
+      Each selected type: Collected = Yes, Linked = No, Tracking = No, Purpose = App Functionality.
 - [ ] **Upload the screenshots.** Captured and ready in `build/screenshots/{en,tr}` (twelve at
       1320x2868) and `build/screenshots/watch-{en,tr}` (416x496). Needs the reservation-and-
-      commit API flow or a paste into the portal.
+      commit API flow or a paste into the portal. If they are already in ASC, mark this done.
 
 **Verification that still needs real hardware**
 
@@ -70,6 +75,11 @@
       command still trips it.
 - [x] Turkish App Store listing localisation added (primary stays `en-US`).
 - [x] Categories, age rating, review notes, support/marketing/privacy URLs set via the API.
+- [x] Review contact filled in App Store Connect.
+- [x] Build 10 attached to version 1.0.
+- [x] Screenshots uploaded for iPhone and Apple Watch.
+- [x] Social media age-rating questions answered as not applicable.
+- [x] Privacy nutrition labels entered in App Store Connect.
 - [x] `APPSTORE.md` description copy already covers social sharing, the family leaderboard and
       the watch app; both locales verified against the field limits before upload.
 - [x] Apple Watch screenshot set captured for the first time, which exposed and fixed a real

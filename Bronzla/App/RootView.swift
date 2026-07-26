@@ -29,12 +29,13 @@ struct RootView: View {
             }
         }
         .task { ensureProfileExists() }
-        // Full screen rather than a sheet: the quiz is not optional. Every exposure time in
-        // the app is wrong until it has been answered, so it must not be swipeable away.
+        // Full screen rather than a sheet: the first-run flow is not optional, and every
+        // exposure time in the app is wrong until the skin type quiz has been answered.
         .fullScreenCover(isPresented: $isShowingOnboarding) {
-            SkinTypeQuizView { skinType in
-                apply(skinType)
-            }
+            OnboardingFlowView(
+                onSkinTypeSelected: applyDraft,
+                onComplete: completeOnboarding
+            )
             .interactiveDismissDisabled()
         }
         .onChange(of: needsOnboarding, initial: true) { _, needsOnboarding in
@@ -65,10 +66,14 @@ struct RootView: View {
         modelContext.insert(UserProfile(name: String(localized: "Me"), isActive: true))
     }
 
-    private func apply(_ skinType: SkinType) {
+    private func applyDraft(_ skinType: SkinType) {
         guard let profile = profiles.first else { return }
         profile.skinType = skinType
         profile.defaultSPF = skinType.recommendedSPF
+    }
+
+    private func completeOnboarding() {
+        guard let profile = profiles.first else { return }
         profile.hasCompletedOnboarding = true
     }
 }

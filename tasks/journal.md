@@ -142,3 +142,19 @@ safely callable outside a real app process — so the regression test for the OK
 a UI test driving a real 60-second session to completion, not a unit test.
 Shipped as build 10, VALID. Full suite: 125 passed, 0 failed.
 **Status:** resolved.
+
+## 2026-07-25 — Leaderboard and Sign in with Apple review
+- **Kind:** research
+- **Status:** building
+- **Reported:** "I'm planing on a feature, Leaderboards where people may see other Bronzla users. So that, Sign In with Apple is going to be neccessary, that'll come up with an onboarding proccess. Also, there's no Wizard in the app that'll show users to use the Bronzla App. What are your thoughts on those points? I'm just asking, you may read the codebase but not write so far."
+- **Scope:** Bronzla/App/RootView.swift, Bronzla/Features/Onboarding/*, Bronzla/Features/Settings/SettingsView.swift, Bronzla/Features/SkinType/SkinTypeQuizView.swift
+- **Resolution:** pending — first-run intro, quiz, and wizard added; needs compiler verification
+- **Refs:**
+
+## 2026-07-25: App Store live-readiness audit
+- **Kind:** research
+- **Status:** verified
+- **Reported:** "I want Bronzla to be live on App Store, find out what's missing." then "Bronzla has to be fully free. Proceed."
+- **Scope:** ASC free price, listing/site free copy, support deploy, build attach, screenshots, review metadata
+- **Resolution:** build 10 is attached, the store copy is rewritten to free, the 6.9 iPhone and watch screenshots are complete, the age-rating social media question is answered, privacy labels were entered, and version 1.0 is now `WAITING_FOR_REVIEW`.
+- **Refs:** ASC version 867792ed-80c0-4f25-9846-641f79d973a9; submission 5af0c680-e6f9-43ed-bab8-aaa52319de6c; build 10 f343170d-dc14-4284-963d-3e96532d3b83
