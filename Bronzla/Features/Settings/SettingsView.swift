@@ -9,6 +9,7 @@ struct SettingsView: View {
     @Query private var profiles: [UserProfile]
     @Query(sort: \TanSession.startedAt, order: .reverse) private var sessions: [TanSession]
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.leaderboardService) private var leaderboardService
     @State private var activeStore = ActiveProfileStore()
 
     @State private var isShowingQuiz = false
@@ -17,6 +18,10 @@ struct SettingsView: View {
     @State private var dailyAlertScheduler = DailyUVAlertScheduler()
     @State private var dailyAlertsEnabled = false
     @State private var healthEnabled = HealthStore.shared.isEnabled
+    @State private var globalBoard = GlobalBoardModel()
+    @State private var isConfirmingAccountDeletion = false
+    @State private var isDeletingAccount = false
+    @State private var accountDeletionError: String?
 
     /// The profile everything here edits. Reads through `ActiveProfileStore` rather than
     /// `profiles.first` so this screen stays correct once a family has more than one profile.
@@ -29,13 +34,17 @@ struct SettingsView: View {
                 skinSection
                 alertsSection
                 healthSection
+                accountSection
                 aboutSection
                 dataSection
             }
             .navigationTitle("Settings")
             // Idempotent, so this is a no-op after the first run, or once a second profile
             // exists; see `ActiveProfileResolution.migrateLegacyProfileIfNeeded`.
-            .task { ActiveProfileResolution.migrateLegacyProfileIfNeeded(profiles) }
+            .task {
+                ActiveProfileResolution.migrateLegacyProfileIfNeeded(profiles)
+                globalBoard.restoreSession(using: leaderboardService)
+            }
             .sheet(isPresented: $isShowingQuiz) {
                 SkinTypeQuizView { skinType in
                     apply(skinType)
@@ -46,6 +55,12 @@ struct SettingsView: View {
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Your sessions, photos and skin type will be permanently deleted. This cannot be undone.")
+            }
+            .alert("Delete your account?", isPresented: $isConfirmingAccountDeletion) {
+                Button("Delete", role: .destructive) { deleteAccount() }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("Your global leaderboard entry and sign-in will be permanently deleted. This cannot be undone.")
             }
         }
     }
@@ -131,8 +146,50 @@ struct SettingsView: View {
         }
     }
 
+    @ViewBuilder
+    private var accountSection: some View {
+        Section {
+            if let session = globalBoard.session {
+                LabeledContent {
+                    EmptyView()
+                } label: {
+                    Text("Signed in as \(session.displayName)")
+                }
+
+                if isDeletingAccount {
+                    HStack {
+                        ProgressView()
+                        Text("Deleting…")
+                            .foregroundStyle(.secondary)
+                    }
+                } else {
+                    Button("Delete my account and leaderboard data", role: .destructive) {
+                        isConfirmingAccountDeletion = true
+                    }
+                }
+
+                if let accountDeletionError {
+                    Text(accountDeletionError)
+                        .font(.footnote)
+                        .foregroundStyle(.red)
+                }
+            } else {
+                AppleSignInView { session in
+                    globalBoard.signedIn(session, using: leaderboardService)
+                }
+            }
+        } header: {
+            Text("Global leaderboard")
+        } footer: {
+            Text("Signing in shares your display name and Tan Score with other Bronzla users. Never your real name, email or location.")
+        }
+    }
+
     private var aboutSection: some View {
         Section {
+            NavigationLink("How to use Bronzla") {
+                OnboardingWizardView(skinType: profile?.skinType ?? .iii)
+            }
             NavigationLink("Medical disclaimer") { DisclaimerDetailView() }
             NavigationLink("Privacy") { PrivacyDetailView() }
         } header: {
@@ -184,6 +241,20 @@ struct SettingsView: View {
         try? modelContext.delete(model: UserProfile.self)
         Task { await UVReportCache.shared.removeAll() }
     }
+
+    private func deleteAccount() {
+        isDeletingAccount = true
+        accountDeletionError = nil
+        Task {
+            defer { isDeletingAccount = false }
+            do {
+                try await leaderboardService.deleteAccount()
+                globalBoard.signOut(using: leaderboardService)
+            } catch {
+                accountDeletionError = (error as? LeaderboardError)?.errorDescription ?? error.localizedDescription
+            }
+        }
+    }
 }
 
 /// The full disclaimer, reachable from Settings and linked from anywhere the short form
@@ -222,19 +293,34 @@ struct PrivacyDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Spacing.l) {
-                Text("Your data stays on your device.")
+                Text("Local by default.")
                     .font(.headline)
 
                 Text("""
-                Bronzla does not ask you to create an account, does not track you and uses no \
-                third party analytics. Your sessions, photos and skin type are stored only on \
-                your device.
+                Bronzla does not track you and uses no third party analytics. Your sessions, \
+                photos and skin type are stored only on your device, with no account required \
+                to use the app.
 
                 Your location is used to fetch weather data and is sent to Apple Weather. In the \
                 cache it is rounded to roughly one kilometre rather than kept as an exact \
                 coordinate.
 
-                You can permanently delete all of your data with a single tap in Settings.
+                You can permanently delete all of your local data with a single tap in Settings.
+                """)
+                .font(.callout)
+                .foregroundStyle(.secondary)
+
+                Text("The global leaderboard is optional.")
+                    .font(.headline)
+
+                Text("""
+                Signing in with Apple to appear on the global leaderboard sends only your \
+                display name and Tan Score to a server we run. It never sends your real name, \
+                email address or location, and signing in never affects any of the app's other \
+                features, which continue to work fully offline.
+
+                You can permanently delete your account, sign-in and leaderboard entry at any \
+                time from Settings.
                 """)
                 .font(.callout)
                 .foregroundStyle(.secondary)

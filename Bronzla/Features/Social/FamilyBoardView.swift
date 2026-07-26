@@ -2,11 +2,29 @@ import SwiftData
 import SwiftUI
 
 /// "Family Ranking": ranks family profiles by `BronzScore.total`, the discipline score, never
-/// by hours or darkness. No accounts, no backend: every number here comes from sessions already
-/// on this device, attributed to whichever profile logged them.
+/// by hours or darkness. Scoped locally, from sessions already on this device, attributed to
+/// whichever profile logged them.
+///
+/// The "Global" segment is a separate, optional leaderboard across every signed-in Bronzla
+/// user. Signing in gates only that segment; the family ranking above works fully offline,
+/// exactly as before.
 struct FamilyBoardView: View {
+    private enum Scope: String, CaseIterable {
+        case family, global
+
+        var title: LocalizedStringResource {
+            switch self {
+            case .family: "Family"
+            case .global: "Global"
+            }
+        }
+    }
+
     @Query(sort: \UserProfile.createdAt) private var profiles: [UserProfile]
     @Query private var sessions: [TanSession]
+    @Environment(\.leaderboardService) private var leaderboardService
+    @State private var scope: Scope = .family
+    @State private var globalBoard = GlobalBoardModel()
 
     private var ranked: [(profile: UserProfile, score: BronzScore)] {
         profiles
@@ -18,6 +36,30 @@ struct FamilyBoardView: View {
     }
 
     var body: some View {
+        VStack(spacing: 0) {
+            Picker("Ranking", selection: $scope) {
+                ForEach(Scope.allCases, id: \.self) { scope in
+                    Text(scope.title).tag(scope)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding(Spacing.m)
+
+            Group {
+                switch scope {
+                case .family: familyList
+                case .global: globalContent
+                }
+            }
+        }
+        .navigationTitle("Ranking")
+        .task {
+            globalBoard.restoreSession(using: leaderboardService)
+            if globalBoard.session != nil { globalBoard.load(using: leaderboardService) }
+        }
+    }
+
+    private var familyList: some View {
         List {
             if ranked.isEmpty {
                 ContentUnavailableView(
@@ -32,7 +74,64 @@ struct FamilyBoardView: View {
             }
         }
         .accessibilityIdentifier("social.familyBoard")
-        .navigationTitle("Family Ranking")
+    }
+
+    @ViewBuilder
+    private var globalContent: some View {
+        if globalBoard.session == nil {
+            AppleSignInView { session in
+                globalBoard.signedIn(session, using: leaderboardService)
+            }
+        } else {
+            switch globalBoard.phase {
+            case .idle, .loading:
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            case .failed(let message):
+                ContentUnavailableView {
+                    Label("Could not load leaderboard", systemImage: "wifi.slash")
+                } description: {
+                    Text(message)
+                } actions: {
+                    Button("Try again") { globalBoard.load(using: leaderboardService) }
+                }
+            case .loaded(let entries):
+                List {
+                    if entries.isEmpty {
+                        ContentUnavailableView(
+                            "No entries yet",
+                            systemImage: "trophy",
+                            description: Text("The global leaderboard appears here once people finish sessions.")
+                        )
+                    } else {
+                        ForEach(Array(entries.enumerated()), id: \.element.id) { index, entry in
+                            globalRow(rank: index + 1, entry: entry)
+                        }
+                    }
+                }
+                .accessibilityIdentifier("social.globalBoard")
+            }
+        }
+    }
+
+    private func globalRow(rank: Int, entry: LeaderboardEntry) -> some View {
+        HStack(spacing: Spacing.m) {
+            Text("\(rank)")
+                .font(.title3.weight(.semibold))
+                .monospacedDigit()
+                .foregroundStyle(.secondary)
+                .frame(width: 28)
+
+            Text(entry.displayName)
+                .font(.body)
+
+            Spacer(minLength: 0)
+
+            Text(Int(entry.score).formatted())
+                .font(.title3.weight(.semibold))
+                .monospacedDigit()
+        }
+        .accessibilityElement(children: .combine)
     }
 
     private func row(rank: Int, profile: UserProfile, score: BronzScore) -> some View {

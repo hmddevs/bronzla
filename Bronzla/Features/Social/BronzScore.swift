@@ -15,7 +15,7 @@ import Foundation
 ///
 /// Pure and dependency-free, like `ExposureCalculator`, so the arithmetic can be tested without
 /// a store, a clock or a simulator.
-struct BronzScore: Equatable, Sendable {
+struct BronzScore: Equatable, Sendable, Codable {
     let total: Int
     let sessionCount: Int
     let cleanSessionCount: Int

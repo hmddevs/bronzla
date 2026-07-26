@@ -15,6 +15,10 @@
 	     has no honest reason to ship. -->
 	<key>com.apple.developer.healthkit</key>
 	<true/>
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
+	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.com.hmdcorp.bronzla</string>

@@ -1,13 +1,18 @@
+import OSLog
 import SwiftData
 import SwiftUI
 
 /// "Timer": set up a session, run it, close it out.
 struct TimerView: View {
+    private static let logger = Logger(subsystem: "com.hmdcorp.bronzla", category: "TimerView")
+
     @Environment(\.uvProvider) private var uvProvider
     @Environment(\.scenePhase) private var scenePhase
     @Environment(LocationService.self) private var locationService
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.leaderboardService) private var leaderboardService
     @Query private var profiles: [UserProfile]
+    @Query private var allSessions: [TanSession]
     @State private var activeStore = ActiveProfileStore()
 
     @State private var model = TanTimerModel()
@@ -256,6 +261,7 @@ struct TimerView: View {
                     placeName: report?.placeName ?? locationService.place?.name ?? "",
                     hourly: report?.hourly ?? []
                 )
+                pushScoreIfSignedIn()
             } label: {
                 Label("Save session", systemImage: "checkmark")
                     .frame(maxWidth: .infinity)
@@ -297,6 +303,38 @@ struct TimerView: View {
     private func loadUV() async {
         guard let place = locationService.place else { return }
         dashboard.load(from: uvProvider, place: place)
+    }
+
+    /// Best-effort sync to the global leaderboard, never surfaced to the user on failure.
+    ///
+    /// Mirrors the app's "never let a network hiccup interrupt the core flow" posture already
+    /// used for the UV cache: the session is already saved locally by the time this runs, so a
+    /// dropped connection here costs nothing but a delayed leaderboard update. The push sends
+    /// the recomputed running total, not a delta for this one session, matching the server's
+    /// overwrite-on-each-push semantics for `BronzlaScores`.
+    private func pushScoreIfSignedIn() {
+        guard let currentSession = leaderboardService.currentSession() else { return }
+        guard let profile else { return }
+
+        // Sign-in now requires a non-empty display name, so this should be unreachable in
+        // practice; guarded anyway rather than sending a known-invalid empty string to the
+        // server and having the submission silently fail forever.
+        let displayName = currentSession.displayName
+        guard !displayName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            Self.logger.error("Skipping leaderboard score submission: signed-in session has an empty display name.")
+            return
+        }
+
+        let owned = allSessions.filter { $0.profile?.persistentModelID == profile.persistentModelID }
+        let score = BronzScore.make(from: owned)
+
+        Task {
+            do {
+                try await leaderboardService.submitScore(score, displayName: displayName)
+            } catch {
+                // Silently swallowed by design; see the doc comment above.
+            }
+        }
     }
 }
 

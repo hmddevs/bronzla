@@ -21,6 +21,7 @@ struct BronzlaApp: App {
         #endif
         return WeatherKitUVProvider()
     }()
+    @State private var leaderboardService: any LeaderboardServiceProviding = LiveLeaderboardService()
 
     private let container: ModelContainer = {
         do {
@@ -56,6 +57,7 @@ struct BronzlaApp: App {
             RootView()
                 .environment(locationService)
                 .environment(\.uvProvider, uvProvider)
+                .environment(\.leaderboardService, leaderboardService)
         }
         .modelContainer(container)
     }
@@ -71,5 +73,18 @@ extension EnvironmentValues {
     var uvProvider: any UVDataProviding {
         get { self[UVProviderKey.self] }
         set { self[UVProviderKey.self] = newValue }
+    }
+}
+
+/// Injected rather than referenced directly so previews and tests can substitute
+/// `SampleLeaderboardProvider` without a real backend, which neither ever has.
+private struct LeaderboardServiceKey: EnvironmentKey {
+    static let defaultValue: any LeaderboardServiceProviding = SampleLeaderboardProvider()
+}
+
+extension EnvironmentValues {
+    var leaderboardService: any LeaderboardServiceProviding {
+        get { self[LeaderboardServiceKey.self] }
+        set { self[LeaderboardServiceKey.self] = newValue }
     }
 }

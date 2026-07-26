@@ -7,6 +7,52 @@ build clean in Release from wiped DerivedData, zero compiler warnings. 125 tests
 7 UI). The store listing is filled in for both `en-US` and `tr`: name, subtitle, description,
 keywords, promotional text, URLs, categories, age rating and review notes, all set via the API.
 
+**Sign in with Apple plus a global leaderboard has been added (2026-07-26), iOS side only.**
+`LeaderboardServiceProviding` (`Bronzla/Services/Leaderboard/`) mirrors `UVDataProviding`'s
+shape: `LiveLeaderboardService` (plain `URLSession`, no networking library) is wired to a
+placeholder base URL since the CDK backend in `infra/` is built and unit-tested but not yet
+deployed; `SampleLeaderboardProvider` backs previews and unit tests. Session token lives in the
+Keychain (`KeychainSessionStore`), never `UserDefaults` or SwiftData. Sign-in gates only the new
+"Global" segment of `FamilyBoardView` (renamed conceptually to a family/global leaderboard
+picker) and an account row in `SettingsView`; every other feature, including the family ranking,
+still works fully offline. `TimerView` pushes the recomputed running `BronzScore.total` (not a
+per-session delta) to the leaderboard after `TanTimerModel.finish()`, fire-and-forget, matching
+the existing "never let a network hiccup interrupt the core flow" posture. `PrivacyDetailView`
+and `PrivacyInfo.xcprivacy` were updated to disclose the optional, linked user-identifier
+collection this introduces. Not yet done: pointing `LiveLeaderboardService` at a real deployed
+URL, and the manual device-based Sign in with Apple + backend round-trip test from the plan.
+
+**Post-review hardening of Sign in with Apple + leaderboard (2026-07-26).** An independent
+security review of the above found the sign-in flow sent Apple's real `fullName` straight to the
+server as the public display name, contradicting the screen's own "Never your real name" promise.
+Fixed by inserting a required `DisplayNameEntryView` step (`Features/Social/AppleSignInView.swift`)
+between the Apple callback and `signIn(identityToken:displayName:)`: prefills with
+`credential.fullName?.givenName` only (never the family name, never the joined full name) when
+Apple grants one, starts blank otherwise (Apple only grants `fullName` on the very first
+authorisation per app; a reinstall or second device gets nothing), and disables "Continue" until
+the trimmed field is non-empty. Validation is a standalone `DisplayNameValidation` enum
+(`isAcceptable`/`trimmed`), unit-tested in isolation from the view. Three related hardening fixes
+in the same pass: `KeychainSessionStore` now uses
+`kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly` (was `AfterFirstUnlock`, which would restore a
+session token onto a different device from an encrypted backup) and `save()` returns a
+`@discardableResult Bool` with `Logger` calls on encode/write failure, rather than swallowing both
+via `try?` and a discarded `OSStatus`; `LeaderboardEntry.id` is now a client-generated `UUID`
+(excluded from `Codable` via a custom `CodingKeys`, so decoding server JSON that never sends an
+`id` still works, the synthesised `init(from:)` just uses the stored property's default) instead
+of the display name itself, fixing SwiftUI identity collisions when two people pick the same name;
+`TimerView.pushScoreIfSignedIn()` has a defensive empty-display-name guard (logs and skips) even
+though the new sign-in step should make an empty name unreachable in practice.
+
+**A second, unrelated, uncommitted change was already in progress in the working tree before
+this leaderboard work started**: `RootView.swift` now presents a new `OnboardingFlowView`
+(`Bronzla/Features/Onboarding/`, untracked) instead of `SkinTypeQuizView` directly, and this
+broke `BronzlaFlowUITests` before the leaderboard changes touched anything (confirmed via `git
+diff` showing those files modified pre-session, and by running the UI suite, which fails on
+`testQuizIsPresentedOnFirstLaunchAndCannotBeSkipped` even on a freshly erased simulator with no
+leaderboard code in the picture). Unit tests (124/124, including the new `Leaderboard` suite and
+a `BronzScore` Codable round-trip test) all pass; the UI suite failure is pre-existing and needs
+its own fix, unrelated to Sign in with Apple.
+
 **The Live Activity has been observed running, on build 7, via TestFlight feedback with a
 screenshot.** It has a real bug (see below), which is itself proof it renders: MEMORY.md and
 APPSTORE.md's older claims that it had never been observed are now outdated on this point,
@@ -574,3 +620,160 @@ Neither `BronzlaWidgets/Localizable.xcstrings` nor `BronzlaWatch/Localizable.xcs
 watch source trees. Until someone with write access to `Bronzla/` and `Shared/` adds those keys to
 the widget/watch catalogues (or duplicates the enum), the UV category badge on both extensions
 will silently render in English on a Turkish device, with no build error.
+
+## Backend (`infra/`, added 2026-07-26)
+
+AWS CDK (TypeScript) app for a new dedicated Bronzla AWS account (not yet created; deploy is
+blocked pending Umut, not a technical gap). `BronzlaBackendStack-dev`: three DynamoDB tables
+(`BronzlaUsers`, `BronzlaSessions` with TTL + a `SessionsByAppleSub` GSI, `BronzlaScores` with a
+`LeaderboardByScope` GSI), four Lambdas (`auth-apple`, `put-score`, `get-leaderboard`,
+`delete-account`) behind an API Gateway HTTP API. `npx cdk synth` exits 0; `npx tsc --noEmit`
+clean; `npx vitest run` is 19/19 green across five test files.
+
+**Two CDK API surface mismatches, fixed:** `NodejsFunctionProps["bundling"]` is not indexable off
+`NodejsFunction` itself (`NodejsFunction["bundling"]` does not exist as a type) — use
+`NonNullable<import("aws-cdk-lib/aws-lambda-nodejs").NodejsFunctionProps["bundling"]>` instead.
+`dynamodb.Table` has no `arnForIndex` method in the installed `aws-cdk-lib` version — build the
+GSI ARN manually as `` `${table.tableArn}/index/${indexName}` `` for scoped `dynamodb:Query` IAM
+policies.
+
+**Auth is inlined per Lambda handler (`lambda/shared/session-auth.ts`), not a separate API
+Gateway Lambda authoriser.** Documented, deliberate deviation from a naive "shared authoriser"
+reading: at four routes, a dedicated authoriser resource (its own Lambda, IAM role, caching
+config) is more moving parts than it saves, and inlining keeps each handler's 401 path in one
+file. `expiresAt` is checked explicitly in application code rather than trusted to DynamoDB TTL
+deletion, because TTL cleanup is eventually consistent and can lag well past the real expiry.
+
+**Vitest env vars for Lambda handlers must be set in `vitest.config.ts`'s `test.env` block, not
+inside a test file's own top-level `process.env.X = ...` line.** ES module imports are hoisted
+ahead of a test file's own top-level statements, so a handler's module-level
+`const TABLE = process.env.TABLE_NAME ?? ""` captures the empty string before the test file's own
+`process.env` assignment ever runs. `test.env` in the Vitest config is applied before any test
+module is imported, so it is visible from a handler's very first line. Symptom if this is missed:
+`TableName: ""` showing up in mocked SDK call assertions despite the env var apparently being set.
+
+**Delete-account fan-out is a primary `TransactWriteItems` (User + Score + up to 98 session
+deletes, the 100-item transaction cap minus 2) followed by further all-session-only transactions
+for any remainder.** Guarantees the account is atomically gone from the caller's perspective even
+for a user with far more than 98 active sessions; a failure on a later batch surfaces as a 500,
+never a partial-success 204, and a retry is safe because the User/Score deletes are idempotent
+(deleting an already-deleted key succeeds).
+
+## Security review log — infra/ (AWS CDK backend), 2026-07-26
+
+Reviewed pre-deploy (never deployed). Vulnerability classes found, with the wrong
+assumption and the invariant that replaces it:
+
+- **Broken session invalidation on account deletion.** Wrong assumption: a GSI query
+  returns every session a user owns, so deleting the query results revokes all access.
+  Right invariant: GSIs are eventually consistent, so a bearer token can outlive the
+  account row; every authorised request must confirm the owning user row still exists
+  (consistent read), and sessions must be deleted before the user row, not after.
+  `infra/lambda/delete-account.ts:78-96`, `infra/lambda/shared/session-auth.ts:54-70`.
+- **Fail-open expiry check.** Wrong assumption: a session record always carries a numeric
+  `expiresAt`. Right invariant: validate the type before comparing; a missing claim must
+  fail closed, never pass. `infra/lambda/shared/session-auth.ts:61`.
+- **Over-broad IAM for an authoriser read.** Wrong assumption: `grantReadData` on the
+  sessions table is least-privilege for a token lookup. Right invariant: an authoriser
+  needs `GetItem` on the table only; `Query`/`Scan` on a session table lets one
+  compromised Lambda enumerate every live bearer token.
+  `infra/lib/bronzla-backend-stack.ts:125,145,174`.
+- **Pseudonymous identifier treated as non-PII in logs.** Right invariant: `appleSub` is
+  a stable user identifier; log a truncated hash, not the value.
+  `infra/lambda/shared/session-auth.ts:65`, `infra/lambda/auth-apple.ts:98`.
+- **Sort-key encoding assumed integer input.** Validation allowed fractional scores,
+  which break the fixed-width padding and therefore leaderboard ordering.
+  `infra/lambda/shared/dynamo.ts:21`, `infra/lambda/put-score.ts:41`.
+
+No secrets, no payment-key references, no injection or SSRF found. Apple identity-token
+verification (`jose`, RS256, kid match, aud from env, iss, exp) is sound.
+
+### Second security pass, 2026-07-26 (still pre-deploy)
+Supersedes the closing line above: Apple identity-token verification is **not** sound when
+`APPLE_BUNDLE_ID` is absent.
+
+- **Audience check silently skipped on empty config (critical).** Wrong assumption: passing
+  the audience option to `jwtVerify` enforces it. `jose@5` gates the comparison on
+  `if (audience && ...)`, so an empty string is falsy and the `aud` value is never compared
+  (it is only required to be present). With `APPLE_BUNDLE_ID` unset, the `?? ""` fallback
+  turns the verifier into "any Apple-signed token for any app", i.e. full account takeover
+  by any third-party app's identity token. Right invariant: assert every security-relevant
+  environment variable is non-empty at module load and fail the cold start; never let a
+  falsy config value degrade a check to a no-op. Confirmed empirically.
+  `infra/lambda/shared/apple-jwt.ts:76,109`, `infra/lambda/auth-apple.ts:10`.
+- **JWKS cache has no invalidation on `kid` miss.** An unknown `kid` returns a hard failure
+  without refetching, so a warm container rejects every valid sign-in for up to an hour
+  after Apple rotates keys. Right invariant: a `kid` miss is a cache-staleness signal, so
+  refetch once (rate-limited) before failing. `infra/lambda/shared/apple-jwt.ts:99-102`.
+- **Unvalidated JWKS response is cached.** The fetch result is cast, not shape-checked, then
+  cached for an hour; one malformed 200 from Apple wedges all sign-ins. Right invariant:
+  validate before caching, and never cache a response that fails validation.
+  `infra/lambda/shared/apple-jwt.ts:36-52`.
+- **Bearer tokens stored in plaintext.** Right invariant: a session table is a credential
+  store; index by SHA-256 of the token so a table read is not directly replayable.
+  `infra/lambda/auth-apple.ts:88-96`, `infra/lambda/shared/session-auth.ts:47-52`.
+- **No server-side revocation path.** Sign-out is client-only, so a token lifted from the
+  Keychain stays valid for its full 90 days. Right invariant: any long-lived opaque session
+  needs a delete-the-row endpoint, not just local forgetting.
+- **No stage throttling and unbounded log retention.** `/auth/apple` is unauthenticated by
+  nature and does an outbound fetch per cold path; with no throttle it is a cost-DoS, and
+  log groups default to never expiring while carrying `appleSub`.
+  `infra/lib/bronzla-backend-stack.ts:91-187`.
+- **Runtime dependency declared as dev-only.** `jose` sits in `devDependencies` although
+  Lambda code imports it. `infra/package.json:19`.
+
+## Security review notes — infra (backend), round two, 2026-07-26
+- **Fail-open expiry check.** Wrong assumption: a missing `expiresAt` on a session row is
+  impossible because TTL writes it. Invariant: an authorisation predicate must require the
+  attribute's type, not just compare it (`typeof expiresAt === "number" && > now`).
+  `infra/lambda/shared/session-auth.ts:86`.
+- **Eventually consistent revocation.** Wrong assumption: a GSI query enumerates every
+  session belonging to a user. Invariant: revocation must delete sessions before the row
+  authorisation depends on, always include the token presented on the request, and back it
+  with a `ConsistentRead` existence check. `infra/lambda/delete-account.ts:85`,
+  `infra/lambda/shared/session-auth.ts:98`.
+- **CDK grant helpers as least privilege.** Wrong assumption: `grantWriteData` is narrow
+  because it is not `grantReadWriteData`. Invariant: it also grants DeleteItem, UpdateItem
+  and BatchWriteItem; spell out actions when a handler only ever does PutItem.
+  `infra/lib/bronzla-backend-stack.ts:115`, `:141`.
+- **PII in logs.** Invariant: Apple `sub` is PII, only ever logged via `hashAppleSub`.
+  `infra/lambda/shared/logger.ts:13`.
+
+## iOS frontend patterns — leaderboard build, 2026-07-26
+- **Session state is read fresh per screen, not shared via a second `@Observable`.** Both
+  `FamilyBoardView`'s Global segment and `SettingsView`'s account row call
+  `service.currentSession()` from their own `GlobalBoardModel` in `.task`, rather than lifting
+  sign-in state into an app-wide observable like `LocationService`. `TabView` retains off-screen
+  view state, so a shared object would have been the safer choice for instant cross-tab
+  consistency, but the codebase's "no model unless a screen coordinates async work" convention,
+  and Keychain reads being effectively free, made per-screen re-reads the better fit. Revisit if
+  a sign-out in one tab ever needs to be reflected instantly in another already-visible tab.
+- **Leaderboard score push is a full recompute, not a delta.** The backend's `BronzlaScores`
+  table overwrites one row per user per push, so `TimerView` recomputes
+  `BronzScore.make(from:)` over the profile's entire session history after each finish, the same
+  call `FamilyBoardView` already made, and pushes `.total`. Pushing only the just-finished
+  session's score would have been wrong against overwrite semantics.
+- **`GlobalBoardModel` takes the service as a call parameter (`load(using:)`), never stores
+  it**, matching `DashboardModel.load(from:place:)`. Keeps the model itself trivially testable
+  and consistent with the one existing `@Observable` screen model in the codebase.
+
+## Security review, 2026-07-26 (Sign in with Apple + leaderboard backend)
+Vulnerability class: sensitive-data disclosure through a client-supplied public field, plus
+stale-key availability failure in JWT verification.
+- **Wrong assumption:** that requesting only `.fullName` (never `.email`) from Apple is by itself
+  a minimal-disclosure posture. It is not: `AppleSignInView.swift:60-66` sends Apple's real
+  given + family name straight to the server as `displayName`, which `get-leaderboard.ts` then
+  publishes to every other user, directly contradicting the app's own copy ("Never your real
+  name", `AppleSignInView.swift:21` and `SettingsView.swift:317`). The plan called for the name to
+  be a *prefill* for an editable field; no editor was built, so the prefill became the value.
+- **Right invariant:** a field that is published to other users must be typed or confirmed by the
+  user before its first transmission. Never let an identity-provider-supplied real name become a
+  public value by default.
+- **Wrong assumption:** an unknown `kid` means "bad token". It also means "Apple rotated keys", so
+  a hard reject against a cached JWKS fails closed but bricks all sign-ins for the cache TTL
+  (`apple-jwt.ts:112`, fixed: refetch once on kid miss, floored at one refetch/minute so an
+  attacker-supplied random `kid` cannot amplify requests to Apple).
+- Verified-good patterns worth keeping: allow-list response projection in `get-leaderboard.ts:67`
+  rather than deleting fields; `hashAppleSub` so the raw `sub` is never logged
+  (`shared/logger.ts:13`); explicit `expiresAt` check instead of trusting DynamoDB TTL as the
+  security boundary (`shared/session-auth.ts:86`).

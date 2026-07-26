@@ -116,6 +116,19 @@ struct SocialTests {
         #expect(streaks.longest == 3)
     }
 
+    // MARK: - Codable
+
+    @Test("BronzScore round-trips through JSON, since it is pushed to the leaderboard")
+    func bronzScoreRoundTrips() throws {
+        let score = BronzScore(
+            total: 42, sessionCount: 5, cleanSessionCount: 4, burnCount: 1,
+            currentStreak: 2, longestStreak: 3, disciplineRate: 0.8
+        )
+        let data = try JSONEncoder().encode(score)
+        let decoded = try JSONDecoder().decode(BronzScore.self, from: data)
+        #expect(decoded == score)
+    }
+
     // MARK: - Badge.earned
 
     @Test("No sessions earns no badges")
