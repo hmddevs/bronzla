@@ -5,7 +5,7 @@
  */
 
 export const SITE = {
-  appStoreUrl: 'https://apps.apple.com/tr/app/bronzla/idPENDING', // TODO: replace idPENDING once App Store Connect issues the real app ID.
+  appStoreUrl: 'https://apps.apple.com/tr/app/bronzla/id6793729675',
   name: 'Bronzla',
   url: 'https://bronzla.app',
 } as const;

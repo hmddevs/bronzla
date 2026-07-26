@@ -42,16 +42,14 @@ repo, alongside the `.p8` and a `asc-jwt.sh` that mints a token with openssl alo
 
 Still outstanding for a public release, and none of it can be done from code:
 
-9. **Paid Applications Agreement.** Bronzla is paid-upfront, so the agreement must be active
-   and the banking and tax forms completed in Agreements, Tax, and Banking. Until that is done
-   the app cannot be sold at any price, and App Store Connect will not accept a non-free tier.
-10. **Price tier.** No price has been set on the record yet.
-11. **Privacy nutrition labels.** Portal-only, confirmed empirically: `appDataUsages`,
+9. **Price tier.** Set the app to free in App Store Connect. There is no purchase price to
+   configure, but the record still needs the live submission wiring finished.
+10. **Privacy nutrition labels.** Portal-only, confirmed empirically: `appDataUsages`,
     `dataUsagePublishState` and `appDataUsageCategories` all return 404 PATH_ERROR. The answers
     to paste are in "Privacy nutrition label answers" below.
-12. **Screenshot upload.** The PNGs are captured (see Screenshots) but uploading them needs the
+11. **Screenshot upload.** The PNGs are captured (see Screenshots) but uploading them needs the
     reservation-and-commit flow, or a paste into the portal.
-13. **App Group** must be re-attached in the portal if the App ID is ever recreated (no API).
+12. **App Group** must be re-attached in the portal if the App ID is ever recreated (no API).
 
 Archive command once signing is configured:
 
@@ -99,6 +97,8 @@ App Store Connect asks these as a questionnaire. The answers must match `Privacy
 - **Health & Fitness**: collected, not linked, not tracking. Purpose: App Functionality.
   (Sun exposure sessions.)
 - **Photos**: collected, not linked, not tracking. Purpose: App Functionality.
+- **User Content → Other User Content**: conservative add-on for session notes and profile
+  names stored on device. If you want the strictest match to the current build, include this.
 - **Contact Info, Identifiers, Usage Data, Diagnostics**: not collected.
 - **Third-party advertising / analytics**: none.
 - **Instagram Stories sharing**: the app checks whether Instagram is installed
@@ -236,7 +236,7 @@ Cildinizle ilgili endişeleriniz için dermatoloğa başvurun.
 Bronzla tells you how long you can stay in the sun, based on your skin type and the UV index
 right now.
 
-No ads, no subscription, no in-app purchases. You buy it once.
+Free. No ads, no subscription, no in-app purchases.
 
 BUILT AROUND YOUR SKIN
 A seven question Fitzpatrick assessment works out your skin type. The questions are written for
@@ -301,8 +301,8 @@ person. See a dermatologist about any concerns with your skin.
 Paste into the Review Notes field. This pre-empts the two most likely rejection reasons.
 
 ```
-Bronzla is a paid-upfront app with no in-app purchases, no subscriptions and no ads. No demo
-account is needed; there is no sign-in.
+Bronzla is free, with no in-app purchases, no subscriptions and no ads. No demo account is
+needed; there is no sign-in.
 
 MEDICAL DISCLAIMER
 The app provides general sun-safety guidance, not medical advice. A disclaimer appears on every
