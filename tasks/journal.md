@@ -168,3 +168,47 @@ Shipped as build 10, VALID. Full suite: 125 passed, 0 failed.
 - **Refs:** none created (blocked before archive/export/upload). If the archive still fails
   after Umut regenerates the profile, also clear `~/Library/MobileDevice/Provisioning Profiles/`
   before retrying (Xcode caches profiles there outside DerivedData).
+
+## 2026-08-04 — Build 12 resubmission after 1.4.1 rejection
+- **Kind:** fix
+- **Status:** resolved
+- **Reported:** "App rejected, fix it and re ssubmit." Apple rejected 1.0 (10) on 4 Aug under
+  guideline 1.4.1 Safety - Physical Harm: medical/health information, recommendations and
+  calculations shown without citations to sources, and citations must be easy for users to find.
+- **Scope:** Bronzla/Models/MedicalSource.swift (new), Bronzla/Features/Settings/MedicalSourcesView.swift
+  (new), Bronzla/DesignSystem/MedicalDisclaimer.swift (moved out of DashboardView), SettingsView,
+  DashboardView, SkinTypeResultView, InsightsView, AftercareAdvice, SkinType, ExposureCalculator
+  (comments only), Localizable.xcstrings
+- **Resolution:** Sources already existed in code comments but were invisible to users, which is
+  exactly what Apple objected to. Added a `MedicalSource` catalogue (WHO, ICNIRP, Fitzpatrick 1988,
+  ISO 24444, Petersen and Wulf 2014, AAD x2, Holick 2011, Mayo Clinic, Cleveland Clinic) and a
+  `MedicalSourcesView` where every entry is a tappable link. `MedicalDisclaimer` already appeared on
+  all 13 guidance screens, so it became the route in: it is now a button presenting the sources
+  sheet, putting citations one tap from every screen with medical content. Settings > About also
+  gained a direct Sources row, plus inline WHO and Fitzpatrick captions on the UV advice and skin
+  type result.
+  Two corrections fell out of the sourcing work. `recommendedSPF` for phototypes V/VI went 20 -> 30,
+  because the AAD guidance now cited recommends SPF 30+ for everyone and shipping 20 while citing it
+  would contradict our own source. The vitamin D melanin multipliers (1.0/0.8/0.55/0.4) have no
+  published basis and are now labelled model estimates in both comment and user-facing copy.
+  Aftercare no longer asserts unsourced harm for toothpaste and yoghurt (softened to absence of
+  evidence); olive oil stays, since trapping heat is documented.
+  **Deliberately did not change `ExposureCalculator` maths or the MED table.** The docs-researcher
+  flagged the MED values (200/250/300/450/600/1000) as a unit error against a study reporting
+  23/28/35/51 mJ/cm². That comparison is a category error: the app's values are erythemally
+  weighted J/m² (1 SED = 100 J/m², type II ~ 2.5 SED), the study measured unweighted solar-simulator
+  physical dose. Different quantities. The table is correct and the rejection was about citations,
+  not values.
+  Also checked the Instagram trademark question Umut raised: "Instagram" appears in no App Store
+  keyword, description or promotional field in either locale, and in-app it is one plain-text
+  `Label("Instagram Stories", systemImage: "camera.fill")` plus an `LSApplicationQueriesSchemes`
+  URL scheme. No logo, no wordmark styling, no endorsement implied. Nominative fair use, left as is.
+  Build 12 archived, exported with automatic signing via the ASC API key (manual signing could not
+  resolve profiles), uploaded, VALID. Stale rejected submission 5af0c680 cancelled, new submission
+  created, version 1.0 attached to build 12 and submitted. Now WAITING_FOR_REVIEW.
+  Build succeeded, 129/129 unit tests pass. The 7 BronzlaUITests failures are the known pre-existing
+  onboarding-wizard ones, untouched.
+- **Refs:** rejected submission 5af0c680-e6f9-43ed-bab8-aaa52319de6c (cancelled); new submission
+  be153505-7cdb-4364-9099-3c520caeb28f; build 12 8113bbf6-8374-4aa0-899c-c0a4531be080;
+  commit 77f1b54. `AGENTS.md` left untracked on purpose: stale copy of CLAUDE.md still saying
+  "Paid-upfront", contradicts the free release, needs deleting or rewriting separately.
