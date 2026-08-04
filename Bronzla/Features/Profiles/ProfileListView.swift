@@ -19,17 +19,6 @@ struct ProfileListView: View {
             ForEach(profiles) { profile in
                 row(for: profile)
             }
-
-            if profiles.count > 1 {
-                Section {
-                    NavigationLink {
-                        FamilyBoardView()
-                    } label: {
-                        Label("Family Ranking", systemImage: "trophy.fill")
-                    }
-                    .accessibilityIdentifier("profiles.familyRanking")
-                }
-            }
         }
         .navigationTitle("Profiles")
         .toolbar {

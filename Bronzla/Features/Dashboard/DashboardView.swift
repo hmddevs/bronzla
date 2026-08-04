@@ -217,6 +217,9 @@ struct DashboardView: View {
                 Text(category.advice)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                Text("UV index bands: World Health Organization")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
             }
         }
         .cardSurface()
@@ -267,16 +270,6 @@ struct DashboardView: View {
 
 /// Shown on every screen that gives exposure guidance. Non-negotiable: the numbers this app
 /// produces are population averages applied to a person it has never examined.
-struct MedicalDisclaimer: View {
-    var body: some View {
-        Text("This app does not give medical advice. Times are based on average values and vary from person to person. See a dermatologist about any concerns with your skin.")
-            .font(.caption2)
-            .foregroundStyle(.secondary)
-            .multilineTextAlignment(.leading)
-            .padding(.top, Spacing.s)
-    }
-}
-
 #Preview("High UV") {
     DashboardView()
         .environment(LocationService())

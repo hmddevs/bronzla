@@ -191,6 +191,7 @@ struct SettingsView: View {
                 OnboardingWizardView(skinType: profile?.skinType ?? .iii)
             }
             NavigationLink("Medical disclaimer") { DisclaimerDetailView() }
+            NavigationLink("Sources") { MedicalSourcesView() }
             NavigationLink("Privacy") { PrivacyDetailView() }
         } header: {
             Text("About")
@@ -278,6 +279,8 @@ struct DisclaimerDetailView: View {
                 See a dermatologist if you have moles, notice a change in them, have a family \
                 history of skin cancer, or react unusually to the sun. This app is never a \
                 substitute for an examination.
+
+                The published sources behind these times are listed under Sources, below.
                 """)
                 .font(.callout)
                 .foregroundStyle(.secondary)

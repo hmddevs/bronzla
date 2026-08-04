@@ -82,11 +82,14 @@ enum SkinType: Int, CaseIterable, Codable, Sendable, Identifiable {
     }
 
     /// Highest SPF worth recommending as a starting point for this phototype.
+    ///
+    /// The American Academy of Dermatology recommends broad spectrum SPF 30 or higher for
+    /// everyone, regardless of phototype, so no tier goes below that floor even for skin that
+    /// burns rarely.
     var recommendedSPF: Int {
         switch self {
         case .i, .ii: 50
-        case .iii, .iv: 30
-        case .v, .vi: 20
+        case .iii, .iv, .v, .vi: 30
         }
     }
 }

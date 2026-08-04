@@ -133,7 +133,11 @@ enum ExposureCalculator {
         let coverage = min(max(exposedBodyFraction, 0), 1)
 
         // Melanin competes with 7-dehydrocholesterol for the same photons, so darker
-        // phototypes need materially longer exposure for the same yield.
+        // phototypes need materially longer exposure for the same yield. The multipliers below
+        // are this app's own model estimates, not figures drawn from a published clinical
+        // source: they encode the direction of the effect described in the literature, but the
+        // exact magnitudes have not been validated against a trial. Treat any vitamin D figure
+        // derived from them as an indicative estimate, never a clinical one.
         let melaninEfficiency: Double
         switch skinType {
         case .i, .ii: melaninEfficiency = 1.0

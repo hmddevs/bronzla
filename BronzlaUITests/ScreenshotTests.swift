@@ -75,18 +75,8 @@ final class ScreenshotTests: XCTestCase {
         XCTAssertTrue(streakCalendar.waitForExistence(timeout: 20), "Tracker should show the streak calendar")
         capture("05-tracker", in: directory)
 
-        // 06: Tan Score / family ranking, reached via Settings > Profiles > Family Ranking.
+        // 06: Tan Score / family ranking, now a tab of its own.
         app.tabBars.buttons.element(boundBy: 4).tap()
-        let profilesLink = element("settings.profiles", in: app)
-        XCTAssertTrue(profilesLink.waitForExistence(timeout: 15), "Settings should offer a way to Profiles")
-        profilesLink.tap()
-
-        let familyRankingLink = element("profiles.familyRanking", in: app)
-        XCTAssertTrue(
-            familyRankingLink.waitForExistence(timeout: 15),
-            "Three seeded profiles should surface the Family Ranking link"
-        )
-        familyRankingLink.tap()
 
         let familyBoard = element("social.familyBoard", in: app)
         XCTAssertTrue(familyBoard.waitForExistence(timeout: 15), "The family ranking list should load")

@@ -97,8 +97,12 @@ enum AftercareAdvice {
                 reason: "It is a well known remedy, but oil traps heat in the skin and makes things worse."
             ),
             Caution(
-                action: "Do not apply vinegar or toothpaste",
-                reason: "Both irritate the skin and give no real benefit."
+                action: "Do not apply vinegar",
+                reason: "It irritates the skin and gives no real benefit."
+            ),
+            Caution(
+                action: "Toothpaste on a burn",
+                reason: "It is a popular folk remedy, but there is no good evidence it helps."
             ),
         ],
         prominentNotice: nil
@@ -109,7 +113,7 @@ enum AftercareAdvice {
         title: "There are signs of a mild burn",
         steps: [
             "Cool the area with a cool, damp cloth; repeat several times a day.",
-            "Apply a gentle compress with yoghurt or chilled aloe vera gel.",
+            "Apply a gentle compress with chilled aloe vera gel.",
             "Apply a soothing, fragrance-free moisturiser.",
             "Protect the area from the sun and from tight clothing.",
             "Drink plenty of water; a burn makes the skin lose more fluid than usual.",
@@ -118,6 +122,10 @@ enum AftercareAdvice {
             Caution(
                 action: "Do not apply olive oil",
                 reason: "It is a common belief, but oil traps heat and drives the burn deeper."
+            ),
+            Caution(
+                action: "Yoghurt as a burn remedy",
+                reason: "It is a popular folk remedy, but the evidence it helps is mixed; a cool compress works just as well."
             ),
             Caution(
                 action: "Do not let ice touch the skin directly",

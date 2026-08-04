@@ -43,6 +43,10 @@ struct SkinTypeResultView: View {
 
                 comparison
 
+                Text("Skin type scale: Fitzpatrick, 1988")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+
                 MedicalDisclaimer()
             }
             .padding(Spacing.l)

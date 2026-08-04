@@ -1,8 +1,9 @@
 import SwiftData
 import SwiftUI
 
-/// Tab shell. Five tabs is the ceiling before the bar starts feeling like a menu; the sixth
-/// and seventh features live inside these rather than beside them.
+/// Tab shell. Six tabs now that the leaderboard is primary navigation rather than a Settings
+/// sub-screen, per Umut's call to make Bronzla social; further features still live inside these
+/// rather than beside them.
 struct RootView: View {
     @Query private var profiles: [UserProfile]
     @Environment(\.modelContext) private var modelContext
@@ -24,7 +25,12 @@ struct RootView: View {
             Tab("Tracker", systemImage: "calendar", value: 3) {
                 TrackerView()
             }
-            Tab("Settings", systemImage: "gearshape.fill", value: 4) {
+            Tab("Leaderboard", systemImage: "trophy.fill", value: 4) {
+                NavigationStack {
+                    FamilyBoardView()
+                }
+            }
+            Tab("Settings", systemImage: "gearshape.fill", value: 5) {
                 SettingsView()
             }
         }

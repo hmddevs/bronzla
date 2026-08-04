@@ -1,6 +1,18 @@
 # Bronzla — project brain
 
 ## Current phase
+**Blocked (2026-07-26): build 1.0 (11) cannot be archived yet.** `CURRENT_PROJECT_VERSION` is
+bumped to 11 in `project.pbxproj` (all 10 occurrences, `MARKETING_VERSION` untouched at 1.0) and
+129/129 unit tests pass, but the Release archive fails: the existing `IOS_APP_STORE`
+provisioning profile "Bronzla App Store" (for `com.hmdcorp.bronzla`) predates the Sign in with
+Apple feature and does not carry the `com.apple.developer.applesignin` entitlement, even though
+`Config/Bronzla.entitlements` correctly declares it. Umut needs to enable Sign In with Apple on
+the `com.hmdcorp.bronzla` App ID in the Apple Developer portal and regenerate that profile; the
+archive command then needs no other change. If the archive still fails after the profile is
+regenerated, also clear `~/Library/MobileDevice/Provisioning Profiles/` before retrying, since
+Xcode caches profiles there outside DerivedData. Do not work around this by stripping the
+entitlement or switching to automatic signing.
+
 Shipping to TestFlight, as of 2026-07-23, build 1.0 (10), VALID on App Store Connect. All five
 tabs, social sharing, the family leaderboard and an Apple Watch app are built. All three targets
 build clean in Release from wiped DerivedData, zero compiler warnings. 125 tests pass (118 unit,
@@ -777,3 +789,60 @@ stale-key availability failure in JWT verification.
   rather than deleting fields; `hashAppleSub` so the raw `sub` is never logged
   (`shared/logger.ts:13`); explicit `expiresAt` check instead of trusting DynamoDB TTL as the
   security boundary (`shared/session-auth.ts:86`).
+
+## App Store 1.4.1 fix: medical citations, 2026-08-04
+Apple rejected v1.0 for medical information without citations "easy for the user to find". Fixed
+by turning `MedicalDisclaimer` into the citation entry point itself, not by adding a Settings row
+nobody would find.
+- **The fix that satisfies "easy to find" is making the disclaimer itself the link**, not adding
+  a separate menu item. `MedicalDisclaimer` (moved from `DashboardView.swift` to
+  `Bronzla/DesignSystem/MedicalDisclaimer.swift` once it became an interactive, cross-feature
+  component rather than one screen's private detail) is now a `Button` presenting
+  `MedicalSourcesView` in a sheet, with "Sources" appended as a visibly underlined, tinted run
+  inside the same `Text`, built by concatenating two `Text` values (`+`) rather than a separate
+  `Link` sibling, so the affordance reads as part of one sentence instead of a second control
+  competing for space. It is reachable identically from all 13 existing call sites (Dashboard,
+  Forecast, Aftercare, both Tracker screens, SkinTypeResult, Insights, both Onboarding steps, all
+  three Timer states) with no call-site changes needed, since the signature stayed
+  `MedicalDisclaimer()`.
+- **`DesignSystem/` was previously tokens-only** (`Palette.swift`); this is the first shared
+  *view* placed there. The precedent that existed (`WeatherAttributionView`, comparably
+  cross-feature) lives in one feature's own `Components/` folder instead, so this is a
+  deliberate exception: `MedicalDisclaimer` is used by essentially every feature, not one, so no
+  single feature's `Components/` folder was the natural owner.
+- **Citations for undated web pages must not carry a fabricated year.** `MedicalSource.year` is
+  `Int?`, not `Int`: three of the four AAD/WHO/Mayo/Cleveland Clinic web sources supplied in the
+  task brief carry no publication date, and inventing one (even a plausible "current year") would
+  itself be an unsourced claim in a screen whose entire purpose is sourcing.
+- **A citation for a number does not make the number correct if the citation contradicts it.**
+  `SkinType.recommendedSPF` said SPF 20 for types V/VI while the newly-added AAD source it now
+  sits next to recommends SPF 30+ for everyone; shipping the lower number while citing the
+  higher one would have been a self-contradiction visible to any reviewer who followed the link.
+  Fixed to a flat 30 floor across III–VI (50 stays for I/II). No test hard-coded 20; the only
+  SPF-monotonicity test (`SkinTypeQuizTests.recommendedSPFTracksSensitivity`) needed no change.
+- **An unsourced multiplier is not automatically wrong, but the comment must say so.** The
+  vitamin D melanin-efficiency multipliers in `ExposureCalculator.estimatedVitaminD()` encode a
+  real, published *direction* of effect (melanin competes with 7-DHC for UV photons) but the
+  exact values (1.0/0.8/0.55/0.4) are this app's own estimates, not measured constants from the
+  cited Holick 2011 paper. Fixed by comment only, per the task's explicit "do NOT change the
+  numbers" instruction on this file; the corresponding user-facing caveat was added to
+  `InsightsView`'s vitamin D card text instead, since that is where a user would actually see the
+  number.
+- **Softening an unsourced-harm claim sometimes means removing an unsourced-benefit claim, not
+  just rewording a warning.** `AftercareAdvice.mildBurnCare` recommended yoghurt as an effective
+  compress ingredient; no source in the citation catalogue backs that either. Fixed by dropping
+  yoghurt from the endorsed steps entirely and surfacing it instead as its own "no good evidence"
+  caution, structurally parallel to how toothpaste (previously bundled with vinegar under one
+  overstated "irritates the skin" claim) is now treated: both a folk remedy called out with "no
+  good evidence it helps" rather than an assertion of either harm or benefit. Vinegar, which the
+  task did not flag, kept its existing wording unchanged and was only split into its own
+  `Caution` entry for clarity.
+- **Verify by running the actual `xcresulttool` summary, not by tailing raw `xcodebuild test`
+  output.** A `tail -150` on the combined `xcodebuild test` log truncated the unit-test suite
+  results entirely, showing only the last-run UI test suite's "Executed 7 tests, with 8
+  failures" and making it look like everything failed. `xcrun xcresulttool get test-results
+  summary --path <xcresult>` gave the true split: 129 unit tests passed (matching the
+  pre-existing 129/129 baseline in this file, confirming the SPF and vitamin D changes broke
+  nothing), and the only 7 failures were all in `BronzlaUITests`
+  (`BronzlaFlowUITests`/`ScreenshotTests`), the same pre-existing onboarding-wizard-related
+  failures already on record above, unrelated to this change.

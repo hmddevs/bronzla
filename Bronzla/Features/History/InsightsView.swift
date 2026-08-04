@@ -314,7 +314,7 @@ struct InsightsView: View {
                 .font(.system(size: 34, weight: .semibold, design: .rounded))
                 .monospacedDigit()
 
-            Text("This is a rough estimate; age, body composition and previous sun exposure are not taken into account.")
+            Text("This is a rough estimate; age, body composition and previous sun exposure are not taken into account. The skin tone adjustment is this app's own internal estimate, not a published clinical figure.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

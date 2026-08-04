@@ -221,17 +221,6 @@
         }
       }
     },
-    "Apply a gentle compress with yoghurt or chilled aloe vera gel.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yoğurt veya soğutulmuş aloe vera jeli ile nazikçe kompres yapın."
-          }
-        }
-      }
-    },
     "Apply a soothing, fragrance-free moisturiser.": {
       "extractionState": "manual",
       "localizations": {
@@ -360,17 +349,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mavi, gri veya yeşil"
-          }
-        }
-      }
-    },
-    "Both irritate the skin and give no real benefit.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İkisi de tahriş eder, gerçek bir fayda sağlamaz."
           }
         }
       }
@@ -965,17 +943,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zeytinyağı sürmeyin"
-          }
-        }
-      }
-    },
-    "Do not apply vinegar or toothpaste": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sirke veya diş macunu sürmeyin"
           }
         }
       }
@@ -2949,17 +2916,6 @@
         }
       }
     },
-    "The times in this app are average values based on the Fitzpatrick skin type scale and the World Health Organization's definition of the UV index. Real skin response varies with medication, skin conditions, pregnancy, altitude, reflection from water and sand, cloud cover, and how well sunscreen has been applied.\n\nTreat these times as a rough guide, not an upper limit. If your skin starts to redden, move into the shade even if the time is not up.\n\nSee a dermatologist if you have moles, notice a change in them, have a family history of skin cancer, or react unusually to the sun. This app is never a substitute for an examination.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uygulamadaki süreler, Fitzpatrick cilt tipi ölçeğine ve Dünya Sağlık Örgütü'nün UV indeksi tanımına dayanan ortalama değerlerdir. Gerçek cilt tepkisi; ilaç kullanımı, cilt hastalıkları, hamilelik, rakım, suyun ve kumun yansıması, bulut örtüsü ve güneş kreminin ne kadar iyi sürüldüğü gibi pek çok etkene göre değişir.\n\nBu süreleri bir üst sınır değil, kaba bir rehber olarak görün. Cildiniz kızarmaya başlıyorsa süre dolmamış olsa bile gölgeye geçin.\n\nBeniniz varsa, benlerinizde değişiklik fark ederseniz, ailenizde cilt kanseri öyküsü varsa veya güneşe karşı olağan dışı tepkiler veriyorsanız bir dermatoloğa başvurun. Uygulama hiçbir koşulda muayenenin yerini tutmaz."
-          }
-        }
-      }
-    },
     "There are signs of a mild burn": {
       "extractionState": "manual",
       "localizations": {
@@ -3022,17 +2978,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu işlem geri alınamaz."
-          }
-        }
-      }
-    },
-    "This is a rough estimate; age, body composition and previous sun exposure are not taken into account.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaba bir tahmindir; yaş, vücut ölçüsü ve önceki güneşlenme dikkate alınmaz."
           }
         }
       }
@@ -3946,6 +3891,237 @@
           "stringUnit": {
             "state": "translated",
             "value": "seans"
+          }
+        }
+      }
+    },
+    "Sources": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaynaklar"
+          }
+        }
+      }
+    },
+    "This app does not give medical advice. Times are based on average values and vary from person to person. See a dermatologist about any concerns with your skin. ": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu uygulama tıbbi tavsiye vermez. Süreler ortalama değerlere dayanır ve kişiden kişiye değişir. Cildinizle ilgili herhangi bir endişeniz varsa bir dermatoloğa danışın. "
+          }
+        }
+      }
+    },
+    "Shows the published sources behind this guidance": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu tavsiyenin dayandığı yayımlanmış kaynakları gösterir"
+          }
+        }
+      }
+    },
+    "These are the published sources behind the times, thresholds and advice shown in Bronzla. Where a number in the app traces back to a paper or an official guideline, it is listed here.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunlar, Bronzla'da gösterilen süre, eşik ve tavsiyelerin dayandığı yayımlanmış kaynaklardır. Uygulamadaki bir sayı bir makaleye veya resmi bir kılavuza dayanıyorsa, kaynağı burada listelenir."
+          }
+        }
+      }
+    },
+    "Bronzla is not a substitute for an examination by a dermatologist.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bronzla, bir dermatolog muayenesinin yerini tutmaz."
+          }
+        }
+      }
+    },
+    "Opens the source in your browser": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaynağı tarayıcınızda açar"
+          }
+        }
+      }
+    },
+    "Vitamin D": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "D vitamini"
+          }
+        }
+      }
+    },
+    "Sunscreen": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş kremi"
+          }
+        }
+      }
+    },
+    "Aftercare": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonrası bakım"
+          }
+        }
+      }
+    },
+    "The published sources behind these times are listed under Sources, below.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sürelerin dayandığı yayımlanmış kaynaklar aşağıda Kaynaklar bölümünde listelenmiştir."
+          }
+        }
+      }
+    },
+    "The times in this app are average values based on the Fitzpatrick skin type scale and the World Health Organization's definition of the UV index. Real skin response varies with medication, skin conditions, pregnancy, altitude, reflection from water and sand, cloud cover, and how well sunscreen has been applied.\n\nTreat these times as a rough guide, not an upper limit. If your skin starts to redden, move into the shade even if the time is not up.\n\nSee a dermatologist if you have moles, notice a change in them, have a family history of skin cancer, or react unusually to the sun. This app is never a substitute for an examination.\n\nThe published sources behind these times are listed under Sources, below.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamadaki süreler, Fitzpatrick cilt tipi ölçeğine ve Dünya Sağlık Örgütü'nün UV indeksi tanımına dayanan ortalama değerlerdir. Gerçek cilt tepkisi; ilaçlar, cilt durumları, hamilelik, rakım, su ve kumdan yansıma, bulut örtüsü ve güneş kreminin ne kadar iyi uygulandığına göre değişir.\n\nBu süreleri kesin bir üst sınır değil, kaba bir rehber olarak değerlendirin. Cildiniz kızarmaya başlarsa, süre dolmamış olsa bile gölgeye geçin.\n\nBenlerinizde bir değişiklik fark ederseniz, ailenizde cilt kanseri öyküsü varsa veya güneşe alışılmadık bir tepki veriyorsanız bir dermatoloğa danışın. Bu uygulama hiçbir zaman bir muayenenin yerini tutmaz.\n\nBu sürelerin dayandığı yayımlanmış kaynaklar aşağıda Kaynaklar bölümünde listelenmiştir."
+          }
+        }
+      }
+    },
+    "UV index bands: World Health Organization": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV indeksi bantları: Dünya Sağlık Örgütü"
+          }
+        }
+      }
+    },
+    "Skin type scale: Fitzpatrick, 1988": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipi ölçeği: Fitzpatrick, 1988"
+          }
+        }
+      }
+    },
+    "This is a rough estimate; age, body composition and previous sun exposure are not taken into account. The skin tone adjustment is this app's own internal estimate, not a published clinical figure.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kaba bir tahmindir; yaş, vücut kompozisyonu ve önceki güneşe maruz kalma dikkate alınmaz. Cilt tonu düzeltmesi, yayımlanmış bir klinik değer değil, uygulamanın kendi dahili tahminidir."
+          }
+        }
+      }
+    },
+    "Do not apply vinegar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sirke sürmeyin"
+          }
+        }
+      }
+    },
+    "It irritates the skin and gives no real benefit.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cildi tahriş eder ve gerçek bir fayda sağlamaz."
+          }
+        }
+      }
+    },
+    "Toothpaste on a burn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanığa diş macunu sürmek"
+          }
+        }
+      }
+    },
+    "It is a popular folk remedy, but there is no good evidence it helps.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaygın bir halk çaresidir, ancak işe yaradığına dair sağlam bir kanıt yoktur."
+          }
+        }
+      }
+    },
+    "Apply a gentle compress with chilled aloe vera gel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soğutulmuş aloe vera jeli ile nazikçe kompres yapın."
+          }
+        }
+      }
+    },
+    "Yoghurt as a burn remedy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanığa yoğurt sürmek"
+          }
+        }
+      }
+    },
+    "It is a popular folk remedy, but the evidence it helps is mixed; a cool compress works just as well.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaygın bir halk çaresidir, ancak yardımcı olduğuna dair kanıtlar karışıktır; soğuk kompres de aynı derecede işe yarar."
           }
         }
       }
