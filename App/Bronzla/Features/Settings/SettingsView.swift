@@ -250,7 +250,7 @@ struct SettingsView: View {
             defer { isDeletingAccount = false }
             do {
                 try await leaderboardService.deleteAccount()
-                globalBoard.signOut(using: leaderboardService)
+                await globalBoard.signOut(using: leaderboardService)
             } catch {
                 accountDeletionError = (error as? LeaderboardError)?.errorDescription ?? error.localizedDescription
             }

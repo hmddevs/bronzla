@@ -24,9 +24,13 @@ protocol LeaderboardServiceProviding: Sendable {
     /// server-side. This is the mandatory Apple Guideline 5.1.1(v) account-deletion path.
     func deleteAccount() async throws
 
-    /// Clears the locally stored session without contacting the server. Used for local
-    /// sign-out, distinct from `deleteAccount()` which also erases server-side data.
-    func signOut()
+    /// Revokes the session server-side, then clears the locally stored session, distinct from
+    /// `deleteAccount()` which also erases the leaderboard entry itself.
+    ///
+    /// The server round trip is best-effort: a live implementation must clear the local session
+    /// even when the request fails, so a network error never traps someone in a signed-in state.
+    /// The server-side session TTL is the backstop for a revocation that could not be delivered.
+    func signOut() async throws
 
     /// The session restored from local storage on launch, or `nil` if nobody is signed in.
     func currentSession() -> LeaderboardSession?

@@ -55,8 +55,12 @@ final class GlobalBoardModel {
         }
     }
 
-    func signOut(using service: any LeaderboardServiceProviding) {
-        service.signOut()
+    /// Revokes the session and clears it locally. The local clear happens regardless of whether
+    /// the server round trip succeeds, mirroring `LiveLeaderboardService.signOut()`'s own
+    /// best-effort revocation: this model must never leave someone stuck signed in on the
+    /// strength of a network error.
+    func signOut(using service: any LeaderboardServiceProviding) async {
+        try? await service.signOut()
         session = nil
         phase = .idle
     }

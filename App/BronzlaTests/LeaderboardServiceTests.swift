@@ -57,6 +57,50 @@ struct LeaderboardServiceTests {
         #expect(signedOut.currentSession() == nil)
     }
 
+    @Test("Sign out revokes the session without throwing when the server call succeeds")
+    func signOutSucceeds() async throws {
+        let service = SampleLeaderboardProvider()
+        try await service.signOut()
+    }
+
+    @Test("Sign out surfaces the underlying failure when the server call fails")
+    func signOutSurfacesFailure() async {
+        let service = SampleLeaderboardProvider(failure: .network("offline"))
+        await #expect(throws: LeaderboardError.network("offline")) {
+            try await service.signOut()
+        }
+    }
+
+    @Test("GlobalBoardModel clears the local session on sign out")
+    @MainActor
+    func globalBoardModelClearsSessionOnSignOut() async {
+        let session = LeaderboardSession(sessionToken: "abc", displayName: "Deniz")
+        let service = SampleLeaderboardProvider(storedSession: session)
+        let model = GlobalBoardModel()
+        model.restoreSession(using: service)
+        #expect(model.session == session)
+
+        await model.signOut(using: service)
+
+        #expect(model.session == nil)
+        #expect(model.phase == .idle)
+    }
+
+    @Test("GlobalBoardModel still clears the local session when the server call throws")
+    @MainActor
+    func globalBoardModelClearsSessionWhenSignOutThrows() async {
+        let session = LeaderboardSession(sessionToken: "abc", displayName: "Deniz")
+        let service = SampleLeaderboardProvider(failure: .network("offline"), storedSession: session)
+        let model = GlobalBoardModel()
+        model.restoreSession(using: service)
+        #expect(model.session == session)
+
+        await model.signOut(using: service)
+
+        #expect(model.session == nil)
+        #expect(model.phase == .idle)
+    }
+
     @Test("Two entries with the same display name still get distinct identities")
     func entriesWithSameDisplayNameHaveDistinctIDs() {
         let first = LeaderboardEntry(displayName: "Deniz", score: 100)

@@ -38,5 +38,7 @@ struct SampleLeaderboardProvider: LeaderboardServiceProviding {
         if let failure { throw failure }
     }
 
-    func signOut() {}
+    func signOut() async throws {
+        if let failure { throw failure }
+    }
 }

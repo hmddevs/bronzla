@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 
 /// Live implementation of `LeaderboardServiceProviding`, talking to the Bronzla backend over
 /// plain `URLSession` and `Codable`. The first custom HTTP client in the app: kept a thin
@@ -13,6 +14,7 @@ struct LiveLeaderboardService: LeaderboardServiceProviding {
     private let baseURL: URL
     private let session: URLSession
     private let store: KeychainSessionStore
+    private let logger = Logger(subsystem: "com.hmdcorp.bronzla", category: "LiveLeaderboardService")
 
     init(baseURL: URL = LiveLeaderboardService.devBaseURL, session: URLSession = .shared, store: KeychainSessionStore = KeychainSessionStore()) {
         self.baseURL = baseURL
@@ -85,7 +87,24 @@ struct LiveLeaderboardService: LeaderboardServiceProviding {
         store.clear()
     }
 
-    func signOut() {
+    func signOut() async throws {
+        // Best-effort server-side revocation: the person must never be left stuck signed in
+        // because the network happened to be down, so the local Keychain entry is cleared
+        // whichever way this goes, and any failure just falls back to the session's own TTL.
+        guard let currentSession = store.load() else {
+            store.clear()
+            return
+        }
+
+        var request = URLRequest(url: baseURL.appending(path: "auth/signout"))
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(currentSession.sessionToken)", forHTTPHeaderField: "Authorization")
+
+        do {
+            try await sendExpectingNoBody(request)
+        } catch {
+            logger.error("Server-side sign-out failed, clearing the local session anyway: \(error.localizedDescription)")
+        }
         store.clear()
     }
 
