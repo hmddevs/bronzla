@@ -26,9 +26,20 @@ final class ScreenshotTests: XCTestCase {
         ),
     ]
 
-    private static let outputRoot = URL(
-        fileURLWithPath: "/Users/umutguden/Desktop/TanApp/build/screenshots"
-    )
+    /// Where the captured App Store screenshots are written.
+    ///
+    /// Set `BRONZLA_SCREENSHOT_DIR` in the test scheme's environment to choose the location.
+    /// Without it, the run falls back to a `bronzla-screenshots` directory under the system
+    /// temporary directory, which works on any machine. This deliberately avoids a hardcoded
+    /// path: one used to live here, and it only worked on the author's own laptop.
+    private static let outputRoot: URL = {
+        if let configured = ProcessInfo.processInfo.environment["BRONZLA_SCREENSHOT_DIR"],
+           !configured.isEmpty {
+            return URL(fileURLWithPath: configured, isDirectory: true)
+        }
+        return FileManager.default.temporaryDirectory
+            .appendingPathComponent("bronzla-screenshots", isDirectory: true)
+    }()
 
     func testCapturesAppStoreScreenshotsInBothLocales() throws {
         for run in Self.runs {
