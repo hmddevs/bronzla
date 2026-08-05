@@ -1,5 +1,7 @@
 # Bronzla
 
+![Bronzla: safe sun exposure, worked out properly. A free, open source iOS and watchOS app.](docs/assets/social-preview.png)
+
 Bronzla tells you how long you can safely stay in the sun, based on your skin type and the
 live UV index. It is a free iOS and watchOS app, built for Türkiye first.
 
