@@ -1,0 +1,42 @@
+# Backend tests only.
+#
+# There is deliberately no iOS job here. Building the app requires Xcode 26 and an
+# iOS 18 simulator runtime, and the WeatherKit-backed targets need an Apple Developer
+# team, so a hosted-runner build would be fragile and would fail for reasons unrelated
+# to any given change. The iOS suite is run locally before merge; see CONTRIBUTING.md.
+name: Backend
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      - name: CDK synth
+        # Synthesises the stack without AWS credentials, which catches construct-level
+        # errors that the unit tests do not.
+        run: npx cdk synth --quiet
