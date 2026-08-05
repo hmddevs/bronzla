@@ -11,34 +11,66 @@ const { locale } = Astro.props;
 const copy =
   locale === 'tr'
     ? {
+        eyebrow: 'Bugünkü güvenli süre',
         unit: 'dakika',
-        context: 'UV 8 · Cilt tipi III · SPF 30',
         lede: 'Bugün güvenle güneşte kalabileceğiniz süre. Güncel UV indeksi, cilt tipiniz ve SPF değerinizle anında hesaplanır.',
-        frameLabel: 'Panel, yüksek UV okuması',
-        frameHint: 'UV 8 · Çok yüksek',
+        inputs: [
+          { label: 'UV indeksi', value: '8', signal: true },
+          { label: 'Cilt tipi', value: 'III', signal: false },
+          { label: 'SPF', value: 'Yok', signal: false },
+        ],
+        frameLabel: 'UV tahmini, günün en riskli saatleri',
+        frameHint: 'Zirve UV 8 · 12.00 - 15.00',
       }
     : {
+        eyebrow: 'Safe time today',
         unit: 'minutes',
-        context: 'UV 8 · Skin type III · SPF 30',
         lede: 'Your safe time in the sun today. Calculated instantly from the current UV index, your skin type and your SPF.',
-        frameLabel: 'Dashboard, high UV reading',
-        frameHint: 'UV 8 · Very high',
+        inputs: [
+          { label: 'UV index', value: '8', signal: true },
+          { label: 'Skin type', value: 'III', signal: false },
+          { label: 'SPF', value: 'None', signal: false },
+        ],
+        frameLabel: 'UV forecast, the day\u2019s riskiest hours',
+        frameHint: 'Peak UV 8 · 12.00 - 15.00',
       };
 ---
 
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="context">{copy.context}</p>
+      <p class="eyebrow eyebrow-signal">{copy.eyebrow}</p>
       <h1>
-        <span class="counter" data-target="38">38</span>
+        {/* Not a decorative figure: this is what ExposureCalculator returns for the inputs
+            stated below it, and it matches the worked example published on the science page.
+            UV 8 gives 0.2 W/m²; phototype III has an MED of 300 J/m², so burn is 1500 s and
+            a session is 60 per cent of that. Change the inputs and this must be recomputed. */}
+        <span class="counter" data-target="15">15</span>
         <span class="unit">{copy.unit}</span>
       </h1>
       <p class="lede">{copy.lede}</p>
       <StoreButton locale={locale} size="large" />
+      {/* The inputs behind the figure, stated rather than buried in a caption: the app's
+          own readout idiom, and the one place the accent marks the risky reading. */}
+      <dl class="data-strip hero-inputs">
+        {
+          copy.inputs.map((input) => (
+            <div class="input">
+              <dt>{input.label}</dt>
+              <dd class={input.signal ? 'is-signal' : undefined}>{input.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
     <div class="hero-frame">
-      <DeviceFrame label={copy.frameLabel} hint={copy.frameHint} index={1} />
+      <DeviceFrame
+        src={`${locale}/04-forecast.webp`}
+        label={copy.frameLabel}
+        hint={copy.frameHint}
+        index={1}
+        locale={locale}
+      />
     </div>
   </div>
 </section>
@@ -52,75 +84,86 @@ const copy =
 
 <style>
   /*
-   * Top padding is deliberately tight: the fold should open close to the figure,
-   * not build up to it. Bottom padding stays generous, per DESIGN.md's rule that the
-   * hero gets the most separation from the section that follows.
+   * Top padding is deliberately tight: the fold should open close to the figure, not
+   * build up to it. The frame's own height already separates the hero from the section
+   * below, so the trailing space is the section step rather than the open one.
    */
   .hero {
-    padding-block: clamp(0.75rem, 2vw, 1.75rem) clamp(2.5rem, 6vw, 5rem);
+    padding-block: clamp(1.5rem, 4vw, 3.5rem) var(--space-section);
   }
 
   /*
-   * flex-start, not center: the device frame is tall enough (App Store aspect ratio)
-   * that centring the copy column against it pushes the figure down the page and
-   * recreates the dead-space problem padding-block alone cannot fix.
+   * Asymmetric on purpose: the copy column takes the larger share and the frame the
+   * smaller, so the fold reads as a page with a subject rather than a symmetrical
+   * two-up template. Top-aligned, because the frame is tall enough that centring it
+   * against the copy would push the figure down the page.
    */
   .hero-grid {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: clamp(2rem, 5vw, 4rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+    align-items: start;
+    gap: clamp(2.5rem, 6vw, 5rem);
   }
 
   .hero-copy {
-    flex: 1 1 440px;
-    max-width: 680px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.25rem;
-  }
-
-  .context {
-    color: var(--ink-muted);
-    font-size: var(--text-small);
-    font-weight: 600;
-    margin: 0;
+    gap: 1.5rem;
+    max-width: 40rem;
   }
 
   h1 {
     display: flex;
     align-items: baseline;
-    gap: 0.6rem;
+    flex-wrap: wrap;
+    gap: 0 0.85rem;
+    margin-top: -0.25rem;
+  }
+
+  /*
+   * The figure is the largest thing on the site by a wide margin. That jump is the
+   * hierarchy; the accent only confirms what the scale has already said.
+   */
+  .counter {
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-figure);
+    line-height: 0.85;
+    letter-spacing: -0.045em;
     color: var(--accent);
   }
 
-  .counter {
-    font-variant-numeric: tabular-nums;
-    font-size: var(--text-display);
-  }
-
   .unit {
-    font-size: var(--text-h3);
-    font-weight: 700;
+    font-size: clamp(1.5rem, 0.9rem + 2vw, 2.5rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.02em;
     color: var(--ink);
   }
 
-  .lede {
-    color: var(--ink-muted);
-    font-size: var(--text-body);
-    max-width: 46ch;
+  .hero-inputs {
+    align-self: stretch;
+    max-width: 30rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-inputs .input {
+    flex: 1 1 7rem;
+    padding: 0.9rem 1.25rem 0 0;
+  }
+
+  .hero-inputs .input + .input {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--hairline);
   }
 
   .hero-frame {
-    flex: 0 1 380px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
+  /* Shorter than the component default: a full-height empty slot dominates the fold. */
   .hero-frame :global(.device-frame) {
-    max-width: 380px;
+    max-width: 16rem;
   }
 
   /*
@@ -148,9 +191,17 @@ const copy =
     }
   }
 
-  @media (max-width: 640px) {
-    h1 {
-      flex-wrap: wrap;
+  @media (max-width: 60rem) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-frame {
+      justify-content: flex-start;
+    }
+
+    .hero-frame :global(.device-frame) {
+      max-width: 16rem;
     }
   }
 </style>

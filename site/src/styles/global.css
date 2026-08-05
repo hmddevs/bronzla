@@ -59,7 +59,7 @@ svg {
 h1,
 h2,
 h3 {
-  font-weight: 800;
+  font-weight: var(--weight-display);
   margin: 0;
   text-wrap: balance;
 }
@@ -80,7 +80,7 @@ h3 {
   font-size: var(--text-h3);
   letter-spacing: -0.01em;
   line-height: 1.25;
-  font-weight: 700;
+  font-weight: var(--weight-strong);
 }
 
 p {
@@ -98,10 +98,13 @@ small,
 
 a {
   color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
 }
 
 a:hover {
   color: var(--accent-hover);
+  text-decoration-thickness: 2px;
 }
 
 a:focus-visible,
@@ -119,32 +122,252 @@ button:focus-visible,
 }
 
 /*
- * Prose: long-form reading measure for science/legal pages. Headings and tables inside
- * .prose get their own rules rather than leaking global table styling onto components
- * that never asked for it (DeviceFrame, UVScale, etc. have no tables).
+ * Eyebrow: the small label that sits above a heading and gives a section a name before
+ * the heading gives it a claim. Hierarchy from tracking and weight, not from colour;
+ * the leading rule is a rule, not an ornament, and marks where the section begins.
+ */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-strong);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  max-width: none;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  flex: none;
+  background: var(--ink-faint);
+}
+
+/* The one eyebrow per view that names the thing the page is actually about. */
+.eyebrow-signal {
+  color: var(--accent);
+}
+
+.eyebrow-signal::before {
+  background: var(--accent);
+  width: 2.5rem;
+  height: 2px;
+}
+
+/* Lede: the paragraph directly under a heading. One step up from body, never muted grey. */
+.lede {
+  font-size: var(--text-lede);
+  line-height: 1.45;
+  color: var(--ink-muted);
+  max-width: 46ch;
+}
+
+/*
+ * Quiet action link: ink text carrying an accent rule, with a chevron that moves on hover.
+ * The child moves, not the parent, so the link's own box stays put in the layout.
+ */
+.text-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--ink);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-small);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 0.2rem;
+}
+
+.text-link::after {
+  content: '\2192';
+  color: var(--accent);
+  transition: transform var(--duration-control) var(--ease-out-quint);
+}
+
+.text-link:hover {
+  color: var(--ink);
+}
+
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  transform: translateX(4px);
+}
+
+/* Section density. Pages compose these deliberately rather than repeating one value. */
+.section-tight {
+  padding-block: var(--space-tight);
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section-open {
+  padding-block: var(--space-open);
+}
+
+.ruled {
+  border-top: 1px solid var(--hairline);
+}
+
+/* Raised panel: the second elevation. Panels carry dense content, never long prose. */
+.panel {
+  background: var(--surface-raised);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-panel);
+}
+
+/*
+ * Page header. Shared by every inner page so the entry to a page is one recognisable
+ * shape: eyebrow, display heading, then a lede at a size that separates it from body.
+ */
+.page-header {
+  padding-block: clamp(3rem, 7vw, 6rem) var(--space-tight);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.page-header h1 {
+  max-width: 16ch;
+}
+
+.page-header p {
+  font-size: var(--text-lede);
+  line-height: 1.45;
+  color: var(--ink-muted);
+  max-width: 56ch;
+}
+
+/*
+ * Data strip: a row of labelled values divided by hairlines. Used where the page states
+ * the inputs behind a figure, which is the app's own idiom rather than a card grid.
+ */
+.data-strip {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.data-strip li {
+  flex: 1 1 8rem;
+  padding: 0.9rem 1.25rem 0 0;
+}
+
+.data-strip li + li {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--hairline);
+}
+
+.data-strip dt,
+.data-strip .data-label {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-strong);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.data-strip dd,
+.data-strip .data-value {
+  margin: 0.25rem 0 0;
+  font-size: var(--text-h3);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.data-strip .is-signal {
+  color: var(--accent);
+}
+
+@media (max-width: 30rem) {
+  .data-strip dt,
+  .data-strip .data-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+/*
+ * Prose: the long-form layout for the science and legal pages. Headings hang in a margin
+ * column beside the passage they title, so a 1200px viewport is not two thirds empty next
+ * to a 68ch measure. Table and list rules are scoped to .prose rather than global, so they
+ * do not leak onto components that never asked for them. Body elements are pinned to the
+ * second column explicitly; without that, grid auto-flow would drop the paragraph after a
+ * heading back into the margin.
  */
 .prose {
-  max-width: var(--measure);
+  max-width: none;
+  display: grid;
+  grid-template-columns: var(--margin-col) minmax(0, var(--measure));
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.prose > * {
+  grid-column: 2;
 }
 
 .prose > * + * {
   margin-top: 1.25em;
 }
 
-.prose h2 {
-  margin-top: 2.5em;
-  padding-top: 1.5em;
-  border-top: 1px solid var(--hairline);
+.prose > h2 {
+  grid-column: 1;
+  align-self: start;
+  font-size: var(--text-h3);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--accent);
+  text-wrap: pretty;
 }
 
-.prose h2:first-child {
+.prose > h2:first-child {
   margin-top: 0;
-  padding-top: 0;
-  border-top: none;
+}
+
+/* The first body element after a heading shares the heading's row, so align their tops. */
+.prose > h2 + * {
+  margin-top: 3.5rem;
+}
+
+.prose > h2:first-child + * {
+  margin-top: 0;
 }
 
 .prose h3 {
-  margin-top: 2em;
+  margin-top: 2.5em;
+}
+
+@media (max-width: 63rem) {
+  /*
+   * min(), not a bare 68ch: at 320px the measure is wider than the content box, and every
+   * child, the scrollable tables included, would push the page sideways.
+   */
+  .prose {
+    display: block;
+    max-width: min(var(--measure), 100%);
+  }
+
+  .prose > h2 {
+    margin-top: 2.75rem;
+  }
+
+  .prose > h2 + *,
+  .prose > h2:first-child + * {
+    margin-top: 1.25em;
+  }
 }
 
 .prose p,
@@ -164,6 +387,14 @@ button:focus-visible,
 .prose strong {
   color: var(--ink);
   font-weight: 700;
+}
+
+/*
+ * Citation URLs are single unbreakable tokens and push a 320px viewport sideways. `anywhere`
+ * rather than `break-word` so the break also counts towards min-content sizing.
+ */
+.prose a {
+  overflow-wrap: anywhere;
 }
 
 .prose code {
@@ -198,31 +429,50 @@ button:focus-visible,
   min-width: 480px;
   border-collapse: collapse;
   font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
 }
 
 .prose caption {
   text-align: left;
   color: var(--ink-faint);
-  font-size: var(--text-small);
-  margin-bottom: 0.5rem;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-strong);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
   caption-side: top;
 }
 
 .prose th,
 .prose td {
   text-align: left;
-  padding: 0.65rem 1rem;
+  padding: 0.7rem 1.25rem;
   border-bottom: 1px solid var(--hairline);
 }
 
 .prose th {
-  color: var(--ink);
-  font-weight: 700;
+  color: var(--ink-faint);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   border-bottom: 1px solid var(--ink-faint);
+  vertical-align: bottom;
 }
 
 .prose td {
   color: var(--ink-muted);
+}
+
+/* The row key reads first: full ink and bold against muted cell text beside it. */
+.prose tbody td:first-child {
+  color: var(--ink);
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .prose th:first-child,
@@ -259,6 +509,61 @@ button:focus-visible,
   font-style: normal;
   color: var(--ink);
   font-weight: 600;
+}
+
+/*
+ * Question-and-answer and clause lists share the long-form page's hanging layout: the
+ * question sits in the margin column and the answer runs at a reading measure beside it.
+ * A single left-aligned 68ch column inside a 1200px page leaves half the viewport empty,
+ * which is what made these pages read as an unstyled document.
+ */
+.qa-list,
+.terms-body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding-block: 0 var(--space-section);
+}
+
+.qa,
+.term {
+  display: grid;
+  grid-template-columns: var(--margin-col) minmax(0, var(--measure));
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  border-top: 1px solid var(--hairline);
+  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.qa h2,
+.term h2,
+.qa h3,
+.term h3 {
+  font-size: var(--text-h3);
+  text-wrap: pretty;
+}
+
+.qa p,
+.term p {
+  color: var(--ink-muted);
+}
+
+.qa p + p,
+.term p + p {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 63rem) {
+  .qa,
+  .term {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: min(var(--measure), 100%);
+  }
+
+  .qa p,
+  .term p {
+    margin-top: 0.6rem;
+  }
 }
 
 .visually-hidden {

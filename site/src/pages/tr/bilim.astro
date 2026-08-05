@@ -33,6 +33,7 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <header class="container page-header">
+    <p class="eyebrow eyebrow-signal">Yöntem ve kaynaklar</p>
     <h1>Bronzla'nın bilimsel dayanağı</h1>
     <p>
       Bronzla'nın gösterdiği her sayı yayınlanmış bir kaynağa dayanır. Bu sayfa tüm yöntemi
@@ -378,17 +379,7 @@ yanma süresi = 300 / 0.2   = 1500 s = 25 dakika</code></pre>
 </BaseLayout>
 
 <style>
-  .page-header {
-    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
-  }
-
-  .page-header p {
-    color: var(--ink-muted);
-    margin-top: 1rem;
-    max-width: var(--measure);
-  }
-
   .prose {
-    padding-block: 1rem clamp(3rem, 6vw, 5rem);
+    padding-block: var(--space-tight) var(--space-section);
   }
 </style>

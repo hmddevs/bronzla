@@ -43,9 +43,15 @@ const bands =
 </ul>
 
 <style>
+  /*
+   * Five equal columns, never auto-fit: auto-fit wraps to a ragged 3-2 or 2-2-1 block on
+   * a narrow viewport, which stops reading as a scale at all. Below 40rem the strip turns
+   * on its side and each band becomes a full-width row, so the order still reads as an
+   * ascending scale.
+   */
   .uv-scale {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 2px;
     list-style: none;
     margin: 0;
@@ -56,10 +62,11 @@ const bands =
 
   .band {
     color: var(--surface);
-    padding: 1rem 1.1rem;
+    padding: 1.1rem 1.15rem 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0.1rem;
+    min-height: 6.5rem;
   }
 
   /*
@@ -69,15 +76,41 @@ const bands =
    * the 4.5:1 body-text floor but clears the 3:1 large-text floor with margin.
    */
   .range {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     font-variant-numeric: tabular-nums;
-    opacity: 0.85;
   }
 
   .name {
     font-weight: 700;
     font-size: 1.2rem;
     line-height: 1.2;
+    margin-top: auto;
+    text-wrap: balance;
+  }
+
+  @media (max-width: 40rem) {
+    .uv-scale {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .band {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.9rem;
+      min-height: 0;
+      padding: 0.8rem 1.1rem;
+    }
+
+    .range {
+      font-size: 1.35rem;
+      min-width: 3.5ch;
+    }
+
+    .name {
+      margin-top: 0;
+    }
   }
 </style>
