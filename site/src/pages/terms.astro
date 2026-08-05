@@ -20,6 +20,7 @@ const jsonLd = [breadcrumbList([{ name: 'Terms', path: '/terms' }], 'en')];
   jsonLd={jsonLd}
 >
   <header class="container page-header">
+    <p class="eyebrow">Using the app</p>
     <h1>Terms</h1>
     <p>These terms cover your use of Bronzla, the sun exposure app published by HMD Developments.</p>
   </header>
@@ -82,31 +83,3 @@ const jsonLd = [breadcrumbList([{ name: 'Terms', path: '/terms' }], 'en')];
   </section>
 </BaseLayout>
 
-<style>
-  .page-header {
-    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
-  }
-
-  .page-header p {
-    color: var(--ink-muted);
-    margin-top: 1rem;
-    max-width: var(--measure);
-  }
-
-  .terms-body {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding-block: 1rem clamp(3rem, 6vw, 5rem);
-  }
-
-  .term {
-    border-top: 1px solid var(--hairline);
-    padding-top: 1.5rem;
-  }
-
-  .term p {
-    color: var(--ink-muted);
-    margin-top: 0.6rem;
-  }
-</style>

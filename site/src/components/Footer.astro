@@ -57,7 +57,6 @@ const rights = locale === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reser
     background: var(--surface);
     border-top: 1px solid var(--hairline);
     padding-block: clamp(2.5rem, 4vw, 4rem);
-    margin-top: clamp(3rem, 6vw, 6rem);
   }
 
   .top {
@@ -72,6 +71,8 @@ const rights = locale === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reser
 
   .wordmark {
     font-weight: 800;
+    font-size: 1.375rem;
+    letter-spacing: -0.03em;
     color: var(--ink);
   }
 
@@ -95,11 +96,22 @@ const rights = locale === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reser
     color: var(--ink);
   }
 
+  /*
+   * Two columns at width so the legal foot is a considered block rather than three
+   * orphaned lines of grey type stacked against the left edge.
+   */
   .legal {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-block: 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, var(--measure)) auto;
+    align-items: start;
+    gap: 0.75rem 3rem;
+    padding-block: 1.75rem;
+  }
+
+  @media (max-width: 48rem) {
+    .legal {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
   .copyright {

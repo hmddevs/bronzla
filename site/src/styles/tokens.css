@@ -28,16 +28,35 @@
   --uv-extreme: oklch(0.56 0.190 310);
 
   /* Type scale */
+  --text-figure: clamp(4.5rem, 1.5rem + 13vw, 9.5rem);
   --text-display: clamp(2.75rem, 1.5rem + 5vw, 5.5rem);
   --text-h2: clamp(2rem, 1.2rem + 2.6vw, 3.25rem);
   --text-h3: clamp(1.35rem, 1.1rem + 0.9vw, 1.75rem);
+  --text-lede: clamp(1.1875rem, 1.05rem + 0.65vw, 1.5rem);
   --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --text-small: 0.9375rem;
+  --text-micro: 0.8125rem;
+
+  /* Weights: hierarchy is carried by weight and scale before colour. */
+  --weight-display: 800;
+  --weight-strong: 700;
+  --weight-medium: 600;
+  --weight-body: 400;
+
+  /*
+   * Section rhythm. Three densities, used deliberately: a page that alternates between
+   * tight and open reads as designed, whereas one uniform padding value reads as a template.
+   */
+  --space-tight: clamp(2rem, 3.5vw, 3rem);
+  --space-section: clamp(3.5rem, 6vw, 6rem);
+  --space-open: clamp(5rem, 10vw, 10rem);
 
   /* Layout */
   --measure: 68ch;
   --content-max: 1200px;
   --gutter: clamp(24px, 4vw, 48px);
+  /* Width of the hanging-heading margin column on long-form pages. */
+  --margin-col: 15rem;
 
   /* Radii */
   --radius-control: 12px;

@@ -97,15 +97,29 @@ Fluid, ratio 1.25 or greater between steps.
 
 | Step | Value | Tracking | Line height |
 |---|---|---|---|
+| Figure | `clamp(4.5rem, 1.5rem + 13vw, 9.5rem)` | `-0.045em` | 0.85 |
 | Display | `clamp(2.75rem, 1.5rem + 5vw, 5.5rem)` | `-0.03em` | 1.02 |
 | H2 | `clamp(2rem, 1.2rem + 2.6vw, 3.25rem)` | `-0.02em` | 1.1 |
 | H3 | `clamp(1.35rem, 1.1rem + 0.9vw, 1.75rem)` | `-0.01em` | 1.25 |
+| Lede | `clamp(1.1875rem, 1.05rem + 0.65vw, 1.5rem)` | `0` | 1.45 |
 | Body | `clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem)` | `0` | 1.65 |
 | Small | `0.9375rem` | `0.005em` | 1.55 |
+| Micro | `0.8125rem` | `0.08em to 0.11em` | 1.4 |
 
 Display ceiling is 5.5rem, under the 6rem limit. Tracking floor is `-0.03em`, above the `-0.04em`
 limit. Body line height is 1.65 rather than 1.55, because light type on a dark surface reads as
 lighter weight and needs the extra room.
+
+**Figure** is the one step above Display and exists for a single element: the hero's safe-time
+numeral. It is a tabular numeral, never a heading, and never appears twice on a page. Its tighter
+tracking is legitimate at that size, where the default sidebearings read as gaps. **Lede** is the
+paragraph directly under a heading, one step above body so the entry to a section is not set at
+the same size as the section. **Micro** is the eyebrow, table header and metadata step; it is
+always uppercase with open tracking and never carries prose.
+
+Weight is the first lever of hierarchy, ahead of scale, and colour is last: `--weight-display: 800`,
+`--weight-strong: 700`, `--weight-medium: 600`, `--weight-body: 400`. A heading that needs colour
+to read as a heading has failed at the two steps before it.
 
 `text-wrap: balance` on h1 to h3. `text-wrap: pretty` on prose. Measure capped at 68ch.
 
@@ -118,6 +132,15 @@ lengths at every breakpoint; the clamp maximum comes down before the copy gets r
 - Fluid section rhythm via `clamp()`. Vary it: the hero and the store call to action get generous
   separation, the evidence block and its citations sit tight together. Uniform vertical padding
   is what makes a page read as generated.
+- Three densities, and pages compose them rather than repeating one: `--space-tight`
+  (`clamp(2rem, 3.5vw, 3rem)`), `--space-section` (`clamp(3.5rem, 6vw, 6rem)`), `--space-open`
+  (`clamp(5rem, 10vw, 10rem)`). The landing page runs open, dense panel, section, tight, open,
+  closing panel. Two adjacent sections at the same density need a reason.
+- **Hanging headings on long-form pages.** `.prose`, the Q&A lists and the terms list put the
+  heading or question in a `--margin-col` (15rem) column and the body at the 68ch measure beside
+  it. A single 68ch column left-aligned inside a 1200px page leaves half the viewport empty,
+  which is the shape that made these pages read as an unstyled document. Collapses to one column
+  below 63rem.
 - Flexbox for one dimension, Grid for two. `repeat(auto-fit, minmax(280px, 1fr))` where a genuine
   grid is needed, so there are no breakpoint jumps.
 - Asymmetry is permitted and encouraged in the hero: the figure and the device frame do not need
@@ -134,9 +157,20 @@ Semantic only, no arbitrary values: `--z-sticky: 100`, `--z-overlay: 200`, `--z-
 
 - **Store button.** Filled `--accent`, `--accent-ink` label, radius 12px. The single loudest
   element on the page. It appears in the hero and once more at the foot; nowhere else.
-- **Device frame.** `--surface-raised` panel, 1px `--hairline`, radius 32px, holding a screenshot
-  at the App Store 1320x2868 aspect. Until real screenshots arrive it holds a labelled slot at
-  the correct aspect ratio, never a plain coloured rectangle.
+- **Eyebrow.** Micro type, uppercase, open tracking, `--ink-faint`, preceded by a short rule. It
+  names a section before the heading makes its claim. One eyebrow per section, and at most one
+  per view carries the accent (`.eyebrow-signal`), marking the UV-risk idea.
+- **Data strip.** A row of labelled values divided by hairlines: label in micro type,
+  value at H3 size in tabular numerals. Used where a page states the inputs behind a figure, as
+  the hero does with UV index, skin type and SPF. It is the app's readout idiom, and the reason
+  the site never needs a card grid to present three related facts.
+- **Device frame.** A bezel on `--surface-high` holding a screen on `--surface-raised`, 1px
+  `--hairline`, radius 32px, at the App Store 1320x2868 aspect. Until real screenshots arrive it
+  holds a designed empty state, never a plain coloured rectangle: the screen's index and reading
+  as a header row, its name in full ink, and an explicit "screenshot to follow" line at the foot.
+  All text sits on the screen and never on the bezel, because `--ink-faint` measures 4.19:1
+  against `--surface-high` and would fail AA there. A `compact` variant reduces the type and
+  padding for narrow placements.
 - **UV scale strip.** Horizontal, five bands, each with its numeral range and name. Used once on
   the landing page and once on the features page.
 - **Evidence note.** Small-type block for the WHO citation, the MED reference and the fifty per

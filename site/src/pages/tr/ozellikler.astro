@@ -7,8 +7,15 @@ import { breadcrumbList } from '../../config';
 
 const jsonLd = [breadcrumbList([{ name: 'Özellikler', path: '/tr/ozellikler' }], 'tr')];
 
+/*
+ * `src` yalnızca gerçek bir ekran görüntüsü varsa verilir. Görüntünün yanındaki ipucu,
+ * görüntünün gerçekten gösterdiği şeyi anlatmalı ve görüntüyle çelişen bir rakam ileri
+ * sürmemelidir. Buradaki tek rakam olan 15 dakikalık güvenli süre, ExposureCalculator'ın
+ * UV 8 ve III. fototip için güneş kremsiz verdiği sonuçtur; bilim sayfasındaki örnekle aynı.
+ */
 const screens = [
   {
+    src: 'tr/01-dashboard.webp',
     label: 'Panel, yüksek UV okuması',
     hint: 'UV 8 · Çok yüksek',
     heading: 'Her şey tek bakışta',
@@ -16,25 +23,28 @@ const screens = [
   },
   {
     label: 'Güvenli süre kartı ve tavsiye',
-    hint: 'Güvenli süre · 38 dk',
+    hint: 'Güvenli süre · 15 dk',
     heading: 'Güvenli süre',
     body: 'Güncel UV indeksi, cilt tipiniz ve SPF değerinizle güvenli güneşlenme süreniz hesaplanır. Süreler Dünya Sağlık Örgütü’nün UV indeksi tanımına ve klinik literatürdeki minimum eritem dozu değerlerine dayanır. Güneş kreminin gerçek hayatta etiketteki kadar korumadığı da hesaba katılır.',
   },
   {
+    src: 'tr/03-timer.webp',
     label: 'Zamanlayıcı çalışıyor',
-    hint: '12 dk sonra dönün',
+    hint: 'Dönme ve krem hatırlatmaları',
     heading: 'Zamanlayıcı',
     body: 'Dönme zamanı ve krem yenileme hatırlatmaları. Telefonunuz çantada, ekran kapalıyken de çalışır. Kilit ekranında canlı olarak kalan süreyi görürsünüz.',
   },
   {
+    src: 'tr/04-forecast.webp',
     label: 'UV tahmin grafiği',
-    hint: '10 günlük tahmin',
+    hint: 'Saatlik ve 10 günlük',
     heading: 'UV tahmini',
     body: 'Saatlik ve 10 günlük UV tahmini. Günün en riskli saatleri açıkça belirtilir.',
   },
   {
+    src: 'tr/05-tracker.webp',
     label: 'Bronz takipçi takvimi ve serisi',
-    hint: '14 günlük seri',
+    hint: 'Seanslar ve seriler',
     heading: 'Bronz takipçi',
     body: 'Seanslarınızı kaydedin, fotoğraf ekleyin, seri takibi yapın. Toplam güneş süreniz ve tahmini D vitamini üretiminiz özetlenir.',
   },
@@ -45,6 +55,15 @@ const screens = [
     body: 'Yedi soruluk Fitzpatrick testi cilt tipinizi belirler. Sorular Türkiye’ye göre hazırlandı: Akdeniz ve Ege’de en sık görülen buğday ve zeytin tonları, kuzey Avrupa kalıplarına göre değil, kendi referanslarıyla anlatılıyor.',
   },
 ];
+
+/*
+ * Üç ayrı biçim, altı kez tekrarlanan satır değil: tam boyutta bir öncü ekran, yoğun bir
+ * listede üç ekran, yan yana iki ekran. Eski düzen aynı satırı altı kez aynalıyordu; bir
+ * sayfanın tasarlanmadığını en açık ele veren şey budur.
+ */
+const [lead, ...rest] = screens;
+const listed = rest.slice(0, 3);
+const paired = rest.slice(3);
 ---
 
 <BaseLayout
@@ -55,25 +74,72 @@ const screens = [
   jsonLd={jsonLd}
 >
   <header class="container page-header">
+    <p class="eyebrow">Altı ekran</p>
     <h1>Altı ekran, tek görev</h1>
     <p>Her ekran aynı soruyu yanıtlamak için var: bugün ne kadar güneşte kalabilirsiniz.</p>
   </header>
 
-  <div class="container screens">
-    {
-      screens.map((screen, i) => (
-        <section class:list={['screen', i % 2 === 1 && 'reverse']}>
-          <DeviceFrame label={screen.label} hint={screen.hint} index={i + 1} />
-          <div class="screen-copy">
-            <h2>{screen.heading}</h2>
-            <p>{screen.body}</p>
-          </div>
-        </section>
-      ))
-    }
-  </div>
+  <section class="container lead" aria-labelledby="lead-heading">
+    <div class="lead-copy">
+      <p class="eyebrow eyebrow-signal">01 · {lead.hint}</p>
+      <h2 id="lead-heading">{lead.heading}</h2>
+      <p class="lede">{lead.body}</p>
+    </div>
+    <div class="lead-frame">
+      <DeviceFrame src={lead.src} label={lead.label} hint={lead.hint} index={1} locale="tr" />
+    </div>
+  </section>
 
-  <section class="container uv-section">
+  <section class="container listed-section" aria-label="Güvenli süre, zamanlayıcı ve UV tahmini">
+    <ol class="listed">
+      {
+        listed.map((screen, i) => (
+          <li>
+            <DeviceFrame
+              src={screen.src}
+              label={screen.label}
+              hint={screen.hint}
+              index={i + 2}
+              locale="tr"
+              compact
+            />
+            <div class="listed-copy">
+              <p class="eyebrow">{String(i + 2).padStart(2, '0')}</p>
+              <h2>{screen.heading}</h2>
+              <p>{screen.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="container paired-section" aria-label="Bronz takipçi ve cilt tipi">
+    <div class="paired">
+      {
+        paired.map((screen, i) => (
+          <article class="pair">
+            <DeviceFrame
+              src={screen.src}
+              label={screen.label}
+              hint={screen.hint}
+              index={i + 5}
+              locale="tr"
+              compact
+            />
+            <div class="pair-copy">
+              <p class="eyebrow">{String(i + 5).padStart(2, '0')}</p>
+              <h2>{screen.heading}</h2>
+              <p>{screen.body}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container uv-section ruled">
+    <p class="eyebrow eyebrow-signal">Ölçek</p>
     <h2>UV indeksi, tek şeritte</h2>
     <UVScale locale="tr" />
     <WeatherKitAttribution locale="tr" />
@@ -82,53 +148,156 @@ const screens = [
 
 <style>
   .page-header {
-    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: var(--space-tight);
   }
 
-  .page-header p {
-    color: var(--ink-muted);
-    margin-top: 1rem;
+  /* Birinci biçim: öncü ekran, tam boyutta, metni lede ağırlığında. */
+  .lead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: start;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding-block: var(--space-tight) var(--space-section);
+    border-top: 1px solid var(--hairline);
   }
 
-  .screens {
+  .lead-copy {
     display: flex;
     flex-direction: column;
-    gap: clamp(3rem, 6vw, 5rem);
-    padding-block: clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+    gap: 1rem;
+    max-width: 34rem;
   }
 
-  .screen {
+  .lead-copy h2 {
+    max-width: 16ch;
+  }
+
+  .lead-frame {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: clamp(2rem, 5vw, 4rem);
+    justify-content: flex-end;
+  }
+
+  .lead-frame :global(.device-frame) {
+    max-width: 17.5rem;
+  }
+
+  /* İkinci biçim: yoğun liste. Küçük çerçeveler, hairline ile bölünmüş satırlar. */
+  .listed-section {
+    padding-block: 0 var(--space-section);
+  }
+
+  .listed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--surface-raised);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-panel);
+  }
+
+  .listed li {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .listed li + li {
     border-top: 1px solid var(--hairline);
-    padding-top: clamp(2rem, 4vw, 3rem);
   }
 
-  .screen.reverse {
-    flex-direction: row-reverse;
+  .listed-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
   }
 
-  .screen :global(.device-frame) {
-    flex: 0 0 260px;
+  .listed-copy h2 {
+    font-size: var(--text-h3);
   }
 
-  .screen-copy {
-    flex: 1 1 380px;
-    max-width: 560px;
-  }
-
-  .screen-copy p {
+  .listed-copy p:last-child {
     color: var(--ink-muted);
-    margin-top: 1rem;
+    font-size: var(--text-small);
+    max-width: 64ch;
+  }
+
+  /* Üçüncü biçim: yan yana iki ekran, her çerçevenin yanında metni. */
+  .paired-section {
+    padding-block: 0 var(--space-section);
+  }
+
+  .paired {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: start;
+    border-top: 1px solid var(--hairline);
+    padding-top: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .pair-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pair-copy h2 {
+    font-size: var(--text-h3);
+  }
+
+  .pair-copy p:last-child {
+    color: var(--ink-muted);
+    font-size: var(--text-small);
   }
 
   .uv-section {
-    padding-block: clamp(2.5rem, 5vw, 5rem);
-    border-top: 1px solid var(--hairline);
+    padding-block: var(--space-section);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .uv-section :global(.uv-scale) {
+    align-self: stretch;
+    margin-top: 0.75rem;
+  }
+
+  @media (max-width: 60rem) {
+    .lead {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .lead-frame {
+      justify-content: flex-start;
+    }
+
+    .lead-frame :global(.device-frame) {
+      max-width: 16rem;
+    }
+
+    .paired {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .listed li,
+    .pair {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .listed li :global(.device-frame),
+    .pair :global(.device-frame) {
+      max-width: 9rem;
+    }
   }
 </style>

@@ -1,54 +1,61 @@
 ---
 /**
- * Holds a screenshot at the App Store 1320x2868 aspect. Until Umut supplies the real
- * files (see public/screenshots/README.md), this renders a deliberately designed slot,
- * never a plain coloured rectangle: a numbered mark, the screen name, and a hint of the
- * UI it stands in for, so the page still reads as considered before the images land.
+ * Holds a captured app screenshot at the App Store aspect.
+ *
+ * Where a capture exists it is passed through `src`. Two screens have none: the safe-time
+ * detail (the capture run produced a duplicate of the dashboard) and the skin type quiz
+ * (the run fails before reaching it, because it walks through the family ranking list and
+ * the leaderboard backend is not deployed). Those render a deliberately designed empty
+ * state rather than a blank slab: a bezel at one elevation, a screen at another, the
+ * screen's index and reading set as a header row, its name in full ink, and an explicit
+ * line saying the image is still to come. Nothing here pretends to be a screenshot.
  */
 interface Props {
-  /** Filename expected in /public/screenshots/, e.g. "01-dashboard.png". */
+  /** Path under /public/screenshots/, e.g. "en/01-dashboard.webp". */
   src?: string;
   /** Human label for the screen this frame holds, shown in the placeholder state. */
   label: string;
   /** One or two word hint of what the screen shows, e.g. "UV 8 · Very high". */
   hint?: string;
   index?: number;
+  locale?: 'en' | 'tr';
+  /** Narrower placement, e.g. a list row: smaller type and tighter padding. */
+  compact?: boolean;
 }
 
-const { src, label, hint, index } = Astro.props;
+const { src, label, hint, index, locale = 'en', compact = false } = Astro.props;
+const pending = locale === 'tr' ? 'Ekran görüntüsü yakında' : 'Screenshot to follow';
 ---
 
-<div class="device-frame">
+<div class:list={['device-frame', compact && 'compact']}>
   {
     src ? (
-      <img src={`/screenshots/${src}`} alt={label} width="1320" height="2868" loading="lazy" />
+      <img src={`/screenshots/${src}`} alt={label} width="660" height="1435" loading="lazy" />
     ) : (
-      <div class="placeholder" role="img" aria-label={label}>
-        <span class="label">{label}</span>
-        {(hint || index !== undefined) && (
-          <span class="meta">
-            {hint && <span class="hint">{hint}</span>}
-            {hint && index !== undefined && <span aria-hidden="true">·</span>}
-            {index !== undefined && (
-              <span class="index">{String(index).padStart(2, '0')}</span>
-            )}
-          </span>
-        )}
-        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-          <circle cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="1.5" />
-          <path d="M32 8v8M32 48v8M8 32h8M48 32h8" stroke="currentColor" stroke-width="1.5" />
-        </svg>
+      <div class="screen" role="img" aria-label={label}>
+        <div class="head">
+          {index !== undefined && <span class="index">{String(index).padStart(2, '0')}</span>}
+          {hint && <span class="hint">{hint}</span>}
+        </div>
+        <p class="name">{label}</p>
+        <p class="pending">{pending}</p>
       </div>
     )
   }
 </div>
 
 <style>
+  /*
+   * Two elevations, not one: the bezel sits on --surface-high and the screen inside it on
+   * --surface-raised, so the frame reads as an object on the page rather than a hole in it.
+   * All text sits on the screen, never on the bezel: --ink-faint measures 4.89:1 against
+   * --surface-raised but only 4.19:1 against --surface-high, which would fail AA.
+   */
   .device-frame {
-    background: var(--surface-raised);
+    background: var(--surface-high);
     border: 1px solid var(--hairline);
     border-radius: var(--radius-frame);
-    overflow: hidden;
+    padding: 10px;
     aspect-ratio: 1320 / 2868;
     width: 100%;
     max-width: 320px;
@@ -58,49 +65,91 @@ const { src, label, hint, index } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: calc(var(--radius-frame) - 10px);
   }
 
-  .placeholder {
+  .screen {
     height: 100%;
+    border-radius: calc(var(--radius-frame) - 10px);
+    background: var(--surface-raised);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 2rem;
-    text-align: center;
-    color: var(--ink-muted);
-    background: linear-gradient(
-      180deg,
-      color-mix(in oklch, var(--accent) 8%, transparent),
-      transparent 55%
-    );
+    padding: 1.5rem 1.375rem;
+    gap: 0.5rem;
   }
 
-  .label {
-    font-weight: 700;
-    font-size: var(--text-h3);
-    color: var(--ink);
-    text-wrap: balance;
-  }
-
-  .meta {
+  /* Header row: the index and the reading, divided from the name by a rule. */
+  .head {
     display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: var(--text-small);
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--hairline);
+    font-size: var(--text-micro);
     color: var(--ink-faint);
   }
 
   .index {
-    letter-spacing: 0.04em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     font-variant-numeric: tabular-nums;
   }
 
-  .mark {
-    width: 32px;
-    height: 32px;
-    color: var(--accent);
-    margin-top: 0.5rem;
+  .hint {
+    text-align: right;
+    text-wrap: balance;
+  }
+
+  .name {
+    margin: 0.5rem 0 0;
+    font-size: var(--text-h3);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  /* Pushed to the foot of the screen, so the empty middle is composed rather than left over. */
+  .pending {
+    margin: auto 0 0;
+    font-size: var(--text-micro);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-faint);
+  }
+
+  /* Compact: same object, smaller. The bezel radius shrinks with it so it stays a phone. */
+  .device-frame.compact {
+    padding: 7px;
+    border-radius: 22px;
+  }
+
+  .compact .screen {
+    border-radius: 15px;
+    padding: 0.9rem 0.85rem;
+    gap: 0.35rem;
+  }
+
+  .compact .head {
+    padding-bottom: 0.5rem;
+    font-size: 0.6875rem;
+  }
+
+  .compact .hint {
+    display: none;
+  }
+
+  .compact .name {
+    margin-top: 0.35rem;
+    font-size: 0.9375rem;
+    line-height: 1.3;
+  }
+
+  .compact .pending {
+    font-size: 0.625rem;
+    letter-spacing: 0.05em;
   }
 </style>

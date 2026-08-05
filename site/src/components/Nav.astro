@@ -67,10 +67,10 @@ const homeHref = locale === 'tr' ? '/tr' : '/';
 
   .wordmark {
     font-weight: 800;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     color: var(--ink);
     text-decoration: none;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
   }
 
   nav ul {
@@ -82,16 +82,37 @@ const homeHref = locale === 'tr' ? '/tr' : '/';
   }
 
   nav a {
+    display: block;
+    position: relative;
     color: var(--ink-muted);
     text-decoration: none;
     font-weight: 600;
     font-size: var(--text-small);
+    padding-block: 0.35rem;
+    transition: color var(--duration-control) var(--ease-out-quint);
   }
 
   nav a:hover,
-  nav a:focus-visible,
+  nav a:focus-visible {
+    color: var(--ink);
+  }
+
+  /*
+   * The current page is marked by the accent, because "where you are" is information
+   * rather than decoration. It is the only accent in the site chrome.
+   */
   nav a[aria-current='page'] {
     color: var(--ink);
+  }
+
+  nav a[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--accent);
   }
 
   @media (max-width: 640px) {

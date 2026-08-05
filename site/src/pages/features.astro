@@ -7,8 +7,15 @@ import { breadcrumbList } from '../config';
 
 const jsonLd = [breadcrumbList([{ name: 'Features', path: '/features' }], 'en')];
 
+/*
+ * `src` is set only where a real capture exists. Hints that sit beside a capture describe
+ * what that image actually shows and must not assert a figure the image contradicts; the
+ * one number stated here, the 15 minute safe time, is ExposureCalculator's own output for
+ * UV 8 on phototype III with no sunscreen, the worked example published on the science page.
+ */
 const screens = [
   {
+    src: 'en/01-dashboard.webp',
     label: 'Dashboard, high UV reading',
     hint: 'UV 8 · Very high',
     heading: 'Everything at a glance',
@@ -16,25 +23,28 @@ const screens = [
   },
   {
     label: 'Safe-time card and advice',
-    hint: 'Safe time · 38 min',
+    hint: 'Safe time · 15 min',
     heading: 'Safe time',
     body: 'Your safe time is calculated from the current UV index, your skin type and your SPF. The figures follow the World Health Organization’s definition of the UV index and minimal erythemal dose values from the clinical literature, and account for sunscreen performing well below its label value in real use.',
   },
   {
+    src: 'en/03-timer.webp',
     label: 'Timer running',
-    hint: 'Flip in 12 min',
+    hint: 'Flip and sunscreen reminders',
     heading: 'Timer',
     body: 'Flip and sunscreen reminders that work with the phone in your bag and the screen off. The remaining time stays live on your lock screen.',
   },
   {
+    src: 'en/04-forecast.webp',
     label: 'UV forecast chart',
-    hint: '10 day forecast',
+    hint: 'Hourly and 10 day',
     heading: 'UV forecast',
     body: 'Hourly and 10 day UV forecasts, with the riskiest hours of the day called out plainly.',
   },
   {
+    src: 'en/05-tracker.webp',
     label: 'Tan tracker calendar and streak',
-    hint: '14 day streak',
+    hint: 'Sessions and streaks',
     heading: 'Tan tracker',
     body: 'Log sessions, add photos, track streaks. See your total time in the sun and an estimate of the vitamin D produced.',
   },
@@ -45,6 +55,15 @@ const screens = [
     body: 'A seven question Fitzpatrick assessment works out your skin type. The questions are written for this market: the olive and wheat tones common along the Mediterranean and Aegean are described on their own terms rather than against northern European reference points.',
   },
 ];
+
+/*
+ * Three shapes, not six alternating rows: one lead screen at full size, three in a dense
+ * list, two side by side. The old layout mirrored the same row six times, which is the
+ * single clearest tell that a page was generated rather than laid out.
+ */
+const [lead, ...rest] = screens;
+const listed = rest.slice(0, 3);
+const paired = rest.slice(3);
 ---
 
 <BaseLayout
@@ -55,25 +74,72 @@ const screens = [
   jsonLd={jsonLd}
 >
   <header class="container page-header">
+    <p class="eyebrow">Six screens</p>
     <h1>Six screens, one job</h1>
     <p>Every screen exists to answer the same question: how long can you stay out today.</p>
   </header>
 
-  <div class="container screens">
-    {
-      screens.map((screen, i) => (
-        <section class:list={['screen', i % 2 === 1 && 'reverse']}>
-          <DeviceFrame label={screen.label} hint={screen.hint} index={i + 1} />
-          <div class="screen-copy">
-            <h2>{screen.heading}</h2>
-            <p>{screen.body}</p>
-          </div>
-        </section>
-      ))
-    }
-  </div>
+  <section class="container lead" aria-labelledby="lead-heading">
+    <div class="lead-copy">
+      <p class="eyebrow eyebrow-signal">01 · {lead.hint}</p>
+      <h2 id="lead-heading">{lead.heading}</h2>
+      <p class="lede">{lead.body}</p>
+    </div>
+    <div class="lead-frame">
+      <DeviceFrame src={lead.src} label={lead.label} hint={lead.hint} index={1} locale="en" />
+    </div>
+  </section>
 
-  <section class="container uv-section">
+  <section class="container listed-section" aria-label="Safe time, timer and UV forecast">
+    <ol class="listed">
+      {
+        listed.map((screen, i) => (
+          <li>
+            <DeviceFrame
+              src={screen.src}
+              label={screen.label}
+              hint={screen.hint}
+              index={i + 2}
+              locale="en"
+              compact
+            />
+            <div class="listed-copy">
+              <p class="eyebrow">{String(i + 2).padStart(2, '0')}</p>
+              <h2>{screen.heading}</h2>
+              <p>{screen.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="container paired-section" aria-label="Tan tracker and skin type">
+    <div class="paired">
+      {
+        paired.map((screen, i) => (
+          <article class="pair">
+            <DeviceFrame
+              src={screen.src}
+              label={screen.label}
+              hint={screen.hint}
+              index={i + 5}
+              locale="en"
+              compact
+            />
+            <div class="pair-copy">
+              <p class="eyebrow">{String(i + 5).padStart(2, '0')}</p>
+              <h2>{screen.heading}</h2>
+              <p>{screen.body}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container uv-section ruled">
+    <p class="eyebrow eyebrow-signal">The scale</p>
     <h2>The UV index, in one strip</h2>
     <UVScale locale="en" />
     <WeatherKitAttribution locale="en" />
@@ -82,53 +148,156 @@ const screens = [
 
 <style>
   .page-header {
-    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: var(--space-tight);
   }
 
-  .page-header p {
-    color: var(--ink-muted);
-    margin-top: 1rem;
+  /* Shape one: the lead screen, at full size, with the copy set at lede weight. */
+  .lead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: start;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding-block: var(--space-tight) var(--space-section);
+    border-top: 1px solid var(--hairline);
   }
 
-  .screens {
+  .lead-copy {
     display: flex;
     flex-direction: column;
-    gap: clamp(3rem, 6vw, 5rem);
-    padding-block: clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+    gap: 1rem;
+    max-width: 34rem;
   }
 
-  .screen {
+  .lead-copy h2 {
+    max-width: 14ch;
+  }
+
+  .lead-frame {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: clamp(2rem, 5vw, 4rem);
+    justify-content: flex-end;
+  }
+
+  .lead-frame :global(.device-frame) {
+    max-width: 17.5rem;
+  }
+
+  /* Shape two: a dense list. Small frames, rows divided by hairlines, no alternation. */
+  .listed-section {
+    padding-block: 0 var(--space-section);
+  }
+
+  .listed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--surface-raised);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-panel);
+  }
+
+  .listed li {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .listed li + li {
     border-top: 1px solid var(--hairline);
-    padding-top: clamp(2rem, 4vw, 3rem);
   }
 
-  .screen.reverse {
-    flex-direction: row-reverse;
+  .listed-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
   }
 
-  .screen :global(.device-frame) {
-    flex: 0 0 260px;
+  .listed-copy h2 {
+    font-size: var(--text-h3);
   }
 
-  .screen-copy {
-    flex: 1 1 380px;
-    max-width: 560px;
-  }
-
-  .screen-copy p {
+  .listed-copy p:last-child {
     color: var(--ink-muted);
-    margin-top: 1rem;
+    font-size: var(--text-small);
+    max-width: 64ch;
+  }
+
+  /* Shape three: two screens side by side, copy beside each frame, on the base surface. */
+  .paired-section {
+    padding-block: 0 var(--space-section);
+  }
+
+  .paired {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: start;
+    border-top: 1px solid var(--hairline);
+    padding-top: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .pair-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pair-copy h2 {
+    font-size: var(--text-h3);
+  }
+
+  .pair-copy p:last-child {
+    color: var(--ink-muted);
+    font-size: var(--text-small);
   }
 
   .uv-section {
-    padding-block: clamp(2.5rem, 5vw, 5rem);
-    border-top: 1px solid var(--hairline);
+    padding-block: var(--space-section);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .uv-section :global(.uv-scale) {
+    align-self: stretch;
+    margin-top: 0.75rem;
+  }
+
+  @media (max-width: 60rem) {
+    .lead {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .lead-frame {
+      justify-content: flex-start;
+    }
+
+    .lead-frame :global(.device-frame) {
+      max-width: 16rem;
+    }
+
+    .paired {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .listed li,
+    .pair {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .listed li :global(.device-frame),
+    .pair :global(.device-frame) {
+      max-width: 9rem;
+    }
   }
 </style>
