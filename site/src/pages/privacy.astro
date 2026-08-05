@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbList } from '../config';
 
 const items = [
   {
@@ -39,6 +40,19 @@ const items = [
     a: 'Yes, with a single tap in Settings. Deletion is immediate and local, because everything was local to begin with.',
   },
 ];
+
+const jsonLd = [
+  breadcrumbList([{ name: 'Privacy', path: '/privacy' }], 'en'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+];
 ---
 
 <BaseLayout
@@ -47,6 +61,7 @@ const items = [
   title="Privacy · Bronzla"
   description="No account, no analytics, nothing leaves the device except a location query to Apple Weather. Delete everything with a single tap."
   showWeatherAttribution={false}
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Privacy</h1>

@@ -20,6 +20,7 @@ export type Locale = 'en' | 'tr';
 export const ROUTE_PAIRS: Array<{ en: string; tr: string }> = [
   { en: '/', tr: '/tr' },
   { en: '/features', tr: '/tr/ozellikler' },
+  { en: '/science', tr: '/tr/bilim' },
   { en: '/privacy', tr: '/tr/gizlilik' },
   { en: '/terms', tr: '/tr/kosullar' },
   { en: '/support', tr: '/tr/destek' },
@@ -40,4 +41,42 @@ export function localeCounterpart(currentPath: string, currentLocale: Locale): s
   const pair = ROUTE_PAIRS.find((p) => p[currentLocale] === currentPath);
   if (!pair) return withSlash(currentLocale === 'en' ? '/tr' : '/');
   return withSlash(currentLocale === 'en' ? pair.tr : pair.en);
+}
+
+/** Absolute URL for a site-relative path, with the trailing slash `withSlash` requires. */
+export function absoluteUrl(path: string): string {
+  return new URL(withSlash(path), SITE.url).toString();
+}
+
+/**
+ * Builds a schema.org BreadcrumbList for an inner page. Home is always the first item;
+ * `trail` supplies the remaining crumbs in order, ending with the current page.
+ */
+export function breadcrumbList(
+  trail: Array<{ name: string; path: string }>,
+  locale: Locale,
+): Record<string, unknown> {
+  const home = locale === 'tr' ? { name: 'Ana sayfa', path: '/tr' } : { name: 'Home', path: '/' };
+  const items = [home, ...trail];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+/** The Organization behind Bronzla, reused wherever a page cites the publisher. */
+export function organizationSchema(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'HMD Developments',
+    url: 'https://guden.tr',
+    email: 'umut@guden.tr',
+  };
 }

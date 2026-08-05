@@ -11,9 +11,18 @@ interface Props {
   description: string;
   /** Set on pages that show or describe forecast data. */
   showWeatherAttribution?: boolean;
+  /** One or more schema.org objects, rendered as separate JSON-LD script tags. */
+  jsonLd?: Record<string, unknown>[];
 }
 
-const { locale, path, title, description, showWeatherAttribution = true } = Astro.props;
+const {
+  locale,
+  path,
+  title,
+  description,
+  showWeatherAttribution = true,
+  jsonLd = [],
+} = Astro.props;
 
 const canonicalUrl = new URL(withSlash(path), SITE.url).toString();
 const pair = ROUTE_PAIRS.find((p) => p.en === path || p.tr === path);
@@ -58,6 +67,10 @@ const ogImage = new URL('/og-image.png', SITE.url).toString();
       type="font/woff2"
       crossorigin
     />
+
+    {jsonLd.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
   <body>
     <a class="skip-link" href="#main">{locale === 'tr' ? 'İçeriğe geç' : 'Skip to content'}</a>

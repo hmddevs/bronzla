@@ -118,6 +118,149 @@ button:focus-visible,
   padding-inline: var(--gutter);
 }
 
+/*
+ * Prose: long-form reading measure for science/legal pages. Headings and tables inside
+ * .prose get their own rules rather than leaking global table styling onto components
+ * that never asked for it (DeviceFrame, UVScale, etc. have no tables).
+ */
+.prose {
+  max-width: var(--measure);
+}
+
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+.prose h2 {
+  margin-top: 2.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--hairline);
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.prose h3 {
+  margin-top: 2em;
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-muted);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25em;
+}
+
+.prose li + li {
+  margin-top: 0.5em;
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.prose code {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.92em;
+  color: var(--ink);
+}
+
+.prose pre {
+  background: var(--surface-raised);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-panel);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  max-width: none;
+}
+
+.prose pre code {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* Tables run wider than the prose measure, so they escape it deliberately. */
+.prose .table-scroll {
+  max-width: none;
+  overflow-x: auto;
+}
+
+.prose table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: var(--text-small);
+}
+
+.prose caption {
+  text-align: left;
+  color: var(--ink-faint);
+  font-size: var(--text-small);
+  margin-bottom: 0.5rem;
+  caption-side: top;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.prose th {
+  color: var(--ink);
+  font-weight: 700;
+  border-bottom: 1px solid var(--ink-faint);
+}
+
+.prose td {
+  color: var(--ink-muted);
+}
+
+.prose th:first-child,
+.prose td:first-child {
+  padding-left: 0;
+}
+
+/* Citation list: numbered, tight, source links carrying the accent per global `a` rules. */
+.prose .citations {
+  list-style: none;
+  counter-reset: citation;
+  padding: 0;
+}
+
+.prose .citations li {
+  counter-increment: citation;
+  padding-left: 2.25em;
+  position: relative;
+}
+
+.prose .citations li::before {
+  content: counter(citation) '.';
+  position: absolute;
+  left: 0;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.prose .citations li + li {
+  margin-top: 1.1em;
+}
+
+.prose .citations cite {
+  font-style: normal;
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

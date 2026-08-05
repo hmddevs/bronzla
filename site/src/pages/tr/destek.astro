@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbList } from '../../config';
 
 const items = [
   {
@@ -31,6 +32,19 @@ const items = [
     a: 'Aynı Apple Kimliği ile oturum açıkken Bronzla’yı App Store’dan yeniden yükleyin. Uygulama ücretsiz olduğu için yeniden ödeme veya geri yükleme yoktur.',
   },
 ];
+
+const jsonLd = [
+  breadcrumbList([{ name: 'Destek', path: '/tr/destek' }], 'tr'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+];
 ---
 
 <BaseLayout
@@ -39,6 +53,7 @@ const items = [
   title="Destek · Bronzla"
   description="Bronzla ile ilgili yardım alın: iletişim bilgileri ve UV verisi, konum ve uygulamayı yeniden yükleme hakkında sık sorulan sorular."
   showWeatherAttribution={false}
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Destek</h1>

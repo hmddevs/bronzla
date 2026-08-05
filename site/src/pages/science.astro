@@ -1,0 +1,398 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import WeatherKitAttribution from '../components/WeatherKitAttribution.astro';
+import { breadcrumbList, absoluteUrl } from '../config';
+
+const jsonLd = [
+  breadcrumbList([{ name: 'The science', path: '/science' }], 'en'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: 'The science behind Bronzla',
+    url: absoluteUrl('/science'),
+    about: {
+      '@type': 'MedicalCondition',
+      name: 'Sunburn (erythema)',
+    },
+    lastReviewed: '2026-08-05',
+    medicalAudienceType: 'Patient',
+    audience: {
+      '@type': 'PeopleAudience',
+      audienceType: 'General public',
+    },
+  },
+];
+---
+
+<BaseLayout
+  locale="en"
+  path="/science"
+  title="The science behind Bronzla · UV index, MED and safe exposure times"
+  description="How Bronzla calculates safe sun exposure times from the WHO UV index and published minimal erythemal dose data, with the full method, worked examples and citation list."
+  jsonLd={jsonLd}
+>
+  <header class="container page-header">
+    <h1>The science behind Bronzla</h1>
+    <p>
+      Every figure Bronzla shows traces back to a published source. This page sets out the full
+      method: the phototype data, the minimal erythemal dose values, the UV index definition that
+      connects a weather forecast to a burn time, and every citation behind it.
+    </p>
+  </header>
+
+  <div class="container prose">
+    <Callout label="Not medical advice">
+      <p>
+        Bronzla estimates sun exposure times from population-average figures. It does not know
+        your medical history, your medication, your baseline vitamin D status, or how your skin
+        actually behaves. Every number below is an estimate with considerable error, and none of
+        it should be used to make a medical decision.
+      </p>
+      <p>
+        Photosensitising medication, a history of skin cancer, and conditions such as lupus or
+        xeroderma pigmentosum all invalidate this model entirely. See a dermatologist about any
+        concern with your skin. If you are burnt, treat it as a burn.
+      </p>
+    </Callout>
+
+    <h2>Fitzpatrick phototypes</h2>
+    <p>
+      The Fitzpatrick scale, devised in 1975 and validated in Fitzpatrick's 1988 paper, classifies
+      skin by how it responds to ultraviolet light. It is the scale the dermatological literature
+      uses when reporting minimal erythemal dose, which is why Bronzla keys off it rather than a
+      richer or more modern classification.
+    </p>
+    <p>
+      The descriptions below are written for a Turkish and wider Mediterranean audience: types III
+      and IV are by far the most common in Türkiye, so the app describes them on their own terms
+      rather than against northern European reference points.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Fitzpatrick skin phototypes I through VI</caption>
+        <thead>
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Label</th>
+            <th scope="col">Behaviour in the sun</th>
+            <th scope="col">Recognisable description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>I</td><td>Very fair</td><td>Always burns, never tans</td><td>Red or blond hair, blue or green eyes, freckles. Uncommon in Türkiye.</td></tr>
+          <tr><td>II</td><td>Fair</td><td>Burns easily, tans with difficulty</td><td>Blond or light brown hair, light eyes. Common along the Black Sea and in Thrace.</td></tr>
+          <tr><td>III</td><td>Light olive</td><td>Sometimes burns, tans gradually</td><td>Brown hair, hazel or brown eyes. One of the two most common types in Türkiye.</td></tr>
+          <tr><td>IV</td><td>Olive</td><td>Rarely burns, tans easily</td><td>Dark brown hair and eyes. Most common on the Mediterranean and Aegean coasts.</td></tr>
+          <tr><td>V</td><td>Brown</td><td>Very rarely burns, tans very easily</td><td>Near black hair, dark eyes. Common in the southeast.</td></tr>
+          <tr><td>VI</td><td>Deep brown</td><td>Almost never burns, always darkens</td><td>Black hair and eyes. Reddening is very rare.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Bronzla's skin type quiz derives a phototype from seven questions rather than asking someone
+      to self-select from a chart, which is a well-known source of error, particularly for
+      phototypes III and IV.
+    </p>
+
+    <h2>Minimal erythemal dose</h2>
+    <p>
+      The minimal erythemal dose (MED) is the erythemally weighted ultraviolet energy that
+      produces just-perceptible reddening, assessed 24 hours after exposure, on unadapted skin.
+      These are midpoints of the ranges reported in the clinical literature: population averages,
+      not personal measurements. An individual's true MED can sit well outside the value for their
+      phototype, which is one of the reasons Bronzla applies a safety fraction on top of the raw
+      calculation (see below).
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Minimal erythemal dose by phototype</caption>
+        <thead>
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">MED (erythemally weighted J/m²)</th>
+            <th scope="col">Equivalent in SED</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>I</td><td>200</td><td>2.0</td></tr>
+          <tr><td>II</td><td>250</td><td>2.5</td></tr>
+          <tr><td>III</td><td>300</td><td>3.0</td></tr>
+          <tr><td>IV</td><td>450</td><td>4.5</td></tr>
+          <tr><td>V</td><td>600</td><td>6.0</td></tr>
+          <tr><td>VI</td><td>1000</td><td>10.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>A warning about units</h3>
+    <p>
+      The figures above are <strong>erythemally weighted joules per square metre</strong>. The
+      standard erythema dose is defined as 1 SED = 100 J/m² of erythemally weighted UV, so the
+      table spans 2 to 10 SED. <strong>These figures are not comparable to unweighted physical
+      doses quoted in mJ/cm².</strong>
+    </p>
+    <p>
+      Older solar-simulator studies frequently report MED as a raw radiometric dose in mJ/cm²,
+      measured over a lamp's whole output band with no action spectrum applied. Typical numbers
+      there run in the tens of mJ/cm², and a naive unit conversion makes the table above look
+      wrong by roughly an order of magnitude. It is not wrong; the two quantities measure
+      different things.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Erythemally weighted dose versus unweighted solar-simulator dose</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Erythemally weighted dose</th>
+            <th scope="col">Unweighted solar-simulator dose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Typical unit</td><td>J/m² (or SED)</td><td>mJ/cm²</td></tr>
+          <tr><td>Spectrum</td><td>CIE erythema action spectrum applied</td><td>None, raw lamp output over its band</td></tr>
+          <tr><td>Depends on source spectrum</td><td>No, that is the point of the weighting</td><td>Yes, heavily</td></tr>
+          <tr><td>Comparable to a UV index</td><td>Yes, directly</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Bronzla's model is built entirely on the erythemally weighted convention, because the UV
+      index is defined in the same terms. Mixing the two would produce an app that tells someone
+      with fair skin they have several hours, which is exactly the failure mode this section
+      exists to prevent.
+    </p>
+
+    <h2>The core calculation</h2>
+    <p>
+      The UV index is defined, by the World Health Organization and World Meteorological
+      Organization, such that one index unit equals 25 mW/m² of erythemally weighted irradiance.
+      That single definition is what connects a weather forecast to a burn time.
+    </p>
+    <pre><code>irradiance (W/m²) = uvIndex &times; 0.025
+time to burn (s)  = MED (J/m²) / irradiance &times; protectionFactor</code></pre>
+    <p>
+      Worked example: phototype III, UV index 8, bare skin.
+    </p>
+    <pre><code>irradiance = 8 &times; 0.025      = 0.2 W/m&sup2;
+burn time  = 300 / 0.2      = 1500 s = 25 minutes</code></pre>
+    <p>which agrees with published erythema tables. Burn times at UV 8 on bare skin, for reference:</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Time to one MED at UV index 8, bare skin</caption>
+        <thead>
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Time to one MED</th>
+            <th scope="col">Bronzla's recommended session</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>I</td><td>17 min</td><td>10 min</td></tr>
+          <tr><td>II</td><td>21 min</td><td>13 min</td></tr>
+          <tr><td>III</td><td>25 min</td><td>15 min</td></tr>
+          <tr><td>IV</td><td>38 min</td><td>23 min</td></tr>
+          <tr><td>V</td><td>50 min</td><td>30 min</td></tr>
+          <tr><td>VI</td><td>83 min</td><td>50 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The safety fraction</h3>
+    <p>
+      Bronzla's recommended session is 60 per cent of the calculated burn time, not the burn time
+      itself. Staying below one MED is what separates tanning from burning: melanogenesis is
+      stimulated well before reddening appears, so a sub-erythemal session still produces a tan.
+      The remaining 40 per cent is headroom for the model's own error, which is considerable:
+      population-average MED, forecast UV rather than measured UV, no account of albedo from sand
+      or water, no account of altitude, and no account of how much of the body is actually in the
+      sun.
+    </p>
+
+    <h3>The three-hour cap</h3>
+    <p>
+      Bronzla never recommends more than three hours in a single session, whatever the arithmetic
+      says. <strong>This is a safety policy, not a clinical figure.</strong> There is no paper
+      behind three hours. Two things motivate it. First, the linear-dose assumption underlying the
+      whole model degrades over long sessions: forecast UV drifts from actual UV, sunscreen wears
+      off, people move in and out of shade, and cumulative photodamage is not usefully modelled as
+      a single dose integral. Second, no app should recommend six hours in the sun, regardless of
+      phototype. The cap binds most often for phototypes V and VI in moderate UV, and for anyone
+      wearing high SPF, and in those cases Bronzla is deliberately more conservative than its own
+      maths.
+    </p>
+
+    <h2>Sunscreen</h2>
+    <p>
+      SPF is measured under ISO 24444 at an application rate of 2 mg per square centimetre of
+      skin. Nobody applies that much. Petersen and Wulf (2014) found real-world application is
+      roughly a third of the test dose, and protection falls off faster than linearly with
+      thickness, so effective protection sits well below the label figure. Bronzla applies a flat
+      50 per cent efficiency discount to every SPF value rather than using the label figure
+      directly.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Nominal SPF against the protection factor Bronzla uses</caption>
+        <thead>
+          <tr><th scope="col">Nominal SPF</th><th scope="col">Protection factor used</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1 (bare skin)</td><td>1.0</td></tr>
+          <tr><td>15</td><td>8.0</td></tr>
+          <tr><td>30</td><td>15.5</td></tr>
+          <tr><td>50</td><td>25.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      This is a modelling choice rather than a measurement, and a deliberately conservative one.
+      The alternative is telling someone wearing SPF 50 that they have twenty hours, which is both
+      false and dangerous. Bronzla fixes reapplication at every two hours, sooner after swimming
+      or towelling, in line with every product label and dermatology body, and recommends SPF 30
+      or higher for every phototype, following the American Academy of Dermatology's guidance for
+      broad-spectrum protection regardless of skin type.
+    </p>
+
+    <h2>Vitamin D</h2>
+    <p>
+      Bronzla's vitamin D estimate has three parts, with very different levels of evidence behind
+      them.
+    </p>
+    <p>
+      <strong>The plateau is real.</strong> Synthesis self-limits at approximately one MED, as
+      previtamin D photoisomerises to inert products, so further exposure yields no more vitamin D
+      while continuing to accumulate erythemal dose. This is the single most useful thing the
+      estimate communicates: more sun does not mean more vitamin D.
+    </p>
+    <p>
+      <strong>The whole-body yield is drawn from the literature.</strong> Holick (2011) reports
+      that whole-body exposure to one MED is comparable to an oral intake of roughly 10,000 to
+      25,000 IU. Bronzla uses 15,000 IU, near the lower middle of that range.
+    </p>
+    <p>
+      <strong>The melanin multipliers have no published basis.</strong> Melanin competes with
+      7-dehydrocholesterol for the same photons, so darker phototypes do need materially longer
+      exposure for the same yield; that direction is well described in the literature. The
+      specific multiplier Bronzla applies for each phototype is not: it encodes a plausible shape,
+      not a validated figure, and the app labels the vitamin D estimate as an estimate wherever it
+      appears. It should never be used to decide on supplementation.
+    </p>
+
+    <h2>Sources</h2>
+    <p>
+      Apple's App Review guideline 1.4.1 requires medical citations to be easy for the user to
+      find, not merely present somewhere. Bronzla surfaces this exact list from every screen that
+      gives exposure guidance.
+    </p>
+
+    <h3>UV index</h3>
+    <ol class="citations">
+      <li>
+        <cite>World Health Organization.</cite> <em>Radiation: The Ultraviolet (UV) Index.</em>
+        WHO Questions and Answers.
+        <a href="https://www.who.int/news-room/questions-and-answers/item/radiation-the-ultraviolet-(uv)-index" rel="noopener">who.int</a>.
+        Backs: one UV index unit equals 25 mW/m² of erythemally weighted irradiance, and the
+        protection advice for each band.
+      </li>
+      <li>
+        <cite>International Commission on Non-Ionizing Radiation Protection.</cite>
+        <em>UV Index.</em> ICNIRP.
+        <a href="https://www.icnirp.org/en/applications/uv-index/index.html" rel="noopener">icnirp.org</a>.
+        Backs: the Low, Moderate, High, Very High and Extreme band thresholds.
+      </li>
+    </ol>
+
+    <h3>Skin type</h3>
+    <ol class="citations">
+      <li>
+        <cite>Fitzpatrick TB (1988).</cite> <em>The validity and practicality of sun-reactive skin
+        types I through VI.</em> Archives of Dermatology, 124(6), 869-871.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/3377516/" rel="noopener">pubmed.ncbi.nlm.nih.gov</a>.
+        Backs: the six phototypes and the burning and tanning behaviour described for each.
+      </li>
+    </ol>
+
+    <h3>Sunscreen</h3>
+    <ol class="citations">
+      <li>
+        <cite>International Organization for Standardization (2019).</cite> <em>ISO 24444:2019
+        Cosmetics. Sun protection test methods. In vivo determination of the sun protection factor
+        (SPF).</em> <a href="https://www.iso.org/standard/72250.html" rel="noopener">iso.org</a>.
+        Backs: SPF is measured at an application rate of 2 mg per square centimetre of skin.
+      </li>
+      <li>
+        <cite>Petersen B, Wulf HC (2014).</cite> <em>Application of sunscreen: theory and
+        reality.</em> Photodermatology, Photoimmunology and Photomedicine.
+        <a href="https://onlinelibrary.wiley.com/doi/10.1111/phpp.12099" rel="noopener">onlinelibrary.wiley.com</a>.
+        Backs: people apply far less than the test dose in practice, so real-world protection sits
+        well below the label figure.
+      </li>
+      <li>
+        <cite>American Academy of Dermatology.</cite> <em>How to apply sunscreen.</em>
+        <a href="https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/how-to-apply-sunscreen" rel="noopener">aad.org</a>.
+        Backs: reapply every two hours, and immediately after swimming or sweating.
+      </li>
+      <li>
+        <cite>American Academy of Dermatology.</cite> <em>Practice Safe Sun.</em>
+        <a href="https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/practice-safe-sun" rel="noopener">aad.org</a>.
+        Backs: broad spectrum SPF 30 or higher is recommended for everyone.
+      </li>
+    </ol>
+
+    <h3>Vitamin D</h3>
+    <ol class="citations">
+      <li>
+        <cite>Holick MF (2011).</cite> <em>Vitamin D: a D-lightful solution for health.</em>
+        Journal of Internal Medicine.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/21415774/" rel="noopener">pubmed.ncbi.nlm.nih.gov</a>.
+        Backs: whole-body exposure to one minimal erythemal dose is comparable to an oral intake
+        of roughly 10,000 to 25,000 IU.
+      </li>
+    </ol>
+
+    <h3>Aftercare</h3>
+    <ol class="citations">
+      <li>
+        <cite>American Academy of Dermatology.</cite> <em>How to treat a sunburn.</em>
+        <a href="https://www.aad.org/public/everyday-care/injured-skin/burns/treat-sunburn" rel="noopener">aad.org</a>.
+        Backs: cool baths, aloe vera or soy products, and never popping blisters.
+      </li>
+      <li>
+        <cite>Mayo Clinic.</cite> <em>Sunburn: First aid.</em>
+        <a href="https://www.mayoclinic.org/first-aid/first-aid-sunburn/basics/art-20056643" rel="noopener">mayoclinic.org</a>.
+        Backs: cool compresses, and that applying ice directly damages sunburnt skin.
+      </li>
+      <li>
+        <cite>Cleveland Clinic.</cite> <em>When to get care for a sunburn.</em>
+        <a href="https://health.clevelandclinic.org/when-to-get-care-for-a-sunburn" rel="noopener">health.clevelandclinic.org</a>.
+        Backs: when to seek medical care, namely dehydration, chills, nausea or extensive
+        blistering.
+      </li>
+    </ol>
+
+    <WeatherKitAttribution locale="en" />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .page-header p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+    max-width: var(--measure);
+  }
+
+  .prose {
+    padding-block: 1rem clamp(3rem, 6vw, 5rem);
+  }
+</style>

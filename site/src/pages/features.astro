@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DeviceFrame from '../components/DeviceFrame.astro';
 import UVScale from '../components/UVScale.astro';
 import WeatherKitAttribution from '../components/WeatherKitAttribution.astro';
+import { breadcrumbList } from '../config';
+
+const jsonLd = [breadcrumbList([{ name: 'Features', path: '/features' }], 'en')];
 
 const screens = [
   {
@@ -49,6 +52,7 @@ const screens = [
   path="/features"
   title="Features · Bronzla"
   description="The six screens behind Bronzla: safe time, timer, UV forecast, tan tracker and the skin type quiz."
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Six screens, one job</h1>

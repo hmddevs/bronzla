@@ -1,0 +1,50 @@
+---
+/**
+ * A prominent quoted block for the medical disclaimer at the top of guidance-giving
+ * pages, most importantly /science/. This is a stronger statement than the footer's
+ * MedicalDisclaimer (which is persistent but quiet), so it earns its own component;
+ * per DESIGN.md's "Evidence note" spec it still carries no tinted box and no side
+ * stripe, only rules above and below and a distinct type treatment.
+ */
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="callout" role="note">
+  <p class="callout-label">{label}</p>
+  <div class="callout-body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .callout {
+    border-top: 1px solid var(--ink-faint);
+    border-bottom: 1px solid var(--ink-faint);
+    padding-block: 1.5rem;
+    margin-block: 1.5rem;
+    max-width: none;
+  }
+
+  .callout-label {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: var(--text-small);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
+
+  .callout-body {
+    margin-top: 0.75rem;
+    color: var(--ink-muted);
+    max-width: var(--measure);
+  }
+
+  .callout-body :global(p + p) {
+    margin-top: 0.75rem;
+  }
+</style>

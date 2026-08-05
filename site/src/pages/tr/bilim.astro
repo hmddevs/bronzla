@@ -1,0 +1,394 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import WeatherKitAttribution from '../../components/WeatherKitAttribution.astro';
+import { breadcrumbList, absoluteUrl } from '../../config';
+
+const jsonLd = [
+  breadcrumbList([{ name: 'Bilimsel dayanak', path: '/tr/bilim' }], 'tr'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: "Bronzla'nın bilimsel dayanağı",
+    url: absoluteUrl('/tr/bilim'),
+    about: {
+      '@type': 'MedicalCondition',
+      name: 'Güneş yanığı (eritem)',
+    },
+    lastReviewed: '2026-08-05',
+    medicalAudienceType: 'Patient',
+    audience: {
+      '@type': 'PeopleAudience',
+      audienceType: 'Genel halk',
+    },
+  },
+];
+---
+
+<BaseLayout
+  locale="tr"
+  path="/tr/bilim"
+  title="Bronzla'nın bilimsel dayanağı · UV indeksi, MED ve güvenli süreler"
+  description="Bronzla, güvenli güneşlenme sürelerini DSÖ'nün UV indeksi tanımı ve yayınlanmış minimum eritem dozu verilerinden nasıl hesaplıyor: tam yöntem, örnek hesaplar ve kaynak listesi."
+  jsonLd={jsonLd}
+>
+  <header class="container page-header">
+    <h1>Bronzla'nın bilimsel dayanağı</h1>
+    <p>
+      Bronzla'nın gösterdiği her sayı yayınlanmış bir kaynağa dayanır. Bu sayfa tüm yöntemi
+      anlatır: fototip verileri, minimum eritem dozu değerleri, bir hava durumu tahminini yanma
+      süresine bağlayan UV indeksi tanımı ve arkasındaki her kaynak.
+    </p>
+  </header>
+
+  <div class="container prose">
+    <Callout label="Tıbbi tavsiye değildir">
+      <p>
+        Bronzla, güneşte kalma sürelerini toplum ortalaması değerlerden tahmin eder. Tıbbi
+        geçmişinizi, kullandığınız ilaçları, temel D vitamini durumunuzu veya cildinizin gerçekte
+        nasıl tepki verdiğini bilmez. Aşağıdaki her sayı, önemli hata payı taşıyan bir tahmindir ve
+        hiçbiri tıbbi bir karar vermek için kullanılmamalıdır.
+      </p>
+      <p>
+        Işığa hassaslık yapan ilaçlar, geçmişte deri kanseri öyküsü ve lupus veya kseroderma
+        pigmentozum gibi durumlar bu modeli tamamen geçersiz kılar. Cildinizle ilgili herhangi bir
+        endişeniz için dermatoloğa başvurun. Yanık varsa, onu bir yanık olarak tedavi edin.
+      </p>
+    </Callout>
+
+    <h2>Fitzpatrick cilt fototipleri</h2>
+    <p>
+      1975'te geliştirilen ve Fitzpatrick'in 1988 tarihli makalesiyle doğrulanan Fitzpatrick
+      ölçeği, cildi ultraviyole ışığa verdiği tepkiye göre sınıflandırır. Dermatoloji
+      literatürünün minimum eritem dozunu bildirirken kullandığı ölçek budur; Bronzla'nın daha
+      zengin veya daha modern bir sınıflandırma yerine bunu tercih etmesinin nedeni de budur.
+    </p>
+    <p>
+      Aşağıdaki tanımlar Türkiye ve daha geniş Akdeniz kitlesi için yazıldı: III ve IV tipleri
+      Türkiye'de açık farkla en yaygın iki tiptir, bu yüzden uygulama bunları kuzey Avrupa
+      referans noktalarına göre değil kendi referanslarıyla tanımlar.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>I'den VI'ya Fitzpatrick cilt fototipleri</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tip</th>
+            <th scope="col">Etiket</th>
+            <th scope="col">Güneşteki davranış</th>
+            <th scope="col">Tanınabilir tanım</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>I</td><td>Çok açık</td><td>Her zaman yanar, hiç bronzlaşmaz</td><td>Kızıl veya sarı saç, mavi veya yeşil göz, çil. Türkiye'de nadir.</td></tr>
+          <tr><td>II</td><td>Açık</td><td>Kolay yanar, zor bronzlaşır</td><td>Sarı veya açık kahverengi saç, açık renk göz. Karadeniz ve Trakya'da yaygın.</td></tr>
+          <tr><td>III</td><td>Açık zeytin</td><td>Bazen yanar, kademeli bronzlaşır</td><td>Kahverengi saç, ela veya kahverengi göz. Türkiye'de en yaygın iki tipten biri.</td></tr>
+          <tr><td>IV</td><td>Zeytin</td><td>Nadiren yanar, kolay bronzlaşır</td><td>Koyu kahverengi saç ve göz. Akdeniz ve Ege kıyılarında en yaygın.</td></tr>
+          <tr><td>V</td><td>Kahverengi</td><td>Çok nadir yanar, çok kolay bronzlaşır</td><td>Siyaha yakın saç, koyu göz. Güneydoğu'da yaygın.</td></tr>
+          <tr><td>VI</td><td>Koyu kahverengi</td><td>Neredeyse hiç yanmaz, her zaman koyulaşır</td><td>Siyah saç ve göz. Kızarma çok nadirdir.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Bronzla'nın cilt tipi testi, birinden bir grafikten kendi tipini seçmesini istemek yerine
+      yedi sorudan bir fototip çıkarır; kendi kendine seçim, özellikle III ve IV tipleri için
+      bilinen bir hata kaynağıdır.
+    </p>
+
+    <h2>Minimum eritem dozu</h2>
+    <p>
+      Minimum eritem dozu (MED), maruziyetten 24 saat sonra korunmamış ciltte fark edilebilir
+      kızarıklık oluşturan, eritem ağırlıklı ultraviyole enerjisidir. Aşağıdaki değerler klinik
+      literatürde bildirilen aralıkların orta noktalarıdır: toplum ortalamasıdır, kişisel ölçüm
+      değildir. Bir kişinin gerçek MED değeri, fototipi için verilen değerin oldukça dışında
+      kalabilir; bu, Bronzla'nın ham hesaplamanın üzerine bir güvenlik payı uygulamasının
+      nedenlerinden biridir (aşağıda).
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Fototipe göre minimum eritem dozu</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tip</th>
+            <th scope="col">MED (eritem ağırlıklı J/m²)</th>
+            <th scope="col">SED karşılığı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>I</td><td>200</td><td>2.0</td></tr>
+          <tr><td>II</td><td>250</td><td>2.5</td></tr>
+          <tr><td>III</td><td>300</td><td>3.0</td></tr>
+          <tr><td>IV</td><td>450</td><td>4.5</td></tr>
+          <tr><td>V</td><td>600</td><td>6.0</td></tr>
+          <tr><td>VI</td><td>1000</td><td>10.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Birimler hakkında bir uyarı</h3>
+    <p>
+      Yukarıdaki değerler <strong>eritem ağırlıklı metrekare başına joul</strong> cinsindendir.
+      Standart eritem dozu 1 SED = 100 J/m² eritem ağırlıklı UV olarak tanımlanır, yani tablo 2
+      ile 10 SED arasına yayılır. <strong>Bu değerler mJ/cm² cinsinden verilen ağırlıksız fiziksel
+      dozlarla karşılaştırılamaz.</strong>
+    </p>
+    <p>
+      Daha eski güneş simülatörü çalışmaları MED'i genellikle bir lambanın tüm çıkış bandı
+      üzerinden, hiçbir aksiyon spektrumu uygulanmadan ham radyometrik doz olarak mJ/cm²
+      cinsinden bildirir. Buradaki tipik sayılar onlarca mJ/cm² aralığındadır ve basit bir birim
+      dönüşümü yukarıdaki tabloyu kabaca bir büyüklük mertebesi kadar yanlış gösterir. Tablo yanlış
+      değildir; iki büyüklük farklı şeyleri ölçer.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Eritem ağırlıklı doz ile ağırlıksız güneş simülatörü dozu</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Eritem ağırlıklı doz</th>
+            <th scope="col">Ağırlıksız simülatör dozu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tipik birim</td><td>J/m² (veya SED)</td><td>mJ/cm²</td></tr>
+          <tr><td>Spektrum</td><td>CIE eritem aksiyon spektrumu uygulanır</td><td>Yok, lambanın ham çıkışı</td></tr>
+          <tr><td>Kaynak spektrumuna bağımlı mı</td><td>Hayır, ağırlıklandırmanın amacı bu</td><td>Evet, güçlü şekilde</td></tr>
+          <tr><td>UV indeksiyle karşılaştırılabilir mi</td><td>Evet, doğrudan</td><td>Hayır</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Bronzla'nın modeli tamamen eritem ağırlıklı kurala dayanır, çünkü UV indeksi de aynı terimle
+      tanımlanır. İkisini karıştırmak, açık tenli birine saatlerce vakti olduğunu söyleyen bir
+      uygulama üretir; bu bölümün önlemeyi amaçladığı hata tam olarak budur.
+    </p>
+
+    <h2>Temel hesaplama</h2>
+    <p>
+      UV indeksi, Dünya Sağlık Örgütü ve Dünya Meteoroloji Örgütü tarafından, bir indeks biriminin
+      eritem ağırlıklı 25 mW/m² ışınıma eşit olacağı şekilde tanımlanır. Bir hava durumu tahminini
+      yanma süresine bağlayan tanım tam olarak budur.
+    </p>
+    <pre><code>ışınım (W/m²) = UV indeksi &times; 0.025
+yanma süresi (s) = MED (J/m²) / ışınım &times; koruma faktörü</code></pre>
+    <p>Örnek hesap: fototip III, UV indeksi 8, korumasız cilt.</p>
+    <pre><code>ışınım = 8 &times; 0.025      = 0.2 W/m&sup2;
+yanma süresi = 300 / 0.2   = 1500 s = 25 dakika</code></pre>
+    <p>bu, yayınlanmış eritem tablolarıyla uyuşur. UV indeksi 8'de, korumasız ciltte referans yanma süreleri:</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>UV indeksi 8'de bir MED'e ulaşma süresi, korumasız cilt</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tip</th>
+            <th scope="col">Bir MED'e ulaşma süresi</th>
+            <th scope="col">Bronzla'nın önerdiği süre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>I</td><td>17 dk</td><td>10 dk</td></tr>
+          <tr><td>II</td><td>21 dk</td><td>13 dk</td></tr>
+          <tr><td>III</td><td>25 dk</td><td>15 dk</td></tr>
+          <tr><td>IV</td><td>38 dk</td><td>23 dk</td></tr>
+          <tr><td>V</td><td>50 dk</td><td>30 dk</td></tr>
+          <tr><td>VI</td><td>83 dk</td><td>50 dk</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Güvenlik payı</h3>
+    <p>
+      Bronzla'nın önerdiği süre, hesaplanan yanma süresinin kendisi değil, yüzde 60'ıdır. Bir
+      MED'in altında kalmak, bronzlaşmayı yanmadan ayıran şeydir: melanojenez, kızarıklık
+      görünmeden çok önce başlar, dolayısıyla eritem altındaki bir seans yine de bronzlaşma
+      sağlar. Kalan yüzde 40, modelin kendi hatası için tampon alandır: toplum ortalaması MED,
+      ölçülen değil tahmin edilen UV, kum veya sudan yansımanın hesaba katılmaması, yükseklik
+      etkisinin hesaba katılmaması ve bedenin gerçekte ne kadarının güneşte olduğunun bilinmemesi.
+    </p>
+
+    <h3>Üç saatlik sınır</h3>
+    <p>
+      Bronzla, hesap ne söylerse söylesin, tek bir seans için hiçbir zaman üç saatten fazla süre
+      önermez. <strong>Bu bir güvenlik politikasıdır, klinik bir rakam değildir.</strong> Üç
+      saatin arkasında bir makale yoktur. İki şey bu kararı motive eder. Birincisi, tüm modelin
+      dayandığı doğrusal doz varsayımı uzun seanslarda bozulur: tahmini UV gerçek UV'den uzaklaşır,
+      güneş kremi etkisini kaybeder, insanlar gölge ile güneş arasında hareket eder ve birikimli
+      foto hasar tek bir doz integrali olarak anlamlı şekilde modellenemez. İkincisi, hangi fototip
+      olursa olsun hiçbir uygulama altı saat güneşte kalmayı önermemelidir. Sınır en sık V ve VI
+      fototiplerinde orta UV'de ve yüksek SPF kullananlarda devreye girer; bu durumlarda Bronzla
+      kendi matematiğinden bilinçli olarak daha muhafazakârdır.
+    </p>
+
+    <h2>Güneş kremi</h2>
+    <p>
+      SPF, ISO 24444 standardına göre cilt yüzeyinin santimetrekaresine 2 mg uygulama oranıyla
+      ölçülür. Kimse bu kadar uygulamaz. Petersen ve Wulf (2014), gerçek hayattaki uygulamanın
+      test dozunun kabaca üçte biri olduğunu, korumanın kalınlıkla doğrusaldan daha hızlı düştüğünü
+      bulmuştur; bu nedenle gerçek koruma etiket değerinin oldukça altındadır. Bronzla, her SPF
+      değerine etiket rakamını doğrudan kullanmak yerine sabit yüzde 50 verimlilik indirimi
+      uygular.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Etiket SPF değerine karşı Bronzla'nın kullandığı koruma faktörü</caption>
+        <thead>
+          <tr><th scope="col">Etiket SPF</th><th scope="col">Kullanılan koruma faktörü</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1 (korumasız cilt)</td><td>1.0</td></tr>
+          <tr><td>15</td><td>8.0</td></tr>
+          <tr><td>30</td><td>15.5</td></tr>
+          <tr><td>50</td><td>25.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Bu bir ölçüm değil, bilinçli olarak muhafazakâr bir modelleme kararıdır. Alternatifi, SPF 50
+      kullanan birine yirmi saati olduğunu söylemektir; bu hem yanlış hem de tehlikelidir. Bronzla,
+      her ürün etiketi ve her dermatoloji kurumuyla uyumlu olarak yenilemeyi iki saatte bir, yüzme
+      veya havluyla kurulama sonrasında daha kısa aralıklarla sabitler ve Amerikan Dermatoloji
+      Akademisi'nin her cilt tipi için geniş spektrumlu koruma önerisine uygun olarak her fototip
+      için SPF 30 veya üzerini önerir.
+    </p>
+
+    <h2>D vitamini</h2>
+    <p>
+      Bronzla'nın D vitamini tahmininin, arkalarında çok farklı düzeylerde kanıt bulunan üç
+      bileşeni vardır.
+    </p>
+    <p>
+      <strong>Plato gerçektir.</strong> Sentez, yaklaşık bir MED'de kendini sınırlar; çünkü
+      previtamin D, inert ürünlere fotoizomerize olur, bu yüzden daha fazla maruziyet eritem
+      dozunu biriktirmeye devam ederken daha fazla D vitamini üretmez. Tahminin ilettiği en yararlı
+      bilgi budur: daha fazla güneş, daha fazla D vitamini anlamına gelmez.
+    </p>
+    <p>
+      <strong>Tüm vücut verimi literatürden alınmıştır.</strong> Holick (2011), tüm vücudun bir
+      MED'e maruz kalmasının kabaca 10.000 ile 25.000 IU arasında oral alıma denk geldiğini
+      bildirir. Bronzla, bu aralığın alt-orta noktasına yakın olan 15.000 IU değerini kullanır.
+    </p>
+    <p>
+      <strong>Melanin çarpanlarının yayınlanmış bir dayanağı yoktur.</strong> Melanin, aynı
+      fotonlar için 7-dehidrokolesterol ile rekabet eder, bu yüzden daha koyu fototiplerin aynı
+      verim için gerçekten daha uzun maruziyete ihtiyacı vardır; bu yön literatürde iyi
+      tanımlanmıştır. Bronzla'nın her fototip için uyguladığı belirli çarpan öyle değildir: makul
+      bir şekil kodlar, doğrulanmış bir rakam değil, ve uygulama D vitamini tahminini göründüğü her
+      yerde bir tahmin olarak etiketler. Takviye kararı vermek için asla kullanılmamalıdır.
+    </p>
+
+    <h2>Kaynaklar</h2>
+    <p>
+      Apple'ın App Review 1.4.1 kuralı, tıbbi kaynakların yalnızca bir yerde bulunmasını değil,
+      kullanıcının kolayca bulabilmesini gerektirir. Bronzla, güneşlenme rehberliği veren her
+      ekrandan tam olarak bu listeye erişim sağlar.
+    </p>
+
+    <h3>UV indeksi</h3>
+    <ol class="citations">
+      <li>
+        <cite>Dünya Sağlık Örgütü.</cite> <em>Radiation: The Ultraviolet (UV) Index.</em>
+        WHO Questions and Answers.
+        <a href="https://www.who.int/news-room/questions-and-answers/item/radiation-the-ultraviolet-(uv)-index" rel="noopener">who.int</a>.
+        Dayanak: bir UV indeksi biriminin eritem ağırlıklı 25 mW/m² ışınıma eşit olması ve her bant
+        için koruma önerisi.
+      </li>
+      <li>
+        <cite>International Commission on Non-Ionizing Radiation Protection.</cite>
+        <em>UV Index.</em> ICNIRP.
+        <a href="https://www.icnirp.org/en/applications/uv-index/index.html" rel="noopener">icnirp.org</a>.
+        Dayanak: Düşük, Orta, Yüksek, Çok Yüksek ve Aşırı bant eşikleri.
+      </li>
+    </ol>
+
+    <h3>Cilt tipi</h3>
+    <ol class="citations">
+      <li>
+        <cite>Fitzpatrick TB (1988).</cite> <em>The validity and practicality of sun-reactive skin
+        types I through VI.</em> Archives of Dermatology, 124(6), 869-871.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/3377516/" rel="noopener">pubmed.ncbi.nlm.nih.gov</a>.
+        Dayanak: altı fototip ve her biri için tanımlanan yanma ve bronzlaşma davranışı.
+      </li>
+    </ol>
+
+    <h3>Güneş kremi</h3>
+    <ol class="citations">
+      <li>
+        <cite>International Organization for Standardization (2019).</cite> <em>ISO 24444:2019
+        Cosmetics. Sun protection test methods. In vivo determination of the sun protection factor
+        (SPF).</em> <a href="https://www.iso.org/standard/72250.html" rel="noopener">iso.org</a>.
+        Dayanak: SPF, cilt yüzeyinin santimetrekaresine 2 mg uygulama oranıyla ölçülür.
+      </li>
+      <li>
+        <cite>Petersen B, Wulf HC (2014).</cite> <em>Application of sunscreen: theory and
+        reality.</em> Photodermatology, Photoimmunology and Photomedicine.
+        <a href="https://onlinelibrary.wiley.com/doi/10.1111/phpp.12099" rel="noopener">onlinelibrary.wiley.com</a>.
+        Dayanak: insanlar gerçekte test dozundan çok daha azını uygular, bu yüzden gerçek koruma
+        etiket rakamının oldukça altındadır.
+      </li>
+      <li>
+        <cite>American Academy of Dermatology.</cite> <em>How to apply sunscreen.</em>
+        <a href="https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/how-to-apply-sunscreen" rel="noopener">aad.org</a>.
+        Dayanak: iki saatte bir, yüzme veya terleme sonrasında hemen yenileme.
+      </li>
+      <li>
+        <cite>American Academy of Dermatology.</cite> <em>Practice Safe Sun.</em>
+        <a href="https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/practice-safe-sun" rel="noopener">aad.org</a>.
+        Dayanak: herkes için geniş spektrumlu SPF 30 veya üzeri önerisi.
+      </li>
+    </ol>
+
+    <h3>D vitamini</h3>
+    <ol class="citations">
+      <li>
+        <cite>Holick MF (2011).</cite> <em>Vitamin D: a D-lightful solution for health.</em>
+        Journal of Internal Medicine.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/21415774/" rel="noopener">pubmed.ncbi.nlm.nih.gov</a>.
+        Dayanak: tüm vücudun bir minimum eritem dozuna maruz kalmasının kabaca 10.000 ile 25.000
+        IU arasında oral alıma denk gelmesi.
+      </li>
+    </ol>
+
+    <h3>Yanık sonrası bakım</h3>
+    <ol class="citations">
+      <li>
+        <cite>American Academy of Dermatology.</cite> <em>How to treat a sunburn.</em>
+        <a href="https://www.aad.org/public/everyday-care/injured-skin/burns/treat-sunburn" rel="noopener">aad.org</a>.
+        Dayanak: ılık banyo, aloe vera veya soya bazlı ürünler ve kabarcıkların asla patlatılmaması.
+      </li>
+      <li>
+        <cite>Mayo Clinic.</cite> <em>Sunburn: First aid.</em>
+        <a href="https://www.mayoclinic.org/first-aid/first-aid-sunburn/basics/art-20056643" rel="noopener">mayoclinic.org</a>.
+        Dayanak: ılık kompres ve doğrudan buz uygulamanın yanmış cilde zarar vermesi.
+      </li>
+      <li>
+        <cite>Cleveland Clinic.</cite> <em>When to get care for a sunburn.</em>
+        <a href="https://health.clevelandclinic.org/when-to-get-care-for-a-sunburn" rel="noopener">health.clevelandclinic.org</a>.
+        Dayanak: ne zaman tıbbi yardım aranmalı: susuzluk, titreme, bulantı veya yaygın
+        kabarcıklanma.
+      </li>
+    </ol>
+
+    <WeatherKitAttribution locale="tr" />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .page-header p {
+    color: var(--ink-muted);
+    margin-top: 1rem;
+    max-width: var(--measure);
+  }
+
+  .prose {
+    padding-block: 1rem clamp(3rem, 6vw, 5rem);
+  }
+</style>

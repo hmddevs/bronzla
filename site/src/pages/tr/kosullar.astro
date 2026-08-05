@@ -2,6 +2,9 @@
 // TASLAK, HUKUKİ İNCELEME BEKLİYOR. APPSTORE.md ve uygulamanın kendi kurallarından
 // derlendi; henüz hukuk müşaviri tarafından incelenmedi. Yayınlanmadan önce Umut'a bildirin.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbList } from '../../config';
+
+const jsonLd = [breadcrumbList([{ name: 'Koşullar', path: '/tr/kosullar' }], 'tr')];
 ---
 
 <!--
@@ -14,6 +17,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   title="Koşullar · Bronzla"
   description="Bronzla ücretsizdir: satın alma yok, abonelik yok, uygulama içi satın alma yok. Tam tıbbi uyarı ve kullanım koşulları."
   showWeatherAttribution={false}
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Koşullar</h1>

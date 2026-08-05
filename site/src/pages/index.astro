@@ -4,24 +4,53 @@ import Hero from '../components/Hero.astro';
 import UVScale from '../components/UVScale.astro';
 import EvidenceNote from '../components/EvidenceNote.astro';
 import StoreButton from '../components/StoreButton.astro';
+import { SITE, absoluteUrl, organizationSchema } from '../config';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: SITE.name,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'iOS',
+    url: absoluteUrl('/'),
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    downloadUrl: SITE.appStoreUrl,
+    publisher: organizationSchema(),
+  },
+  organizationSchema(),
+];
 ---
 
 <BaseLayout
   locale="en"
   path="/"
-  title="Bronzla · Safe sun and UV tracking"
-  description="Bronzla tells you how long you can stay in the sun, based on your skin type and the UV index right now. Free, with no ads, no subscription and no in-app purchases."
+  title="Bronzla · Know your safe time in the sun"
+  description="Bronzla works out how long you can safely stay in the sun today, from the current UV index, your Fitzpatrick skin type and your SPF. Free on the App Store, no ads, no subscription, no in-app purchases."
+  jsonLd={jsonLd}
 >
   <Hero locale="en" />
 
   <section class="container feature feature-text">
-    <h2>Built around your skin</h2>
+    <h2>A number, not a guess</h2>
     <p>
-      A seven question Fitzpatrick assessment works out your skin type. The questions are
-      written for this market: the olive and wheat tones common along the Mediterranean and
-      Aegean are described on their own terms rather than against northern European reference
-      points.
+      "Stay out of the midday sun" is advice nobody can actually follow. Bronzla replaces it with
+      a number: the minutes you have today, worked out from the UV index where you are, your
+      Fitzpatrick skin type and the SPF you're wearing. It caps every recommendation at 60 per
+      cent of the calculated burn time and never suggests more than three hours, whatever the
+      arithmetic says.
     </p>
+    <p>
+      A seven-question quiz determines your Fitzpatrick type without asking you to eyeball a
+      chart. The questions are written for the olive and wheat tones common along the
+      Mediterranean and Aegean coasts, on their own terms rather than against northern European
+      reference points.
+    </p>
+    <a class="text-link" href="/science/">Read the full method and citation list</a>
   </section>
 
   <section class="container feature feature-list">
@@ -37,7 +66,7 @@ import StoreButton from '../components/StoreButton.astro';
       </li>
       <li>
         <h3>Sunscreen reminder</h3>
-        <p>A prompt to reapply, timed to when protection actually starts to fade.</p>
+        <p>A prompt to reapply every two hours, sooner after swimming or towelling.</p>
       </li>
       <li>
         <h3>Live on the lock screen</h3>
@@ -60,13 +89,17 @@ import StoreButton from '../components/StoreButton.astro';
   <section class="container evidence-section">
     <h2>Where the numbers come from</h2>
     <EvidenceNote locale="en" />
+    <a class="text-link" href="/science/">See the full method, worked examples and sources</a>
   </section>
 
   <section class="container privacy-section">
-    <h2>Privacy is a stance, not a feature</h2>
+    <h2>No account, because there is nowhere to send your data</h2>
     <p>
-      No account. Your data stays on your device. No third party analytics. Delete everything
-      with a single tap.
+      There is no server behind Bronzla. Your skin type, your session history and your tan
+      tracker photos stay in local storage on your phone. Location is used only to ask Apple
+      WeatherKit for the UV index where you are; it is never linked to an identity, and you can
+      skip it entirely and pick a city instead. No analytics SDK, no advertising, no third party
+      of any kind.
     </p>
     <a class="text-link" href="/privacy/">Read the full privacy page</a>
   </section>

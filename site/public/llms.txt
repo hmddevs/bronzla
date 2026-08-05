@@ -1,0 +1,66 @@
+# Bronzla
+
+Bronzla is a free iOS app for safe sun exposure and tanning, built for the Turkish and wider
+Mediterranean market. One-time free download, no ads, no in-app purchases, no subscription, no
+third-party analytics SDKs.
+
+## What it does
+
+Bronzla calculates how long someone can safely stay in the sun today, from three inputs: the
+current UV index (from Apple WeatherKit), the user's Fitzpatrick skin phototype (I through VI,
+set directly or derived from a seven-question in-app quiz), and the SPF of sunscreen they are
+wearing. The result is a recommended session length, capped at 60% of the calculated time to one
+minimal erythemal dose (MED) and never exceeding three hours in any case.
+
+Supporting features: a session timer with flip and sunscreen-reapplication reminders and a live
+Lock Screen countdown, hourly and ten-day UV forecasts, a tan tracker with session history and an
+estimated vitamin D figure, and an Apple Watch app and widgets showing the current UV index and
+remaining safe time.
+
+Note: the app previously included a global leaderboard feature; it is not functional in the
+current shipped build and is not advertised as a working feature on this site.
+
+## The method, in brief
+
+- UV index definition: 1 index unit = 25 mW/m² of erythemally weighted irradiance (WHO/WMO).
+- Time to burn = MED (J/m²) / (uvIndex × 0.025) × sunscreen protection factor.
+- Recommended session = 60% of time to burn, capped at 3 hours.
+- Sunscreen protection factor = a flat 50% real-world efficiency discount applied to nominal SPF,
+  reflecting under-application versus the ISO 24444 test dose.
+- Vitamin D estimate plateaus at one MED and applies an unvalidated melanin multiplier by
+  phototype; it is explicitly not a basis for supplementation decisions.
+
+Full method, worked examples, the Fitzpatrick and MED tables, the unit-confusion warning
+(erythemally weighted J/m² is not comparable to unweighted mJ/cm²), and the complete citation
+list (WHO, ICNIRP, Fitzpatrick 1988, ISO 24444, Petersen & Wulf 2014, AAD, Holick 2011, Mayo
+Clinic, Cleveland Clinic) are published at:
+
+- English: https://bronzla.app/science/
+- Turkish: https://bronzla.app/tr/bilim/
+
+Bronzla is not a medical device and does not give medical advice. It carries a medical
+disclaimer on every screen and page that gives exposure guidance.
+
+## Privacy
+
+No account, no server, no third-party analytics or advertising SDKs. Skin type, session history
+and tan tracker photos stay in local storage on the user's device. Location is used only to
+query Apple WeatherKit for the local UV index and is never linked to an identity; a manually
+chosen city is also supported.
+
+- Privacy: https://bronzla.app/privacy/ (Turkish: https://bronzla.app/tr/gizlilik/)
+- Terms: https://bronzla.app/terms/ (Turkish: https://bronzla.app/tr/kosullar/)
+
+## Publisher
+
+Bronzla is made by HMD Developments. Support: umut@guden.tr.
+
+## Key URLs
+
+- https://bronzla.app/ — overview, English
+- https://bronzla.app/tr/ — overview, Turkish
+- https://bronzla.app/features/ — feature detail, English
+- https://bronzla.app/tr/ozellikler/ — feature detail, Turkish
+- https://bronzla.app/science/ — full exposure model, method and citations, English
+- https://bronzla.app/tr/bilim/ — full exposure model, method and citations, Turkish
+- https://apps.apple.com/app/id6793729675 — App Store listing

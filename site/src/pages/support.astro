@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbList } from '../config';
 
 const items = [
   {
@@ -31,6 +32,19 @@ const items = [
     a: 'Reinstall Bronzla from the App Store while signed in to the same Apple ID. It is free, so there is nothing to restore or pay for again.',
   },
 ];
+
+const jsonLd = [
+  breadcrumbList([{ name: 'Support', path: '/support' }], 'en'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+];
 ---
 
 <BaseLayout
@@ -39,6 +53,7 @@ const items = [
   title="Support · Bronzla"
   description="Get help with Bronzla: contact details and answers to common questions about UV data, location and reinstalling the app."
   showWeatherAttribution={false}
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Support</h1>

@@ -3,6 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import DeviceFrame from '../../components/DeviceFrame.astro';
 import UVScale from '../../components/UVScale.astro';
 import WeatherKitAttribution from '../../components/WeatherKitAttribution.astro';
+import { breadcrumbList } from '../../config';
+
+const jsonLd = [breadcrumbList([{ name: 'Özellikler', path: '/tr/ozellikler' }], 'tr')];
 
 const screens = [
   {
@@ -49,6 +52,7 @@ const screens = [
   path="/tr/ozellikler"
   title="Özellikler · Bronzla"
   description="Bronzla'nın altı ekranı: güvenli süre, zamanlayıcı, UV tahmini, bronz takipçi ve cilt tipi testi."
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Altı ekran, tek görev</h1>

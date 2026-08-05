@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbList } from '../../config';
 
 const items = [
   {
@@ -39,6 +40,19 @@ const items = [
     a: 'Evet, Ayarlar’dan tek dokunuşla. Silme işlemi anında ve yereldir, çünkü zaten her şey yereldi.',
   },
 ];
+
+const jsonLd = [
+  breadcrumbList([{ name: 'Gizlilik', path: '/tr/gizlilik' }], 'tr'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+];
 ---
 
 <BaseLayout
@@ -47,6 +61,7 @@ const items = [
   title="Gizlilik · Bronzla"
   description="Hesap yok, analiz yok, cihazdan Apple Weather'a giden bir konum sorgusu dışında hiçbir şey çıkmaz. Tüm verilerinizi tek dokunuşla silebilirsiniz."
   showWeatherAttribution={false}
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Gizlilik</h1>

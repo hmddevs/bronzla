@@ -2,6 +2,9 @@
 // DRAFTED, PENDING LEGAL REVIEW. Sourced from APPSTORE.md and the product's own
 // non-negotiables; not yet reviewed by counsel. Flag to Umut before this page ships.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbList } from '../config';
+
+const jsonLd = [breadcrumbList([{ name: 'Terms', path: '/terms' }], 'en')];
 ---
 
 <!--
@@ -14,6 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Terms · Bronzla"
   description="Bronzla is free: no purchase, no subscription, no in-app purchases. The full medical disclaimer and terms of use."
   showWeatherAttribution={false}
+  jsonLd={jsonLd}
 >
   <header class="container page-header">
     <h1>Terms</h1>
