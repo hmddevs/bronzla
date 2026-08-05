@@ -71,6 +71,16 @@ struct MedicalSource: Identifiable, Sendable {
             backs: "The six phototypes and the burning and tanning behaviour described for each.",
             category: .skinType
         ),
+        MedicalSource(
+            id: "sayre-1981",
+            title: "Skin type, minimal erythema dose (MED), and sunlight acclimatization",
+            authors: "Sayre RM, Desrochers DL, Wilson CJ, Marlowe E",
+            publicationDetail: "Journal of the American Academy of Dermatology, 5(4), 439-443",
+            year: 1981,
+            url: URL(string: "https://doi.org/10.1016/S0190-9622(81)70106-3")!,
+            backs: "The minimal erythemal dose ranges by Fitzpatrick skin type that this app's phototype tiers use.",
+            category: .skinType
+        ),
 
         // MARK: Sunscreen
 

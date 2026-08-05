@@ -89,5 +89,3 @@ Worth knowing before you pick something up:
 
 - Seven `BronzlaUITests` failures around the onboarding wizard, pre-existing.
 - The backend is not deployed, so the global leaderboard is inert in the shipped app.
-- `TimerView` displays a UV index without `WeatherAttributionView`. This is a genuine
-  compliance gap and a good first contribution.

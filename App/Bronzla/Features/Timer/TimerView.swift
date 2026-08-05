@@ -61,6 +61,7 @@ struct TimerView: View {
                     durationPicker(for: plan)
                     planBreakdown(for: effectivePlan(from: plan))
                     MedicalDisclaimer()
+                    WeatherAttributionView()
                 }
                 .padding(Spacing.l)
                 .padding(.bottom, Spacing.xxl)
@@ -388,6 +389,7 @@ struct SessionSummaryView: View {
                 .frame(maxWidth: .infinity)
 
                 MedicalDisclaimer()
+                WeatherAttributionView()
             }
             .padding(Spacing.l)
         }
