@@ -1,3 +1,6 @@
+# Internal working notes, never published
+.internal/
+
 # Xcode
 build/
 DerivedData/
@@ -29,6 +32,11 @@ xcuserdata/
 # Swift Package Manager
 .build/
 .swiftpm/
+
+# Node
+node_modules/
+dist/
+cdk.out/
 
 # Editor noise
 *.swp
