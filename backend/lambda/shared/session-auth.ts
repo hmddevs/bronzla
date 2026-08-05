@@ -1,5 +1,26 @@
+import { createHash } from "node:crypto";
 import { GetCommand, type DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 import { hashAppleSub, logger } from "./logger";
+
+/**
+ * Hashes a raw session token into the value actually stored as the Sessions
+ * table partition key. The raw token is handed to the client exactly once, at
+ * sign-in, and is never persisted server-side, so a read of the Sessions table
+ * yields nothing replayable.
+ *
+ * A single unsalted SHA-256 is the right primitive here, and deliberately not
+ * bcrypt, scrypt or Argon2. Those exist to make low-entropy, guessable secrets
+ * (passwords) expensive to attack offline. A session token is 32 bytes from
+ * the CSPRNG, so there is no guessing space to defend and no dictionary to
+ * slow down. A deliberately slow KDF would add its cost to every single
+ * authenticated request while buying nothing. Salting is likewise pointless:
+ * the input is already unique and unguessable, so there are no rainbow tables
+ * to defeat, and a per-row salt would make the lookup impossible anyway
+ * because we must derive the key from the presented token alone.
+ */
+export function hashSessionToken(rawToken: string): string {
+  return createHash("sha256").update(rawToken).digest("hex");
+}
 
 /**
  * Resolves an `Authorization: Bearer <sessionToken>` header to an appleSub.
@@ -29,18 +50,22 @@ export class SessionAuthError extends Error {
 export interface AuthorisedSession {
   appleSub: string;
   /**
-   * The raw bearer token used for this request. Callers that delete a
-   * session on the caller's behalf (delete-account) must include this
-   * exact token in their deletion set: the GSI used to enumerate a user's
-   * sessions is eventually consistent and can miss a session created just
-   * before deletion, so the token actually presented on the request must
-   * always be deleted too, not just whatever the GSI query happens to see.
+   * SHA-256 of the bearer token presented on this request, which is also the
+   * Sessions table partition key. Deliberately not the raw token: nothing
+   * downstream of authentication has any need for it, and handlers that
+   * delete a session (signout, delete-account) key on the hash directly.
+   *
+   * delete-account must include this exact value in its deletion set: the
+   * GSI used to enumerate a user's sessions is eventually consistent and can
+   * miss a session created just before deletion, so the session actually
+   * presented on the request must always be deleted too, not just whatever
+   * the GSI query happens to see.
    */
-  sessionToken: string;
+  sessionTokenHash: string;
 }
 
 interface SessionRecord {
-  sessionToken: string;
+  sessionTokenHash: string;
   appleSub: string;
   expiresAt: number;
 }
@@ -61,10 +86,13 @@ export async function resolveSession(
     throw new SessionAuthError("empty session token");
   }
 
+  // Look up by hash, never by the raw token: the raw value is not stored.
+  const sessionTokenHash = hashSessionToken(sessionToken);
+
   const result = await docClient.send(
     new GetCommand({
       TableName: sessionsTableName,
-      Key: { sessionToken },
+      Key: { sessionTokenHash },
     })
   );
 
@@ -112,5 +140,5 @@ export async function resolveSession(
     throw new SessionAuthError("session refers to a deleted user");
   }
 
-  return { appleSub: session.appleSub, sessionToken };
+  return { appleSub: session.appleSub, sessionTokenHash };
 }

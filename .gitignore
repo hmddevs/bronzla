@@ -42,3 +42,9 @@ cdk.out/
 *.swp
 .idea/
 .vscode/
+
+# Internal brain, must never be published even if recreated at the root
+/MEMORY.md
+/RESUME.md
+/APPSTORE.md
+/tasks/

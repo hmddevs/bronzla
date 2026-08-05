@@ -1,4 +1,4 @@
-import { createHmac } from "node:crypto";
+import { createHash, createHmac } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { mockClient } from "aws-sdk-client-mock";
 import { GetCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
@@ -83,8 +83,13 @@ function buildEvent(overrides: Partial<APIGatewayProxyEventV2> = {}): APIGateway
   } as APIGatewayProxyEventV2;
 }
 
+// Derived from jose's own return type rather than the global `CryptoKey`, which is a DOM
+// lib type and this tsconfig targets ES2022 without DOM. Widening `lib` to pull in one type
+// would drag every browser global into a Lambda codebase, which is a poor trade.
+type GeneratedPrivateKey = Awaited<ReturnType<typeof generateKeyPair>>['privateKey']
+
 async function signValidToken(
-  privateKey: CryptoKey,
+  privateKey: GeneratedPrivateKey,
   overrides: { sub?: string; issuer?: string; audience?: string; expiresIn?: string | number } = {}
 ) {
   let builder = new SignJWT({})
@@ -139,6 +144,62 @@ describe("auth-apple handler", () => {
       .commandCalls(PutCommand)
       .find((call) => call.args[0].input.TableName === SESSIONS_TABLE);
     expect(sessionPut?.args[0].input.Item).toMatchObject({ appleSub: "apple-sub-123" });
+  });
+
+  it("persists only the SHA-256 of the session token, never the raw token", async () => {
+    const { privateKey, publicJwk } = await buildTestKeyPair();
+    stubJwksFetch([publicJwk]);
+    const token = await signValidToken(privateKey);
+
+    const { handler, docClient } = await loadHandler();
+    const ddbMock = mockClient(docClient);
+    ddbMock.on(GetCommand, { TableName: USERS_TABLE }).resolves({ Item: undefined });
+    ddbMock.on(PutCommand).resolves({});
+
+    const response = (await handler(
+      buildEvent({ body: JSON.stringify({ identityToken: token }) }),
+      {} as never,
+      undefined as never
+    )) as { statusCode: number; body: string };
+
+    expect(response.statusCode).toBe(200);
+    const { sessionToken: rawToken } = JSON.parse(response.body) as { sessionToken: string };
+
+    const sessionPut = ddbMock
+      .commandCalls(PutCommand)
+      .find((call) => call.args[0].input.TableName === SESSIONS_TABLE);
+    const item = sessionPut?.args[0].input.Item as Record<string, unknown> | undefined;
+
+    expect(item?.sessionTokenHash).toBe(createHash("sha256").update(rawToken).digest("hex"));
+    expect(item?.sessionToken).toBeUndefined();
+    // Belt and braces: the raw token must appear nowhere in the persisted item.
+    expect(JSON.stringify(item)).not.toContain(rawToken);
+  });
+
+  it("returns a raw token that cannot itself be used as the Sessions partition key", async () => {
+    const { privateKey, publicJwk } = await buildTestKeyPair();
+    stubJwksFetch([publicJwk]);
+    const token = await signValidToken(privateKey);
+
+    const { handler, docClient } = await loadHandler();
+    const ddbMock = mockClient(docClient);
+    ddbMock.on(GetCommand, { TableName: USERS_TABLE }).resolves({ Item: undefined });
+    ddbMock.on(PutCommand).resolves({});
+
+    const response = (await handler(
+      buildEvent({ body: JSON.stringify({ identityToken: token }) }),
+      {} as never,
+      undefined as never
+    )) as { statusCode: number; body: string };
+
+    const { sessionToken: rawToken } = JSON.parse(response.body) as { sessionToken: string };
+    const sessionPut = ddbMock
+      .commandCalls(PutCommand)
+      .find((call) => call.args[0].input.TableName === SESSIONS_TABLE);
+    const storedKey = (sessionPut?.args[0].input.Item as Record<string, unknown>).sessionTokenHash;
+
+    expect(storedKey).not.toBe(rawToken);
+    expect(storedKey).toMatch(/^[0-9a-f]{64}$/);
   });
 
   it("preserves the original createdAt and existing displayName for a returning user", async () => {

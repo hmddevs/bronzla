@@ -24,8 +24,8 @@ const SESSIONS_BY_APPLE_SUB_GSI_NAME = process.env.SESSIONS_BY_APPLE_SUB_GSI_NAM
 // otherwise already gone from the caller's perspective.
 const MAX_SESSION_DELETES_PER_TRANSACTION = 100;
 
-async function fetchAllSessionTokens(appleSub: string): Promise<string[]> {
-  const tokens: string[] = [];
+async function fetchAllSessionTokenHashes(appleSub: string): Promise<string[]> {
+  const tokenHashes: string[] = [];
   let lastEvaluatedKey: Record<string, unknown> | undefined;
 
   do {
@@ -35,17 +35,17 @@ async function fetchAllSessionTokens(appleSub: string): Promise<string[]> {
         IndexName: SESSIONS_BY_APPLE_SUB_GSI_NAME,
         KeyConditionExpression: "appleSub = :appleSub",
         ExpressionAttributeValues: { ":appleSub": appleSub },
-        ProjectionExpression: "sessionToken",
+        ProjectionExpression: "sessionTokenHash",
         ExclusiveStartKey: lastEvaluatedKey,
       })
     );
     for (const item of result.Items ?? []) {
-      tokens.push(item.sessionToken as string);
+      tokenHashes.push(item.sessionTokenHash as string);
     }
     lastEvaluatedKey = result.LastEvaluatedKey as Record<string, unknown> | undefined;
   } while (lastEvaluatedKey);
 
-  return tokens;
+  return tokenHashes;
 }
 
 function chunk<T>(items: T[], size: number): T[][] {
@@ -75,15 +75,15 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     throw error;
   }
 
-  const { appleSub, sessionToken: presentedSessionToken } = session;
+  const { appleSub, sessionTokenHash: presentedSessionTokenHash } = session;
 
   try {
-    const queriedTokens = await fetchAllSessionTokens(appleSub);
-    // Always include the token actually presented on this request, even if
+    const queriedTokenHashes = await fetchAllSessionTokenHashes(appleSub);
+    // Always include the session actually presented on this request, even if
     // the (eventually consistent) GSI query missed it: otherwise a session
     // created just before deletion could survive as a live bearer token.
-    const sessionTokens = Array.from(new Set([...queriedTokens, presentedSessionToken]));
-    const sessionBatches = chunk(sessionTokens, MAX_SESSION_DELETES_PER_TRANSACTION);
+    const sessionTokenHashes = Array.from(new Set([...queriedTokenHashes, presentedSessionTokenHash]));
+    const sessionBatches = chunk(sessionTokenHashes, MAX_SESSION_DELETES_PER_TRANSACTION);
 
     // Delete every session batch first, each atomically per batch, before
     // the account itself disappears (see comment on
@@ -91,8 +91,8 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     for (const batch of sessionBatches) {
       await docClient.send(
         new TransactWriteCommand({
-          TransactItems: batch.map((sessionToken) => ({
-            Delete: { TableName: SESSIONS_TABLE, Key: { sessionToken } },
+          TransactItems: batch.map((sessionTokenHash) => ({
+            Delete: { TableName: SESSIONS_TABLE, Key: { sessionTokenHash } },
           })),
         })
       );
@@ -113,7 +113,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       operation: "deleteAccount",
       requestId,
       appleSubHash: hashAppleSub(appleSub),
-      sessionsDeleted: sessionTokens.length,
+      sessionsDeleted: sessionTokenHashes.length,
     });
 
     return { statusCode: 204, body: "" };

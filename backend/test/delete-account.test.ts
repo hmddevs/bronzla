@@ -3,6 +3,7 @@ import { mockClient } from "aws-sdk-client-mock";
 import { GetCommand, QueryCommand, TransactWriteCommand } from "@aws-sdk/lib-dynamodb";
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { docClient } from "../lambda/shared/dynamo";
+import { hashSessionToken } from "../lambda/shared/session-auth";
 import { handler } from "../lambda/delete-account";
 
 // Table/GSI names are set in vitest.config.ts (test.env), applied before
@@ -29,7 +30,7 @@ describe("delete-account handler", () => {
     ddbMock.reset();
     ddbMock.on(GetCommand, { TableName: "BronzlaSessions-test" }).resolves({
       Item: {
-        sessionToken: "valid-session-token",
+        sessionTokenHash: hashSessionToken("valid-session-token"),
         appleSub: "sub-1",
         expiresAt: Math.floor(Date.now() / 1000) + 1000,
       },
@@ -41,7 +42,10 @@ describe("delete-account handler", () => {
 
   it("deletes every session first, then the user and score in a final transaction", async () => {
     ddbMock.on(QueryCommand).resolves({
-      Items: [{ sessionToken: "valid-session-token" }, { sessionToken: "other-device-token" }],
+      Items: [
+        { sessionTokenHash: hashSessionToken("valid-session-token") },
+        { sessionTokenHash: hashSessionToken("other-device-token") },
+      ],
     });
     ddbMock.on(TransactWriteCommand).resolves({});
 
@@ -56,10 +60,10 @@ describe("delete-account handler", () => {
     // First transaction: sessions only.
     const sessionTransactItems = transactCalls[0]?.args[0].input.TransactItems ?? [];
     expect(sessionTransactItems).toContainEqual({
-      Delete: { TableName: "BronzlaSessions-test", Key: { sessionToken: "valid-session-token" } },
+      Delete: { TableName: "BronzlaSessions-test", Key: { sessionTokenHash: hashSessionToken("valid-session-token") } },
     });
     expect(sessionTransactItems).toContainEqual({
-      Delete: { TableName: "BronzlaSessions-test", Key: { sessionToken: "other-device-token" } },
+      Delete: { TableName: "BronzlaSessions-test", Key: { sessionTokenHash: hashSessionToken("other-device-token") } },
     });
     expect(sessionTransactItems.every((item) => "Delete" in item && item.Delete?.TableName === "BronzlaSessions-test")).toBe(
       true
@@ -90,7 +94,7 @@ describe("delete-account handler", () => {
     const transactCalls = ddbMock.commandCalls(TransactWriteCommand);
     const sessionTransactItems = transactCalls[0]?.args[0].input.TransactItems ?? [];
     expect(sessionTransactItems).toContainEqual({
-      Delete: { TableName: "BronzlaSessions-test", Key: { sessionToken: "valid-session-token" } },
+      Delete: { TableName: "BronzlaSessions-test", Key: { sessionTokenHash: hashSessionToken("valid-session-token") } },
     });
   });
 
@@ -98,10 +102,10 @@ describe("delete-account handler", () => {
     ddbMock
       .on(QueryCommand)
       .resolvesOnce({
-        Items: [{ sessionToken: "token-page-1" }],
-        LastEvaluatedKey: { sessionToken: "token-page-1" },
+        Items: [{ sessionTokenHash: "hash-page-1" }],
+        LastEvaluatedKey: { sessionTokenHash: "hash-page-1" },
       })
-      .resolvesOnce({ Items: [{ sessionToken: "token-page-2" }] });
+      .resolvesOnce({ Items: [{ sessionTokenHash: "hash-page-2" }] });
     ddbMock.on(TransactWriteCommand).resolves({});
 
     const response = (await handler(buildEvent(), {} as never, undefined as never)) as {
@@ -112,10 +116,10 @@ describe("delete-account handler", () => {
     expect(ddbMock.commandCalls(QueryCommand)).toHaveLength(2);
     const sessionTransactItems = ddbMock.commandCalls(TransactWriteCommand)[0]?.args[0].input.TransactItems ?? [];
     expect(sessionTransactItems).toContainEqual({
-      Delete: { TableName: "BronzlaSessions-test", Key: { sessionToken: "token-page-1" } },
+      Delete: { TableName: "BronzlaSessions-test", Key: { sessionTokenHash: "hash-page-1" } },
     });
     expect(sessionTransactItems).toContainEqual({
-      Delete: { TableName: "BronzlaSessions-test", Key: { sessionToken: "token-page-2" } },
+      Delete: { TableName: "BronzlaSessions-test", Key: { sessionTokenHash: "hash-page-2" } },
     });
   });
 

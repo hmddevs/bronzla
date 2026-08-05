@@ -4,6 +4,7 @@ import { GetCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { docClient } from "./shared/dynamo";
 import { AppleTokenVerificationError, verifyAppleIdentityToken } from "./shared/apple-jwt";
 import { InvalidDisplayNameError, sanitizeDisplayName } from "./shared/display-name";
+import { hashSessionToken } from "./shared/session-auth";
 import { hashAppleSub, logger } from "./shared/logger";
 
 const USERS_TABLE = process.env.USERS_TABLE_NAME ?? "";
@@ -107,13 +108,18 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       })
     );
 
+    // The raw token leaves this function exactly once, in the response body
+    // below. Only its SHA-256 is persisted, so a read of the Sessions table
+    // gives an attacker nothing they can present as a bearer token. See
+    // hashSessionToken in shared/session-auth.ts for why a plain hash rather
+    // than a password KDF is the correct choice for a 256-bit random secret.
     const sessionToken = randomBytes(32).toString("base64url");
     const expiresAt = Math.floor(Date.now() / 1000) + SESSION_TTL_SECONDS;
 
     await docClient.send(
       new PutCommand({
         TableName: SESSIONS_TABLE,
-        Item: { sessionToken, appleSub, expiresAt },
+        Item: { sessionTokenHash: hashSessionToken(sessionToken), appleSub, expiresAt },
       })
     );
 

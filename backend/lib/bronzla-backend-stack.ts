@@ -34,7 +34,11 @@ export class BronzlaBackendStack extends cdk.Stack {
 
     const sessionsTable = new dynamodb.Table(this, "SessionsTable", {
       tableName: `BronzlaSessions-${stageName}`,
-      partitionKey: { name: "sessionToken", type: dynamodb.AttributeType.STRING },
+      // SHA-256 of the session token, never the token itself. The raw value
+      // is returned to the client once at sign-in and is not persisted, so
+      // read access to this table yields nothing replayable. See
+      // hashSessionToken in lambda/shared/session-auth.ts.
+      partitionKey: { name: "sessionTokenHash", type: dynamodb.AttributeType.STRING },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       timeToLiveAttribute: "expiresAt",
       removalPolicy: cdk.RemovalPolicy.RETAIN,
@@ -47,7 +51,7 @@ export class BronzlaBackendStack extends cdk.Stack {
     // O(sessions-for-this-user) query regardless of total table size.
     // KEYS_ONLY is sufficient: the only field the delete-account handler
     // needs from a matched item is the base table's partition key
-    // (sessionToken), which every GSI projection includes automatically.
+    // (sessionTokenHash), which every GSI projection includes automatically.
     sessionsTable.addGlobalSecondaryIndex({
       indexName: SESSIONS_BY_APPLE_SUB_GSI_NAME,
       partitionKey: { name: "appleSub", type: dynamodb.AttributeType.STRING },
@@ -117,6 +121,40 @@ export class BronzlaBackendStack extends cdk.Stack {
     authAppleFn.addToRolePolicy(
       new cdk.aws_iam.PolicyStatement({
         actions: ["dynamodb:PutItem"],
+        resources: [sessionsTable.tableArn],
+      })
+    );
+
+    const signoutFn = new NodejsFunction(this, "SignoutFunction", {
+      functionName: `bronzla-signout-${stageName}`,
+      entry: path.join(__dirname, "..", "lambda", "signout.ts"),
+      handler: "handler",
+      runtime: lambda.Runtime.NODEJS_20_X,
+      architecture: lambda.Architecture.ARM_64,
+      timeout: cdk.Duration.seconds(10),
+      memorySize: 256,
+      bundling: commonBundling,
+      environment: {
+        SESSIONS_TABLE_NAME: sessionsTable.tableName,
+        USERS_TABLE_NAME: usersTable.tableName,
+      },
+    });
+    // Signout handler, least privilege per table:
+    // - Users: GetItem only, for the shared session-auth existence check. It
+    //   never reads or writes anything else about the user.
+    // - Sessions: GetItem (session-auth) plus DeleteItem for the one row it
+    //   revokes. No Query, so it cannot enumerate anyone's sessions, and no
+    //   PutItem/UpdateItem, so it cannot mint or extend one.
+    // No access at all to the Scores table.
+    signoutFn.addToRolePolicy(
+      new cdk.aws_iam.PolicyStatement({
+        actions: ["dynamodb:GetItem"],
+        resources: [usersTable.tableArn],
+      })
+    );
+    signoutFn.addToRolePolicy(
+      new cdk.aws_iam.PolicyStatement({
+        actions: ["dynamodb:GetItem", "dynamodb:DeleteItem"],
         resources: [sessionsTable.tableArn],
       })
     );
@@ -263,6 +301,12 @@ export class BronzlaBackendStack extends cdk.Stack {
       path: "/auth/apple",
       methods: [apigwv2.HttpMethod.POST],
       integration: new HttpLambdaIntegration("AuthAppleIntegration", authAppleFn),
+    });
+
+    httpApi.addRoutes({
+      path: "/auth/signout",
+      methods: [apigwv2.HttpMethod.POST],
+      integration: new HttpLambdaIntegration("SignoutIntegration", signoutFn),
     });
 
     httpApi.addRoutes({
