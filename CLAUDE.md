@@ -62,7 +62,7 @@ xcodebuild test  -project Bronzla.xcodeproj -scheme Bronzla \
 Read the Swift Testing summary, not `Executed 0 tests` from the legacy XCTest reporter: the
 suite is 129 tests across 14 suites and contains no XCTest cases.
 
-Backend: `cd backend && npm install && npm test` (54 tests across 8 files).
+Backend: `cd backend && npm install && npm test` (65 tests across 9 files).
 
 Type-check without the asset catalog step (useful when no simulator runtime is installed):
 ```

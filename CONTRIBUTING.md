@@ -89,3 +89,7 @@ Worth knowing before you pick something up:
 
 - Seven `BronzlaUITests` failures around the onboarding wizard, pre-existing.
 - The backend is not deployed, so the global leaderboard is inert in the shipped app.
+- There is no standalone sign-out control in the interface. `signOut()` exists, revokes the
+  session server-side and is tested, but its only call site is the account-deletion flow, so
+  a signed-in person cannot simply sign out. Adding a Settings row for it is a small, well
+  defined contribution, and it needs Turkish copy first, since Turkish is the source language.
