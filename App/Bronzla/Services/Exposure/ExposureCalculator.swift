@@ -87,6 +87,13 @@ enum ExposureCalculator {
 
     /// Accumulated dose across a varying UV profile, integrated per hourly sample.
     /// Used by the tracker when a session straddles the afternoon peak.
+    ///
+    /// Known limitation: the integration applies a single SPF across the whole window. Swimming
+    /// or towelling removes sunscreen, so for the stretch between leaving the water and
+    /// reapplying, the real protection factor is closer to 1 and this figure understates the
+    /// dose received. Modelling that properly would need a timestamped protection profile; for
+    /// 1.0.1 the mitigation is behavioural instead, an immediate reapply prompt on water exit
+    /// (`TimerState.acknowledgeWaterExit(at:)`) that keeps the unprotected window short.
     static func dose(across samples: [HourlyUV], from start: Date, to end: Date, spf: Int = 1) -> Double {
         guard end > start else { return 0 }
         return samples.reduce(into: 0.0) { total, sample in
@@ -160,6 +167,19 @@ enum ExposureCalculator {
     /// Sunscreen reapplication interval. Every product label and every dermatology body agrees
     /// on two hours, sooner after swimming or towelling. Fixed, never derived.
     static let reapplyInterval: Duration = .seconds(2 * 60 * 60)
+
+    // MARK: - Sunscreen strength
+
+    /// The minimum SPF to use, by UV level. A floor, never a dial: this is deliberately not a
+    /// function of session length, because sunscreen must not be used to buy more time in the
+    /// sun. The dermatology bodies are consistent here, so the ladder has exactly two rungs.
+    ///
+    /// SPF 15 is the lowest protection that should ever be used; SPF 30 or above is the
+    /// recommendation once UV reaches the moderate band, blocking around 97% of UVB.
+    /// Sources: Türk Dermatoloji Derneği, NHS, AAD, British Association of Dermatologists.
+    static func recommendedMinimumSPF(uvIndex: Double) -> Int {
+        uvIndex < 3 ? 15 : 30
+    }
 }
 
 extension Duration {

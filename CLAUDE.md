@@ -60,7 +60,7 @@ xcodebuild test  -project Bronzla.xcodeproj -scheme Bronzla \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 ```
 Read the Swift Testing summary, not `Executed 0 tests` from the legacy XCTest reporter: the
-suite is 129 tests across 14 suites and contains no XCTest cases.
+suite is 144 tests across 15 suites and contains no XCTest cases.
 
 Backend: `cd backend && npm install && npm test` (65 tests across 9 files).
 
@@ -73,7 +73,6 @@ xcrun swiftc -typecheck -sdk "$(xcrun --sdk iphoneos --show-sdk-path)" \
 
 ## Known open items
 - Seven `BronzlaUITests` failures around the onboarding wizard, pre-existing.
-- `TimerView` shows a UV index without `WeatherAttributionView`. Compliance gap, fix in 1.0.1.
 - Backend is not deployed; the global leaderboard is inert in the shipped build.
 - Build 12 shipped with automatic signing via the ASC API key. Manual signing could not
   resolve profiles; do not assume it works.
