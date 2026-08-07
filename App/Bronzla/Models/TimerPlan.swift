@@ -18,6 +18,10 @@ struct TimerPlan: Codable, Equatable, Sendable {
 
     /// Offsets at which to reapply sunscreen. Empty when the session is shorter than the
     /// two-hour interval, because an alert that fires after the timer ends is noise.
+    ///
+    /// This is the pre-session preview only, shown in the setup breakdown before anything has
+    /// happened. Once a session is running the live schedule is `TimerState.reapplyOffsets`,
+    /// which rebases on the moment the user last left the water. Do not schedule from here.
     var reapplyPoints: [Duration] {
         guard spf > 1 else { return [] }
         let interval = ExposureCalculator.reapplyInterval.seconds
@@ -69,6 +73,11 @@ struct TimerState: Codable, Equatable, Sendable {
     /// When the current running stretch began. `nil` means paused.
     private(set) var resumedAt: Date?
     private(set) var completedFlip: Bool
+    /// Elapsed running time from which the two-hour reapply clock is measured. Zero for a
+    /// session in which the user has never reported leaving the water.
+    private(set) var reapplyBaseline: TimeInterval
+    /// True between reporting a water exit and confirming the sunscreen has gone back on.
+    private(set) var awaitingReapply: Bool
 
     init(plan: TimerPlan, startedAt: Date) {
         self.plan = plan
@@ -76,6 +85,28 @@ struct TimerState: Codable, Equatable, Sendable {
         self.accumulated = 0
         self.resumedAt = startedAt
         self.completedFlip = false
+        self.reapplyBaseline = 0
+        self.awaitingReapply = false
+    }
+
+    /// Spelled out rather than synthesised, because `init(from:)` below is hand-written and the
+    /// key set is part of the on-disk format that older builds already wrote.
+    private enum CodingKeys: String, CodingKey {
+        case plan, startedAt, accumulated, resumedAt, completedFlip, reapplyBaseline, awaitingReapply
+    }
+
+    /// Decoded by hand so a session persisted by an older build, whose JSON carries neither of
+    /// the two water-exit keys, restores with the defaults instead of throwing and stranding a
+    /// running timer. Encoding stays synthesised.
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        plan = try container.decode(TimerPlan.self, forKey: .plan)
+        startedAt = try container.decode(Date.self, forKey: .startedAt)
+        accumulated = try container.decode(TimeInterval.self, forKey: .accumulated)
+        resumedAt = try container.decodeIfPresent(Date.self, forKey: .resumedAt)
+        completedFlip = try container.decode(Bool.self, forKey: .completedFlip)
+        reapplyBaseline = try container.decodeIfPresent(TimeInterval.self, forKey: .reapplyBaseline) ?? 0
+        awaitingReapply = try container.decodeIfPresent(Bool.self, forKey: .awaitingReapply) ?? false
     }
 
     var isRunning: Bool { resumedAt != nil }
@@ -122,6 +153,37 @@ struct TimerState: Codable, Equatable, Sendable {
         completedFlip = true
     }
 
+    /// Records that the user has just come out of the water, or towelled off.
+    ///
+    /// Water contact and towelling remove sunscreen well before the two-hour mark, so the
+    /// reapply clock restarts from this moment rather than from the start of the session.
+    /// Measured in elapsed running time, so a pause cannot drift the baseline.
+    mutating func acknowledgeWaterExit(at now: Date) {
+        reapplyBaseline = elapsed(at: now)
+        awaitingReapply = true
+    }
+
+    /// Clears the reapply prompt. Deliberately leaves the baseline where the water exit put it:
+    /// the two hours run from leaving the water, not from the moment the cream went back on,
+    /// which is the conservative direction and costs the user nothing but an early reminder.
+    mutating func acknowledgeReapply() {
+        awaitingReapply = false
+    }
+
+    /// The live reapply schedule, as offsets in elapsed running time.
+    ///
+    /// Unlike `TimerPlan.reapplyPoints` this rebases on the last reported water exit, so it is
+    /// the schedule notifications are built from once a session is under way.
+    var reapplyOffsets: [Duration] {
+        guard plan.spf > 1 else { return [] }
+        let interval = ExposureCalculator.reapplyInterval.seconds
+        let total = plan.totalDuration.seconds
+        let first = reapplyBaseline + interval
+        guard interval > 0, total > first else { return [] }
+
+        return stride(from: first, to: total, by: interval).map { .seconds($0) }
+    }
+
     /// Absolute wall-clock dates at which each alert should fire, given the current state.
     /// Used to schedule notifications, so they must be real dates rather than offsets.
     func pendingAlertDates(at now: Date) -> (flip: Date?, reapply: [Date], end: Date)? {
@@ -135,7 +197,7 @@ struct TimerState: Codable, Equatable, Sendable {
 
         return (
             flip: completedFlip ? nil : date(forOffset: plan.flipAt.seconds),
-            reapply: plan.reapplyPoints.compactMap { date(forOffset: $0.seconds) },
+            reapply: reapplyOffsets.compactMap { date(forOffset: $0.seconds) },
             end: date(forOffset: plan.totalDuration.seconds) ?? now
         )
     }

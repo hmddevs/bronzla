@@ -6,19 +6,24 @@ import Foundation
 /// "easy for the user to find", not merely present somewhere in the app. `MedicalSource.all` is
 /// the single canonical catalogue; `MedicalSourcesView` renders it and is reachable in one tap
 /// from every screen that shows exposure guidance, via `MedicalDisclaimer`.
+/// `title`, `authors` and `publicationDetail` are bibliographic fields: they stay in the
+/// source's original published language, untranslated, so a reviewer can verify the citation
+/// against the original paper or standard. `backs` is Bronzla's own plain-language explanation
+/// of what the source supports, shown to the user, so it is localised like any other UI string.
 struct MedicalSource: Identifiable, Sendable {
     /// Stable across app launches; used only for `Identifiable`, never shown to the user.
     let id: String
     let title: String
-    /// Author list or issuing organisation, as it would appear in a citation.
+    /// Author list or issuing organisation, as it would appear in a citation. Not translated.
     let authors: String
     /// Journal, standard number or publisher detail, kept separate from the year for layout.
+    /// Not translated.
     let publicationDetail: String
     /// `nil` for web pages that carry no publication date; never guessed.
     let year: Int?
     let url: URL
-    /// Plain-language note on what this source backs, shown under the citation.
-    let backs: String
+    /// Plain-language note on what this source backs, shown under the citation. Localised.
+    let backs: LocalizedStringResource
     let category: Category
 
     enum Category: String, CaseIterable, Sendable {
@@ -122,6 +127,56 @@ struct MedicalSource: Identifiable, Sendable {
             year: nil,
             url: URL(string: "https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/practice-safe-sun")!,
             backs: "Broad spectrum SPF 30 or higher is recommended for everyone.",
+            category: .sunscreen
+        ),
+        MedicalSource(
+            id: "tdd-gunesten-korunma",
+            title: "Güneşten Korunma: Hasta Bilgilendirme Broşürü",
+            authors: "Türk Dermatoloji Derneği, Dermoskopi Çalışma Grubu",
+            publicationDetail: "Türk Dermatoloji Derneği",
+            year: nil,
+            url: URL(string: "https://turkdermatoloji.org.tr/media/files/file/GUNESTEN_KORUNMA.pdf")!,
+            backs: "Water resistance lasts 40 minutes and water repellency 80 minutes of water contact, sunscreen must always be reapplied after leaving the water, protection below SPF 15 should never be used and at least SPF 30 in summer, and sunscreen must not be used to extend time in the sun.",
+            category: .sunscreen
+        ),
+        MedicalSource(
+            id: "nhs-sunscreen-sun-safety",
+            title: "Sunscreen and sun safety",
+            authors: "National Health Service",
+            publicationDetail: "NHS",
+            year: nil,
+            url: URL(string: "https://www.nhs.uk/live-well/seasonal-health/sunscreen-and-sun-safety/")!,
+            backs: "Sunscreen should be reapplied straight after being in water even if it is water resistant, and after towel drying, sweating or rubbing, and at least factor 30 should be used.",
+            category: .sunscreen
+        ),
+        MedicalSource(
+            id: "aad-sunscreen-faqs",
+            title: "Sunscreen FAQs",
+            authors: "American Academy of Dermatology",
+            publicationDetail: "AAD",
+            year: nil,
+            url: URL(string: "https://www.aad.org/media/stats-sunscreen")!,
+            backs: "An SPF of at least 30 is recommended, which blocks 97% of UVB rays, and a higher SPF does not allow additional time outdoors without reapplication.",
+            category: .sunscreen
+        ),
+        MedicalSource(
+            id: "bad-sunscreen-fact-sheet-2024",
+            title: "Sun Protection Fact Sheet",
+            authors: "British Association of Dermatologists",
+            publicationDetail: "British Association of Dermatologists",
+            year: 2024,
+            url: URL(string: "http://www.skinhealthinfo.org.uk/wp-content/uploads/2024/05/Sun-Protection-Fact-Sheet.pdf")!,
+            backs: "Sunscreen should be SPF 30 or above and reapplied after swimming, towelling or excessive sweating and rubbing.",
+            category: .sunscreen
+        ),
+        MedicalSource(
+            id: "fda-sunscreen-201-327",
+            title: "21 CFR 201.327: Over-the-counter sunscreen drug products, required labeling based on effectiveness testing",
+            authors: "US Food and Drug Administration",
+            publicationDetail: "Code of Federal Regulations",
+            year: nil,
+            url: URL(string: "https://www.law.cornell.edu/cfr/text/21/201.327")!,
+            backs: "80 minutes is the maximum water-resistance duration a sunscreen label may claim.",
             category: .sunscreen
         ),
 

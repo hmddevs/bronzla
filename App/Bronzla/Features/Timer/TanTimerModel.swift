@@ -76,6 +76,34 @@ final class TanTimerModel {
         }
     }
 
+    /// The user has come out of the water or towelled off. Restarts the reapply clock and
+    /// raises the prompt, so the reminders that follow are measured from here.
+    func acknowledgeWaterExit(now: Date = .now) {
+        guard var state else { return }
+        state.acknowledgeWaterExit(at: now)
+        self.state = state
+        persist()
+        LiveActivityController.update(state: state, now: now)
+        Task { [state] in
+            guard state.isRunning else { return }
+            await scheduler.reschedule(for: state)
+        }
+    }
+
+    /// The user has put the sunscreen back on. Only clears the prompt; the reapply schedule
+    /// stays anchored to the water exit.
+    func acknowledgeReapply() {
+        guard var state else { return }
+        state.acknowledgeReapply()
+        self.state = state
+        persist()
+        LiveActivityController.update(state: state)
+        Task { [state] in
+            guard state.isRunning else { return }
+            await scheduler.reschedule(for: state)
+        }
+    }
+
     /// Ends the session and writes it to the store.
     ///
     /// - Parameter hourly: The UV profile covering the session, used to integrate the dose

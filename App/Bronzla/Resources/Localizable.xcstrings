@@ -100,6 +100,17 @@
         }
       }
     },
+    "80 minutes is the maximum water-resistance duration a sunscreen label may claim.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir güneş kremi etiketinin iddia edebileceği azami su dayanıklılığı süresi 80 dakikadır."
+          }
+        }
+      }
+    },
     "A few": {
       "extractionState": "manual",
       "localizations": {
@@ -129,6 +140,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çok fazla"
+          }
+        }
+      }
+    },
+    "A higher SPF does not let you stay out for longer, and it has to be reapplied just the same.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha yüksek SPF güneşte daha uzun kalmanızı sağlamaz ve aynı sıklıkta yeniden sürülmesi gerekir."
           }
         }
       }
@@ -199,6 +221,17 @@
         }
       }
     },
+    "Aftercare": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonrası bakım"
+          }
+        }
+      }
+    },
     "Almost never burns, always darkens.": {
       "extractionState": "manual",
       "localizations": {
@@ -217,6 +250,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Her zaman yanar, hiç bronzlaşmaz."
+          }
+        }
+      }
+    },
+    "An SPF of at least 30 is recommended, which blocks 97% of UVB rays, and a higher SPF does not allow additional time outdoors without reapplication.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UVB ışınlarının yüzde 97'sini engelleyen en az SPF 30 önerilir; daha yüksek bir SPF, yeniden uygulama yapılmadan dışarıda geçirilebilecek süreyi uzatmaz."
+          }
+        }
+      }
+    },
+    "Apply a gentle compress with chilled aloe vera gel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soğutulmuş aloe vera jeli ile nazikçe kompres yapın."
           }
         }
       }
@@ -353,6 +408,17 @@
         }
       }
     },
+    "Broad spectrum SPF 30 or higher is recommended for everyone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Herkes için geniş spektrumlu, SPF 30 veya üzeri bir güneş kremi önerilir."
+          }
+        }
+      }
+    },
     "Bronzla": {
       "extractionState": "manual",
       "localizations": {
@@ -404,6 +470,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bronzla tıbbi bir cihaz değildir ve tıbbi tavsiye vermez."
+          }
+        }
+      }
+    },
+    "Bronzla is not a substitute for an examination by a dermatologist.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bronzla, bir dermatolog muayenesinin yerini tutmaz."
           }
         }
       }
@@ -635,6 +712,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu yaygın inanışın aksine yağ ısıyı ciltte hapseder ve yanığı ağırlaştırır."
+          }
+        }
+      }
+    },
+    "Cool baths, aloe vera or soy products, and never popping blisters.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serin banyolar, aloe vera veya soya bazlı ürünler ve su toplamalarının asla patlatılmaması gerektiği."
+          }
+        }
+      }
+    },
+    "Cool compresses, and that applying ice directly damages sunburnt skin.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serin kompresler ve buzun doğrudan uygulanmasının güneş yanığına uğramış cildi zedelediği."
           }
         }
       }
@@ -947,6 +1046,17 @@
         }
       }
     },
+    "Do not apply vinegar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sirke sürmeyin"
+          }
+        }
+      }
+    },
     "Do not go out in the sun again today, stay in the shade.": {
       "extractionState": "manual",
       "localizations": {
@@ -1064,6 +1174,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bol su için; yanık, cildin normalden fazla sıvı kaybetmesine sebep olur."
+          }
+        }
+      }
+    },
+    "Drink water regularly, and cool off in the shade when you get too warm.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli olarak su için ve fazla ısındığınızda gölgede serinleyin."
           }
         }
       }
@@ -1453,6 +1574,28 @@
         }
       }
     },
+    "I have been in the water": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sudan çıktım"
+          }
+        }
+      }
+    },
+    "I have reapplied": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeniden sürdüm"
+          }
+        }
+      }
+    },
     "I have turned over": {
       "extractionState": "manual",
       "localizations": {
@@ -1563,6 +1706,17 @@
         }
       }
     },
+    "It irritates the skin and gives no real benefit.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cildi tahriş eder ve gerçek bir fayda sağlamaz."
+          }
+        }
+      }
+    },
     "It is a common belief, but oil traps heat and drives the burn deeper.": {
       "extractionState": "manual",
       "localizations": {
@@ -1570,6 +1724,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yaygın bir inanıştır ama yağ ısıyı hapseder ve yanığı derinleştirir."
+          }
+        }
+      }
+    },
+    "It is a popular folk remedy, but the evidence it helps is mixed; a cool compress works just as well.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaygın bir halk çaresidir, ancak yardımcı olduğuna dair kanıtlar karışıktır; soğuk kompres de aynı derecede işe yarar."
+          }
+        }
+      }
+    },
+    "It is a popular folk remedy, but there is no good evidence it helps.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaygın bir halk çaresidir, ancak işe yaradığına dair sağlam bir kanıt yoktur."
           }
         }
       }
@@ -2069,6 +2245,28 @@
         }
       }
     },
+    "One UV index unit equals 25 mW/m² of erythemally weighted irradiance, and the protection advice for each band.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir UV endeksi birimi, eritem ağırlıklı ışınım şiddetinin 25 mW/m² değerine karşılık gelir; her bant için korunma önerisi de buna göre belirlenir."
+          }
+        }
+      }
+    },
+    "Opens the source in your browser": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaynağı tarayıcınızda açar"
+          }
+        }
+      }
+    },
     "Opens the timer in Bronzla.": {
       "extractionState": "manual",
       "localizations": {
@@ -2131,6 +2329,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "En yüksek UV %lld. 11.00-16.00 arasında güneşe dikkat edin."
+          }
+        }
+      }
+    },
+    "People apply far less than the test dose in practice, so real-world protection sits well below the label figure.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kullanıcılar pratikte test dozunun çok altında güneş kremi sürer; bu yüzden gerçek koruma seviyesi etikette yazan değerin oldukça altında kalır."
           }
         }
       }
@@ -2300,6 +2509,17 @@
         }
       }
     },
+    "Reapply every two hours, and immediately after swimming or sweating.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İki saatte bir ve yüzme veya terlemenin hemen ardından yeniden uygulanmalıdır."
+          }
+        }
+      }
+    },
     "Reapply sunscreen": {
       "extractionState": "manual",
       "localizations": {
@@ -2318,6 +2538,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kremi yenileyin"
+          }
+        }
+      }
+    },
+    "Recommended minimum SPF": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önerilen en düşük SPF"
           }
         }
       }
@@ -2395,6 +2626,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "SPF %@"
+          }
+        }
+      }
+    },
+    "SPF is measured at an application rate of 2 mg per square centimetre of skin.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SPF değeri, cildin santimetrekaresine 2 mg uygulama oranıyla ölçülür."
           }
         }
       }
@@ -2586,6 +2828,17 @@
         }
       }
     },
+    "Shows the published sources behind this guidance": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu tavsiyenin dayandığı yayımlanmış kaynakları gösterir"
+          }
+        }
+      }
+    },
     "Shows what percentage of the estimated dose at which your skin starts to redden you received. At 100% and above, reddening is expected.": {
       "extractionState": "manual",
       "localizations": {
@@ -2652,6 +2905,17 @@
         }
       }
     },
+    "Skin type scale: Fitzpatrick, 1988": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cilt tipi ölçeği: Fitzpatrick, 1988"
+          }
+        }
+      }
+    },
     "Sometimes burns, tans gradually.": {
       "extractionState": "manual",
       "localizations": {
@@ -2659,6 +2923,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bazen yanar, yavaş yavaş bronzlaşır."
+          }
+        }
+      }
+    },
+    "Sources": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaynaklar"
           }
         }
       }
@@ -2714,6 +2989,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "Güneşlenme"
+          }
+        }
+      }
+    },
+    "Sunscreen": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş kremi"
+          }
+        }
+      }
+    },
+    "Sunscreen should be SPF 30 or above and reapplied after swimming, towelling or excessive sweating and rubbing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş kremi SPF 30 veya üzeri olmalı ve yüzmenin, havluyla kurulanmanın ya da aşırı terleme ve sürtünmenin ardından yeniden uygulanmalıdır."
+          }
+        }
+      }
+    },
+    "Sunscreen should be reapplied straight after being in water even if it is water resistant, and after towel drying, sweating or rubbing, and at least factor 30 should be used.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş kremi, suya dayanıklı olsa bile suyun dışına çıkıldıktan hemen sonra, havluyla kurulanmanın, terlemenin veya sürtünmenin ardından yeniden uygulanmalıdır; en az faktör 30 kullanılmalıdır."
           }
         }
       }
@@ -2850,6 +3158,17 @@
         }
       }
     },
+    "The Low, Moderate, High, Very High and Extreme band thresholds.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düşük, Orta, Yüksek, Çok Yüksek ve Aşırı bant eşik değerleri."
+          }
+        }
+      }
+    },
     "The UV index is too low to tan. Check again after 10.00.": {
       "extractionState": "manual",
       "localizations": {
@@ -2883,6 +3202,28 @@
         }
       }
     },
+    "The minimal erythemal dose ranges by Fitzpatrick skin type that this app's phototype tiers use.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamanın cilt tipi kademelerinin dayandığı, Fitzpatrick cilt tipine göre minimal eritem dozu aralıkları."
+          }
+        }
+      }
+    },
+    "The published sources behind these times are listed under Sources, below.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sürelerin dayandığı yayımlanmış kaynaklar aşağıda Kaynaklar bölümünde listelenmiştir."
+          }
+        }
+      }
+    },
     "The ranking appears here as family members record sessions.": {
       "extractionState": "manual",
       "localizations": {
@@ -2905,6 +3246,17 @@
         }
       }
     },
+    "The six phototypes and the burning and tanning behaviour described for each.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altı fototip ile her biri için tanımlanan yanma ve bronzlaşma eğilimi."
+          }
+        }
+      }
+    },
     "The skin barrier is fragile after sun.": {
       "extractionState": "manual",
       "localizations": {
@@ -2912,6 +3264,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Güneşten sonra cilt bariyeri hassastır."
+          }
+        }
+      }
+    },
+    "The times in this app are average values based on the Fitzpatrick skin type scale and the World Health Organization's definition of the UV index. Real skin response varies with medication, skin conditions, pregnancy, altitude, reflection from water and sand, cloud cover, and how well sunscreen has been applied.\n\nTreat these times as a rough guide, not an upper limit. If your skin starts to redden, move into the shade even if the time is not up.\n\nSee a dermatologist if you have moles, notice a change in them, have a family history of skin cancer, or react unusually to the sun. This app is never a substitute for an examination.\n\nThe published sources behind these times are listed under Sources, below.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamadaki süreler, Fitzpatrick cilt tipi ölçeğine ve Dünya Sağlık Örgütü'nün UV indeksi tanımına dayanan ortalama değerlerdir. Gerçek cilt tepkisi; ilaçlar, cilt durumları, hamilelik, rakım, su ve kumdan yansıma, bulut örtüsü ve güneş kreminin ne kadar iyi uygulandığına göre değişir.\n\nBu süreleri kesin bir üst sınır değil, kaba bir rehber olarak değerlendirin. Cildiniz kızarmaya başlarsa, süre dolmamış olsa bile gölgeye geçin.\n\nBenlerinizde bir değişiklik fark ederseniz, ailenizde cilt kanseri öyküsü varsa veya güneşe alışılmadık bir tepki veriyorsanız bir dermatoloğa danışın. Bu uygulama hiçbir zaman bir muayenenin yerini tutmaz.\n\nBu sürelerin dayandığı yayımlanmış kaynaklar aşağıda Kaynaklar bölümünde listelenmiştir."
           }
         }
       }
@@ -2934,6 +3297,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Şu anda yanma riski yok. Güneş bu saatte bronzlaştırmaz."
+          }
+        }
+      }
+    },
+    "These are the published sources behind the times, thresholds and advice shown in Bronzla. Where a number in the app traces back to a paper or an official guideline, it is listed here.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunlar, Bronzla'da gösterilen süre, eşik ve tavsiyelerin dayandığı yayımlanmış kaynaklardır. Uygulamadaki bir sayı bir makaleye veya resmi bir kılavuza dayanıyorsa, kaynağı burada listelenir."
           }
         }
       }
@@ -2971,6 +3345,17 @@
         }
       }
     },
+    "This app does not give medical advice. Times are based on average values and vary from person to person. See a dermatologist about any concerns with your skin. ": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu uygulama tıbbi tavsiye vermez. Süreler ortalama değerlere dayanır ve kişiden kişiye değişir. Cildinizle ilgili herhangi bir endişeniz varsa bir dermatoloğa danışın. "
+          }
+        }
+      }
+    },
     "This cannot be undone.": {
       "extractionState": "manual",
       "localizations": {
@@ -2978,6 +3363,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu işlem geri alınamaz."
+          }
+        }
+      }
+    },
+    "This is a rough estimate; age, body composition and previous sun exposure are not taken into account. The skin tone adjustment is this app's own internal estimate, not a published clinical figure.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kaba bir tahmindir; yaş, vücut kompozisyonu ve önceki güneşe maruz kalma dikkate alınmaz. Cilt tonu düzeltmesi, yayımlanmış bir klinik değer değil, uygulamanın kendi dahili tahminidir."
           }
         }
       }
@@ -3099,6 +3495,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bugün"
+          }
+        }
+      }
+    },
+    "Toothpaste on a burn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanığa diş macunu sürmek"
           }
         }
       }
@@ -3312,6 +3719,17 @@
         }
       }
     },
+    "UV index bands: World Health Organization": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV indeksi bantları: Dünya Sağlık Örgütü"
+          }
+        }
+      }
+    },
     "UV will be high tomorrow": {
       "extractionState": "manual",
       "localizations": {
@@ -3433,6 +3851,17 @@
         }
       }
     },
+    "Vitamin D": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "D vitamini"
+          }
+        }
+      }
+    },
     "Waiting for UV data.": {
       "extractionState": "manual",
       "localizations": {
@@ -3440,6 +3869,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "UV verisi bekleniyor."
+          }
+        }
+      }
+    },
+    "Water and towelling take sunscreen off, so it needs to go back on now, even if the product says it is water resistant.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su ve havluyla kurulanmak güneş kremini çıkarır. Ürün suya dayanıklı olsa bile kremi şimdi yeniden sürmelisiniz."
+          }
+        }
+      }
+    },
+    "Water resistance lasts 40 minutes and water repellency 80 minutes of water contact, sunscreen must always be reapplied after leaving the water, protection below SPF 15 should never be used and at least SPF 30 in summer, and sunscreen must not be used to extend time in the sun.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suya dayanıklılık 40 dakika, su itici özellik ise 80 dakikalık su teması sonrasında ölçülür; suyun dışına çıkıldığında güneş kremi mutlaka yeniden sürülmelidir. SPF 15'in altındaki korumalar hiçbir zaman kullanılmamalı, yaz aylarında en az SPF 30 tercih edilmelidir. Güneş kremi, güneşte geçirilen süreyi uzatmak amacıyla kullanılmamalıdır."
           }
         }
       }
@@ -3554,6 +4005,17 @@
         }
       }
     },
+    "When to seek medical care: dehydration, chills, nausea or extensive blistering.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tıbbi yardım ne zaman alınmalı: susuz kalma, titreme, bulantı veya yaygın su toplaması durumunda."
+          }
+        }
+      }
+    },
     "Where": {
       "extractionState": "manual",
       "localizations": {
@@ -3565,6 +4027,17 @@
         }
       }
     },
+    "Whole-body exposure to one minimal erythemal dose is comparable to an oral intake of roughly 10,000 to 25,000 IU.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm vücudun bir minimal eritem dozuna maruz kalması, ağızdan alınan yaklaşık 10.000 ila 25.000 IU'ya denk gelir."
+          }
+        }
+      }
+    },
     "With SPF %@": {
       "extractionState": "manual",
       "localizations": {
@@ -3572,6 +4045,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "SPF %@ ile"
+          }
+        }
+      }
+    },
+    "Yoghurt as a burn remedy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanığa yoğurt sürmek"
           }
         }
       }
@@ -3660,6 +4144,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Verileriniz cihazınızda kalır."
+          }
+        }
+      }
+    },
+    "Your profile is set to SPF %@, below the recommended minimum for this UV level.": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profiliniz SPF %@ olarak ayarlı; bu UV düzeyi için önerilen en düşük değerin altında."
           }
         }
       }
@@ -3891,237 +4386,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "seans"
-          }
-        }
-      }
-    },
-    "Sources": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaynaklar"
-          }
-        }
-      }
-    },
-    "This app does not give medical advice. Times are based on average values and vary from person to person. See a dermatologist about any concerns with your skin. ": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu uygulama tıbbi tavsiye vermez. Süreler ortalama değerlere dayanır ve kişiden kişiye değişir. Cildinizle ilgili herhangi bir endişeniz varsa bir dermatoloğa danışın. "
-          }
-        }
-      }
-    },
-    "Shows the published sources behind this guidance": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu tavsiyenin dayandığı yayımlanmış kaynakları gösterir"
-          }
-        }
-      }
-    },
-    "These are the published sources behind the times, thresholds and advice shown in Bronzla. Where a number in the app traces back to a paper or an official guideline, it is listed here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bunlar, Bronzla'da gösterilen süre, eşik ve tavsiyelerin dayandığı yayımlanmış kaynaklardır. Uygulamadaki bir sayı bir makaleye veya resmi bir kılavuza dayanıyorsa, kaynağı burada listelenir."
-          }
-        }
-      }
-    },
-    "Bronzla is not a substitute for an examination by a dermatologist.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bronzla, bir dermatolog muayenesinin yerini tutmaz."
-          }
-        }
-      }
-    },
-    "Opens the source in your browser": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaynağı tarayıcınızda açar"
-          }
-        }
-      }
-    },
-    "Vitamin D": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "D vitamini"
-          }
-        }
-      }
-    },
-    "Sunscreen": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güneş kremi"
-          }
-        }
-      }
-    },
-    "Aftercare": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sonrası bakım"
-          }
-        }
-      }
-    },
-    "The published sources behind these times are listed under Sources, below.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu sürelerin dayandığı yayımlanmış kaynaklar aşağıda Kaynaklar bölümünde listelenmiştir."
-          }
-        }
-      }
-    },
-    "The times in this app are average values based on the Fitzpatrick skin type scale and the World Health Organization's definition of the UV index. Real skin response varies with medication, skin conditions, pregnancy, altitude, reflection from water and sand, cloud cover, and how well sunscreen has been applied.\n\nTreat these times as a rough guide, not an upper limit. If your skin starts to redden, move into the shade even if the time is not up.\n\nSee a dermatologist if you have moles, notice a change in them, have a family history of skin cancer, or react unusually to the sun. This app is never a substitute for an examination.\n\nThe published sources behind these times are listed under Sources, below.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uygulamadaki süreler, Fitzpatrick cilt tipi ölçeğine ve Dünya Sağlık Örgütü'nün UV indeksi tanımına dayanan ortalama değerlerdir. Gerçek cilt tepkisi; ilaçlar, cilt durumları, hamilelik, rakım, su ve kumdan yansıma, bulut örtüsü ve güneş kreminin ne kadar iyi uygulandığına göre değişir.\n\nBu süreleri kesin bir üst sınır değil, kaba bir rehber olarak değerlendirin. Cildiniz kızarmaya başlarsa, süre dolmamış olsa bile gölgeye geçin.\n\nBenlerinizde bir değişiklik fark ederseniz, ailenizde cilt kanseri öyküsü varsa veya güneşe alışılmadık bir tepki veriyorsanız bir dermatoloğa danışın. Bu uygulama hiçbir zaman bir muayenenin yerini tutmaz.\n\nBu sürelerin dayandığı yayımlanmış kaynaklar aşağıda Kaynaklar bölümünde listelenmiştir."
-          }
-        }
-      }
-    },
-    "UV index bands: World Health Organization": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV indeksi bantları: Dünya Sağlık Örgütü"
-          }
-        }
-      }
-    },
-    "Skin type scale: Fitzpatrick, 1988": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cilt tipi ölçeği: Fitzpatrick, 1988"
-          }
-        }
-      }
-    },
-    "This is a rough estimate; age, body composition and previous sun exposure are not taken into account. The skin tone adjustment is this app's own internal estimate, not a published clinical figure.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu kaba bir tahmindir; yaş, vücut kompozisyonu ve önceki güneşe maruz kalma dikkate alınmaz. Cilt tonu düzeltmesi, yayımlanmış bir klinik değer değil, uygulamanın kendi dahili tahminidir."
-          }
-        }
-      }
-    },
-    "Do not apply vinegar": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sirke sürmeyin"
-          }
-        }
-      }
-    },
-    "It irritates the skin and gives no real benefit.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cildi tahriş eder ve gerçek bir fayda sağlamaz."
-          }
-        }
-      }
-    },
-    "Toothpaste on a burn": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yanığa diş macunu sürmek"
-          }
-        }
-      }
-    },
-    "It is a popular folk remedy, but there is no good evidence it helps.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yaygın bir halk çaresidir, ancak işe yaradığına dair sağlam bir kanıt yoktur."
-          }
-        }
-      }
-    },
-    "Apply a gentle compress with chilled aloe vera gel.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soğutulmuş aloe vera jeli ile nazikçe kompres yapın."
-          }
-        }
-      }
-    },
-    "Yoghurt as a burn remedy": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yanığa yoğurt sürmek"
-          }
-        }
-      }
-    },
-    "It is a popular folk remedy, but the evidence it helps is mixed; a cool compress works just as well.": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yaygın bir halk çaresidir, ancak yardımcı olduğuna dair kanıtlar karışıktır; soğuk kompres de aynı derecede işe yarar."
           }
         }
       }

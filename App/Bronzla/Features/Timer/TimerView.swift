@@ -58,6 +58,7 @@ struct TimerView: View {
             ScrollView {
                 VStack(spacing: Spacing.l) {
                     header(for: report)
+                    sunscreenGuidance(for: report)
                     durationPicker(for: plan)
                     planBreakdown(for: effectivePlan(from: plan))
                     MedicalDisclaimer()
@@ -103,6 +104,35 @@ struct TimerView: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }
+    }
+
+    /// The SPF floor for today's UV, shown before the session rather than during it, because it
+    /// is a decision the user makes while the bottle is still in their hand.
+    private func sunscreenGuidance(for report: UVReport) -> some View {
+        let minimum = ExposureCalculator.recommendedMinimumSPF(uvIndex: report.current.uvIndex)
+
+        return VStack(alignment: .leading, spacing: Spacing.m) {
+            breakdownRow(
+                symbol: "sun.max.fill",
+                title: "Recommended minimum SPF",
+                value: "SPF \(minimum.formatted())"
+            )
+
+            if spf < minimum {
+                Divider()
+                Label(
+                    "Your profile is set to SPF \(spf.formatted()), below the recommended minimum for this UV level.",
+                    systemImage: "exclamationmark.triangle.fill"
+                )
+                .font(.footnote)
+                .foregroundStyle(Palette.colour(for: .veryHigh))
+            }
+
+            Text("A higher SPF does not let you stay out for longer, and it has to be reapplied just the same.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .cardSurface()
     }
 
     private func durationPicker(for plan: TimerPlan) -> some View {
@@ -201,6 +231,10 @@ struct TimerView: View {
                         flipPrompt
                     }
 
+                    if state.awaitingReapply && !isFinished {
+                        reapplyPrompt
+                    }
+
                     if model.notificationsDenied {
                         notificationWarning
                     }
@@ -208,15 +242,23 @@ struct TimerView: View {
                     if isFinished {
                         finishedPrompt
                     } else {
+                        // Only meaningful when there is sunscreen to lose. Offering it on bare
+                        // skin would prompt someone to reapply a cream they never put on.
+                        if state.plan.spf > 1 {
+                            waterExitButton
+                        }
                         controls(state)
                     }
 
+                    hydrationNote
                     MedicalDisclaimer()
+                    WeatherAttributionView()
                 }
                 .padding(Spacing.l)
                 .padding(.bottom, Spacing.xxl)
             }
             .animation(.smooth, value: isFinished)
+            .animation(.smooth, value: state.awaitingReapply)
         }
         .alert("Cancel this session?", isPresented: $isConfirmingCancel) {
             Button("Cancel it", role: .destructive) { model.cancel() }
@@ -239,6 +281,43 @@ struct TimerView: View {
         }
         .frame(maxWidth: .infinity)
         .cardSurface()
+    }
+
+    /// Raised the moment the user reports leaving the water, not two hours later: the sunscreen
+    /// is already gone by the time they are back on the towel.
+    private var reapplyPrompt: some View {
+        VStack(spacing: Spacing.m) {
+            Label("Reapply your sunscreen", systemImage: "drop.fill")
+                .font(.headline)
+            Text("Water and towelling take sunscreen off, so it needs to go back on now, even if the product says it is water resistant.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+            Button("I have reapplied") { model.acknowledgeReapply() }
+                .buttonStyle(.borderedProminent)
+        }
+        .frame(maxWidth: .infinity)
+        .cardSurface()
+    }
+
+    private var waterExitButton: some View {
+        Button {
+            model.acknowledgeWaterExit()
+        } label: {
+            Label("I have been in the water", systemImage: "water.waves")
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.bordered)
+        .controlSize(.large)
+    }
+
+    /// Comfort advice, not exposure guidance: no alert, no citation, no bearing on the timer.
+    private var hydrationNote: some View {
+        Text("Drink water regularly, and cool off in the shade when you get too warm.")
+            .font(.footnote)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity)
     }
 
     private var notificationWarning: some View {
