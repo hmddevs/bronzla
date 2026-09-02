@@ -1,0 +1,53 @@
+# Deploys the bronzla.app static site (site/) to Cloudflare Workers on every
+# push to main that touches it.
+#
+# backend.yml covers the CDK/Lambda backend separately; this workflow is the
+# missing deploy step for the Worker, which previously had none.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/site-deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-bronzla-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: site/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy
+        # No wrangler in the site's own devDependencies, so pin explicitly
+        # rather than risk an @latest resolving to a version that does not
+        # exist on npm.
+        run: npx --yes wrangler@4.127.1 deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
