@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Please report security issues privately to **umut@guden.tr**. Do not open a public issue,
+Please report security issues privately to **hello@hmddevs.org**. Do not open a public issue,
 pull request or discussion for anything security related.
 
 Include what you need to make the problem understandable: the affected component, what an

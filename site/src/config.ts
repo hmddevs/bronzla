@@ -76,7 +76,7 @@ export function organizationSchema(): Record<string, unknown> {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'HMD Developments',
-    url: 'https://guden.tr',
-    email: 'umut@guden.tr',
+    url: 'https://hmddevs.org',
+    email: 'hello@hmddevs.org',
   };
 }
